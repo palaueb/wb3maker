@@ -1,0 +1,4438 @@
+[
+  {
+    "id": "fd00",
+    "group": "fd",
+    "row": "0x",
+    "col": "0",
+    "opcode": "FD 00",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd01",
+    "group": "fd",
+    "row": "0x",
+    "col": "1",
+    "opcode": "FD 01",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd02",
+    "group": "fd",
+    "row": "0x",
+    "col": "2",
+    "opcode": "FD 02",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd03",
+    "group": "fd",
+    "row": "0x",
+    "col": "3",
+    "opcode": "FD 03",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd04",
+    "group": "fd",
+    "row": "0x",
+    "col": "4",
+    "opcode": "FD 04",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd05",
+    "group": "fd",
+    "row": "0x",
+    "col": "5",
+    "opcode": "FD 05",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd06",
+    "group": "fd",
+    "row": "0x",
+    "col": "6",
+    "opcode": "FD 06",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd07",
+    "group": "fd",
+    "row": "0x",
+    "col": "7",
+    "opcode": "FD 07",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd08",
+    "group": "fd",
+    "row": "0x",
+    "col": "8",
+    "opcode": "FD 08",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd09",
+    "group": "fd",
+    "row": "0x",
+    "col": "9",
+    "opcode": "FD 09",
+    "mnemonic": "ADD IY,BC",
+    "clck": "15",
+    "siz": "2",
+    "description": "Suma BC a IY i deixa el resultat al mateix registre indexat.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "H",
+        "N",
+        "C"
+      ],
+      "notes": "S, Z i P/V no canvien."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd0a",
+    "group": "fd",
+    "row": "0x",
+    "col": "A",
+    "opcode": "FD 0A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd0b",
+    "group": "fd",
+    "row": "0x",
+    "col": "B",
+    "opcode": "FD 0B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd0c",
+    "group": "fd",
+    "row": "0x",
+    "col": "C",
+    "opcode": "FD 0C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd0d",
+    "group": "fd",
+    "row": "0x",
+    "col": "D",
+    "opcode": "FD 0D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd0e",
+    "group": "fd",
+    "row": "0x",
+    "col": "E",
+    "opcode": "FD 0E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd0f",
+    "group": "fd",
+    "row": "0x",
+    "col": "F",
+    "opcode": "FD 0F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd10",
+    "group": "fd",
+    "row": "1x",
+    "col": "0",
+    "opcode": "FD 10",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd11",
+    "group": "fd",
+    "row": "1x",
+    "col": "1",
+    "opcode": "FD 11",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd12",
+    "group": "fd",
+    "row": "1x",
+    "col": "2",
+    "opcode": "FD 12",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd13",
+    "group": "fd",
+    "row": "1x",
+    "col": "3",
+    "opcode": "FD 13",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd14",
+    "group": "fd",
+    "row": "1x",
+    "col": "4",
+    "opcode": "FD 14",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd15",
+    "group": "fd",
+    "row": "1x",
+    "col": "5",
+    "opcode": "FD 15",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd16",
+    "group": "fd",
+    "row": "1x",
+    "col": "6",
+    "opcode": "FD 16",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd17",
+    "group": "fd",
+    "row": "1x",
+    "col": "7",
+    "opcode": "FD 17",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd18",
+    "group": "fd",
+    "row": "1x",
+    "col": "8",
+    "opcode": "FD 18",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd19",
+    "group": "fd",
+    "row": "1x",
+    "col": "9",
+    "opcode": "FD 19",
+    "mnemonic": "ADD IY,DE",
+    "clck": "15",
+    "siz": "2",
+    "description": "Suma DE a IY i deixa el resultat al mateix registre indexat.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "H",
+        "N",
+        "C"
+      ],
+      "notes": "S, Z i P/V no canvien."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd1a",
+    "group": "fd",
+    "row": "1x",
+    "col": "A",
+    "opcode": "FD 1A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd1b",
+    "group": "fd",
+    "row": "1x",
+    "col": "B",
+    "opcode": "FD 1B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd1c",
+    "group": "fd",
+    "row": "1x",
+    "col": "C",
+    "opcode": "FD 1C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd1d",
+    "group": "fd",
+    "row": "1x",
+    "col": "D",
+    "opcode": "FD 1D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd1e",
+    "group": "fd",
+    "row": "1x",
+    "col": "E",
+    "opcode": "FD 1E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd1f",
+    "group": "fd",
+    "row": "1x",
+    "col": "F",
+    "opcode": "FD 1F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd20",
+    "group": "fd",
+    "row": "2x",
+    "col": "0",
+    "opcode": "FD 20",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd21",
+    "group": "fd",
+    "row": "2x",
+    "col": "1",
+    "opcode": "FD 21 nn nn",
+    "mnemonic": "LD IY,nn",
+    "clck": "14",
+    "siz": "4",
+    "description": "Carrega un valor immediat de 16 bits al registre IY.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd22",
+    "group": "fd",
+    "row": "2x",
+    "col": "2",
+    "opcode": "FD 22 nn nn",
+    "mnemonic": "LD (nn),IY",
+    "clck": "20",
+    "siz": "4",
+    "description": "Guarda el valor de IY a memòria començant a l'adreça nn.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "Escriu primer el byte baix i després el byte alt."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd23",
+    "group": "fd",
+    "row": "2x",
+    "col": "3",
+    "opcode": "FD 23",
+    "mnemonic": "INC IY",
+    "clck": "10",
+    "siz": "2",
+    "description": "Incrementa IY en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd24",
+    "group": "fd",
+    "row": "2x",
+    "col": "4",
+    "opcode": "FD 24",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd25",
+    "group": "fd",
+    "row": "2x",
+    "col": "5",
+    "opcode": "FD 25",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd26",
+    "group": "fd",
+    "row": "2x",
+    "col": "6",
+    "opcode": "FD 26",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd27",
+    "group": "fd",
+    "row": "2x",
+    "col": "7",
+    "opcode": "FD 27",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd28",
+    "group": "fd",
+    "row": "2x",
+    "col": "8",
+    "opcode": "FD 28",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd29",
+    "group": "fd",
+    "row": "2x",
+    "col": "9",
+    "opcode": "FD 29",
+    "mnemonic": "ADD IY,IY",
+    "clck": "15",
+    "siz": "2",
+    "description": "Suma IY amb ell mateix.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "H",
+        "N",
+        "C"
+      ],
+      "notes": "S, Z i P/V no canvien."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd2a",
+    "group": "fd",
+    "row": "2x",
+    "col": "A",
+    "opcode": "FD 2A nn nn",
+    "mnemonic": "LD IY,(nn)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Llegeix un valor de 16 bits de memòria començant a nn i el carrega a IY.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd2b",
+    "group": "fd",
+    "row": "2x",
+    "col": "B",
+    "opcode": "FD 2B",
+    "mnemonic": "DEC IY",
+    "clck": "10",
+    "siz": "2",
+    "description": "Decrementa IY en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd2c",
+    "group": "fd",
+    "row": "2x",
+    "col": "C",
+    "opcode": "FD 2C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd2d",
+    "group": "fd",
+    "row": "2x",
+    "col": "D",
+    "opcode": "FD 2D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd2e",
+    "group": "fd",
+    "row": "2x",
+    "col": "E",
+    "opcode": "FD 2E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd2f",
+    "group": "fd",
+    "row": "2x",
+    "col": "F",
+    "opcode": "FD 2F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd30",
+    "group": "fd",
+    "row": "3x",
+    "col": "0",
+    "opcode": "FD 30",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd31",
+    "group": "fd",
+    "row": "3x",
+    "col": "1",
+    "opcode": "FD 31",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd32",
+    "group": "fd",
+    "row": "3x",
+    "col": "2",
+    "opcode": "FD 32",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd33",
+    "group": "fd",
+    "row": "3x",
+    "col": "3",
+    "opcode": "FD 33",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd34",
+    "group": "fd",
+    "row": "3x",
+    "col": "4",
+    "opcode": "FD 34 d",
+    "mnemonic": "INC (IY+d)",
+    "clck": "23",
+    "siz": "3",
+    "description": "Incrementa en 1 el byte de memòria situat a IY+d.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd35",
+    "group": "fd",
+    "row": "3x",
+    "col": "5",
+    "opcode": "FD 35 d",
+    "mnemonic": "DEC (IY+d)",
+    "clck": "23",
+    "siz": "3",
+    "description": "Decrementa en 1 el byte de memòria situat a IY+d.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd36",
+    "group": "fd",
+    "row": "3x",
+    "col": "6",
+    "opcode": "FD 36 d n",
+    "mnemonic": "LD (IY+d),n",
+    "clck": "19",
+    "siz": "4",
+    "description": "Escriu un byte immediat a la memòria situada a IY+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "Ideal per camps dins d'estructures indexades."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd37",
+    "group": "fd",
+    "row": "3x",
+    "col": "7",
+    "opcode": "FD 37",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd38",
+    "group": "fd",
+    "row": "3x",
+    "col": "8",
+    "opcode": "FD 38",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd39",
+    "group": "fd",
+    "row": "3x",
+    "col": "9",
+    "opcode": "FD 39",
+    "mnemonic": "ADD IY,SP",
+    "clck": "15",
+    "siz": "2",
+    "description": "Suma SP a IY i deixa el resultat a IY.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "H",
+        "N",
+        "C"
+      ],
+      "notes": "S, Z i P/V no canvien."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd3a",
+    "group": "fd",
+    "row": "3x",
+    "col": "A",
+    "opcode": "FD 3A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd3b",
+    "group": "fd",
+    "row": "3x",
+    "col": "B",
+    "opcode": "FD 3B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd3c",
+    "group": "fd",
+    "row": "3x",
+    "col": "C",
+    "opcode": "FD 3C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd3d",
+    "group": "fd",
+    "row": "3x",
+    "col": "D",
+    "opcode": "FD 3D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd3e",
+    "group": "fd",
+    "row": "3x",
+    "col": "E",
+    "opcode": "FD 3E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd3f",
+    "group": "fd",
+    "row": "3x",
+    "col": "F",
+    "opcode": "FD 3F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd40",
+    "group": "fd",
+    "row": "4x",
+    "col": "0",
+    "opcode": "FD 40",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd41",
+    "group": "fd",
+    "row": "4x",
+    "col": "1",
+    "opcode": "FD 41",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd42",
+    "group": "fd",
+    "row": "4x",
+    "col": "2",
+    "opcode": "FD 42",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd43",
+    "group": "fd",
+    "row": "4x",
+    "col": "3",
+    "opcode": "FD 43",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd44",
+    "group": "fd",
+    "row": "4x",
+    "col": "4",
+    "opcode": "FD 44",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd45",
+    "group": "fd",
+    "row": "4x",
+    "col": "5",
+    "opcode": "FD 45",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd46",
+    "group": "fd",
+    "row": "4x",
+    "col": "6",
+    "opcode": "FD 46 d",
+    "mnemonic": "LD B,(IY+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Llegeix el byte de memòria situat a IY+d i el carrega al registre B.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd47",
+    "group": "fd",
+    "row": "4x",
+    "col": "7",
+    "opcode": "FD 47",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd48",
+    "group": "fd",
+    "row": "4x",
+    "col": "8",
+    "opcode": "FD 48",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd49",
+    "group": "fd",
+    "row": "4x",
+    "col": "9",
+    "opcode": "FD 49",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd4a",
+    "group": "fd",
+    "row": "4x",
+    "col": "A",
+    "opcode": "FD 4A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd4b",
+    "group": "fd",
+    "row": "4x",
+    "col": "B",
+    "opcode": "FD 4B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd4c",
+    "group": "fd",
+    "row": "4x",
+    "col": "C",
+    "opcode": "FD 4C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd4d",
+    "group": "fd",
+    "row": "4x",
+    "col": "D",
+    "opcode": "FD 4D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd4e",
+    "group": "fd",
+    "row": "4x",
+    "col": "E",
+    "opcode": "FD 4E d",
+    "mnemonic": "LD C,(IY+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Llegeix el byte de memòria situat a IY+d i el carrega al registre C.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd4f",
+    "group": "fd",
+    "row": "4x",
+    "col": "F",
+    "opcode": "FD 4F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd50",
+    "group": "fd",
+    "row": "5x",
+    "col": "0",
+    "opcode": "FD 50",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd51",
+    "group": "fd",
+    "row": "5x",
+    "col": "1",
+    "opcode": "FD 51",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd52",
+    "group": "fd",
+    "row": "5x",
+    "col": "2",
+    "opcode": "FD 52",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd53",
+    "group": "fd",
+    "row": "5x",
+    "col": "3",
+    "opcode": "FD 53",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd54",
+    "group": "fd",
+    "row": "5x",
+    "col": "4",
+    "opcode": "FD 54",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd55",
+    "group": "fd",
+    "row": "5x",
+    "col": "5",
+    "opcode": "FD 55",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd56",
+    "group": "fd",
+    "row": "5x",
+    "col": "6",
+    "opcode": "FD 56 d",
+    "mnemonic": "LD D,(IY+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Llegeix el byte de memòria situat a IY+d i el carrega al registre D.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd57",
+    "group": "fd",
+    "row": "5x",
+    "col": "7",
+    "opcode": "FD 57",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd58",
+    "group": "fd",
+    "row": "5x",
+    "col": "8",
+    "opcode": "FD 58",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd59",
+    "group": "fd",
+    "row": "5x",
+    "col": "9",
+    "opcode": "FD 59",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd5a",
+    "group": "fd",
+    "row": "5x",
+    "col": "A",
+    "opcode": "FD 5A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd5b",
+    "group": "fd",
+    "row": "5x",
+    "col": "B",
+    "opcode": "FD 5B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd5c",
+    "group": "fd",
+    "row": "5x",
+    "col": "C",
+    "opcode": "FD 5C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd5d",
+    "group": "fd",
+    "row": "5x",
+    "col": "D",
+    "opcode": "FD 5D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd5e",
+    "group": "fd",
+    "row": "5x",
+    "col": "E",
+    "opcode": "FD 5E d",
+    "mnemonic": "LD E,(IY+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Llegeix el byte de memòria situat a IY+d i el carrega al registre E.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd5f",
+    "group": "fd",
+    "row": "5x",
+    "col": "F",
+    "opcode": "FD 5F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd60",
+    "group": "fd",
+    "row": "6x",
+    "col": "0",
+    "opcode": "FD 60",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd61",
+    "group": "fd",
+    "row": "6x",
+    "col": "1",
+    "opcode": "FD 61",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd62",
+    "group": "fd",
+    "row": "6x",
+    "col": "2",
+    "opcode": "FD 62",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd63",
+    "group": "fd",
+    "row": "6x",
+    "col": "3",
+    "opcode": "FD 63",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd64",
+    "group": "fd",
+    "row": "6x",
+    "col": "4",
+    "opcode": "FD 64",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd65",
+    "group": "fd",
+    "row": "6x",
+    "col": "5",
+    "opcode": "FD 65",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd66",
+    "group": "fd",
+    "row": "6x",
+    "col": "6",
+    "opcode": "FD 66 d",
+    "mnemonic": "LD H,(IY+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Llegeix el byte de memòria situat a IY+d i el carrega al registre H.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd67",
+    "group": "fd",
+    "row": "6x",
+    "col": "7",
+    "opcode": "FD 67",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd68",
+    "group": "fd",
+    "row": "6x",
+    "col": "8",
+    "opcode": "FD 68",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd69",
+    "group": "fd",
+    "row": "6x",
+    "col": "9",
+    "opcode": "FD 69",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd6a",
+    "group": "fd",
+    "row": "6x",
+    "col": "A",
+    "opcode": "FD 6A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd6b",
+    "group": "fd",
+    "row": "6x",
+    "col": "B",
+    "opcode": "FD 6B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd6c",
+    "group": "fd",
+    "row": "6x",
+    "col": "C",
+    "opcode": "FD 6C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd6d",
+    "group": "fd",
+    "row": "6x",
+    "col": "D",
+    "opcode": "FD 6D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd6e",
+    "group": "fd",
+    "row": "6x",
+    "col": "E",
+    "opcode": "FD 6E d",
+    "mnemonic": "LD L,(IY+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Llegeix el byte de memòria situat a IY+d i el carrega al registre L.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd6f",
+    "group": "fd",
+    "row": "6x",
+    "col": "F",
+    "opcode": "FD 6F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd70",
+    "group": "fd",
+    "row": "7x",
+    "col": "0",
+    "opcode": "FD 70 d",
+    "mnemonic": "LD (IY+d),B",
+    "clck": "19",
+    "siz": "3",
+    "description": "Escriu el contingut del registre B a la memòria situada a IY+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd71",
+    "group": "fd",
+    "row": "7x",
+    "col": "1",
+    "opcode": "FD 71 d",
+    "mnemonic": "LD (IY+d),C",
+    "clck": "19",
+    "siz": "3",
+    "description": "Escriu el contingut del registre C a la memòria situada a IY+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd72",
+    "group": "fd",
+    "row": "7x",
+    "col": "2",
+    "opcode": "FD 72 d",
+    "mnemonic": "LD (IY+d),D",
+    "clck": "19",
+    "siz": "3",
+    "description": "Escriu el contingut del registre D a la memòria situada a IY+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd73",
+    "group": "fd",
+    "row": "7x",
+    "col": "3",
+    "opcode": "FD 73 d",
+    "mnemonic": "LD (IY+d),E",
+    "clck": "19",
+    "siz": "3",
+    "description": "Escriu el contingut del registre E a la memòria situada a IY+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd74",
+    "group": "fd",
+    "row": "7x",
+    "col": "4",
+    "opcode": "FD 74 d",
+    "mnemonic": "LD (IY+d),H",
+    "clck": "19",
+    "siz": "3",
+    "description": "Escriu el contingut del registre H a la memòria situada a IY+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd75",
+    "group": "fd",
+    "row": "7x",
+    "col": "5",
+    "opcode": "FD 75 d",
+    "mnemonic": "LD (IY+d),L",
+    "clck": "19",
+    "siz": "3",
+    "description": "Escriu el contingut del registre L a la memòria situada a IY+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd76",
+    "group": "fd",
+    "row": "7x",
+    "col": "6",
+    "opcode": "FD 76",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd77",
+    "group": "fd",
+    "row": "7x",
+    "col": "7",
+    "opcode": "FD 77 d",
+    "mnemonic": "LD (IY+d),A",
+    "clck": "19",
+    "siz": "3",
+    "description": "Escriu el contingut del registre A a la memòria situada a IY+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd78",
+    "group": "fd",
+    "row": "7x",
+    "col": "8",
+    "opcode": "FD 78",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd79",
+    "group": "fd",
+    "row": "7x",
+    "col": "9",
+    "opcode": "FD 79",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd7a",
+    "group": "fd",
+    "row": "7x",
+    "col": "A",
+    "opcode": "FD 7A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd7b",
+    "group": "fd",
+    "row": "7x",
+    "col": "B",
+    "opcode": "FD 7B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd7c",
+    "group": "fd",
+    "row": "7x",
+    "col": "C",
+    "opcode": "FD 7C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd7d",
+    "group": "fd",
+    "row": "7x",
+    "col": "D",
+    "opcode": "FD 7D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd7e",
+    "group": "fd",
+    "row": "7x",
+    "col": "E",
+    "opcode": "FD 7E d",
+    "mnemonic": "LD A,(IY+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Llegeix el byte de memòria situat a IY+d i el carrega al registre A.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd7f",
+    "group": "fd",
+    "row": "7x",
+    "col": "F",
+    "opcode": "FD 7F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd80",
+    "group": "fd",
+    "row": "8x",
+    "col": "0",
+    "opcode": "FD 80",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd81",
+    "group": "fd",
+    "row": "8x",
+    "col": "1",
+    "opcode": "FD 81",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd82",
+    "group": "fd",
+    "row": "8x",
+    "col": "2",
+    "opcode": "FD 82",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd83",
+    "group": "fd",
+    "row": "8x",
+    "col": "3",
+    "opcode": "FD 83",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd84",
+    "group": "fd",
+    "row": "8x",
+    "col": "4",
+    "opcode": "FD 84",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd85",
+    "group": "fd",
+    "row": "8x",
+    "col": "5",
+    "opcode": "FD 85",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd86",
+    "group": "fd",
+    "row": "8x",
+    "col": "6",
+    "opcode": "FD 86 d",
+    "mnemonic": "ADD A,(IY+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Suma el byte de memòria situat a IY+d a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "A rep el resultat de la suma."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd87",
+    "group": "fd",
+    "row": "8x",
+    "col": "7",
+    "opcode": "FD 87",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd88",
+    "group": "fd",
+    "row": "8x",
+    "col": "8",
+    "opcode": "FD 88",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd89",
+    "group": "fd",
+    "row": "8x",
+    "col": "9",
+    "opcode": "FD 89",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd8a",
+    "group": "fd",
+    "row": "8x",
+    "col": "A",
+    "opcode": "FD 8A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd8b",
+    "group": "fd",
+    "row": "8x",
+    "col": "B",
+    "opcode": "FD 8B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd8c",
+    "group": "fd",
+    "row": "8x",
+    "col": "C",
+    "opcode": "FD 8C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd8d",
+    "group": "fd",
+    "row": "8x",
+    "col": "D",
+    "opcode": "FD 8D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd8e",
+    "group": "fd",
+    "row": "8x",
+    "col": "E",
+    "opcode": "FD 8E d",
+    "mnemonic": "ADC A,(IY+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Suma el byte de memòria situat a IY+d i el carry a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "Inclou el carry en l'operació."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd8f",
+    "group": "fd",
+    "row": "8x",
+    "col": "F",
+    "opcode": "FD 8F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd90",
+    "group": "fd",
+    "row": "9x",
+    "col": "0",
+    "opcode": "FD 90",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd91",
+    "group": "fd",
+    "row": "9x",
+    "col": "1",
+    "opcode": "FD 91",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd92",
+    "group": "fd",
+    "row": "9x",
+    "col": "2",
+    "opcode": "FD 92",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd93",
+    "group": "fd",
+    "row": "9x",
+    "col": "3",
+    "opcode": "FD 93",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd94",
+    "group": "fd",
+    "row": "9x",
+    "col": "4",
+    "opcode": "FD 94",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd95",
+    "group": "fd",
+    "row": "9x",
+    "col": "5",
+    "opcode": "FD 95",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd96",
+    "group": "fd",
+    "row": "9x",
+    "col": "6",
+    "opcode": "FD 96 d",
+    "mnemonic": "SUB (IY+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Resta de A el byte de memòria situat a IY+d.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "A rep el resultat de la resta."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd97",
+    "group": "fd",
+    "row": "9x",
+    "col": "7",
+    "opcode": "FD 97",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd98",
+    "group": "fd",
+    "row": "9x",
+    "col": "8",
+    "opcode": "FD 98",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd99",
+    "group": "fd",
+    "row": "9x",
+    "col": "9",
+    "opcode": "FD 99",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd9a",
+    "group": "fd",
+    "row": "9x",
+    "col": "A",
+    "opcode": "FD 9A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd9b",
+    "group": "fd",
+    "row": "9x",
+    "col": "B",
+    "opcode": "FD 9B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd9c",
+    "group": "fd",
+    "row": "9x",
+    "col": "C",
+    "opcode": "FD 9C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd9d",
+    "group": "fd",
+    "row": "9x",
+    "col": "D",
+    "opcode": "FD 9D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fd9e",
+    "group": "fd",
+    "row": "9x",
+    "col": "E",
+    "opcode": "FD 9E d",
+    "mnemonic": "SBC A,(IY+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Resta de A el byte de memòria situat a IY+d i el carry.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "Inclou el carry en la resta."
+    },
+    "documented": true
+  },
+  {
+    "id": "fd9f",
+    "group": "fd",
+    "row": "9x",
+    "col": "F",
+    "opcode": "FD 9F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fda0",
+    "group": "fd",
+    "row": "Ax",
+    "col": "0",
+    "opcode": "FD A0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fda1",
+    "group": "fd",
+    "row": "Ax",
+    "col": "1",
+    "opcode": "FD A1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fda2",
+    "group": "fd",
+    "row": "Ax",
+    "col": "2",
+    "opcode": "FD A2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fda3",
+    "group": "fd",
+    "row": "Ax",
+    "col": "3",
+    "opcode": "FD A3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fda4",
+    "group": "fd",
+    "row": "Ax",
+    "col": "4",
+    "opcode": "FD A4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fda5",
+    "group": "fd",
+    "row": "Ax",
+    "col": "5",
+    "opcode": "FD A5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fda6",
+    "group": "fd",
+    "row": "Ax",
+    "col": "6",
+    "opcode": "FD A6 d",
+    "mnemonic": "AND (IY+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Fa un AND lògic entre A i el byte de memòria situat a IY+d.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H queda activat; C es reinicia."
+    },
+    "documented": true
+  },
+  {
+    "id": "fda7",
+    "group": "fd",
+    "row": "Ax",
+    "col": "7",
+    "opcode": "FD A7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fda8",
+    "group": "fd",
+    "row": "Ax",
+    "col": "8",
+    "opcode": "FD A8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fda9",
+    "group": "fd",
+    "row": "Ax",
+    "col": "9",
+    "opcode": "FD A9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdaa",
+    "group": "fd",
+    "row": "Ax",
+    "col": "A",
+    "opcode": "FD AA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdab",
+    "group": "fd",
+    "row": "Ax",
+    "col": "B",
+    "opcode": "FD AB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdac",
+    "group": "fd",
+    "row": "Ax",
+    "col": "C",
+    "opcode": "FD AC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdad",
+    "group": "fd",
+    "row": "Ax",
+    "col": "D",
+    "opcode": "FD AD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdae",
+    "group": "fd",
+    "row": "Ax",
+    "col": "E",
+    "opcode": "FD AE d",
+    "mnemonic": "XOR (IY+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Fa un XOR lògic entre A i el byte de memòria situat a IY+d.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i C es reinicien."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdaf",
+    "group": "fd",
+    "row": "Ax",
+    "col": "F",
+    "opcode": "FD AF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdb0",
+    "group": "fd",
+    "row": "Bx",
+    "col": "0",
+    "opcode": "FD B0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdb1",
+    "group": "fd",
+    "row": "Bx",
+    "col": "1",
+    "opcode": "FD B1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdb2",
+    "group": "fd",
+    "row": "Bx",
+    "col": "2",
+    "opcode": "FD B2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdb3",
+    "group": "fd",
+    "row": "Bx",
+    "col": "3",
+    "opcode": "FD B3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdb4",
+    "group": "fd",
+    "row": "Bx",
+    "col": "4",
+    "opcode": "FD B4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdb5",
+    "group": "fd",
+    "row": "Bx",
+    "col": "5",
+    "opcode": "FD B5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdb6",
+    "group": "fd",
+    "row": "Bx",
+    "col": "6",
+    "opcode": "FD B6 d",
+    "mnemonic": "OR (IY+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Fa un OR lògic entre A i el byte de memòria situat a IY+d.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i C es reinicien."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdb7",
+    "group": "fd",
+    "row": "Bx",
+    "col": "7",
+    "opcode": "FD B7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdb8",
+    "group": "fd",
+    "row": "Bx",
+    "col": "8",
+    "opcode": "FD B8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdb9",
+    "group": "fd",
+    "row": "Bx",
+    "col": "9",
+    "opcode": "FD B9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdba",
+    "group": "fd",
+    "row": "Bx",
+    "col": "A",
+    "opcode": "FD BA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdbb",
+    "group": "fd",
+    "row": "Bx",
+    "col": "B",
+    "opcode": "FD BB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdbc",
+    "group": "fd",
+    "row": "Bx",
+    "col": "C",
+    "opcode": "FD BC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdbd",
+    "group": "fd",
+    "row": "Bx",
+    "col": "D",
+    "opcode": "FD BD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdbe",
+    "group": "fd",
+    "row": "Bx",
+    "col": "E",
+    "opcode": "FD BE d",
+    "mnemonic": "CP (IY+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Compara A amb el byte de memòria situat a IY+d sense guardar el resultat.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "Només canvien flags; A no es modifica."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdbf",
+    "group": "fd",
+    "row": "Bx",
+    "col": "F",
+    "opcode": "FD BF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdc0",
+    "group": "fd",
+    "row": "Cx",
+    "col": "0",
+    "opcode": "FD C0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdc1",
+    "group": "fd",
+    "row": "Cx",
+    "col": "1",
+    "opcode": "FD C1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdc2",
+    "group": "fd",
+    "row": "Cx",
+    "col": "2",
+    "opcode": "FD C2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdc3",
+    "group": "fd",
+    "row": "Cx",
+    "col": "3",
+    "opcode": "FD C3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdc4",
+    "group": "fd",
+    "row": "Cx",
+    "col": "4",
+    "opcode": "FD C4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdc5",
+    "group": "fd",
+    "row": "Cx",
+    "col": "5",
+    "opcode": "FD C5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdc6",
+    "group": "fd",
+    "row": "Cx",
+    "col": "6",
+    "opcode": "FD C6",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdc7",
+    "group": "fd",
+    "row": "Cx",
+    "col": "7",
+    "opcode": "FD C7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdc8",
+    "group": "fd",
+    "row": "Cx",
+    "col": "8",
+    "opcode": "FD C8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdc9",
+    "group": "fd",
+    "row": "Cx",
+    "col": "9",
+    "opcode": "FD C9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdca",
+    "group": "fd",
+    "row": "Cx",
+    "col": "A",
+    "opcode": "FD CA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb",
+    "group": "fd",
+    "row": "Cx",
+    "col": "B",
+    "opcode": "FD CB d xx",
+    "mnemonic": "PREFIX FD CB",
+    "clck": "variable",
+    "siz": "2+",
+    "description": "Obre la subtaula indexada FD CB: després venen el desplaçament d i el byte final de l'operació de bits sobre (IY+d).",
+    "category": "prefix",
+    "flags": {
+      "affected": [],
+      "notes": "No és una instrucció completa per si sola."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcc",
+    "group": "fd",
+    "row": "Cx",
+    "col": "C",
+    "opcode": "FD CC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcd",
+    "group": "fd",
+    "row": "Cx",
+    "col": "D",
+    "opcode": "FD CD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdce",
+    "group": "fd",
+    "row": "Cx",
+    "col": "E",
+    "opcode": "FD CE",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcf",
+    "group": "fd",
+    "row": "Cx",
+    "col": "F",
+    "opcode": "FD CF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdd0",
+    "group": "fd",
+    "row": "Dx",
+    "col": "0",
+    "opcode": "FD D0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdd1",
+    "group": "fd",
+    "row": "Dx",
+    "col": "1",
+    "opcode": "FD D1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdd2",
+    "group": "fd",
+    "row": "Dx",
+    "col": "2",
+    "opcode": "FD D2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdd3",
+    "group": "fd",
+    "row": "Dx",
+    "col": "3",
+    "opcode": "FD D3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdd4",
+    "group": "fd",
+    "row": "Dx",
+    "col": "4",
+    "opcode": "FD D4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdd5",
+    "group": "fd",
+    "row": "Dx",
+    "col": "5",
+    "opcode": "FD D5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdd6",
+    "group": "fd",
+    "row": "Dx",
+    "col": "6",
+    "opcode": "FD D6",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdd7",
+    "group": "fd",
+    "row": "Dx",
+    "col": "7",
+    "opcode": "FD D7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdd8",
+    "group": "fd",
+    "row": "Dx",
+    "col": "8",
+    "opcode": "FD D8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdd9",
+    "group": "fd",
+    "row": "Dx",
+    "col": "9",
+    "opcode": "FD D9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdda",
+    "group": "fd",
+    "row": "Dx",
+    "col": "A",
+    "opcode": "FD DA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fddb",
+    "group": "fd",
+    "row": "Dx",
+    "col": "B",
+    "opcode": "FD DB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fddc",
+    "group": "fd",
+    "row": "Dx",
+    "col": "C",
+    "opcode": "FD DC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fddd",
+    "group": "fd",
+    "row": "Dx",
+    "col": "D",
+    "opcode": "FD DD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdde",
+    "group": "fd",
+    "row": "Dx",
+    "col": "E",
+    "opcode": "FD DE",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fddf",
+    "group": "fd",
+    "row": "Dx",
+    "col": "F",
+    "opcode": "FD DF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fde0",
+    "group": "fd",
+    "row": "Ex",
+    "col": "0",
+    "opcode": "FD E0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fde1",
+    "group": "fd",
+    "row": "Ex",
+    "col": "1",
+    "opcode": "FD E1",
+    "mnemonic": "POP IY",
+    "clck": "14",
+    "siz": "2",
+    "description": "Recupera dos bytes de la pila i els posa a IY.",
+    "category": "stack",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fde2",
+    "group": "fd",
+    "row": "Ex",
+    "col": "2",
+    "opcode": "FD E2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fde3",
+    "group": "fd",
+    "row": "Ex",
+    "col": "3",
+    "opcode": "FD E3",
+    "mnemonic": "EX (SP),IY",
+    "clck": "23",
+    "siz": "2",
+    "description": "Intercanvia el contingut de IY amb els dos bytes apuntats per SP.",
+    "category": "exchange",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fde4",
+    "group": "fd",
+    "row": "Ex",
+    "col": "4",
+    "opcode": "FD E4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fde5",
+    "group": "fd",
+    "row": "Ex",
+    "col": "5",
+    "opcode": "FD E5",
+    "mnemonic": "PUSH IY",
+    "clck": "15",
+    "siz": "2",
+    "description": "Guarda IY a la pila.",
+    "category": "stack",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fde6",
+    "group": "fd",
+    "row": "Ex",
+    "col": "6",
+    "opcode": "FD E6",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fde7",
+    "group": "fd",
+    "row": "Ex",
+    "col": "7",
+    "opcode": "FD E7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fde8",
+    "group": "fd",
+    "row": "Ex",
+    "col": "8",
+    "opcode": "FD E8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fde9",
+    "group": "fd",
+    "row": "Ex",
+    "col": "9",
+    "opcode": "FD E9",
+    "mnemonic": "JP (IY)",
+    "clck": "8",
+    "siz": "2",
+    "description": "Salta a l'adreça continguda a IY.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdea",
+    "group": "fd",
+    "row": "Ex",
+    "col": "A",
+    "opcode": "FD EA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdeb",
+    "group": "fd",
+    "row": "Ex",
+    "col": "B",
+    "opcode": "FD EB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdec",
+    "group": "fd",
+    "row": "Ex",
+    "col": "C",
+    "opcode": "FD EC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fded",
+    "group": "fd",
+    "row": "Ex",
+    "col": "D",
+    "opcode": "FD ED",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdee",
+    "group": "fd",
+    "row": "Ex",
+    "col": "E",
+    "opcode": "FD EE",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdef",
+    "group": "fd",
+    "row": "Ex",
+    "col": "F",
+    "opcode": "FD EF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdf0",
+    "group": "fd",
+    "row": "Fx",
+    "col": "0",
+    "opcode": "FD F0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdf1",
+    "group": "fd",
+    "row": "Fx",
+    "col": "1",
+    "opcode": "FD F1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdf2",
+    "group": "fd",
+    "row": "Fx",
+    "col": "2",
+    "opcode": "FD F2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdf3",
+    "group": "fd",
+    "row": "Fx",
+    "col": "3",
+    "opcode": "FD F3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdf4",
+    "group": "fd",
+    "row": "Fx",
+    "col": "4",
+    "opcode": "FD F4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdf5",
+    "group": "fd",
+    "row": "Fx",
+    "col": "5",
+    "opcode": "FD F5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdf6",
+    "group": "fd",
+    "row": "Fx",
+    "col": "6",
+    "opcode": "FD F6",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdf7",
+    "group": "fd",
+    "row": "Fx",
+    "col": "7",
+    "opcode": "FD F7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdf8",
+    "group": "fd",
+    "row": "Fx",
+    "col": "8",
+    "opcode": "FD F8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdf9",
+    "group": "fd",
+    "row": "Fx",
+    "col": "9",
+    "opcode": "FD F9",
+    "mnemonic": "LD SP,IY",
+    "clck": "10",
+    "siz": "2",
+    "description": "Copia IY al registre SP.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdfa",
+    "group": "fd",
+    "row": "Fx",
+    "col": "A",
+    "opcode": "FD FA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdfb",
+    "group": "fd",
+    "row": "Fx",
+    "col": "B",
+    "opcode": "FD FB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdfc",
+    "group": "fd",
+    "row": "Fx",
+    "col": "C",
+    "opcode": "FD FC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdfd",
+    "group": "fd",
+    "row": "Fx",
+    "col": "D",
+    "opcode": "FD FD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdfe",
+    "group": "fd",
+    "row": "Fx",
+    "col": "E",
+    "opcode": "FD FE",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdff",
+    "group": "fd",
+    "row": "Fx",
+    "col": "F",
+    "opcode": "FD FF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix FD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  }
+]

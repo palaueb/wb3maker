@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Z80 Opcode Tables | Sega Master System</title>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <p class="eyebrow">Documentacio local</p>
+      <h1>Z80 Opcode Tables</h1>
+      <p class="subtitle">
+        Referencia visual de la CPU Z80 usada per Sega Master System, amb les dades separades
+        del render i carregades des de JSON per blocs.
+      </p>
+
+      <section class="controls" aria-label="Controls principals">
+        <div class="control-group">
+          <span class="control-label">Bloc</span>
+          <div id="block-selector" class="block-selector" role="tablist" aria-label="Selector de blocs"></div>
+        </div>
+
+        <div class="control-row">
+          <label class="field">
+            <span class="control-label">Cerca</span>
+            <input
+              id="search-input"
+              type="search"
+              placeholder="Ex.: LD, JP, DD CB d 06, ED 4B"
+              autocomplete="off"
+            >
+          </label>
+
+          <label class="field field-small">
+            <span class="control-label">Categoria</span>
+            <select id="category-filter">
+              <option value="all">Totes</option>
+            </select>
+          </label>
+        </div>
+      </section>
+    </header>
+
+    <main class="layout">
+      <section class="content-column">
+        <section class="info-panels">
+          <article class="panel panel-reading">
+            <h2>Com llegir la taula</h2>
+            <p>
+              Cada bloc es mostra en una graella de 16x16. La fila indica el nibble alt del byte final
+              i la columna indica el nibble baix. En blocs prefixats com <code>DD CB d xx</code> o
+              <code>FD CB d xx</code>, la graella es basa en l'ultim byte <code>xx</code>, mentre que
+              <code>d</code> es el desplacament signat respecte a <code>IX</code> o <code>IY</code>.
+            </p>
+          </article>
+
+          <article class="panel panel-legend">
+            <h2>Llegenda</h2>
+            <ul class="legend-list">
+              <li><strong>Clck</strong> = cicles o T-states de la instruccio.</li>
+              <li><strong>Siz</strong> = mida total de la instruccio en bytes.</li>
+              <li><strong>Op-Code</strong> = bytes exactes que l'assembler o la CPU veuen.</li>
+              <li><strong>Description</strong> = explicacio simplificada del comportament.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="panel panel-table">
+          <div class="panel-header">
+            <div>
+              <h2 id="table-title">Base 00-FF</h2>
+              <p id="table-description" class="summary-text"></p>
+              <p id="table-summary" class="summary-text"></p>
+            </div>
+            <div id="status-badge" class="status-badge" aria-live="polite"></div>
+          </div>
+
+          <div id="load-message" class="load-message" hidden></div>
+          <div id="table-container" class="table-container" aria-live="polite"></div>
+        </section>
+      </section>
+
+      <aside class="detail-column">
+        <section class="panel detail-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Detall</h2>
+              <p class="summary-text">Clica una instruccio per veure'n el resum ampliat.</p>
+            </div>
+          </div>
+
+          <div id="detail-content" class="detail-content is-empty">
+            <p>Selecciona una casella valida per veure mnemonic, flags, notes i exemples.</p>
+          </div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

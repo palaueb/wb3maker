@@ -1,0 +1,4354 @@
+[
+  {
+    "id": "00",
+    "group": "base",
+    "row": "0x",
+    "col": "0",
+    "opcode": "00",
+    "mnemonic": "NOP",
+    "clck": "4",
+    "siz": "1",
+    "description": "No fa cap operació. La CPU només passa a la instrucció següent.",
+    "category": "control",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "01",
+    "group": "base",
+    "row": "0x",
+    "col": "1",
+    "opcode": "01 nn nn",
+    "mnemonic": "LD BC,nn",
+    "clck": "10",
+    "siz": "3",
+    "description": "Carrega un valor immediat de 16 bits dins de BC. Els dos bytes següents formen el valor.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "02",
+    "group": "base",
+    "row": "0x",
+    "col": "2",
+    "opcode": "02",
+    "mnemonic": "LD (BC),A",
+    "clck": "7",
+    "siz": "1",
+    "description": "Escriu el contingut d’A a la memòria apuntada per BC.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "03",
+    "group": "base",
+    "row": "0x",
+    "col": "3",
+    "opcode": "03",
+    "mnemonic": "INC BC",
+    "clck": "6",
+    "siz": "1",
+    "description": "Incrementa BC en 1.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "04",
+    "group": "base",
+    "row": "0x",
+    "col": "4",
+    "opcode": "04",
+    "mnemonic": "INC B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Incrementa B en 1.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "05",
+    "group": "base",
+    "row": "0x",
+    "col": "5",
+    "opcode": "05",
+    "mnemonic": "DEC B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Decrementa B en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "06",
+    "group": "base",
+    "row": "0x",
+    "col": "6",
+    "opcode": "06 nn",
+    "mnemonic": "LD B,n",
+    "clck": "7",
+    "siz": "2",
+    "description": "Carrega un byte immediat dins del registre B.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "07",
+    "group": "base",
+    "row": "0x",
+    "col": "7",
+    "opcode": "07",
+    "mnemonic": "RLCA",
+    "clck": "4",
+    "siz": "1",
+    "description": "Rota A 1 bit cap a l’esquerra. El bit 7 passa al bit 0 i també al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "08",
+    "group": "base",
+    "row": "0x",
+    "col": "8",
+    "opcode": "08",
+    "mnemonic": "EX AF,AF'",
+    "clck": "4",
+    "siz": "1",
+    "description": "Intercanvia AF amb el joc alternatiu AF'.",
+    "category": "exchange",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "09",
+    "group": "base",
+    "row": "0x",
+    "col": "9",
+    "opcode": "09",
+    "mnemonic": "ADD HL,BC",
+    "clck": "11",
+    "siz": "1",
+    "description": "Suma BC a HL i deixa el resultat a HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "0A",
+    "group": "base",
+    "row": "0x",
+    "col": "A",
+    "opcode": "0A",
+    "mnemonic": "LD A,(BC)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Llegeix un byte de la memòria apuntada per BC i el carrega a A.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "0B",
+    "group": "base",
+    "row": "0x",
+    "col": "B",
+    "opcode": "0B",
+    "mnemonic": "DEC BC",
+    "clck": "6",
+    "siz": "1",
+    "description": "Decrementa BC en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "0C",
+    "group": "base",
+    "row": "0x",
+    "col": "C",
+    "opcode": "0C",
+    "mnemonic": "INC C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Incrementa C en 1.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "0D",
+    "group": "base",
+    "row": "0x",
+    "col": "D",
+    "opcode": "0D",
+    "mnemonic": "DEC C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Decrementa C en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "0E",
+    "group": "base",
+    "row": "0x",
+    "col": "E",
+    "opcode": "0E nn",
+    "mnemonic": "LD C,n",
+    "clck": "7",
+    "siz": "2",
+    "description": "Carrega un byte immediat dins del registre C.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "0F",
+    "group": "base",
+    "row": "0x",
+    "col": "F",
+    "opcode": "0F",
+    "mnemonic": "RRCA",
+    "clck": "4",
+    "siz": "1",
+    "description": "Rota A 1 bit cap a la dreta. El bit 0 passa al bit 7 i també al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "10",
+    "group": "base",
+    "row": "1x",
+    "col": "0",
+    "opcode": "10 dd",
+    "mnemonic": "DJNZ e",
+    "clck": "13 / 8",
+    "siz": "2",
+    "description": "Resta 1 a B. Si B no és zero, salta relatiu segons el desplaçament signat e.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "11",
+    "group": "base",
+    "row": "1x",
+    "col": "1",
+    "opcode": "11 nn nn",
+    "mnemonic": "LD DE,nn",
+    "clck": "10",
+    "siz": "3",
+    "description": "Carrega un valor immediat de 16 bits dins de DE. Els dos bytes següents formen el valor.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "12",
+    "group": "base",
+    "row": "1x",
+    "col": "2",
+    "opcode": "12",
+    "mnemonic": "LD (DE),A",
+    "clck": "7",
+    "siz": "1",
+    "description": "Escriu el contingut d’A a la memòria apuntada per DE.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "13",
+    "group": "base",
+    "row": "1x",
+    "col": "3",
+    "opcode": "13",
+    "mnemonic": "INC DE",
+    "clck": "6",
+    "siz": "1",
+    "description": "Incrementa DE en 1.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "14",
+    "group": "base",
+    "row": "1x",
+    "col": "4",
+    "opcode": "14",
+    "mnemonic": "INC D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Incrementa D en 1.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "15",
+    "group": "base",
+    "row": "1x",
+    "col": "5",
+    "opcode": "15",
+    "mnemonic": "DEC D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Decrementa D en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "16",
+    "group": "base",
+    "row": "1x",
+    "col": "6",
+    "opcode": "16 nn",
+    "mnemonic": "LD D,n",
+    "clck": "7",
+    "siz": "2",
+    "description": "Carrega un byte immediat dins del registre D.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "17",
+    "group": "base",
+    "row": "1x",
+    "col": "7",
+    "opcode": "17",
+    "mnemonic": "RLA",
+    "clck": "4",
+    "siz": "1",
+    "description": "Rota A cap a l’esquerra passant pel carry. El carry antic entra al bit 0.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "18",
+    "group": "base",
+    "row": "1x",
+    "col": "8",
+    "opcode": "18 dd",
+    "mnemonic": "JR e",
+    "clck": "12",
+    "siz": "2",
+    "description": "Fa un salt relatiu incondicional a una adreça propera, usant un desplaçament signat.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "19",
+    "group": "base",
+    "row": "1x",
+    "col": "9",
+    "opcode": "19",
+    "mnemonic": "ADD HL,DE",
+    "clck": "11",
+    "siz": "1",
+    "description": "Suma DE a HL i deixa el resultat a HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "1A",
+    "group": "base",
+    "row": "1x",
+    "col": "A",
+    "opcode": "1A",
+    "mnemonic": "LD A,(DE)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Llegeix un byte de la memòria apuntada per DE i el carrega a A.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "1B",
+    "group": "base",
+    "row": "1x",
+    "col": "B",
+    "opcode": "1B",
+    "mnemonic": "DEC DE",
+    "clck": "6",
+    "siz": "1",
+    "description": "Decrementa DE en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "1C",
+    "group": "base",
+    "row": "1x",
+    "col": "C",
+    "opcode": "1C",
+    "mnemonic": "INC E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Incrementa E en 1.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "1D",
+    "group": "base",
+    "row": "1x",
+    "col": "D",
+    "opcode": "1D",
+    "mnemonic": "DEC E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Decrementa E en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "1E",
+    "group": "base",
+    "row": "1x",
+    "col": "E",
+    "opcode": "1E nn",
+    "mnemonic": "LD E,n",
+    "clck": "7",
+    "siz": "2",
+    "description": "Carrega un byte immediat dins del registre E.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "1F",
+    "group": "base",
+    "row": "1x",
+    "col": "F",
+    "opcode": "1F",
+    "mnemonic": "RRA",
+    "clck": "4",
+    "siz": "1",
+    "description": "Rota A cap a la dreta passant pel carry. El carry antic entra al bit 7.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "20",
+    "group": "base",
+    "row": "2x",
+    "col": "0",
+    "opcode": "20 dd",
+    "mnemonic": "JR NZ,e",
+    "clck": "12 / 7",
+    "siz": "2",
+    "description": "Fa un salt relatiu si es compleix la condició NZ. Si no, continua.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "21",
+    "group": "base",
+    "row": "2x",
+    "col": "1",
+    "opcode": "21 nn nn",
+    "mnemonic": "LD HL,nn",
+    "clck": "10",
+    "siz": "3",
+    "description": "Carrega un valor immediat de 16 bits dins de HL. Els dos bytes següents formen el valor.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "22",
+    "group": "base",
+    "row": "2x",
+    "col": "2",
+    "opcode": "22 nn nn",
+    "mnemonic": "LD (nn),HL",
+    "clck": "16",
+    "siz": "3",
+    "description": "Guarda HL a l’adreça absoluta nn de memòria.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "23",
+    "group": "base",
+    "row": "2x",
+    "col": "3",
+    "opcode": "23",
+    "mnemonic": "INC HL",
+    "clck": "6",
+    "siz": "1",
+    "description": "Incrementa HL en 1.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "24",
+    "group": "base",
+    "row": "2x",
+    "col": "4",
+    "opcode": "24",
+    "mnemonic": "INC H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Incrementa H en 1.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "25",
+    "group": "base",
+    "row": "2x",
+    "col": "5",
+    "opcode": "25",
+    "mnemonic": "DEC H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Decrementa H en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "26",
+    "group": "base",
+    "row": "2x",
+    "col": "6",
+    "opcode": "26 nn",
+    "mnemonic": "LD H,n",
+    "clck": "7",
+    "siz": "2",
+    "description": "Carrega un byte immediat dins del registre H.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "27",
+    "group": "base",
+    "row": "2x",
+    "col": "7",
+    "opcode": "27",
+    "mnemonic": "DAA",
+    "clck": "4",
+    "siz": "1",
+    "description": "Ajusta A a BCD després d’una suma o resta BCD.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "28",
+    "group": "base",
+    "row": "2x",
+    "col": "8",
+    "opcode": "28 dd",
+    "mnemonic": "JR Z,e",
+    "clck": "12 / 7",
+    "siz": "2",
+    "description": "Fa un salt relatiu si es compleix la condició Z. Si no, continua.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "29",
+    "group": "base",
+    "row": "2x",
+    "col": "9",
+    "opcode": "29",
+    "mnemonic": "ADD HL,HL",
+    "clck": "11",
+    "siz": "1",
+    "description": "Suma HL a HL i deixa el resultat a HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "2A",
+    "group": "base",
+    "row": "2x",
+    "col": "A",
+    "opcode": "2A nn nn",
+    "mnemonic": "LD HL,(nn)",
+    "clck": "16",
+    "siz": "3",
+    "description": "Llegeix dos bytes de memòria a l’adreça nn i els carrega a HL.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "2B",
+    "group": "base",
+    "row": "2x",
+    "col": "B",
+    "opcode": "2B",
+    "mnemonic": "DEC HL",
+    "clck": "6",
+    "siz": "1",
+    "description": "Decrementa HL en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "2C",
+    "group": "base",
+    "row": "2x",
+    "col": "C",
+    "opcode": "2C",
+    "mnemonic": "INC L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Incrementa L en 1.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "2D",
+    "group": "base",
+    "row": "2x",
+    "col": "D",
+    "opcode": "2D",
+    "mnemonic": "DEC L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Decrementa L en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "2E",
+    "group": "base",
+    "row": "2x",
+    "col": "E",
+    "opcode": "2E nn",
+    "mnemonic": "LD L,n",
+    "clck": "7",
+    "siz": "2",
+    "description": "Carrega un byte immediat dins del registre L.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "2F",
+    "group": "base",
+    "row": "2x",
+    "col": "F",
+    "opcode": "2F",
+    "mnemonic": "CPL",
+    "clck": "4",
+    "siz": "1",
+    "description": "Inverteix tots els bits d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "30",
+    "group": "base",
+    "row": "3x",
+    "col": "0",
+    "opcode": "30 dd",
+    "mnemonic": "JR NC,e",
+    "clck": "12 / 7",
+    "siz": "2",
+    "description": "Fa un salt relatiu si es compleix la condició NC. Si no, continua.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "31",
+    "group": "base",
+    "row": "3x",
+    "col": "1",
+    "opcode": "31 nn nn",
+    "mnemonic": "LD SP,nn",
+    "clck": "10",
+    "siz": "3",
+    "description": "Carrega un valor immediat de 16 bits dins de SP. Els dos bytes següents formen el valor.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "32",
+    "group": "base",
+    "row": "3x",
+    "col": "2",
+    "opcode": "32 nn nn",
+    "mnemonic": "LD (nn),A",
+    "clck": "13",
+    "siz": "3",
+    "description": "Escriu A a l’adreça absoluta nn de memòria.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "33",
+    "group": "base",
+    "row": "3x",
+    "col": "3",
+    "opcode": "33",
+    "mnemonic": "INC SP",
+    "clck": "6",
+    "siz": "1",
+    "description": "Incrementa SP en 1.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "34",
+    "group": "base",
+    "row": "3x",
+    "col": "4",
+    "opcode": "34",
+    "mnemonic": "INC (HL)",
+    "clck": "11",
+    "siz": "1",
+    "description": "Incrementa el byte de memòria apuntat per HL en 1.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "35",
+    "group": "base",
+    "row": "3x",
+    "col": "5",
+    "opcode": "35",
+    "mnemonic": "DEC (HL)",
+    "clck": "11",
+    "siz": "1",
+    "description": "Decrementa el byte de memòria apuntat per HL en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "36",
+    "group": "base",
+    "row": "3x",
+    "col": "6",
+    "opcode": "36 nn",
+    "mnemonic": "LD (HL),n",
+    "clck": "10",
+    "siz": "2",
+    "description": "Escriu un byte immediat a la memòria apuntada per HL.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "37",
+    "group": "base",
+    "row": "3x",
+    "col": "7",
+    "opcode": "37",
+    "mnemonic": "SCF",
+    "clck": "4",
+    "siz": "1",
+    "description": "Posa el carry a 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "38",
+    "group": "base",
+    "row": "3x",
+    "col": "8",
+    "opcode": "38 dd",
+    "mnemonic": "JR C,e",
+    "clck": "12 / 7",
+    "siz": "2",
+    "description": "Fa un salt relatiu si es compleix la condició C. Si no, continua.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "39",
+    "group": "base",
+    "row": "3x",
+    "col": "9",
+    "opcode": "39",
+    "mnemonic": "ADD HL,SP",
+    "clck": "11",
+    "siz": "1",
+    "description": "Suma SP a HL i deixa el resultat a HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "3A",
+    "group": "base",
+    "row": "3x",
+    "col": "A",
+    "opcode": "3A nn nn",
+    "mnemonic": "LD A,(nn)",
+    "clck": "13",
+    "siz": "3",
+    "description": "Llegeix un byte de l’adreça absoluta nn de memòria i el carrega a A.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "3B",
+    "group": "base",
+    "row": "3x",
+    "col": "B",
+    "opcode": "3B",
+    "mnemonic": "DEC SP",
+    "clck": "6",
+    "siz": "1",
+    "description": "Decrementa SP en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "3C",
+    "group": "base",
+    "row": "3x",
+    "col": "C",
+    "opcode": "3C",
+    "mnemonic": "INC A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Incrementa A en 1.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "3D",
+    "group": "base",
+    "row": "3x",
+    "col": "D",
+    "opcode": "3D",
+    "mnemonic": "DEC A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Decrementa A en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "3E",
+    "group": "base",
+    "row": "3x",
+    "col": "E",
+    "opcode": "3E nn",
+    "mnemonic": "LD A,n",
+    "clck": "7",
+    "siz": "2",
+    "description": "Carrega un byte immediat dins del registre A.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "3F",
+    "group": "base",
+    "row": "3x",
+    "col": "F",
+    "opcode": "3F",
+    "mnemonic": "CCF",
+    "clck": "4",
+    "siz": "1",
+    "description": "Inverteix el valor actual del carry.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "40",
+    "group": "base",
+    "row": "4x",
+    "col": "0",
+    "opcode": "40",
+    "mnemonic": "LD B,B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de B dins de B.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "41",
+    "group": "base",
+    "row": "4x",
+    "col": "1",
+    "opcode": "41",
+    "mnemonic": "LD B,C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de C dins de B.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "42",
+    "group": "base",
+    "row": "4x",
+    "col": "2",
+    "opcode": "42",
+    "mnemonic": "LD B,D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de D dins de B.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "43",
+    "group": "base",
+    "row": "4x",
+    "col": "3",
+    "opcode": "43",
+    "mnemonic": "LD B,E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de E dins de B.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "44",
+    "group": "base",
+    "row": "4x",
+    "col": "4",
+    "opcode": "44",
+    "mnemonic": "LD B,H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de H dins de B.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "45",
+    "group": "base",
+    "row": "4x",
+    "col": "5",
+    "opcode": "45",
+    "mnemonic": "LD B,L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de L dins de B.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "46",
+    "group": "base",
+    "row": "4x",
+    "col": "6",
+    "opcode": "46",
+    "mnemonic": "LD B,(HL)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Llegeix el byte de la memòria apuntada per HL i el carrega a B.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "47",
+    "group": "base",
+    "row": "4x",
+    "col": "7",
+    "opcode": "47",
+    "mnemonic": "LD B,A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de A dins de B.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "48",
+    "group": "base",
+    "row": "4x",
+    "col": "8",
+    "opcode": "48",
+    "mnemonic": "LD C,B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de B dins de C.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "49",
+    "group": "base",
+    "row": "4x",
+    "col": "9",
+    "opcode": "49",
+    "mnemonic": "LD C,C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de C dins de C.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "4A",
+    "group": "base",
+    "row": "4x",
+    "col": "A",
+    "opcode": "4A",
+    "mnemonic": "LD C,D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de D dins de C.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "4B",
+    "group": "base",
+    "row": "4x",
+    "col": "B",
+    "opcode": "4B",
+    "mnemonic": "LD C,E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de E dins de C.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "4C",
+    "group": "base",
+    "row": "4x",
+    "col": "C",
+    "opcode": "4C",
+    "mnemonic": "LD C,H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de H dins de C.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "4D",
+    "group": "base",
+    "row": "4x",
+    "col": "D",
+    "opcode": "4D",
+    "mnemonic": "LD C,L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de L dins de C.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "4E",
+    "group": "base",
+    "row": "4x",
+    "col": "E",
+    "opcode": "4E",
+    "mnemonic": "LD C,(HL)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Llegeix el byte de la memòria apuntada per HL i el carrega a C.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "4F",
+    "group": "base",
+    "row": "4x",
+    "col": "F",
+    "opcode": "4F",
+    "mnemonic": "LD C,A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de A dins de C.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "50",
+    "group": "base",
+    "row": "5x",
+    "col": "0",
+    "opcode": "50",
+    "mnemonic": "LD D,B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de B dins de D.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "51",
+    "group": "base",
+    "row": "5x",
+    "col": "1",
+    "opcode": "51",
+    "mnemonic": "LD D,C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de C dins de D.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "52",
+    "group": "base",
+    "row": "5x",
+    "col": "2",
+    "opcode": "52",
+    "mnemonic": "LD D,D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de D dins de D.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "53",
+    "group": "base",
+    "row": "5x",
+    "col": "3",
+    "opcode": "53",
+    "mnemonic": "LD D,E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de E dins de D.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "54",
+    "group": "base",
+    "row": "5x",
+    "col": "4",
+    "opcode": "54",
+    "mnemonic": "LD D,H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de H dins de D.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "55",
+    "group": "base",
+    "row": "5x",
+    "col": "5",
+    "opcode": "55",
+    "mnemonic": "LD D,L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de L dins de D.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "56",
+    "group": "base",
+    "row": "5x",
+    "col": "6",
+    "opcode": "56",
+    "mnemonic": "LD D,(HL)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Llegeix el byte de la memòria apuntada per HL i el carrega a D.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "57",
+    "group": "base",
+    "row": "5x",
+    "col": "7",
+    "opcode": "57",
+    "mnemonic": "LD D,A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de A dins de D.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "58",
+    "group": "base",
+    "row": "5x",
+    "col": "8",
+    "opcode": "58",
+    "mnemonic": "LD E,B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de B dins de E.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "59",
+    "group": "base",
+    "row": "5x",
+    "col": "9",
+    "opcode": "59",
+    "mnemonic": "LD E,C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de C dins de E.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "5A",
+    "group": "base",
+    "row": "5x",
+    "col": "A",
+    "opcode": "5A",
+    "mnemonic": "LD E,D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de D dins de E.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "5B",
+    "group": "base",
+    "row": "5x",
+    "col": "B",
+    "opcode": "5B",
+    "mnemonic": "LD E,E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de E dins de E.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "5C",
+    "group": "base",
+    "row": "5x",
+    "col": "C",
+    "opcode": "5C",
+    "mnemonic": "LD E,H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de H dins de E.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "5D",
+    "group": "base",
+    "row": "5x",
+    "col": "D",
+    "opcode": "5D",
+    "mnemonic": "LD E,L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de L dins de E.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "5E",
+    "group": "base",
+    "row": "5x",
+    "col": "E",
+    "opcode": "5E",
+    "mnemonic": "LD E,(HL)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Llegeix el byte de la memòria apuntada per HL i el carrega a E.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "5F",
+    "group": "base",
+    "row": "5x",
+    "col": "F",
+    "opcode": "5F",
+    "mnemonic": "LD E,A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de A dins de E.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "60",
+    "group": "base",
+    "row": "6x",
+    "col": "0",
+    "opcode": "60",
+    "mnemonic": "LD H,B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de B dins de H.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "61",
+    "group": "base",
+    "row": "6x",
+    "col": "1",
+    "opcode": "61",
+    "mnemonic": "LD H,C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de C dins de H.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "62",
+    "group": "base",
+    "row": "6x",
+    "col": "2",
+    "opcode": "62",
+    "mnemonic": "LD H,D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de D dins de H.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "63",
+    "group": "base",
+    "row": "6x",
+    "col": "3",
+    "opcode": "63",
+    "mnemonic": "LD H,E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de E dins de H.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "64",
+    "group": "base",
+    "row": "6x",
+    "col": "4",
+    "opcode": "64",
+    "mnemonic": "LD H,H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de H dins de H.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "65",
+    "group": "base",
+    "row": "6x",
+    "col": "5",
+    "opcode": "65",
+    "mnemonic": "LD H,L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de L dins de H.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "66",
+    "group": "base",
+    "row": "6x",
+    "col": "6",
+    "opcode": "66",
+    "mnemonic": "LD H,(HL)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Llegeix el byte de la memòria apuntada per HL i el carrega a H.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "67",
+    "group": "base",
+    "row": "6x",
+    "col": "7",
+    "opcode": "67",
+    "mnemonic": "LD H,A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de A dins de H.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "68",
+    "group": "base",
+    "row": "6x",
+    "col": "8",
+    "opcode": "68",
+    "mnemonic": "LD L,B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de B dins de L.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "69",
+    "group": "base",
+    "row": "6x",
+    "col": "9",
+    "opcode": "69",
+    "mnemonic": "LD L,C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de C dins de L.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "6A",
+    "group": "base",
+    "row": "6x",
+    "col": "A",
+    "opcode": "6A",
+    "mnemonic": "LD L,D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de D dins de L.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "6B",
+    "group": "base",
+    "row": "6x",
+    "col": "B",
+    "opcode": "6B",
+    "mnemonic": "LD L,E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de E dins de L.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "6C",
+    "group": "base",
+    "row": "6x",
+    "col": "C",
+    "opcode": "6C",
+    "mnemonic": "LD L,H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de H dins de L.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "6D",
+    "group": "base",
+    "row": "6x",
+    "col": "D",
+    "opcode": "6D",
+    "mnemonic": "LD L,L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de L dins de L.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "6E",
+    "group": "base",
+    "row": "6x",
+    "col": "E",
+    "opcode": "6E",
+    "mnemonic": "LD L,(HL)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Llegeix el byte de la memòria apuntada per HL i el carrega a L.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "6F",
+    "group": "base",
+    "row": "6x",
+    "col": "F",
+    "opcode": "6F",
+    "mnemonic": "LD L,A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de A dins de L.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "70",
+    "group": "base",
+    "row": "7x",
+    "col": "0",
+    "opcode": "70",
+    "mnemonic": "LD (HL),B",
+    "clck": "7",
+    "siz": "1",
+    "description": "Escriu el contingut de B a la memòria apuntada per HL.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "71",
+    "group": "base",
+    "row": "7x",
+    "col": "1",
+    "opcode": "71",
+    "mnemonic": "LD (HL),C",
+    "clck": "7",
+    "siz": "1",
+    "description": "Escriu el contingut de C a la memòria apuntada per HL.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "72",
+    "group": "base",
+    "row": "7x",
+    "col": "2",
+    "opcode": "72",
+    "mnemonic": "LD (HL),D",
+    "clck": "7",
+    "siz": "1",
+    "description": "Escriu el contingut de D a la memòria apuntada per HL.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "73",
+    "group": "base",
+    "row": "7x",
+    "col": "3",
+    "opcode": "73",
+    "mnemonic": "LD (HL),E",
+    "clck": "7",
+    "siz": "1",
+    "description": "Escriu el contingut de E a la memòria apuntada per HL.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "74",
+    "group": "base",
+    "row": "7x",
+    "col": "4",
+    "opcode": "74",
+    "mnemonic": "LD (HL),H",
+    "clck": "7",
+    "siz": "1",
+    "description": "Escriu el contingut de H a la memòria apuntada per HL.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "75",
+    "group": "base",
+    "row": "7x",
+    "col": "5",
+    "opcode": "75",
+    "mnemonic": "LD (HL),L",
+    "clck": "7",
+    "siz": "1",
+    "description": "Escriu el contingut de L a la memòria apuntada per HL.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "76",
+    "group": "base",
+    "row": "7x",
+    "col": "6",
+    "opcode": "76",
+    "mnemonic": "HALT",
+    "clck": "4",
+    "siz": "1",
+    "description": "Atura la CPU fins que arribi una interrupció o un reset.",
+    "category": "control",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "77",
+    "group": "base",
+    "row": "7x",
+    "col": "7",
+    "opcode": "77",
+    "mnemonic": "LD (HL),A",
+    "clck": "7",
+    "siz": "1",
+    "description": "Escriu el contingut de A a la memòria apuntada per HL.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "78",
+    "group": "base",
+    "row": "7x",
+    "col": "8",
+    "opcode": "78",
+    "mnemonic": "LD A,B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de B dins de A.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "79",
+    "group": "base",
+    "row": "7x",
+    "col": "9",
+    "opcode": "79",
+    "mnemonic": "LD A,C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de C dins de A.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "7A",
+    "group": "base",
+    "row": "7x",
+    "col": "A",
+    "opcode": "7A",
+    "mnemonic": "LD A,D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de D dins de A.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "7B",
+    "group": "base",
+    "row": "7x",
+    "col": "B",
+    "opcode": "7B",
+    "mnemonic": "LD A,E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de E dins de A.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "7C",
+    "group": "base",
+    "row": "7x",
+    "col": "C",
+    "opcode": "7C",
+    "mnemonic": "LD A,H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de H dins de A.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "7D",
+    "group": "base",
+    "row": "7x",
+    "col": "D",
+    "opcode": "7D",
+    "mnemonic": "LD A,L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de L dins de A.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "7E",
+    "group": "base",
+    "row": "7x",
+    "col": "E",
+    "opcode": "7E",
+    "mnemonic": "LD A,(HL)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Llegeix el byte de la memòria apuntada per HL i el carrega a A.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "7F",
+    "group": "base",
+    "row": "7x",
+    "col": "F",
+    "opcode": "7F",
+    "mnemonic": "LD A,A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Copia el valor de A dins de A.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "80",
+    "group": "base",
+    "row": "8x",
+    "col": "0",
+    "opcode": "80",
+    "mnemonic": "ADD A,B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Suma B a A i deixa el resultat a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "81",
+    "group": "base",
+    "row": "8x",
+    "col": "1",
+    "opcode": "81",
+    "mnemonic": "ADD A,C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Suma C a A i deixa el resultat a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "82",
+    "group": "base",
+    "row": "8x",
+    "col": "2",
+    "opcode": "82",
+    "mnemonic": "ADD A,D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Suma D a A i deixa el resultat a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "83",
+    "group": "base",
+    "row": "8x",
+    "col": "3",
+    "opcode": "83",
+    "mnemonic": "ADD A,E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Suma E a A i deixa el resultat a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "84",
+    "group": "base",
+    "row": "8x",
+    "col": "4",
+    "opcode": "84",
+    "mnemonic": "ADD A,H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Suma H a A i deixa el resultat a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "85",
+    "group": "base",
+    "row": "8x",
+    "col": "5",
+    "opcode": "85",
+    "mnemonic": "ADD A,L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Suma L a A i deixa el resultat a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "86",
+    "group": "base",
+    "row": "8x",
+    "col": "6",
+    "opcode": "86",
+    "mnemonic": "ADD A,(HL)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Suma el byte apuntat per HL a A i deixa el resultat a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "87",
+    "group": "base",
+    "row": "8x",
+    "col": "7",
+    "opcode": "87",
+    "mnemonic": "ADD A,A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Suma A a A i deixa el resultat a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "88",
+    "group": "base",
+    "row": "8x",
+    "col": "8",
+    "opcode": "88",
+    "mnemonic": "ADC A,B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Suma B i el carry a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "89",
+    "group": "base",
+    "row": "8x",
+    "col": "9",
+    "opcode": "89",
+    "mnemonic": "ADC A,C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Suma C i el carry a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "8A",
+    "group": "base",
+    "row": "8x",
+    "col": "A",
+    "opcode": "8A",
+    "mnemonic": "ADC A,D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Suma D i el carry a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "8B",
+    "group": "base",
+    "row": "8x",
+    "col": "B",
+    "opcode": "8B",
+    "mnemonic": "ADC A,E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Suma E i el carry a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "8C",
+    "group": "base",
+    "row": "8x",
+    "col": "C",
+    "opcode": "8C",
+    "mnemonic": "ADC A,H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Suma H i el carry a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "8D",
+    "group": "base",
+    "row": "8x",
+    "col": "D",
+    "opcode": "8D",
+    "mnemonic": "ADC A,L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Suma L i el carry a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "8E",
+    "group": "base",
+    "row": "8x",
+    "col": "E",
+    "opcode": "8E",
+    "mnemonic": "ADC A,(HL)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Suma a A el byte apuntat per HL i també el carry.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "8F",
+    "group": "base",
+    "row": "8x",
+    "col": "F",
+    "opcode": "8F",
+    "mnemonic": "ADC A,A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Suma A i el carry a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "90",
+    "group": "base",
+    "row": "9x",
+    "col": "0",
+    "opcode": "90",
+    "mnemonic": "SUB B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Resta B d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "91",
+    "group": "base",
+    "row": "9x",
+    "col": "1",
+    "opcode": "91",
+    "mnemonic": "SUB C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Resta C d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "92",
+    "group": "base",
+    "row": "9x",
+    "col": "2",
+    "opcode": "92",
+    "mnemonic": "SUB D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Resta D d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "93",
+    "group": "base",
+    "row": "9x",
+    "col": "3",
+    "opcode": "93",
+    "mnemonic": "SUB E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Resta E d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "94",
+    "group": "base",
+    "row": "9x",
+    "col": "4",
+    "opcode": "94",
+    "mnemonic": "SUB H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Resta H d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "95",
+    "group": "base",
+    "row": "9x",
+    "col": "5",
+    "opcode": "95",
+    "mnemonic": "SUB L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Resta L d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "96",
+    "group": "base",
+    "row": "9x",
+    "col": "6",
+    "opcode": "96",
+    "mnemonic": "SUB (HL)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Resta d’A el byte apuntat per HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "97",
+    "group": "base",
+    "row": "9x",
+    "col": "7",
+    "opcode": "97",
+    "mnemonic": "SUB A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Resta A d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "98",
+    "group": "base",
+    "row": "9x",
+    "col": "8",
+    "opcode": "98",
+    "mnemonic": "SBC A,B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Resta B i també el carry d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "99",
+    "group": "base",
+    "row": "9x",
+    "col": "9",
+    "opcode": "99",
+    "mnemonic": "SBC A,C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Resta C i també el carry d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "9A",
+    "group": "base",
+    "row": "9x",
+    "col": "A",
+    "opcode": "9A",
+    "mnemonic": "SBC A,D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Resta D i també el carry d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "9B",
+    "group": "base",
+    "row": "9x",
+    "col": "B",
+    "opcode": "9B",
+    "mnemonic": "SBC A,E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Resta E i també el carry d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "9C",
+    "group": "base",
+    "row": "9x",
+    "col": "C",
+    "opcode": "9C",
+    "mnemonic": "SBC A,H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Resta H i també el carry d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "9D",
+    "group": "base",
+    "row": "9x",
+    "col": "D",
+    "opcode": "9D",
+    "mnemonic": "SBC A,L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Resta L i també el carry d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "9E",
+    "group": "base",
+    "row": "9x",
+    "col": "E",
+    "opcode": "9E",
+    "mnemonic": "SBC A,(HL)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Resta d’A el byte apuntat per HL i també el carry.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "9F",
+    "group": "base",
+    "row": "9x",
+    "col": "F",
+    "opcode": "9F",
+    "mnemonic": "SBC A,A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Resta A i també el carry d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "A0",
+    "group": "base",
+    "row": "Ax",
+    "col": "0",
+    "opcode": "A0",
+    "mnemonic": "AND B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un AND lògic entre A i B.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "A1",
+    "group": "base",
+    "row": "Ax",
+    "col": "1",
+    "opcode": "A1",
+    "mnemonic": "AND C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un AND lògic entre A i C.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "A2",
+    "group": "base",
+    "row": "Ax",
+    "col": "2",
+    "opcode": "A2",
+    "mnemonic": "AND D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un AND lògic entre A i D.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "A3",
+    "group": "base",
+    "row": "Ax",
+    "col": "3",
+    "opcode": "A3",
+    "mnemonic": "AND E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un AND lògic entre A i E.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "A4",
+    "group": "base",
+    "row": "Ax",
+    "col": "4",
+    "opcode": "A4",
+    "mnemonic": "AND H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un AND lògic entre A i H.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "A5",
+    "group": "base",
+    "row": "Ax",
+    "col": "5",
+    "opcode": "A5",
+    "mnemonic": "AND L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un AND lògic entre A i L.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "A6",
+    "group": "base",
+    "row": "Ax",
+    "col": "6",
+    "opcode": "A6",
+    "mnemonic": "AND (HL)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Fa un AND lògic entre A i el byte apuntat per HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "A7",
+    "group": "base",
+    "row": "Ax",
+    "col": "7",
+    "opcode": "A7",
+    "mnemonic": "AND A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un AND lògic entre A i A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "A8",
+    "group": "base",
+    "row": "Ax",
+    "col": "8",
+    "opcode": "A8",
+    "mnemonic": "XOR B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un XOR lògic entre A i B.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "A9",
+    "group": "base",
+    "row": "Ax",
+    "col": "9",
+    "opcode": "A9",
+    "mnemonic": "XOR C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un XOR lògic entre A i C.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "AA",
+    "group": "base",
+    "row": "Ax",
+    "col": "A",
+    "opcode": "AA",
+    "mnemonic": "XOR D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un XOR lògic entre A i D.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "AB",
+    "group": "base",
+    "row": "Ax",
+    "col": "B",
+    "opcode": "AB",
+    "mnemonic": "XOR E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un XOR lògic entre A i E.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "AC",
+    "group": "base",
+    "row": "Ax",
+    "col": "C",
+    "opcode": "AC",
+    "mnemonic": "XOR H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un XOR lògic entre A i H.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "AD",
+    "group": "base",
+    "row": "Ax",
+    "col": "D",
+    "opcode": "AD",
+    "mnemonic": "XOR L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un XOR lògic entre A i L.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "AE",
+    "group": "base",
+    "row": "Ax",
+    "col": "E",
+    "opcode": "AE",
+    "mnemonic": "XOR (HL)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Fa un XOR lògic entre A i el byte apuntat per HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "AF",
+    "group": "base",
+    "row": "Ax",
+    "col": "F",
+    "opcode": "AF",
+    "mnemonic": "XOR A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un XOR lògic entre A i A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "B0",
+    "group": "base",
+    "row": "Bx",
+    "col": "0",
+    "opcode": "B0",
+    "mnemonic": "OR B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un OR lògic entre A i B.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "B1",
+    "group": "base",
+    "row": "Bx",
+    "col": "1",
+    "opcode": "B1",
+    "mnemonic": "OR C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un OR lògic entre A i C.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "B2",
+    "group": "base",
+    "row": "Bx",
+    "col": "2",
+    "opcode": "B2",
+    "mnemonic": "OR D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un OR lògic entre A i D.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "B3",
+    "group": "base",
+    "row": "Bx",
+    "col": "3",
+    "opcode": "B3",
+    "mnemonic": "OR E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un OR lògic entre A i E.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "B4",
+    "group": "base",
+    "row": "Bx",
+    "col": "4",
+    "opcode": "B4",
+    "mnemonic": "OR H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un OR lògic entre A i H.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "B5",
+    "group": "base",
+    "row": "Bx",
+    "col": "5",
+    "opcode": "B5",
+    "mnemonic": "OR L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un OR lògic entre A i L.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "B6",
+    "group": "base",
+    "row": "Bx",
+    "col": "6",
+    "opcode": "B6",
+    "mnemonic": "OR (HL)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Fa un OR lògic entre A i el byte apuntat per HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "B7",
+    "group": "base",
+    "row": "Bx",
+    "col": "7",
+    "opcode": "B7",
+    "mnemonic": "OR A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Fa un OR lògic entre A i A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "B8",
+    "group": "base",
+    "row": "Bx",
+    "col": "8",
+    "opcode": "B8",
+    "mnemonic": "CP B",
+    "clck": "4",
+    "siz": "1",
+    "description": "Compara A amb B. Actualitza els flags com si fes una resta, però no guarda el resultat.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "B9",
+    "group": "base",
+    "row": "Bx",
+    "col": "9",
+    "opcode": "B9",
+    "mnemonic": "CP C",
+    "clck": "4",
+    "siz": "1",
+    "description": "Compara A amb C. Actualitza els flags com si fes una resta, però no guarda el resultat.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "BA",
+    "group": "base",
+    "row": "Bx",
+    "col": "A",
+    "opcode": "BA",
+    "mnemonic": "CP D",
+    "clck": "4",
+    "siz": "1",
+    "description": "Compara A amb D. Actualitza els flags com si fes una resta, però no guarda el resultat.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "BB",
+    "group": "base",
+    "row": "Bx",
+    "col": "B",
+    "opcode": "BB",
+    "mnemonic": "CP E",
+    "clck": "4",
+    "siz": "1",
+    "description": "Compara A amb E. Actualitza els flags com si fes una resta, però no guarda el resultat.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "BC",
+    "group": "base",
+    "row": "Bx",
+    "col": "C",
+    "opcode": "BC",
+    "mnemonic": "CP H",
+    "clck": "4",
+    "siz": "1",
+    "description": "Compara A amb H. Actualitza els flags com si fes una resta, però no guarda el resultat.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "BD",
+    "group": "base",
+    "row": "Bx",
+    "col": "D",
+    "opcode": "BD",
+    "mnemonic": "CP L",
+    "clck": "4",
+    "siz": "1",
+    "description": "Compara A amb L. Actualitza els flags com si fes una resta, però no guarda el resultat.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "BE",
+    "group": "base",
+    "row": "Bx",
+    "col": "E",
+    "opcode": "BE",
+    "mnemonic": "CP (HL)",
+    "clck": "7",
+    "siz": "1",
+    "description": "Compara A amb el byte apuntat per HL. Actualitza flags però no guarda el resultat.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "BF",
+    "group": "base",
+    "row": "Bx",
+    "col": "F",
+    "opcode": "BF",
+    "mnemonic": "CP A",
+    "clck": "4",
+    "siz": "1",
+    "description": "Compara A amb A. Actualitza els flags com si fes una resta, però no guarda el resultat.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "C0",
+    "group": "base",
+    "row": "Cx",
+    "col": "0",
+    "opcode": "C0",
+    "mnemonic": "RET NZ",
+    "clck": "11 / 5",
+    "siz": "1",
+    "description": "Torna de subrutina si Z=0.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "C1",
+    "group": "base",
+    "row": "Cx",
+    "col": "1",
+    "opcode": "C1",
+    "mnemonic": "POP BC",
+    "clck": "10",
+    "siz": "1",
+    "description": "Recupera dos bytes de la pila i els posa a BC.",
+    "category": "stack",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "C2",
+    "group": "base",
+    "row": "Cx",
+    "col": "2",
+    "opcode": "C2 nn nn",
+    "mnemonic": "JP NZ,nn",
+    "clck": "10",
+    "siz": "3",
+    "description": "Salta a nn si Z=0.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "C3",
+    "group": "base",
+    "row": "Cx",
+    "col": "3",
+    "opcode": "C3 nn nn",
+    "mnemonic": "JP nn",
+    "clck": "10",
+    "siz": "3",
+    "description": "Salt absolut incondicional a l’adreça nn.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "C4",
+    "group": "base",
+    "row": "Cx",
+    "col": "4",
+    "opcode": "C4 nn nn",
+    "mnemonic": "CALL NZ,nn",
+    "clck": "17 / 10",
+    "siz": "3",
+    "description": "Crida una subrutina a nn si Z=0. Si salta, guarda l’adreça de retorn a la pila.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "C5",
+    "group": "base",
+    "row": "Cx",
+    "col": "5",
+    "opcode": "C5",
+    "mnemonic": "PUSH BC",
+    "clck": "11",
+    "siz": "1",
+    "description": "Guarda BC a la pila.",
+    "category": "stack",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "C6",
+    "group": "base",
+    "row": "Cx",
+    "col": "6",
+    "opcode": "C6 nn",
+    "mnemonic": "ADD A,n",
+    "clck": "7",
+    "siz": "2",
+    "description": "Suma un byte immediat a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "C7",
+    "group": "base",
+    "row": "Cx",
+    "col": "7",
+    "opcode": "C7",
+    "mnemonic": "RST 00h",
+    "clck": "11",
+    "siz": "1",
+    "description": "Crida curta a l’adreça fixa 0000h.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "C8",
+    "group": "base",
+    "row": "Cx",
+    "col": "8",
+    "opcode": "C8",
+    "mnemonic": "RET Z",
+    "clck": "11 / 5",
+    "siz": "1",
+    "description": "Torna de subrutina si Z=1.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "C9",
+    "group": "base",
+    "row": "Cx",
+    "col": "9",
+    "opcode": "C9",
+    "mnemonic": "RET",
+    "clck": "10",
+    "siz": "1",
+    "description": "Torna de subrutina recuperant l’adreça de retorn de la pila.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "CA",
+    "group": "base",
+    "row": "Cx",
+    "col": "A",
+    "opcode": "CA nn nn",
+    "mnemonic": "JP Z,nn",
+    "clck": "10",
+    "siz": "3",
+    "description": "Salta a nn si Z=1.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "CB",
+    "group": "base",
+    "row": "Cx",
+    "col": "B",
+    "opcode": "CB",
+    "mnemonic": "PREFIX CB",
+    "clck": "variable",
+    "siz": "1",
+    "description": "Prefix per a operacions de rotació, desplaçament i bits sobre la instrucció següent.",
+    "category": "prefix",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "CC",
+    "group": "base",
+    "row": "Cx",
+    "col": "C",
+    "opcode": "CC nn nn",
+    "mnemonic": "CALL Z,nn",
+    "clck": "17 / 10",
+    "siz": "3",
+    "description": "Crida una subrutina a nn si Z=1.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "CD",
+    "group": "base",
+    "row": "Cx",
+    "col": "D",
+    "opcode": "CD nn nn",
+    "mnemonic": "CALL nn",
+    "clck": "17",
+    "siz": "3",
+    "description": "Crida una subrutina a nn i guarda l’adreça de retorn a la pila.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "CE",
+    "group": "base",
+    "row": "Cx",
+    "col": "E",
+    "opcode": "CE nn",
+    "mnemonic": "ADC A,n",
+    "clck": "7",
+    "siz": "2",
+    "description": "Suma a A un byte immediat i també el carry.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "CF",
+    "group": "base",
+    "row": "Cx",
+    "col": "F",
+    "opcode": "CF",
+    "mnemonic": "RST 08h",
+    "clck": "11",
+    "siz": "1",
+    "description": "Crida curta a l’adreça fixa 0008h.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "D0",
+    "group": "base",
+    "row": "Dx",
+    "col": "0",
+    "opcode": "D0",
+    "mnemonic": "RET NC",
+    "clck": "11 / 5",
+    "siz": "1",
+    "description": "Torna de subrutina si C=0.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "D1",
+    "group": "base",
+    "row": "Dx",
+    "col": "1",
+    "opcode": "D1",
+    "mnemonic": "POP DE",
+    "clck": "10",
+    "siz": "1",
+    "description": "Recupera dos bytes de la pila i els posa a DE.",
+    "category": "stack",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "D2",
+    "group": "base",
+    "row": "Dx",
+    "col": "2",
+    "opcode": "D2 nn nn",
+    "mnemonic": "JP NC,nn",
+    "clck": "10",
+    "siz": "3",
+    "description": "Salta a nn si C=0.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "D3",
+    "group": "base",
+    "row": "Dx",
+    "col": "3",
+    "opcode": "D3 nn",
+    "mnemonic": "OUT (n),A",
+    "clck": "11",
+    "siz": "2",
+    "description": "Escriu A al port d’E/S immediat n.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "D4",
+    "group": "base",
+    "row": "Dx",
+    "col": "4",
+    "opcode": "D4 nn nn",
+    "mnemonic": "CALL NC,nn",
+    "clck": "17 / 10",
+    "siz": "3",
+    "description": "Crida una subrutina a nn si C=0.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "D5",
+    "group": "base",
+    "row": "Dx",
+    "col": "5",
+    "opcode": "D5",
+    "mnemonic": "PUSH DE",
+    "clck": "11",
+    "siz": "1",
+    "description": "Guarda DE a la pila.",
+    "category": "stack",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "D6",
+    "group": "base",
+    "row": "Dx",
+    "col": "6",
+    "opcode": "D6 nn",
+    "mnemonic": "SUB n",
+    "clck": "7",
+    "siz": "2",
+    "description": "Resta un byte immediat d’A.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "D7",
+    "group": "base",
+    "row": "Dx",
+    "col": "7",
+    "opcode": "D7",
+    "mnemonic": "RST 10h",
+    "clck": "11",
+    "siz": "1",
+    "description": "Crida curta a l’adreça fixa 0010h.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "D8",
+    "group": "base",
+    "row": "Dx",
+    "col": "8",
+    "opcode": "D8",
+    "mnemonic": "RET C",
+    "clck": "11 / 5",
+    "siz": "1",
+    "description": "Torna de subrutina si C=1.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "D9",
+    "group": "base",
+    "row": "Dx",
+    "col": "9",
+    "opcode": "D9",
+    "mnemonic": "EXX",
+    "clck": "4",
+    "siz": "1",
+    "description": "Intercanvia BC, DE i HL amb els seus jocs alternatius.",
+    "category": "exchange",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "DA",
+    "group": "base",
+    "row": "Dx",
+    "col": "A",
+    "opcode": "DA nn nn",
+    "mnemonic": "JP C,nn",
+    "clck": "10",
+    "siz": "3",
+    "description": "Salta a nn si C=1.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "DB",
+    "group": "base",
+    "row": "Dx",
+    "col": "B",
+    "opcode": "DB nn",
+    "mnemonic": "IN A,(n)",
+    "clck": "11",
+    "siz": "2",
+    "description": "Llegeix un byte del port d’E/S immediat n i el carrega a A.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "DC",
+    "group": "base",
+    "row": "Dx",
+    "col": "C",
+    "opcode": "DC nn nn",
+    "mnemonic": "CALL C,nn",
+    "clck": "17 / 10",
+    "siz": "3",
+    "description": "Crida una subrutina a nn si C=1.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "DD",
+    "group": "base",
+    "row": "Dx",
+    "col": "D",
+    "opcode": "DD",
+    "mnemonic": "PREFIX DD",
+    "clck": "variable",
+    "siz": "1",
+    "description": "Prefix que fa servir IX en lloc d’HL en moltes instruccions.",
+    "category": "prefix",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "DE",
+    "group": "base",
+    "row": "Dx",
+    "col": "E",
+    "opcode": "DE nn",
+    "mnemonic": "SBC A,n",
+    "clck": "7",
+    "siz": "2",
+    "description": "Resta d’A un byte immediat i també el carry.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "DF",
+    "group": "base",
+    "row": "Dx",
+    "col": "F",
+    "opcode": "DF",
+    "mnemonic": "RST 18h",
+    "clck": "11",
+    "siz": "1",
+    "description": "Crida curta a l’adreça fixa 0018h.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "E0",
+    "group": "base",
+    "row": "Ex",
+    "col": "0",
+    "opcode": "E0",
+    "mnemonic": "RET PO",
+    "clck": "11 / 5",
+    "siz": "1",
+    "description": "Torna de subrutina si la paritat/overflow és imparell o sense overflow (PO).",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "E1",
+    "group": "base",
+    "row": "Ex",
+    "col": "1",
+    "opcode": "E1",
+    "mnemonic": "POP HL",
+    "clck": "10",
+    "siz": "1",
+    "description": "Recupera dos bytes de la pila i els posa a HL.",
+    "category": "stack",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "E2",
+    "group": "base",
+    "row": "Ex",
+    "col": "2",
+    "opcode": "E2 nn nn",
+    "mnemonic": "JP PO,nn",
+    "clck": "10",
+    "siz": "3",
+    "description": "Salta a nn si la condició PO és certa.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "E3",
+    "group": "base",
+    "row": "Ex",
+    "col": "3",
+    "opcode": "E3",
+    "mnemonic": "EX (SP),HL",
+    "clck": "19",
+    "siz": "1",
+    "description": "Intercanvia HL amb els dos bytes apuntats per la pila a l’adreça SP.",
+    "category": "exchange",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "E4",
+    "group": "base",
+    "row": "Ex",
+    "col": "4",
+    "opcode": "E4 nn nn",
+    "mnemonic": "CALL PO,nn",
+    "clck": "17 / 10",
+    "siz": "3",
+    "description": "Crida una subrutina a nn si la condició PO és certa.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "E5",
+    "group": "base",
+    "row": "Ex",
+    "col": "5",
+    "opcode": "E5",
+    "mnemonic": "PUSH HL",
+    "clck": "11",
+    "siz": "1",
+    "description": "Guarda HL a la pila.",
+    "category": "stack",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "E6",
+    "group": "base",
+    "row": "Ex",
+    "col": "6",
+    "opcode": "E6 nn",
+    "mnemonic": "AND n",
+    "clck": "7",
+    "siz": "2",
+    "description": "Fa un AND lògic entre A i un byte immediat.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "E7",
+    "group": "base",
+    "row": "Ex",
+    "col": "7",
+    "opcode": "E7",
+    "mnemonic": "RST 20h",
+    "clck": "11",
+    "siz": "1",
+    "description": "Crida curta a l’adreça fixa 0020h.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "E8",
+    "group": "base",
+    "row": "Ex",
+    "col": "8",
+    "opcode": "E8",
+    "mnemonic": "RET PE",
+    "clck": "11 / 5",
+    "siz": "1",
+    "description": "Torna de subrutina si la paritat és parella o hi ha overflow (PE).",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "E9",
+    "group": "base",
+    "row": "Ex",
+    "col": "9",
+    "opcode": "E9",
+    "mnemonic": "JP (HL)",
+    "clck": "4",
+    "siz": "1",
+    "description": "Salta a l’adreça continguda a HL.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "EA",
+    "group": "base",
+    "row": "Ex",
+    "col": "A",
+    "opcode": "EA nn nn",
+    "mnemonic": "JP PE,nn",
+    "clck": "10",
+    "siz": "3",
+    "description": "Salta a nn si la condició PE és certa.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "EB",
+    "group": "base",
+    "row": "Ex",
+    "col": "B",
+    "opcode": "EB",
+    "mnemonic": "EX DE,HL",
+    "clck": "4",
+    "siz": "1",
+    "description": "Intercanvia DE amb HL.",
+    "category": "exchange",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "EC",
+    "group": "base",
+    "row": "Ex",
+    "col": "C",
+    "opcode": "EC nn nn",
+    "mnemonic": "CALL PE,nn",
+    "clck": "17 / 10",
+    "siz": "3",
+    "description": "Crida una subrutina a nn si la condició PE és certa.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "ED",
+    "group": "base",
+    "row": "Ex",
+    "col": "D",
+    "opcode": "ED",
+    "mnemonic": "PREFIX ED",
+    "clck": "variable",
+    "siz": "1",
+    "description": "Prefix per a instruccions ampliades de bloc, E/S, interrupcions i transferència especial.",
+    "category": "prefix",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "EE",
+    "group": "base",
+    "row": "Ex",
+    "col": "E",
+    "opcode": "EE nn",
+    "mnemonic": "XOR n",
+    "clck": "7",
+    "siz": "2",
+    "description": "Fa un XOR lògic entre A i un byte immediat.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "EF",
+    "group": "base",
+    "row": "Ex",
+    "col": "F",
+    "opcode": "EF",
+    "mnemonic": "RST 28h",
+    "clck": "11",
+    "siz": "1",
+    "description": "Crida curta a l’adreça fixa 0028h.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "F0",
+    "group": "base",
+    "row": "Fx",
+    "col": "0",
+    "opcode": "F0",
+    "mnemonic": "RET P",
+    "clck": "11 / 5",
+    "siz": "1",
+    "description": "Torna de subrutina si el signe és positiu (S=0).",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "F1",
+    "group": "base",
+    "row": "Fx",
+    "col": "1",
+    "opcode": "F1",
+    "mnemonic": "POP AF",
+    "clck": "10",
+    "siz": "1",
+    "description": "Recupera dos bytes de la pila i els posa a AF.",
+    "category": "stack",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "F2",
+    "group": "base",
+    "row": "Fx",
+    "col": "2",
+    "opcode": "F2 nn nn",
+    "mnemonic": "JP P,nn",
+    "clck": "10",
+    "siz": "3",
+    "description": "Salta a nn si el signe és positiu.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "F3",
+    "group": "base",
+    "row": "Fx",
+    "col": "3",
+    "opcode": "F3",
+    "mnemonic": "DI",
+    "clck": "4",
+    "siz": "1",
+    "description": "Desactiva les interrupcions màscables.",
+    "category": "control",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "F4",
+    "group": "base",
+    "row": "Fx",
+    "col": "4",
+    "opcode": "F4 nn nn",
+    "mnemonic": "CALL P,nn",
+    "clck": "17 / 10",
+    "siz": "3",
+    "description": "Crida una subrutina a nn si el signe és positiu.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "F5",
+    "group": "base",
+    "row": "Fx",
+    "col": "5",
+    "opcode": "F5",
+    "mnemonic": "PUSH AF",
+    "clck": "11",
+    "siz": "1",
+    "description": "Guarda AF a la pila.",
+    "category": "stack",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "F6",
+    "group": "base",
+    "row": "Fx",
+    "col": "6",
+    "opcode": "F6 nn",
+    "mnemonic": "OR n",
+    "clck": "7",
+    "siz": "2",
+    "description": "Fa un OR lògic entre A i un byte immediat.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "F7",
+    "group": "base",
+    "row": "Fx",
+    "col": "7",
+    "opcode": "F7",
+    "mnemonic": "RST 30h",
+    "clck": "11",
+    "siz": "1",
+    "description": "Crida curta a l’adreça fixa 0030h.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "F8",
+    "group": "base",
+    "row": "Fx",
+    "col": "8",
+    "opcode": "F8",
+    "mnemonic": "RET M",
+    "clck": "11 / 5",
+    "siz": "1",
+    "description": "Torna de subrutina si el signe és negatiu (S=1).",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "F9",
+    "group": "base",
+    "row": "Fx",
+    "col": "9",
+    "opcode": "F9",
+    "mnemonic": "LD SP,HL",
+    "clck": "6",
+    "siz": "1",
+    "description": "Copia HL a SP.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "FA",
+    "group": "base",
+    "row": "Fx",
+    "col": "A",
+    "opcode": "FA nn nn",
+    "mnemonic": "JP M,nn",
+    "clck": "10",
+    "siz": "3",
+    "description": "Salta a nn si el signe és negatiu.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "FB",
+    "group": "base",
+    "row": "Fx",
+    "col": "B",
+    "opcode": "FB",
+    "mnemonic": "EI",
+    "clck": "4",
+    "siz": "1",
+    "description": "Activa les interrupcions màscables.",
+    "category": "control",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "FC",
+    "group": "base",
+    "row": "Fx",
+    "col": "C",
+    "opcode": "FC nn nn",
+    "mnemonic": "CALL M,nn",
+    "clck": "17 / 10",
+    "siz": "3",
+    "description": "Crida una subrutina a nn si el signe és negatiu.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "FD",
+    "group": "base",
+    "row": "Fx",
+    "col": "D",
+    "opcode": "FD",
+    "mnemonic": "PREFIX FD",
+    "clck": "variable",
+    "siz": "1",
+    "description": "Prefix que fa servir IY en lloc d’HL en moltes instruccions.",
+    "category": "prefix",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "FE",
+    "group": "base",
+    "row": "Fx",
+    "col": "E",
+    "opcode": "FE nn",
+    "mnemonic": "CP n",
+    "clck": "7",
+    "siz": "2",
+    "description": "Compara A amb un byte immediat. Actualitza flags però no guarda el resultat.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  },
+  {
+    "id": "FF",
+    "group": "base",
+    "row": "Fx",
+    "col": "F",
+    "opcode": "FF",
+    "mnemonic": "RST 38h",
+    "clck": "11",
+    "siz": "1",
+    "description": "Crida curta a l’adreça fixa 0038h.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": ""
+    },
+    "documented": true
+  }
+]

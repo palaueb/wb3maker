@@ -1,0 +1,12 @@
+{
+  "version": "world",
+  "romMD5": "TBD",
+  "romName": "Wonder Boy III - The Dragon's Trap (World).sms",
+  "offsets": {
+    "gfxTiles": "TBD",
+    "palette":  "TBD",
+    "sprites":  "TBD"
+  },
+  "notes": "Pending Phase 0 analysis",
+  "analyzedAt": null
+}

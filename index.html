@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wonder Boy III — The Dragon's Trap · Editor & Player</title>
+  <style>
+    :root {
+      --bg:     #080810;
+      --bg2:    #0f0f1a;
+      --bg3:    #16162a;
+      --border: #252540;
+      --accent: #00d4ff;
+      --accent2:#ff6b35;
+      --green:  #00ff88;
+      --dim:    #60608a;
+      --text:   #c0c0d8;
+      --mono:   'Courier New', Courier, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    h1 {
+      font-size: 22px;
+      color: var(--accent);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .sub {
+      color: var(--dim);
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 48px;
+    }
+    .phase-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 580px;
+    }
+    .phase {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.15s;
+    }
+    .phase:hover { border-color: var(--accent); }
+    .phase.disabled { opacity: 0.35; pointer-events: none; }
+    .phase-num {
+      font-size: 11px;
+      color: var(--dim);
+      letter-spacing: 2px;
+      min-width: 64px;
+    }
+    .phase-name {
+      font-size: 14px;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+    .phase-desc {
+      font-size: 11px;
+      color: var(--dim);
+      margin-top: 3px;
+    }
+    .phase-status {
+      margin-left: auto;
+      font-size: 10px;
+      padding: 2px 8px;
+      border: 1px solid;
+      letter-spacing: 1px;
+    }
+    .status-active  { border-color: var(--green);  color: var(--green); }
+    .status-pending { border-color: var(--dim);    color: var(--dim);   }
+    .legal {
+      margin-top: 48px;
+      font-size: 10px;
+      color: var(--dim);
+      text-align: center;
+      max-width: 500px;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Wonder Boy III</h1>
+  <div class="sub">The Dragon's Trap — Screen Editor & Player</div>
+
+  <div class="phase-list">
+
+    <a class="phase" href="tools/rom-analyzer.html">
+      <div class="phase-num">PHASE 0</div>
+      <div>
+        <div class="phase-name">ROM Analyzer</div>
+        <div class="phase-desc">Fingerprint ROM · MD5 checksum · Raw tile viewer</div>
+      </div>
+      <span class="phase-status status-active">ACTIVE</span>
+    </a>
+
+    <div class="phase disabled">
+      <div class="phase-num">PHASE 1a</div>
+      <div>
+        <div class="phase-name">Tile Extractor</div>
+        <div class="phase-desc">Extract tiles from ROM at known offsets</div>
+      </div>
+      <span class="phase-status status-pending">PENDING</span>
+    </div>
+
+    <div class="phase disabled">
+      <div class="phase-num">PHASE 1b</div>
+      <div>
+        <div class="phase-name">Map Extractor</div>
+        <div class="phase-desc">Extract screen tile maps from ROM</div>
+      </div>
+      <span class="phase-status status-pending">PENDING</span>
+    </div>
+
+    <div class="phase disabled">
+      <div class="phase-num">PHASE 1c</div>
+      <div>
+        <div class="phase-name">Sprite Extractor</div>
+        <div class="phase-desc">Extract enemy and item sprites from ROM</div>
+      </div>
+      <span class="phase-status status-pending">PENDING</span>
+    </div>
+
+    <div class="phase disabled">
+      <div class="phase-num">PHASE 2</div>
+      <div>
+        <div class="phase-name">Screen Editor</div>
+        <div class="phase-desc">Create adventure screens with original assets</div>
+      </div>
+      <span class="phase-status status-pending">PENDING</span>
+    </div>
+
+    <div class="phase disabled">
+      <div class="phase-num">PHASE 4</div>
+      <div>
+        <div class="phase-name">Player</div>
+        <div class="phase-desc">Play created screens in the browser</div>
+      </div>
+      <span class="phase-status status-pending">PENDING</span>
+    </div>
+
+  </div>
+
+  <div class="legal">
+    This tool requires you to provide your own ROM.<br>
+    No game assets are distributed. Bring your own copy of the game.
+  </div>
+</body>
+</html>

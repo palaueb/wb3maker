@@ -1,0 +1,5130 @@
+[
+  {
+    "id": "cb00",
+    "group": "cb",
+    "row": "0x",
+    "col": "0",
+    "opcode": "CB 00",
+    "mnemonic": "RLC B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre B un bit cap a l'esquerra. El bit 7 torna al bit 0 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb01",
+    "group": "cb",
+    "row": "0x",
+    "col": "1",
+    "opcode": "CB 01",
+    "mnemonic": "RLC C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre C un bit cap a l'esquerra. El bit 7 torna al bit 0 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb02",
+    "group": "cb",
+    "row": "0x",
+    "col": "2",
+    "opcode": "CB 02",
+    "mnemonic": "RLC D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre D un bit cap a l'esquerra. El bit 7 torna al bit 0 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb03",
+    "group": "cb",
+    "row": "0x",
+    "col": "3",
+    "opcode": "CB 03",
+    "mnemonic": "RLC E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre E un bit cap a l'esquerra. El bit 7 torna al bit 0 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb04",
+    "group": "cb",
+    "row": "0x",
+    "col": "4",
+    "opcode": "CB 04",
+    "mnemonic": "RLC H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre H un bit cap a l'esquerra. El bit 7 torna al bit 0 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb05",
+    "group": "cb",
+    "row": "0x",
+    "col": "5",
+    "opcode": "CB 05",
+    "mnemonic": "RLC L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre L un bit cap a l'esquerra. El bit 7 torna al bit 0 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb06",
+    "group": "cb",
+    "row": "0x",
+    "col": "6",
+    "opcode": "CB 06",
+    "mnemonic": "RLC (HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Rota el byte de memòria apuntat per HL un bit cap a l'esquerra. El bit 7 torna al bit 0 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb07",
+    "group": "cb",
+    "row": "0x",
+    "col": "7",
+    "opcode": "CB 07",
+    "mnemonic": "RLC A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre A un bit cap a l'esquerra. El bit 7 torna al bit 0 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb08",
+    "group": "cb",
+    "row": "0x",
+    "col": "8",
+    "opcode": "CB 08",
+    "mnemonic": "RRC B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre B un bit cap a la dreta. El bit 0 torna al bit 7 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb09",
+    "group": "cb",
+    "row": "0x",
+    "col": "9",
+    "opcode": "CB 09",
+    "mnemonic": "RRC C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre C un bit cap a la dreta. El bit 0 torna al bit 7 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb0a",
+    "group": "cb",
+    "row": "0x",
+    "col": "A",
+    "opcode": "CB 0A",
+    "mnemonic": "RRC D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre D un bit cap a la dreta. El bit 0 torna al bit 7 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb0b",
+    "group": "cb",
+    "row": "0x",
+    "col": "B",
+    "opcode": "CB 0B",
+    "mnemonic": "RRC E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre E un bit cap a la dreta. El bit 0 torna al bit 7 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb0c",
+    "group": "cb",
+    "row": "0x",
+    "col": "C",
+    "opcode": "CB 0C",
+    "mnemonic": "RRC H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre H un bit cap a la dreta. El bit 0 torna al bit 7 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb0d",
+    "group": "cb",
+    "row": "0x",
+    "col": "D",
+    "opcode": "CB 0D",
+    "mnemonic": "RRC L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre L un bit cap a la dreta. El bit 0 torna al bit 7 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb0e",
+    "group": "cb",
+    "row": "0x",
+    "col": "E",
+    "opcode": "CB 0E",
+    "mnemonic": "RRC (HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Rota el byte de memòria apuntat per HL un bit cap a la dreta. El bit 0 torna al bit 7 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb0f",
+    "group": "cb",
+    "row": "0x",
+    "col": "F",
+    "opcode": "CB 0F",
+    "mnemonic": "RRC A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre A un bit cap a la dreta. El bit 0 torna al bit 7 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb10",
+    "group": "cb",
+    "row": "1x",
+    "col": "0",
+    "opcode": "CB 10",
+    "mnemonic": "RL B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre B cap a l'esquerra passant pel carry. El carry antic entra al bit 0.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb11",
+    "group": "cb",
+    "row": "1x",
+    "col": "1",
+    "opcode": "CB 11",
+    "mnemonic": "RL C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre C cap a l'esquerra passant pel carry. El carry antic entra al bit 0.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb12",
+    "group": "cb",
+    "row": "1x",
+    "col": "2",
+    "opcode": "CB 12",
+    "mnemonic": "RL D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre D cap a l'esquerra passant pel carry. El carry antic entra al bit 0.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb13",
+    "group": "cb",
+    "row": "1x",
+    "col": "3",
+    "opcode": "CB 13",
+    "mnemonic": "RL E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre E cap a l'esquerra passant pel carry. El carry antic entra al bit 0.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb14",
+    "group": "cb",
+    "row": "1x",
+    "col": "4",
+    "opcode": "CB 14",
+    "mnemonic": "RL H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre H cap a l'esquerra passant pel carry. El carry antic entra al bit 0.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb15",
+    "group": "cb",
+    "row": "1x",
+    "col": "5",
+    "opcode": "CB 15",
+    "mnemonic": "RL L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre L cap a l'esquerra passant pel carry. El carry antic entra al bit 0.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb16",
+    "group": "cb",
+    "row": "1x",
+    "col": "6",
+    "opcode": "CB 16",
+    "mnemonic": "RL (HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Rota el byte de memòria apuntat per HL cap a l'esquerra passant pel carry. El carry antic entra al bit 0.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb17",
+    "group": "cb",
+    "row": "1x",
+    "col": "7",
+    "opcode": "CB 17",
+    "mnemonic": "RL A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre A cap a l'esquerra passant pel carry. El carry antic entra al bit 0.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb18",
+    "group": "cb",
+    "row": "1x",
+    "col": "8",
+    "opcode": "CB 18",
+    "mnemonic": "RR B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre B cap a la dreta passant pel carry. El carry antic entra al bit 7.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb19",
+    "group": "cb",
+    "row": "1x",
+    "col": "9",
+    "opcode": "CB 19",
+    "mnemonic": "RR C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre C cap a la dreta passant pel carry. El carry antic entra al bit 7.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb1a",
+    "group": "cb",
+    "row": "1x",
+    "col": "A",
+    "opcode": "CB 1A",
+    "mnemonic": "RR D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre D cap a la dreta passant pel carry. El carry antic entra al bit 7.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb1b",
+    "group": "cb",
+    "row": "1x",
+    "col": "B",
+    "opcode": "CB 1B",
+    "mnemonic": "RR E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre E cap a la dreta passant pel carry. El carry antic entra al bit 7.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb1c",
+    "group": "cb",
+    "row": "1x",
+    "col": "C",
+    "opcode": "CB 1C",
+    "mnemonic": "RR H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre H cap a la dreta passant pel carry. El carry antic entra al bit 7.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb1d",
+    "group": "cb",
+    "row": "1x",
+    "col": "D",
+    "opcode": "CB 1D",
+    "mnemonic": "RR L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre L cap a la dreta passant pel carry. El carry antic entra al bit 7.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb1e",
+    "group": "cb",
+    "row": "1x",
+    "col": "E",
+    "opcode": "CB 1E",
+    "mnemonic": "RR (HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Rota el byte de memòria apuntat per HL cap a la dreta passant pel carry. El carry antic entra al bit 7.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb1f",
+    "group": "cb",
+    "row": "1x",
+    "col": "F",
+    "opcode": "CB 1F",
+    "mnemonic": "RR A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Rota el registre A cap a la dreta passant pel carry. El carry antic entra al bit 7.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb20",
+    "group": "cb",
+    "row": "2x",
+    "col": "0",
+    "opcode": "CB 20",
+    "mnemonic": "SLA B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre B un bit cap a l'esquerra. El bit 0 nou val 0 i el bit 7 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb21",
+    "group": "cb",
+    "row": "2x",
+    "col": "1",
+    "opcode": "CB 21",
+    "mnemonic": "SLA C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre C un bit cap a l'esquerra. El bit 0 nou val 0 i el bit 7 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb22",
+    "group": "cb",
+    "row": "2x",
+    "col": "2",
+    "opcode": "CB 22",
+    "mnemonic": "SLA D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre D un bit cap a l'esquerra. El bit 0 nou val 0 i el bit 7 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb23",
+    "group": "cb",
+    "row": "2x",
+    "col": "3",
+    "opcode": "CB 23",
+    "mnemonic": "SLA E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre E un bit cap a l'esquerra. El bit 0 nou val 0 i el bit 7 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb24",
+    "group": "cb",
+    "row": "2x",
+    "col": "4",
+    "opcode": "CB 24",
+    "mnemonic": "SLA H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre H un bit cap a l'esquerra. El bit 0 nou val 0 i el bit 7 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb25",
+    "group": "cb",
+    "row": "2x",
+    "col": "5",
+    "opcode": "CB 25",
+    "mnemonic": "SLA L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre L un bit cap a l'esquerra. El bit 0 nou val 0 i el bit 7 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb26",
+    "group": "cb",
+    "row": "2x",
+    "col": "6",
+    "opcode": "CB 26",
+    "mnemonic": "SLA (HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Desplaça el byte de memòria apuntat per HL un bit cap a l'esquerra. El bit 0 nou val 0 i el bit 7 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb27",
+    "group": "cb",
+    "row": "2x",
+    "col": "7",
+    "opcode": "CB 27",
+    "mnemonic": "SLA A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre A un bit cap a l'esquerra. El bit 0 nou val 0 i el bit 7 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb28",
+    "group": "cb",
+    "row": "2x",
+    "col": "8",
+    "opcode": "CB 28",
+    "mnemonic": "SRA B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre B un bit cap a la dreta conservant el bit de signe. El bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb29",
+    "group": "cb",
+    "row": "2x",
+    "col": "9",
+    "opcode": "CB 29",
+    "mnemonic": "SRA C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre C un bit cap a la dreta conservant el bit de signe. El bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb2a",
+    "group": "cb",
+    "row": "2x",
+    "col": "A",
+    "opcode": "CB 2A",
+    "mnemonic": "SRA D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre D un bit cap a la dreta conservant el bit de signe. El bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb2b",
+    "group": "cb",
+    "row": "2x",
+    "col": "B",
+    "opcode": "CB 2B",
+    "mnemonic": "SRA E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre E un bit cap a la dreta conservant el bit de signe. El bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb2c",
+    "group": "cb",
+    "row": "2x",
+    "col": "C",
+    "opcode": "CB 2C",
+    "mnemonic": "SRA H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre H un bit cap a la dreta conservant el bit de signe. El bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb2d",
+    "group": "cb",
+    "row": "2x",
+    "col": "D",
+    "opcode": "CB 2D",
+    "mnemonic": "SRA L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre L un bit cap a la dreta conservant el bit de signe. El bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb2e",
+    "group": "cb",
+    "row": "2x",
+    "col": "E",
+    "opcode": "CB 2E",
+    "mnemonic": "SRA (HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Desplaça el byte de memòria apuntat per HL un bit cap a la dreta conservant el bit de signe. El bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb2f",
+    "group": "cb",
+    "row": "2x",
+    "col": "F",
+    "opcode": "CB 2F",
+    "mnemonic": "SRA A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre A un bit cap a la dreta conservant el bit de signe. El bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb30",
+    "group": "cb",
+    "row": "3x",
+    "col": "0",
+    "opcode": "CB 30",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició de la subtaula CB no està descrita al manual oficial de Zilog.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Moltes referències avançades la tracten com a instrucció no documentada; aquí queda marcada com a tal per evitar confusions."
+    },
+    "documented": false
+  },
+  {
+    "id": "cb31",
+    "group": "cb",
+    "row": "3x",
+    "col": "1",
+    "opcode": "CB 31",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició de la subtaula CB no està descrita al manual oficial de Zilog.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Moltes referències avançades la tracten com a instrucció no documentada; aquí queda marcada com a tal per evitar confusions."
+    },
+    "documented": false
+  },
+  {
+    "id": "cb32",
+    "group": "cb",
+    "row": "3x",
+    "col": "2",
+    "opcode": "CB 32",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició de la subtaula CB no està descrita al manual oficial de Zilog.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Moltes referències avançades la tracten com a instrucció no documentada; aquí queda marcada com a tal per evitar confusions."
+    },
+    "documented": false
+  },
+  {
+    "id": "cb33",
+    "group": "cb",
+    "row": "3x",
+    "col": "3",
+    "opcode": "CB 33",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició de la subtaula CB no està descrita al manual oficial de Zilog.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Moltes referències avançades la tracten com a instrucció no documentada; aquí queda marcada com a tal per evitar confusions."
+    },
+    "documented": false
+  },
+  {
+    "id": "cb34",
+    "group": "cb",
+    "row": "3x",
+    "col": "4",
+    "opcode": "CB 34",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició de la subtaula CB no està descrita al manual oficial de Zilog.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Moltes referències avançades la tracten com a instrucció no documentada; aquí queda marcada com a tal per evitar confusions."
+    },
+    "documented": false
+  },
+  {
+    "id": "cb35",
+    "group": "cb",
+    "row": "3x",
+    "col": "5",
+    "opcode": "CB 35",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició de la subtaula CB no està descrita al manual oficial de Zilog.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Moltes referències avançades la tracten com a instrucció no documentada; aquí queda marcada com a tal per evitar confusions."
+    },
+    "documented": false
+  },
+  {
+    "id": "cb36",
+    "group": "cb",
+    "row": "3x",
+    "col": "6",
+    "opcode": "CB 36",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició de la subtaula CB no està descrita al manual oficial de Zilog.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Moltes referències avançades la tracten com a instrucció no documentada; aquí queda marcada com a tal per evitar confusions."
+    },
+    "documented": false
+  },
+  {
+    "id": "cb37",
+    "group": "cb",
+    "row": "3x",
+    "col": "7",
+    "opcode": "CB 37",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició de la subtaula CB no està descrita al manual oficial de Zilog.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Moltes referències avançades la tracten com a instrucció no documentada; aquí queda marcada com a tal per evitar confusions."
+    },
+    "documented": false
+  },
+  {
+    "id": "cb38",
+    "group": "cb",
+    "row": "3x",
+    "col": "8",
+    "opcode": "CB 38",
+    "mnemonic": "SRL B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre B un bit cap a la dreta. El bit 7 nou val 0 i el bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb39",
+    "group": "cb",
+    "row": "3x",
+    "col": "9",
+    "opcode": "CB 39",
+    "mnemonic": "SRL C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre C un bit cap a la dreta. El bit 7 nou val 0 i el bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb3a",
+    "group": "cb",
+    "row": "3x",
+    "col": "A",
+    "opcode": "CB 3A",
+    "mnemonic": "SRL D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre D un bit cap a la dreta. El bit 7 nou val 0 i el bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb3b",
+    "group": "cb",
+    "row": "3x",
+    "col": "B",
+    "opcode": "CB 3B",
+    "mnemonic": "SRL E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre E un bit cap a la dreta. El bit 7 nou val 0 i el bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb3c",
+    "group": "cb",
+    "row": "3x",
+    "col": "C",
+    "opcode": "CB 3C",
+    "mnemonic": "SRL H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre H un bit cap a la dreta. El bit 7 nou val 0 i el bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb3d",
+    "group": "cb",
+    "row": "3x",
+    "col": "D",
+    "opcode": "CB 3D",
+    "mnemonic": "SRL L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre L un bit cap a la dreta. El bit 7 nou val 0 i el bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb3e",
+    "group": "cb",
+    "row": "3x",
+    "col": "E",
+    "opcode": "CB 3E",
+    "mnemonic": "SRL (HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Desplaça el byte de memòria apuntat per HL un bit cap a la dreta. El bit 7 nou val 0 i el bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb3f",
+    "group": "cb",
+    "row": "3x",
+    "col": "F",
+    "opcode": "CB 3F",
+    "mnemonic": "SRL A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Desplaça el registre A un bit cap a la dreta. El bit 7 nou val 0 i el bit 0 antic passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb40",
+    "group": "cb",
+    "row": "4x",
+    "col": "0",
+    "opcode": "CB 40",
+    "mnemonic": "BIT 0,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 0 de el registre B és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb41",
+    "group": "cb",
+    "row": "4x",
+    "col": "1",
+    "opcode": "CB 41",
+    "mnemonic": "BIT 0,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 0 de el registre C és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb42",
+    "group": "cb",
+    "row": "4x",
+    "col": "2",
+    "opcode": "CB 42",
+    "mnemonic": "BIT 0,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 0 de el registre D és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb43",
+    "group": "cb",
+    "row": "4x",
+    "col": "3",
+    "opcode": "CB 43",
+    "mnemonic": "BIT 0,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 0 de el registre E és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb44",
+    "group": "cb",
+    "row": "4x",
+    "col": "4",
+    "opcode": "CB 44",
+    "mnemonic": "BIT 0,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 0 de el registre H és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb45",
+    "group": "cb",
+    "row": "4x",
+    "col": "5",
+    "opcode": "CB 45",
+    "mnemonic": "BIT 0,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 0 de el registre L és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb46",
+    "group": "cb",
+    "row": "4x",
+    "col": "6",
+    "opcode": "CB 46",
+    "mnemonic": "BIT 0,(HL)",
+    "clck": "12",
+    "siz": "2",
+    "description": "Comprova si el bit 0 de el byte de memòria apuntat per HL és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb47",
+    "group": "cb",
+    "row": "4x",
+    "col": "7",
+    "opcode": "CB 47",
+    "mnemonic": "BIT 0,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 0 de el registre A és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb48",
+    "group": "cb",
+    "row": "4x",
+    "col": "8",
+    "opcode": "CB 48",
+    "mnemonic": "BIT 1,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 1 de el registre B és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb49",
+    "group": "cb",
+    "row": "4x",
+    "col": "9",
+    "opcode": "CB 49",
+    "mnemonic": "BIT 1,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 1 de el registre C és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb4a",
+    "group": "cb",
+    "row": "4x",
+    "col": "A",
+    "opcode": "CB 4A",
+    "mnemonic": "BIT 1,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 1 de el registre D és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb4b",
+    "group": "cb",
+    "row": "4x",
+    "col": "B",
+    "opcode": "CB 4B",
+    "mnemonic": "BIT 1,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 1 de el registre E és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb4c",
+    "group": "cb",
+    "row": "4x",
+    "col": "C",
+    "opcode": "CB 4C",
+    "mnemonic": "BIT 1,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 1 de el registre H és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb4d",
+    "group": "cb",
+    "row": "4x",
+    "col": "D",
+    "opcode": "CB 4D",
+    "mnemonic": "BIT 1,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 1 de el registre L és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb4e",
+    "group": "cb",
+    "row": "4x",
+    "col": "E",
+    "opcode": "CB 4E",
+    "mnemonic": "BIT 1,(HL)",
+    "clck": "12",
+    "siz": "2",
+    "description": "Comprova si el bit 1 de el byte de memòria apuntat per HL és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb4f",
+    "group": "cb",
+    "row": "4x",
+    "col": "F",
+    "opcode": "CB 4F",
+    "mnemonic": "BIT 1,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 1 de el registre A és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb50",
+    "group": "cb",
+    "row": "5x",
+    "col": "0",
+    "opcode": "CB 50",
+    "mnemonic": "BIT 2,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 2 de el registre B és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb51",
+    "group": "cb",
+    "row": "5x",
+    "col": "1",
+    "opcode": "CB 51",
+    "mnemonic": "BIT 2,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 2 de el registre C és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb52",
+    "group": "cb",
+    "row": "5x",
+    "col": "2",
+    "opcode": "CB 52",
+    "mnemonic": "BIT 2,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 2 de el registre D és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb53",
+    "group": "cb",
+    "row": "5x",
+    "col": "3",
+    "opcode": "CB 53",
+    "mnemonic": "BIT 2,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 2 de el registre E és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb54",
+    "group": "cb",
+    "row": "5x",
+    "col": "4",
+    "opcode": "CB 54",
+    "mnemonic": "BIT 2,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 2 de el registre H és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb55",
+    "group": "cb",
+    "row": "5x",
+    "col": "5",
+    "opcode": "CB 55",
+    "mnemonic": "BIT 2,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 2 de el registre L és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb56",
+    "group": "cb",
+    "row": "5x",
+    "col": "6",
+    "opcode": "CB 56",
+    "mnemonic": "BIT 2,(HL)",
+    "clck": "12",
+    "siz": "2",
+    "description": "Comprova si el bit 2 de el byte de memòria apuntat per HL és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb57",
+    "group": "cb",
+    "row": "5x",
+    "col": "7",
+    "opcode": "CB 57",
+    "mnemonic": "BIT 2,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 2 de el registre A és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb58",
+    "group": "cb",
+    "row": "5x",
+    "col": "8",
+    "opcode": "CB 58",
+    "mnemonic": "BIT 3,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 3 de el registre B és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb59",
+    "group": "cb",
+    "row": "5x",
+    "col": "9",
+    "opcode": "CB 59",
+    "mnemonic": "BIT 3,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 3 de el registre C és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb5a",
+    "group": "cb",
+    "row": "5x",
+    "col": "A",
+    "opcode": "CB 5A",
+    "mnemonic": "BIT 3,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 3 de el registre D és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb5b",
+    "group": "cb",
+    "row": "5x",
+    "col": "B",
+    "opcode": "CB 5B",
+    "mnemonic": "BIT 3,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 3 de el registre E és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb5c",
+    "group": "cb",
+    "row": "5x",
+    "col": "C",
+    "opcode": "CB 5C",
+    "mnemonic": "BIT 3,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 3 de el registre H és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb5d",
+    "group": "cb",
+    "row": "5x",
+    "col": "D",
+    "opcode": "CB 5D",
+    "mnemonic": "BIT 3,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 3 de el registre L és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb5e",
+    "group": "cb",
+    "row": "5x",
+    "col": "E",
+    "opcode": "CB 5E",
+    "mnemonic": "BIT 3,(HL)",
+    "clck": "12",
+    "siz": "2",
+    "description": "Comprova si el bit 3 de el byte de memòria apuntat per HL és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb5f",
+    "group": "cb",
+    "row": "5x",
+    "col": "F",
+    "opcode": "CB 5F",
+    "mnemonic": "BIT 3,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 3 de el registre A és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb60",
+    "group": "cb",
+    "row": "6x",
+    "col": "0",
+    "opcode": "CB 60",
+    "mnemonic": "BIT 4,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 4 de el registre B és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb61",
+    "group": "cb",
+    "row": "6x",
+    "col": "1",
+    "opcode": "CB 61",
+    "mnemonic": "BIT 4,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 4 de el registre C és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb62",
+    "group": "cb",
+    "row": "6x",
+    "col": "2",
+    "opcode": "CB 62",
+    "mnemonic": "BIT 4,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 4 de el registre D és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb63",
+    "group": "cb",
+    "row": "6x",
+    "col": "3",
+    "opcode": "CB 63",
+    "mnemonic": "BIT 4,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 4 de el registre E és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb64",
+    "group": "cb",
+    "row": "6x",
+    "col": "4",
+    "opcode": "CB 64",
+    "mnemonic": "BIT 4,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 4 de el registre H és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb65",
+    "group": "cb",
+    "row": "6x",
+    "col": "5",
+    "opcode": "CB 65",
+    "mnemonic": "BIT 4,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 4 de el registre L és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb66",
+    "group": "cb",
+    "row": "6x",
+    "col": "6",
+    "opcode": "CB 66",
+    "mnemonic": "BIT 4,(HL)",
+    "clck": "12",
+    "siz": "2",
+    "description": "Comprova si el bit 4 de el byte de memòria apuntat per HL és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb67",
+    "group": "cb",
+    "row": "6x",
+    "col": "7",
+    "opcode": "CB 67",
+    "mnemonic": "BIT 4,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 4 de el registre A és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb68",
+    "group": "cb",
+    "row": "6x",
+    "col": "8",
+    "opcode": "CB 68",
+    "mnemonic": "BIT 5,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 5 de el registre B és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb69",
+    "group": "cb",
+    "row": "6x",
+    "col": "9",
+    "opcode": "CB 69",
+    "mnemonic": "BIT 5,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 5 de el registre C és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb6a",
+    "group": "cb",
+    "row": "6x",
+    "col": "A",
+    "opcode": "CB 6A",
+    "mnemonic": "BIT 5,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 5 de el registre D és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb6b",
+    "group": "cb",
+    "row": "6x",
+    "col": "B",
+    "opcode": "CB 6B",
+    "mnemonic": "BIT 5,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 5 de el registre E és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb6c",
+    "group": "cb",
+    "row": "6x",
+    "col": "C",
+    "opcode": "CB 6C",
+    "mnemonic": "BIT 5,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 5 de el registre H és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb6d",
+    "group": "cb",
+    "row": "6x",
+    "col": "D",
+    "opcode": "CB 6D",
+    "mnemonic": "BIT 5,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 5 de el registre L és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb6e",
+    "group": "cb",
+    "row": "6x",
+    "col": "E",
+    "opcode": "CB 6E",
+    "mnemonic": "BIT 5,(HL)",
+    "clck": "12",
+    "siz": "2",
+    "description": "Comprova si el bit 5 de el byte de memòria apuntat per HL és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb6f",
+    "group": "cb",
+    "row": "6x",
+    "col": "F",
+    "opcode": "CB 6F",
+    "mnemonic": "BIT 5,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 5 de el registre A és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb70",
+    "group": "cb",
+    "row": "7x",
+    "col": "0",
+    "opcode": "CB 70",
+    "mnemonic": "BIT 6,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 6 de el registre B és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb71",
+    "group": "cb",
+    "row": "7x",
+    "col": "1",
+    "opcode": "CB 71",
+    "mnemonic": "BIT 6,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 6 de el registre C és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb72",
+    "group": "cb",
+    "row": "7x",
+    "col": "2",
+    "opcode": "CB 72",
+    "mnemonic": "BIT 6,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 6 de el registre D és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb73",
+    "group": "cb",
+    "row": "7x",
+    "col": "3",
+    "opcode": "CB 73",
+    "mnemonic": "BIT 6,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 6 de el registre E és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb74",
+    "group": "cb",
+    "row": "7x",
+    "col": "4",
+    "opcode": "CB 74",
+    "mnemonic": "BIT 6,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 6 de el registre H és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb75",
+    "group": "cb",
+    "row": "7x",
+    "col": "5",
+    "opcode": "CB 75",
+    "mnemonic": "BIT 6,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 6 de el registre L és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb76",
+    "group": "cb",
+    "row": "7x",
+    "col": "6",
+    "opcode": "CB 76",
+    "mnemonic": "BIT 6,(HL)",
+    "clck": "12",
+    "siz": "2",
+    "description": "Comprova si el bit 6 de el byte de memòria apuntat per HL és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb77",
+    "group": "cb",
+    "row": "7x",
+    "col": "7",
+    "opcode": "CB 77",
+    "mnemonic": "BIT 6,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 6 de el registre A és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb78",
+    "group": "cb",
+    "row": "7x",
+    "col": "8",
+    "opcode": "CB 78",
+    "mnemonic": "BIT 7,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 7 de el registre B és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb79",
+    "group": "cb",
+    "row": "7x",
+    "col": "9",
+    "opcode": "CB 79",
+    "mnemonic": "BIT 7,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 7 de el registre C és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb7a",
+    "group": "cb",
+    "row": "7x",
+    "col": "A",
+    "opcode": "CB 7A",
+    "mnemonic": "BIT 7,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 7 de el registre D és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb7b",
+    "group": "cb",
+    "row": "7x",
+    "col": "B",
+    "opcode": "CB 7B",
+    "mnemonic": "BIT 7,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 7 de el registre E és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb7c",
+    "group": "cb",
+    "row": "7x",
+    "col": "C",
+    "opcode": "CB 7C",
+    "mnemonic": "BIT 7,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 7 de el registre H és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb7d",
+    "group": "cb",
+    "row": "7x",
+    "col": "D",
+    "opcode": "CB 7D",
+    "mnemonic": "BIT 7,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 7 de el registre L és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb7e",
+    "group": "cb",
+    "row": "7x",
+    "col": "E",
+    "opcode": "CB 7E",
+    "mnemonic": "BIT 7,(HL)",
+    "clck": "12",
+    "siz": "2",
+    "description": "Comprova si el bit 7 de el byte de memòria apuntat per HL és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb7f",
+    "group": "cb",
+    "row": "7x",
+    "col": "F",
+    "opcode": "CB 7F",
+    "mnemonic": "BIT 7,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Comprova si el bit 7 de el registre A és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N",
+        "P/V",
+        "S"
+      ],
+      "notes": "Z i P/V reflecteixen si el bit provat val 0. H es posa a 1, N es reinicia i C no canvia. S només és rellevant quan proves el bit 7."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb80",
+    "group": "cb",
+    "row": "8x",
+    "col": "0",
+    "opcode": "CB 80",
+    "mnemonic": "RES 0,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 0 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb81",
+    "group": "cb",
+    "row": "8x",
+    "col": "1",
+    "opcode": "CB 81",
+    "mnemonic": "RES 0,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 0 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb82",
+    "group": "cb",
+    "row": "8x",
+    "col": "2",
+    "opcode": "CB 82",
+    "mnemonic": "RES 0,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 0 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb83",
+    "group": "cb",
+    "row": "8x",
+    "col": "3",
+    "opcode": "CB 83",
+    "mnemonic": "RES 0,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 0 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb84",
+    "group": "cb",
+    "row": "8x",
+    "col": "4",
+    "opcode": "CB 84",
+    "mnemonic": "RES 0,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 0 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb85",
+    "group": "cb",
+    "row": "8x",
+    "col": "5",
+    "opcode": "CB 85",
+    "mnemonic": "RES 0,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 0 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb86",
+    "group": "cb",
+    "row": "8x",
+    "col": "6",
+    "opcode": "CB 86",
+    "mnemonic": "RES 0,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 0 el bit 0 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb87",
+    "group": "cb",
+    "row": "8x",
+    "col": "7",
+    "opcode": "CB 87",
+    "mnemonic": "RES 0,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 0 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb88",
+    "group": "cb",
+    "row": "8x",
+    "col": "8",
+    "opcode": "CB 88",
+    "mnemonic": "RES 1,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 1 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb89",
+    "group": "cb",
+    "row": "8x",
+    "col": "9",
+    "opcode": "CB 89",
+    "mnemonic": "RES 1,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 1 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb8a",
+    "group": "cb",
+    "row": "8x",
+    "col": "A",
+    "opcode": "CB 8A",
+    "mnemonic": "RES 1,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 1 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb8b",
+    "group": "cb",
+    "row": "8x",
+    "col": "B",
+    "opcode": "CB 8B",
+    "mnemonic": "RES 1,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 1 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb8c",
+    "group": "cb",
+    "row": "8x",
+    "col": "C",
+    "opcode": "CB 8C",
+    "mnemonic": "RES 1,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 1 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb8d",
+    "group": "cb",
+    "row": "8x",
+    "col": "D",
+    "opcode": "CB 8D",
+    "mnemonic": "RES 1,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 1 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb8e",
+    "group": "cb",
+    "row": "8x",
+    "col": "E",
+    "opcode": "CB 8E",
+    "mnemonic": "RES 1,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 0 el bit 1 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb8f",
+    "group": "cb",
+    "row": "8x",
+    "col": "F",
+    "opcode": "CB 8F",
+    "mnemonic": "RES 1,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 1 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb90",
+    "group": "cb",
+    "row": "9x",
+    "col": "0",
+    "opcode": "CB 90",
+    "mnemonic": "RES 2,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 2 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb91",
+    "group": "cb",
+    "row": "9x",
+    "col": "1",
+    "opcode": "CB 91",
+    "mnemonic": "RES 2,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 2 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb92",
+    "group": "cb",
+    "row": "9x",
+    "col": "2",
+    "opcode": "CB 92",
+    "mnemonic": "RES 2,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 2 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb93",
+    "group": "cb",
+    "row": "9x",
+    "col": "3",
+    "opcode": "CB 93",
+    "mnemonic": "RES 2,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 2 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb94",
+    "group": "cb",
+    "row": "9x",
+    "col": "4",
+    "opcode": "CB 94",
+    "mnemonic": "RES 2,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 2 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb95",
+    "group": "cb",
+    "row": "9x",
+    "col": "5",
+    "opcode": "CB 95",
+    "mnemonic": "RES 2,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 2 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb96",
+    "group": "cb",
+    "row": "9x",
+    "col": "6",
+    "opcode": "CB 96",
+    "mnemonic": "RES 2,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 0 el bit 2 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb97",
+    "group": "cb",
+    "row": "9x",
+    "col": "7",
+    "opcode": "CB 97",
+    "mnemonic": "RES 2,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 2 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb98",
+    "group": "cb",
+    "row": "9x",
+    "col": "8",
+    "opcode": "CB 98",
+    "mnemonic": "RES 3,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 3 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb99",
+    "group": "cb",
+    "row": "9x",
+    "col": "9",
+    "opcode": "CB 99",
+    "mnemonic": "RES 3,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 3 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb9a",
+    "group": "cb",
+    "row": "9x",
+    "col": "A",
+    "opcode": "CB 9A",
+    "mnemonic": "RES 3,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 3 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb9b",
+    "group": "cb",
+    "row": "9x",
+    "col": "B",
+    "opcode": "CB 9B",
+    "mnemonic": "RES 3,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 3 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb9c",
+    "group": "cb",
+    "row": "9x",
+    "col": "C",
+    "opcode": "CB 9C",
+    "mnemonic": "RES 3,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 3 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb9d",
+    "group": "cb",
+    "row": "9x",
+    "col": "D",
+    "opcode": "CB 9D",
+    "mnemonic": "RES 3,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 3 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb9e",
+    "group": "cb",
+    "row": "9x",
+    "col": "E",
+    "opcode": "CB 9E",
+    "mnemonic": "RES 3,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 0 el bit 3 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cb9f",
+    "group": "cb",
+    "row": "9x",
+    "col": "F",
+    "opcode": "CB 9F",
+    "mnemonic": "RES 3,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 3 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cba0",
+    "group": "cb",
+    "row": "Ax",
+    "col": "0",
+    "opcode": "CB A0",
+    "mnemonic": "RES 4,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 4 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cba1",
+    "group": "cb",
+    "row": "Ax",
+    "col": "1",
+    "opcode": "CB A1",
+    "mnemonic": "RES 4,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 4 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cba2",
+    "group": "cb",
+    "row": "Ax",
+    "col": "2",
+    "opcode": "CB A2",
+    "mnemonic": "RES 4,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 4 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cba3",
+    "group": "cb",
+    "row": "Ax",
+    "col": "3",
+    "opcode": "CB A3",
+    "mnemonic": "RES 4,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 4 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cba4",
+    "group": "cb",
+    "row": "Ax",
+    "col": "4",
+    "opcode": "CB A4",
+    "mnemonic": "RES 4,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 4 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cba5",
+    "group": "cb",
+    "row": "Ax",
+    "col": "5",
+    "opcode": "CB A5",
+    "mnemonic": "RES 4,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 4 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cba6",
+    "group": "cb",
+    "row": "Ax",
+    "col": "6",
+    "opcode": "CB A6",
+    "mnemonic": "RES 4,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 0 el bit 4 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cba7",
+    "group": "cb",
+    "row": "Ax",
+    "col": "7",
+    "opcode": "CB A7",
+    "mnemonic": "RES 4,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 4 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cba8",
+    "group": "cb",
+    "row": "Ax",
+    "col": "8",
+    "opcode": "CB A8",
+    "mnemonic": "RES 5,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 5 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cba9",
+    "group": "cb",
+    "row": "Ax",
+    "col": "9",
+    "opcode": "CB A9",
+    "mnemonic": "RES 5,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 5 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbaa",
+    "group": "cb",
+    "row": "Ax",
+    "col": "A",
+    "opcode": "CB AA",
+    "mnemonic": "RES 5,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 5 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbab",
+    "group": "cb",
+    "row": "Ax",
+    "col": "B",
+    "opcode": "CB AB",
+    "mnemonic": "RES 5,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 5 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbac",
+    "group": "cb",
+    "row": "Ax",
+    "col": "C",
+    "opcode": "CB AC",
+    "mnemonic": "RES 5,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 5 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbad",
+    "group": "cb",
+    "row": "Ax",
+    "col": "D",
+    "opcode": "CB AD",
+    "mnemonic": "RES 5,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 5 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbae",
+    "group": "cb",
+    "row": "Ax",
+    "col": "E",
+    "opcode": "CB AE",
+    "mnemonic": "RES 5,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 0 el bit 5 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbaf",
+    "group": "cb",
+    "row": "Ax",
+    "col": "F",
+    "opcode": "CB AF",
+    "mnemonic": "RES 5,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 5 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbb0",
+    "group": "cb",
+    "row": "Bx",
+    "col": "0",
+    "opcode": "CB B0",
+    "mnemonic": "RES 6,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 6 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbb1",
+    "group": "cb",
+    "row": "Bx",
+    "col": "1",
+    "opcode": "CB B1",
+    "mnemonic": "RES 6,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 6 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbb2",
+    "group": "cb",
+    "row": "Bx",
+    "col": "2",
+    "opcode": "CB B2",
+    "mnemonic": "RES 6,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 6 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbb3",
+    "group": "cb",
+    "row": "Bx",
+    "col": "3",
+    "opcode": "CB B3",
+    "mnemonic": "RES 6,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 6 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbb4",
+    "group": "cb",
+    "row": "Bx",
+    "col": "4",
+    "opcode": "CB B4",
+    "mnemonic": "RES 6,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 6 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbb5",
+    "group": "cb",
+    "row": "Bx",
+    "col": "5",
+    "opcode": "CB B5",
+    "mnemonic": "RES 6,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 6 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbb6",
+    "group": "cb",
+    "row": "Bx",
+    "col": "6",
+    "opcode": "CB B6",
+    "mnemonic": "RES 6,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 0 el bit 6 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbb7",
+    "group": "cb",
+    "row": "Bx",
+    "col": "7",
+    "opcode": "CB B7",
+    "mnemonic": "RES 6,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 6 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbb8",
+    "group": "cb",
+    "row": "Bx",
+    "col": "8",
+    "opcode": "CB B8",
+    "mnemonic": "RES 7,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 7 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbb9",
+    "group": "cb",
+    "row": "Bx",
+    "col": "9",
+    "opcode": "CB B9",
+    "mnemonic": "RES 7,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 7 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbba",
+    "group": "cb",
+    "row": "Bx",
+    "col": "A",
+    "opcode": "CB BA",
+    "mnemonic": "RES 7,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 7 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbbb",
+    "group": "cb",
+    "row": "Bx",
+    "col": "B",
+    "opcode": "CB BB",
+    "mnemonic": "RES 7,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 7 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbbc",
+    "group": "cb",
+    "row": "Bx",
+    "col": "C",
+    "opcode": "CB BC",
+    "mnemonic": "RES 7,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 7 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbbd",
+    "group": "cb",
+    "row": "Bx",
+    "col": "D",
+    "opcode": "CB BD",
+    "mnemonic": "RES 7,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 7 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbbe",
+    "group": "cb",
+    "row": "Bx",
+    "col": "E",
+    "opcode": "CB BE",
+    "mnemonic": "RES 7,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 0 el bit 7 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbbf",
+    "group": "cb",
+    "row": "Bx",
+    "col": "F",
+    "opcode": "CB BF",
+    "mnemonic": "RES 7,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 0 el bit 7 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbc0",
+    "group": "cb",
+    "row": "Cx",
+    "col": "0",
+    "opcode": "CB C0",
+    "mnemonic": "SET 0,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 0 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbc1",
+    "group": "cb",
+    "row": "Cx",
+    "col": "1",
+    "opcode": "CB C1",
+    "mnemonic": "SET 0,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 0 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbc2",
+    "group": "cb",
+    "row": "Cx",
+    "col": "2",
+    "opcode": "CB C2",
+    "mnemonic": "SET 0,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 0 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbc3",
+    "group": "cb",
+    "row": "Cx",
+    "col": "3",
+    "opcode": "CB C3",
+    "mnemonic": "SET 0,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 0 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbc4",
+    "group": "cb",
+    "row": "Cx",
+    "col": "4",
+    "opcode": "CB C4",
+    "mnemonic": "SET 0,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 0 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbc5",
+    "group": "cb",
+    "row": "Cx",
+    "col": "5",
+    "opcode": "CB C5",
+    "mnemonic": "SET 0,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 0 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbc6",
+    "group": "cb",
+    "row": "Cx",
+    "col": "6",
+    "opcode": "CB C6",
+    "mnemonic": "SET 0,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 1 el bit 0 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbc7",
+    "group": "cb",
+    "row": "Cx",
+    "col": "7",
+    "opcode": "CB C7",
+    "mnemonic": "SET 0,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 0 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbc8",
+    "group": "cb",
+    "row": "Cx",
+    "col": "8",
+    "opcode": "CB C8",
+    "mnemonic": "SET 1,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 1 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbc9",
+    "group": "cb",
+    "row": "Cx",
+    "col": "9",
+    "opcode": "CB C9",
+    "mnemonic": "SET 1,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 1 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbca",
+    "group": "cb",
+    "row": "Cx",
+    "col": "A",
+    "opcode": "CB CA",
+    "mnemonic": "SET 1,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 1 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbcb",
+    "group": "cb",
+    "row": "Cx",
+    "col": "B",
+    "opcode": "CB CB",
+    "mnemonic": "SET 1,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 1 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbcc",
+    "group": "cb",
+    "row": "Cx",
+    "col": "C",
+    "opcode": "CB CC",
+    "mnemonic": "SET 1,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 1 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbcd",
+    "group": "cb",
+    "row": "Cx",
+    "col": "D",
+    "opcode": "CB CD",
+    "mnemonic": "SET 1,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 1 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbce",
+    "group": "cb",
+    "row": "Cx",
+    "col": "E",
+    "opcode": "CB CE",
+    "mnemonic": "SET 1,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 1 el bit 1 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbcf",
+    "group": "cb",
+    "row": "Cx",
+    "col": "F",
+    "opcode": "CB CF",
+    "mnemonic": "SET 1,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 1 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbd0",
+    "group": "cb",
+    "row": "Dx",
+    "col": "0",
+    "opcode": "CB D0",
+    "mnemonic": "SET 2,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 2 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbd1",
+    "group": "cb",
+    "row": "Dx",
+    "col": "1",
+    "opcode": "CB D1",
+    "mnemonic": "SET 2,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 2 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbd2",
+    "group": "cb",
+    "row": "Dx",
+    "col": "2",
+    "opcode": "CB D2",
+    "mnemonic": "SET 2,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 2 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbd3",
+    "group": "cb",
+    "row": "Dx",
+    "col": "3",
+    "opcode": "CB D3",
+    "mnemonic": "SET 2,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 2 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbd4",
+    "group": "cb",
+    "row": "Dx",
+    "col": "4",
+    "opcode": "CB D4",
+    "mnemonic": "SET 2,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 2 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbd5",
+    "group": "cb",
+    "row": "Dx",
+    "col": "5",
+    "opcode": "CB D5",
+    "mnemonic": "SET 2,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 2 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbd6",
+    "group": "cb",
+    "row": "Dx",
+    "col": "6",
+    "opcode": "CB D6",
+    "mnemonic": "SET 2,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 1 el bit 2 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbd7",
+    "group": "cb",
+    "row": "Dx",
+    "col": "7",
+    "opcode": "CB D7",
+    "mnemonic": "SET 2,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 2 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbd8",
+    "group": "cb",
+    "row": "Dx",
+    "col": "8",
+    "opcode": "CB D8",
+    "mnemonic": "SET 3,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 3 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbd9",
+    "group": "cb",
+    "row": "Dx",
+    "col": "9",
+    "opcode": "CB D9",
+    "mnemonic": "SET 3,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 3 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbda",
+    "group": "cb",
+    "row": "Dx",
+    "col": "A",
+    "opcode": "CB DA",
+    "mnemonic": "SET 3,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 3 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbdb",
+    "group": "cb",
+    "row": "Dx",
+    "col": "B",
+    "opcode": "CB DB",
+    "mnemonic": "SET 3,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 3 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbdc",
+    "group": "cb",
+    "row": "Dx",
+    "col": "C",
+    "opcode": "CB DC",
+    "mnemonic": "SET 3,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 3 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbdd",
+    "group": "cb",
+    "row": "Dx",
+    "col": "D",
+    "opcode": "CB DD",
+    "mnemonic": "SET 3,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 3 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbde",
+    "group": "cb",
+    "row": "Dx",
+    "col": "E",
+    "opcode": "CB DE",
+    "mnemonic": "SET 3,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 1 el bit 3 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbdf",
+    "group": "cb",
+    "row": "Dx",
+    "col": "F",
+    "opcode": "CB DF",
+    "mnemonic": "SET 3,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 3 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbe0",
+    "group": "cb",
+    "row": "Ex",
+    "col": "0",
+    "opcode": "CB E0",
+    "mnemonic": "SET 4,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 4 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbe1",
+    "group": "cb",
+    "row": "Ex",
+    "col": "1",
+    "opcode": "CB E1",
+    "mnemonic": "SET 4,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 4 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbe2",
+    "group": "cb",
+    "row": "Ex",
+    "col": "2",
+    "opcode": "CB E2",
+    "mnemonic": "SET 4,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 4 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbe3",
+    "group": "cb",
+    "row": "Ex",
+    "col": "3",
+    "opcode": "CB E3",
+    "mnemonic": "SET 4,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 4 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbe4",
+    "group": "cb",
+    "row": "Ex",
+    "col": "4",
+    "opcode": "CB E4",
+    "mnemonic": "SET 4,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 4 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbe5",
+    "group": "cb",
+    "row": "Ex",
+    "col": "5",
+    "opcode": "CB E5",
+    "mnemonic": "SET 4,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 4 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbe6",
+    "group": "cb",
+    "row": "Ex",
+    "col": "6",
+    "opcode": "CB E6",
+    "mnemonic": "SET 4,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 1 el bit 4 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbe7",
+    "group": "cb",
+    "row": "Ex",
+    "col": "7",
+    "opcode": "CB E7",
+    "mnemonic": "SET 4,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 4 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbe8",
+    "group": "cb",
+    "row": "Ex",
+    "col": "8",
+    "opcode": "CB E8",
+    "mnemonic": "SET 5,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 5 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbe9",
+    "group": "cb",
+    "row": "Ex",
+    "col": "9",
+    "opcode": "CB E9",
+    "mnemonic": "SET 5,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 5 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbea",
+    "group": "cb",
+    "row": "Ex",
+    "col": "A",
+    "opcode": "CB EA",
+    "mnemonic": "SET 5,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 5 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbeb",
+    "group": "cb",
+    "row": "Ex",
+    "col": "B",
+    "opcode": "CB EB",
+    "mnemonic": "SET 5,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 5 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbec",
+    "group": "cb",
+    "row": "Ex",
+    "col": "C",
+    "opcode": "CB EC",
+    "mnemonic": "SET 5,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 5 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbed",
+    "group": "cb",
+    "row": "Ex",
+    "col": "D",
+    "opcode": "CB ED",
+    "mnemonic": "SET 5,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 5 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbee",
+    "group": "cb",
+    "row": "Ex",
+    "col": "E",
+    "opcode": "CB EE",
+    "mnemonic": "SET 5,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 1 el bit 5 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbef",
+    "group": "cb",
+    "row": "Ex",
+    "col": "F",
+    "opcode": "CB EF",
+    "mnemonic": "SET 5,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 5 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbf0",
+    "group": "cb",
+    "row": "Fx",
+    "col": "0",
+    "opcode": "CB F0",
+    "mnemonic": "SET 6,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 6 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbf1",
+    "group": "cb",
+    "row": "Fx",
+    "col": "1",
+    "opcode": "CB F1",
+    "mnemonic": "SET 6,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 6 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbf2",
+    "group": "cb",
+    "row": "Fx",
+    "col": "2",
+    "opcode": "CB F2",
+    "mnemonic": "SET 6,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 6 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbf3",
+    "group": "cb",
+    "row": "Fx",
+    "col": "3",
+    "opcode": "CB F3",
+    "mnemonic": "SET 6,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 6 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbf4",
+    "group": "cb",
+    "row": "Fx",
+    "col": "4",
+    "opcode": "CB F4",
+    "mnemonic": "SET 6,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 6 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbf5",
+    "group": "cb",
+    "row": "Fx",
+    "col": "5",
+    "opcode": "CB F5",
+    "mnemonic": "SET 6,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 6 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbf6",
+    "group": "cb",
+    "row": "Fx",
+    "col": "6",
+    "opcode": "CB F6",
+    "mnemonic": "SET 6,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 1 el bit 6 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbf7",
+    "group": "cb",
+    "row": "Fx",
+    "col": "7",
+    "opcode": "CB F7",
+    "mnemonic": "SET 6,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 6 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbf8",
+    "group": "cb",
+    "row": "Fx",
+    "col": "8",
+    "opcode": "CB F8",
+    "mnemonic": "SET 7,B",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 7 de el registre B.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbf9",
+    "group": "cb",
+    "row": "Fx",
+    "col": "9",
+    "opcode": "CB F9",
+    "mnemonic": "SET 7,C",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 7 de el registre C.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbfa",
+    "group": "cb",
+    "row": "Fx",
+    "col": "A",
+    "opcode": "CB FA",
+    "mnemonic": "SET 7,D",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 7 de el registre D.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbfb",
+    "group": "cb",
+    "row": "Fx",
+    "col": "B",
+    "opcode": "CB FB",
+    "mnemonic": "SET 7,E",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 7 de el registre E.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbfc",
+    "group": "cb",
+    "row": "Fx",
+    "col": "C",
+    "opcode": "CB FC",
+    "mnemonic": "SET 7,H",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 7 de el registre H.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbfd",
+    "group": "cb",
+    "row": "Fx",
+    "col": "D",
+    "opcode": "CB FD",
+    "mnemonic": "SET 7,L",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 7 de el registre L.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbfe",
+    "group": "cb",
+    "row": "Fx",
+    "col": "E",
+    "opcode": "CB FE",
+    "mnemonic": "SET 7,(HL)",
+    "clck": "15",
+    "siz": "2",
+    "description": "Posa a 1 el bit 7 de el byte de memòria apuntat per HL.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "cbff",
+    "group": "cb",
+    "row": "Fx",
+    "col": "F",
+    "opcode": "CB FF",
+    "mnemonic": "SET 7,A",
+    "clck": "8",
+    "siz": "2",
+    "description": "Posa a 1 el bit 7 de el registre A.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  }
+]

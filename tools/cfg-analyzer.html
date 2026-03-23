@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Z80 CFG & Call Graph — WB3</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.29.2/cytoscape.min.js"></script>
+  <script src="https://unpkg.com/dagre@0.8.5/dist/dagre.min.js"></script>
+  <script src="https://unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/elkjs/lib/elk.bundled.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-elk/cytoscape-elk.js"></script>
+  <style>
+    :root {
+      --bg: #0d0d14;
+      --bg2: #12121e;
+      --bg3: #1a1a2e;
+      --border: #2a2a44;
+      --accent: #4a9eff;
+      --accent2: #00e5cc;
+      --text: #c8c8e0;
+      --text-dim: #6a6a8a;
+      --call-color: #4a9eff;
+      --jump-color: #ff6b35;
+      --rst-color: #a855f7;
+      --bank-colors: #4a9eff,#00e5cc,#ff6b35,#00ff88,#ff35a0,#ffcc00,#a855f7,#6bffb8,#ff8855,#55ffcc,#cc55ff,#ffff55,#ff5588,#88ff55,#5588ff,#ffaa00;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(--text); font-family: 'Courier New', monospace; font-size: 12px; }
+
+    /* TOP BAR */
+    #topbar {
+      height: 44px;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 14px;
+      flex-shrink: 0;
+    }
+    #topbar .title { color: var(--accent2); font-size: 13px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
+    #topbar .sep { color: var(--border); }
+
+    .btn-file {
+      background: var(--bg3);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 4px 12px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 11px;
+      letter-spacing: 1px;
+      transition: background 0.15s;
+    }
+    .btn-file:hover { background: var(--accent); color: #000; }
+
+    #stats-display { color: var(--text-dim); font-size: 11px; flex: 1; }
+
+    .view-tabs { display: flex; gap: 4px; margin-left: auto; }
+    .tab {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 5px 14px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 11px;
+      letter-spacing: 1px;
+      transition: all 0.15s;
+    }
+    .tab.active { border-color: var(--accent2); color: var(--accent2); background: rgba(0,229,204,0.08); }
+    .tab:hover:not(.active) { border-color: var(--text-dim); color: var(--text); }
+
+    /* LAYOUT */
+    #layout-wrapper {
+      display: flex;
+      height: calc(100vh - 44px);
+    }
+
+    /* LEFT SIDEBAR */
+    #sidebar {
+      width: 230px;
+      flex-shrink: 0;
+      background: var(--bg2);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    #sidebar::-webkit-scrollbar { width: 4px; }
+    #sidebar::-webkit-scrollbar-thumb { background: var(--border); }
+
+    .section {
+      border-bottom: 1px solid var(--border);
+      padding: 10px 12px;
+    }
+    .section-title {
+      color: var(--accent2);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+    }
+    .control-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
+    .control-row label { color: var(--text-dim); font-size: 11px; }
+    .control-row input[type=text], .control-row input[type=search], select, #cfg-func-input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 4px 7px;
+      font-family: inherit;
+      font-size: 11px;
+      width: 100%;
+    }
+    .control-row input[type=text]:focus, select:focus, #cfg-func-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    input[type=range] { width: 100%; accent-color: var(--accent2); }
+    .small-btn {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 4px 10px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 11px;
+      width: 100%;
+      margin-top: 4px;
+      transition: all 0.15s;
+    }
+    .small-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .small-btn.primary { border-color: var(--accent2); color: var(--accent2); }
+    .small-btn.primary:hover { background: var(--accent2); color: #000; }
+    .check-row { display: flex; align-items: center; gap: 6px; margin: 4px 0; color: var(--text-dim); font-size: 11px; cursor: pointer; }
+    .check-row input { accent-color: var(--accent2); }
+
+    .hidden { display: none !important; }
+
+    /* LEGEND */
+    .legend-item { display: flex; align-items: center; gap: 6px; margin: 3px 0; font-size: 11px; color: var(--text-dim); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .legend-line { width: 20px; height: 2px; flex-shrink: 0; }
+
+    /* BANK BADGES */
+    .bank-badge {
+      display: inline-block;
+      padding: 0 5px;
+      border-radius: 2px;
+      font-size: 10px;
+      font-weight: bold;
+      color: #000;
+    }
+
+    /* MAIN AREA */
+    #canvas-wrapper {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    #cy {
+      width: 100%;
+      height: 100%;
+      background: var(--bg);
+    }
+    #canvas-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #canvas-overlay.hidden { opacity: 0; }
+    #canvas-hint {
+      color: var(--text-dim);
+      font-size: 16px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    /* Mini toolbar over canvas */
+    #canvas-toolbar {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 4px;
+      z-index: 10;
+    }
+    .ctbtn {
+      background: rgba(13,13,20,0.85);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 4px 9px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 11px;
+      backdrop-filter: blur(4px);
+      transition: all 0.15s;
+    }
+    .ctbtn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Mini search in canvas */
+    #canvas-search-wrap {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      gap: 4px;
+      z-index: 10;
+    }
+    #canvas-search {
+      background: rgba(13,13,20,0.85);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 4px 8px;
+      font-family: inherit;
+      font-size: 11px;
+      width: 180px;
+      backdrop-filter: blur(4px);
+    }
+    #canvas-search:focus { outline: none; border-color: var(--accent); }
+    #search-count { color: var(--text-dim); font-size: 11px; padding: 4px 0; }
+
+    /* RIGHT PANEL */
+    #details-panel {
+      width: 380px;
+      flex-shrink: 0;
+      background: var(--bg2);
+      border-left: 1px solid var(--border);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    #details-panel::-webkit-scrollbar { width: 4px; }
+    #details-panel::-webkit-scrollbar-thumb { background: var(--border); }
+
+    #details-header {
+      padding: 10px 12px;
+      background: var(--bg3);
+      border-bottom: 1px solid var(--border);
+      color: var(--accent2);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    #details-content { padding: 10px 12px; flex: 1; }
+    .detail-label { color: var(--text-dim); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; margin-top: 10px; margin-bottom: 3px; }
+    .detail-value { color: var(--text); font-size: 12px; word-break: break-all; }
+    .detail-name { color: var(--accent2); font-size: 14px; font-weight: bold; word-break: break-all; margin-bottom: 8px; }
+    .muted { color: var(--text-dim); font-style: italic; font-size: 11px; margin-top: 20px; text-align: center; }
+
+    .caller-list, .callee-list { list-style: none; margin-top: 4px; }
+    .caller-list li, .callee-list li {
+      padding: 3px 6px;
+      margin: 2px 0;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 11px;
+      color: var(--accent);
+      transition: all 0.1s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .caller-list li:hover { background: var(--bg); border-color: var(--accent); }
+    .callee-list li { color: var(--accent2); }
+    .callee-list li:hover { border-color: var(--accent2); }
+
+    .instr-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 6px 8px;
+      margin-top: 6px;
+      font-size: 10px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .instr-block::-webkit-scrollbar { width: 4px; }
+    .instr-block::-webkit-scrollbar-thumb { background: var(--border); }
+    .instr-line { padding: 1px 0; line-height: 1.4; }
+    .instr-mnemonic { color: var(--accent); }
+    .instr-operands { color: var(--text); }
+    .instr-comment { color: var(--text-dim); }
+    .instr-label-anon { color: #ffcc00; }
+
+    /* Focus mode badge */
+    #focus-mode-bar {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,107,53,0.15);
+      border: 1px solid var(--jump-color);
+      color: var(--jump-color);
+      padding: 6px 16px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 10;
+      display: none;
+    }
+    #focus-mode-bar.visible { display: flex; }
+    #focus-clear-btn { cursor: pointer; color: var(--text-dim); text-decoration: underline; }
+
+    /* Progress bar while loading */
+    #loading-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: var(--accent2);
+      width: 0%;
+      transition: width 0.3s;
+      z-index: 20;
+    }
+
+    /* Suggestions dropdown */
+    #cfg-suggestions {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      max-height: 140px;
+      overflow-y: auto;
+      display: none;
+    }
+    #cfg-suggestions .sug-item {
+      padding: 4px 7px;
+      cursor: pointer;
+      font-size: 11px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    #cfg-suggestions .sug-item:hover { background: var(--bg3); color: var(--accent2); }
+
+    /* Hop control */
+    .hop-control { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+    .hop-control label { color: var(--text-dim); font-size: 11px; flex: 1; }
+    .hop-control input { width: 45px; }
+  </style>
+</head>
+<body>
+
+<div id="topbar">
+  <span class="title">Z80 CFG / Call Graph</span>
+  <span class="sep">·</span>
+  <label class="btn-file">
+    LOAD .ASM
+    <input type="file" id="file-input" accept=".asm,.ASM" style="display:none">
+  </label>
+  <span id="stats-display">No file loaded</span>
+  <div class="view-tabs">
+    <button class="tab active" id="tab-callgraph" data-view="callgraph">CALL GRAPH</button>
+    <button class="tab" id="tab-cfg" data-view="cfg">FUNCTION CFG</button>
+  </div>
+</div>
+
+<div id="layout-wrapper">
+  <!-- LEFT SIDEBAR -->
+  <div id="sidebar">
+
+    <!-- CALL GRAPH CONTROLS -->
+    <div class="section" id="cg-section">
+      <div class="section-title">Call Graph Filters</div>
+
+      <div class="control-row">
+        <label>Min connections: <span id="min-conn-val">1</span></label>
+        <input type="range" id="min-conn" min="0" max="30" value="1">
+      </div>
+
+      <div class="control-row">
+        <label>Bank</label>
+        <select id="bank-filter">
+          <option value="">All banks</option>
+        </select>
+      </div>
+
+      <div class="control-row">
+        <label>Edge types</label>
+        <label class="check-row"><input type="checkbox" id="show-calls" checked> Calls (solid)</label>
+        <label class="check-row"><input type="checkbox" id="show-jumps" checked> Jumps / tail calls</label>
+        <label class="check-row"><input type="checkbox" id="show-rst" checked> RST vectors</label>
+      </div>
+
+      <button class="small-btn primary" id="rebuild-btn">REBUILD GRAPH</button>
+    </div>
+
+    <!-- LAYOUT -->
+    <div class="section" id="layout-section">
+      <div class="section-title">Layout</div>
+      <div class="control-row">
+        <select id="layout-select">
+          <optgroup label="── ELK (recomanat) ──">
+            <option value="elk-layered-tb">ELK Layered – Top→Bottom ★</option>
+            <option value="elk-layered-lr">ELK Layered – Left→Right ★</option>
+            <option value="elk-stress">ELK Stress (force)</option>
+            <option value="elk-mrtree">ELK Tree</option>
+          </optgroup>
+          <optgroup label="── Dagre ──">
+            <option value="dagre-tb">Dagre – Top→Bottom</option>
+            <option value="dagre-lr">Dagre – Left→Right</option>
+          </optgroup>
+          <optgroup label="── Altres ──">
+            <option value="cose">Force-Directed (CoSE)</option>
+            <option value="breadthfirst">Breadth-First</option>
+            <option value="circle">Circle</option>
+            <option value="grid">Grid</option>
+            <option value="concentric">Concentric</option>
+          </optgroup>
+        </select>
+      </div>
+      <button class="small-btn" id="relayout-btn">APPLY LAYOUT</button>
+    </div>
+
+    <!-- FOCUS MODE -->
+    <div class="section" id="focus-section">
+      <div class="section-title">Focus / Neighborhood</div>
+      <div class="hop-control">
+        <label>Hops from selection</label>
+        <input type="number" id="hop-count" min="1" max="10" value="2" style="background:var(--bg);border:1px solid var(--border);color:var(--text);padding:3px 5px;font-family:inherit;font-size:11px;width:45px;">
+      </div>
+      <button class="small-btn" id="focus-btn">FOCUS SELECTED</button>
+      <button class="small-btn" id="focus-clear-sidebar-btn">SHOW ALL</button>
+    </div>
+
+    <!-- CFG CONTROLS -->
+    <div class="section hidden" id="cfg-section">
+      <div class="section-title">Function CFG</div>
+      <div class="control-row">
+        <label>Function label</label>
+        <input type="text" id="cfg-func-input" placeholder="e.g. _LABEL_97_" autocomplete="off">
+        <div id="cfg-suggestions"></div>
+      </div>
+      <button class="small-btn primary" id="cfg-load-btn">SHOW CFG</button>
+      <div id="cfg-info" style="margin-top:8px;color:var(--text-dim);font-size:11px;"></div>
+    </div>
+
+    <!-- LEGEND -->
+    <div class="section" id="legend-section">
+      <div class="section-title">Legend</div>
+      <div id="legend-content">
+        <div class="section-title" style="margin-top:6px;margin-bottom:4px;font-size:9px;">Edges</div>
+        <div class="legend-item"><div class="legend-line" style="background:var(--call-color);"></div> Call</div>
+        <div class="legend-item"><div class="legend-line" style="background:var(--jump-color);border-top:2px dashed var(--jump-color);background:transparent;"></div> Jump / tail call</div>
+        <div class="legend-item"><div class="legend-line" style="background:var(--rst-color);"></div> RST vector</div>
+        <div class="section-title" style="margin-top:8px;margin-bottom:4px;font-size:9px;">Nodes (by bank)</div>
+        <div id="bank-legend"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAIN CANVAS -->
+  <div id="canvas-wrapper">
+    <div id="cy"></div>
+    <div id="loading-bar"></div>
+
+    <div id="canvas-search-wrap">
+      <input type="text" id="canvas-search" placeholder="Search labels..." autocomplete="off">
+      <span id="search-count"></span>
+    </div>
+
+    <div id="canvas-toolbar">
+      <button class="ctbtn" id="fit-btn">FIT</button>
+      <button class="ctbtn" id="zoom-in-btn">＋</button>
+      <button class="ctbtn" id="zoom-out-btn">－</button>
+      <button class="ctbtn" id="export-png-btn">PNG</button>
+    </div>
+
+    <div id="canvas-overlay">
+      <div>
+        <div id="canvas-hint">Drop a .asm file or use LOAD</div>
+        <div style="color:#3a3a5a;font-size:11px;margin-top:8px;text-align:center;">WLA-DX Emulicious disassembly format</div>
+      </div>
+    </div>
+
+    <div id="focus-mode-bar">
+      <span>FOCUS MODE — <span id="focus-label-name"></span></span>
+      <span id="focus-clear-btn">× clear</span>
+    </div>
+  </div>
+
+  <!-- RIGHT DETAILS PANEL -->
+  <div id="details-panel">
+    <div id="details-header">NODE DETAILS</div>
+    <div id="details-content">
+      <p class="muted">Click a node to inspect</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────────────────────
+// BANK COLOR TABLE
+// ─────────────────────────────────────────────────────────────
+const BANK_COLORS = [
+  '#4a9eff','#00e5cc','#ff6b35','#00ff88',
+  '#ff35a0','#ffcc00','#a855f7','#6bffb8',
+  '#ff8855','#55ffcc','#cc55ff','#ffff55',
+  '#ff5588','#88ff55','#5588ff','#ffaa00'
+];
+function bankColor(b) { return BANK_COLORS[b % BANK_COLORS.length] || '#888'; }
+
+// ─────────────────────────────────────────────────────────────
+// WLA-DX ASM PARSER
+// ─────────────────────────────────────────────────────────────
+class AsmParser {
+  constructor() {
+    this.labels      = {}; // name -> {lineNum, bank, address, isRST, isData}
+    this.functions   = {}; // name -> {bank, instructions:[]}
+    this.callEdges   = []; // {from, to, type, conditional, condition}
+    this._bankByLine = [];
+    this._parsed     = false;
+  }
+
+  parse(text) {
+    const lines = text.split('\n');
+    let bank = 0;
+    let curFunc = null;
+
+    // ── RST pseudo-nodes ──────────────────────────────────────
+    const RST_VECS = ['$00','$08','$10','$18','$20','$28','$30','$38'];
+    for (const v of RST_VECS) {
+      const k = 'RST_' + v;
+      this.labels[k]    = { lineNum:-1, bank:0, address:parseInt(v,16), isRST:true };
+      this.functions[k] = { bank:0, instructions:[], isRST:true };
+    }
+
+    // ── Pass 1: collect labels and function bodies ────────────
+    for (let i = 0; i < lines.length; i++) {
+      const raw = lines[i];
+      this._bankByLine[i] = bank;
+
+      // .BANK directive
+      const bm = raw.match(/^\.BANK\s+(\d+)/);
+      if (bm) { bank = parseInt(bm[1]); continue; }
+
+      // Skip directives, empty, comments
+      const trimmed = raw.trim();
+      if (!trimmed || trimmed.startsWith(';') || trimmed.startsWith('.')) continue;
+
+      // Named label at column 0 (no leading whitespace)
+      if (/^[A-Za-z_]/.test(raw)) {
+        const lm = raw.match(/^([A-Za-z_][A-Za-z0-9_]*):/);
+        if (lm) {
+          const name = lm[1];
+          const isData = /^_DATA_/i.test(name);
+          const addr   = this._extractAddr(name);
+          this.labels[name]    = { lineNum:i, bank, address:addr, isData };
+          this.functions[name] = { bank, instructions:[] };
+          curFunc = name;
+        }
+        continue;
+      }
+
+      // Anonymous label (+, -, ++, --)
+      if (/^[+\-]{1,4}:/.test(raw)) {
+        if (curFunc) {
+          const sym = raw.match(/^([+\-]+):/)[1];
+          this.functions[curFunc].instructions.push(
+            { lineNum:i, raw:trimmed, isAnonLabel:true, sym }
+          );
+        }
+        continue;
+      }
+
+      // Instruction (tab or space indented)
+      if ((raw.startsWith('\t') || raw.startsWith(' ')) && curFunc) {
+        const { mnemonic, operands, comment } = this._parseInstr(trimmed);
+        this.functions[curFunc].instructions.push(
+          { lineNum:i, raw:trimmed, mnemonic, operands, comment, isAnonLabel:false }
+        );
+      }
+    }
+
+    // ── Pass 2: build call/jump edges ────────────────────────
+    this._buildEdges();
+    this._parsed = true;
+    return this;
+  }
+
+  _extractAddr(name) {
+    const m = name.match(/_(?:LABEL|DATA)_([0-9A-Fa-f]+)_$/);
+    return m ? parseInt(m[1], 16) : null;
+  }
+
+  _parseInstr(raw) {
+    // Remove inline comment
+    let noComment = raw, comment = '';
+    const ci = raw.indexOf(';');
+    if (ci !== -1) { noComment = raw.slice(0, ci).trim(); comment = raw.slice(ci); }
+    const m = noComment.match(/^(\w+)\s*(.*)/);
+    if (!m) return { mnemonic:'', operands:'', comment };
+    return { mnemonic: m[1].toLowerCase(), operands: m[2].trim(), comment };
+  }
+
+  _parseCond(operands) {
+    const conds = 'nz|z|nc|c|po|pe|p|m';
+    const m = operands.match(new RegExp(`^(${conds}),\\s*(.+)$`, 'i'));
+    if (m) return { cond: m[1].toLowerCase(), target: m[2].trim() };
+    return { cond: null, target: operands.trim() };
+  }
+
+  _isAnonTarget(t) {
+    return /^[+\-]+$/.test(t) || /^\(/.test(t);
+  }
+
+  _buildEdges() {
+    const edgeSet = new Set(); // deduplicate call graph edges
+
+    for (const [fn, func] of Object.entries(this.functions)) {
+      if (func.isRST) continue;
+
+      for (const instr of func.instructions) {
+        if (instr.isAnonLabel) continue;
+        const { mnemonic, operands } = instr;
+
+        let type = null, target = null, cond = null;
+
+        if (mnemonic === 'call') {
+          const p = this._parseCond(operands);
+          type = 'call'; target = p.target; cond = p.cond;
+
+        } else if (mnemonic === 'jp') {
+          const p = this._parseCond(operands);
+          if (!this._isAnonTarget(p.target)) {
+            type = 'jump'; target = p.target; cond = p.cond;
+          }
+
+        } else if (mnemonic === 'rst') {
+          const vec = operands.replace(/\s*;.*$/, '').trim();
+          type = 'rst'; target = 'RST_' + vec; cond = null;
+        }
+
+        if (type && target && this.labels[target] && target !== fn) {
+          const key = `${fn}→${target}:${type}`;
+          this.callEdges.push({
+            from: fn, to: target, type,
+            conditional: !!cond, cond,
+            lineNum: instr.lineNum,
+            _key: key
+          });
+          edgeSet.add(key);
+        }
+      }
+    }
+  }
+
+  // ── Build intra-function CFG basic blocks ─────────────────
+  buildCFG(funcName) {
+    const func = this.functions[funcName];
+    if (!func) return null;
+
+    const instrs = func.instructions;
+    if (instrs.length === 0) return { funcName, blocks:[], edges:[] };
+
+    const BRANCH_MNEMONICS = new Set(['jp','jr','djnz','ret','retn','reti','halt','rjp']);
+
+    // ── Assign stable IDs to anonymous labels ───────────────
+    // Map each anon label occurrence to a block-start index
+    const anonIds = {}; // index_in_instrs -> anonId string
+    let anonSeq = 0;
+    for (let i = 0; i < instrs.length; i++) {
+      if (instrs[i].isAnonLabel) {
+        anonIds[i] = `anon${anonSeq++}_${instrs[i].sym}`;
+      }
+    }
+
+    // ── Find block starts ────────────────────────────────────
+    const blockStarts = new Set([0]);
+    for (let i = 0; i < instrs.length; i++) {
+      const instr = instrs[i];
+      if (instr.isAnonLabel) { blockStarts.add(i); continue; }
+      if (BRANCH_MNEMONICS.has(instr.mnemonic)) {
+        if (i + 1 < instrs.length) blockStarts.add(i + 1);
+      }
+    }
+
+    const sortedStarts = [...blockStarts].sort((a,b) => a-b);
+    const startToBlock = {}; // instrIdx -> blockIdx
+    sortedStarts.forEach((s, bi) => startToBlock[s] = bi);
+
+    // ── Build basic blocks ───────────────────────────────────
+    const blocks = sortedStarts.map((start, bi) => {
+      const end = bi + 1 < sortedStarts.length ? sortedStarts[bi+1] - 1 : instrs.length - 1;
+      const allInstrs = instrs.slice(start, end + 1);
+      const anonLabels = allInstrs.filter(x => x.isAnonLabel).map(x => x.sym);
+      const codeInstrs = allInstrs.filter(x => !x.isAnonLabel);
+      const lastCode   = codeInstrs[codeInstrs.length - 1] || null;
+      return {
+        id: `bb${bi}`, instrIdx: start, instrEnd: end,
+        anonLabels, instructions: codeInstrs,
+        lastInstr: lastCode,
+        isBranch: lastCode ? BRANCH_MNEMONICS.has(lastCode.mnemonic) : false
+      };
+    });
+
+    // ── Resolve anonymous label targets ──────────────────────
+    // Build forward/backward lookup tables for each anon symbol
+    // anonPositions[sym] = sorted list of block indices where that label appears
+    const anonPositions = {}; // sym -> [blockIdx]
+    for (const [instrIdx, id] of Object.entries(anonIds)) {
+      const ii = parseInt(instrIdx);
+      const bi = startToBlock[ii] ?? null;
+      if (bi === null) continue;
+      const sym = instrs[ii].sym;
+      if (!anonPositions[sym]) anonPositions[sym] = [];
+      anonPositions[sym].push(bi);
+    }
+
+    // ── Build CFG edges ──────────────────────────────────────
+    const edges = [];
+
+    for (let bi = 0; bi < blocks.length; bi++) {
+      const blk = blocks[bi];
+      const last = blk.lastInstr;
+      if (!last) continue;
+
+      const { mnemonic, operands } = last;
+      const isRet = ['ret','retn','reti','halt'].includes(mnemonic);
+
+      if (isRet) continue; // terminal
+
+      if (mnemonic === 'jr' || mnemonic === 'jp' || mnemonic === 'djnz') {
+        let cond = null, rawTarget = operands;
+        const cp = this._parseCond(operands);
+        if (mnemonic !== 'djnz') { cond = cp.cond; rawTarget = cp.target; }
+        else { cond = 'nz'; rawTarget = operands.trim(); } // djnz always conditional
+
+        const isConditional = cond !== null;
+
+        // Resolve anon label target
+        let targetBlock = null;
+        if (/^[+]+$/.test(rawTarget)) {
+          // forward: find next occurrence of '+' symbols in blocks after bi
+          const sym = rawTarget;
+          const positions = anonPositions[sym] || [];
+          targetBlock = positions.find(p => p > bi) ?? null;
+        } else if (/^[-]+$/.test(rawTarget)) {
+          // backward: find previous occurrence
+          const sym = rawTarget;
+          const positions = anonPositions[sym] || [];
+          const found = [...positions].reverse().find(p => p < bi);
+          targetBlock = found ?? null;
+        } else if (this.labels[rawTarget]) {
+          // Named label → cross-function jump (show as exit)
+          edges.push({ from:`bb${bi}`, to:'EXIT', type:'jump', label: rawTarget, conditional: isConditional });
+          if (isConditional && bi + 1 < blocks.length) {
+            edges.push({ from:`bb${bi}`, to:`bb${bi+1}`, type:'fallthrough', label:'F', conditional:false });
+          }
+          continue;
+        }
+
+        if (targetBlock !== null) {
+          edges.push({ from:`bb${bi}`, to:`bb${targetBlock}`, type:'jump', label: cond ? `T(${cond})` : 'JMP', conditional: isConditional });
+          if (isConditional && bi + 1 < blocks.length) {
+            edges.push({ from:`bb${bi}`, to:`bb${bi+1}`, type:'fallthrough', label:'F', conditional:false });
+          }
+        } else {
+          // Unresolved — fallthrough
+          if (bi + 1 < blocks.length) {
+            edges.push({ from:`bb${bi}`, to:`bb${bi+1}`, type:'fallthrough', label:'?', conditional:false });
+          }
+        }
+      } else {
+        // No branch → fallthrough to next block
+        if (bi + 1 < blocks.length) {
+          edges.push({ from:`bb${bi}`, to:`bb${bi+1}`, type:'fallthrough', label:'', conditional:false });
+        }
+      }
+    }
+
+    return { funcName, bank: func.bank, blocks, edges };
+  }
+
+  stats() {
+    const fns = Object.keys(this.functions).filter(k => !this.functions[k].isRST);
+    const calls  = this.callEdges.filter(e => e.type === 'call').length;
+    const jumps  = this.callEdges.filter(e => e.type === 'jump').length;
+    const rsts   = this.callEdges.filter(e => e.type === 'rst').length;
+    return { labels: Object.keys(this.labels).length, functions: fns.length, calls, jumps, rsts };
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// APP STATE
+// ─────────────────────────────────────────────────────────────
+let parser     = null;
+let cy         = null;
+let currentView = 'callgraph'; // 'callgraph' | 'cfg'
+let focusNode  = null;
+
+// ─────────────────────────────────────────────────────────────
+// CYTOSCAPE INIT
+// ─────────────────────────────────────────────────────────────
+function initCytoscape() {
+  cy = cytoscape({
+    container: document.getElementById('cy'),
+    style: buildCyStyle(),
+    elements: [],
+    layout: { name: 'preset' },
+    minZoom: 0.03,
+    maxZoom: 4,
+    wheelSensitivity: 0.3,
+  });
+
+  cy.on('tap', 'node', e => {
+    const node = e.target;
+    showNodeDetails(node.data());
+    cy.elements().removeClass('highlighted faded');
+    node.addClass('highlighted');
+    const neighborhood = node.closedNeighborhood();
+    neighborhood.addClass('highlighted');
+    cy.elements().not(neighborhood).addClass('faded');
+  });
+
+  cy.on('tap', e => {
+    if (e.target === cy) {
+      cy.elements().removeClass('highlighted faded');
+      clearDetails();
+    }
+  });
+
+  cy.on('dblclick', 'node', e => {
+    cy.animate({ fit: { eles: e.target.closedNeighborhood(), padding: 60 }, duration: 350 });
+  });
+}
+
+function buildCyStyle() {
+  return [
+    {
+      selector: 'node',
+      style: {
+        'background-color': 'data(color)',
+        'border-color': 'data(color)',
+        'border-width': 1,
+        'border-opacity': 0.5,
+        'label': 'data(label)',
+        'color': '#c8c8e0',
+        'font-size': 8,
+        'font-family': 'Courier New, monospace',
+        'text-valign': 'bottom',
+        'text-halign': 'center',
+        'text-margin-y': 3,
+        'width': 'data(size)',
+        'height': 'data(size)',
+        'min-zoomed-font-size': 8,
+        'text-opacity': 0.85,
+      }
+    },
+    {
+      selector: 'node[isRST]',
+      style: {
+        'shape': 'diamond',
+        'border-width': 2,
+        'border-opacity': 1,
+        'font-weight': 'bold',
+      }
+    },
+    {
+      selector: 'node[isData]',
+      style: { 'shape': 'rectangle', 'border-opacity': 0.4, 'opacity': 0.75 }
+    },
+    {
+      selector: 'edge',
+      style: {
+        'width': 1,
+        'line-color': '#4a9eff',
+        'target-arrow-color': '#4a9eff',
+        'target-arrow-shape': 'vee',
+        'curve-style': 'unbundled-bezier',
+        'control-point-distances': [40],
+        'control-point-weights': [0.5],
+        'arrow-scale': 0.7,
+        'opacity': 0.5,
+      }
+    },
+    {
+      selector: 'edge.elk-routed',
+      style: {
+        'curve-style': 'segments',
+      }
+    },
+    {
+      selector: 'edge[edgeType="jump"]',
+      style: {
+        'line-color': '#ff6b35',
+        'target-arrow-color': '#ff6b35',
+        'line-style': 'dashed',
+        'line-dash-pattern': [6,3],
+        'opacity': 0.45,
+      }
+    },
+    {
+      selector: 'edge[edgeType="rst"]',
+      style: {
+        'line-color': '#a855f7',
+        'target-arrow-color': '#a855f7',
+        'opacity': 0.55,
+      }
+    },
+    {
+      selector: 'edge[edgeType="fallthrough"]',
+      style: {
+        'line-color': '#555577',
+        'target-arrow-color': '#555577',
+        'opacity': 0.6,
+        'width': 1.5,
+      }
+    },
+    {
+      selector: 'edge[edgeType="cfg-jump"]',
+      style: {
+        'line-color': '#ff6b35',
+        'target-arrow-color': '#ff6b35',
+        'opacity': 0.8,
+        'width': 1.5,
+      }
+    },
+    {
+      selector: 'edge[edgeType="cfg-jump-cond"]',
+      style: {
+        'line-color': '#ffcc00',
+        'target-arrow-color': '#ffcc00',
+        'opacity': 0.9,
+        'width': 1.5,
+        'label': 'data(label)',
+        'font-size': 7,
+        'color': '#ffcc00',
+        'font-family': 'Courier New, monospace',
+        'text-background-color': '#0d0d14',
+        'text-background-opacity': 0.8,
+        'text-background-padding': 2,
+      }
+    },
+    {
+      selector: 'edge[edgeType="cfg-exit"]',
+      style: {
+        'line-color': '#ff35a0',
+        'target-arrow-color': '#ff35a0',
+        'line-style': 'dotted',
+        'opacity': 0.7,
+        'width': 1,
+        'label': 'data(label)',
+        'font-size': 7,
+        'color': '#ff35a0',
+        'font-family': 'Courier New, monospace',
+      }
+    },
+    // CFG block nodes (rectangles with text)
+    {
+      selector: 'node[nodeType="block"]',
+      style: {
+        'shape': 'roundrectangle',
+        'background-color': '#12121e',
+        'border-color': 'data(color)',
+        'border-width': 1.5,
+        'label': 'data(blockLabel)',
+        'color': '#c8c8e0',
+        'font-size': 8,
+        'font-family': 'Courier New, monospace',
+        'text-valign': 'center',
+        'text-halign': 'center',
+        'white-space': 'pre',
+        'text-wrap': 'pre',
+        'width': 'label',
+        'height': 'label',
+        'padding': 8,
+      }
+    },
+    {
+      selector: 'node[nodeType="exit"]',
+      style: {
+        'shape': 'hexagon',
+        'background-color': '#1a0a1a',
+        'border-color': '#ff35a0',
+        'border-width': 2,
+        'label': 'EXIT',
+        'color': '#ff35a0',
+        'font-size': 9,
+        'width': 40, 'height': 30,
+      }
+    },
+    // Highlight states
+    {
+      selector: 'node.highlighted',
+      style: {
+        'border-width': 2.5,
+        'border-opacity': 1,
+        'border-color': '#fff',
+        'opacity': 1,
+      }
+    },
+    {
+      selector: 'node.faded',
+      style: { 'opacity': 0.12 }
+    },
+    {
+      selector: 'edge.faded',
+      style: { 'opacity': 0.05 }
+    },
+    {
+      selector: '.search-match',
+      style: {
+        'border-color': '#ffcc00',
+        'border-width': 3,
+        'border-opacity': 1,
+        'background-color': 'rgba(255,204,0,0.25)',
+      }
+    }
+  ];
+}
+
+// ─────────────────────────────────────────────────────────────
+// BUILD CALL GRAPH ELEMENTS
+// ─────────────────────────────────────────────────────────────
+function buildCallGraphElements() {
+  const showCalls = document.getElementById('show-calls').checked;
+  const showJumps = document.getElementById('show-jumps').checked;
+  const showRst   = document.getElementById('show-rst').checked;
+  const minConn   = parseInt(document.getElementById('min-conn').value);
+  const bankFilt  = document.getElementById('bank-filter').value;
+
+  // Count connections per node (for size + filtering)
+  const inDeg = {}, outDeg = {};
+  for (const fn of Object.keys(parser.labels)) { inDeg[fn] = 0; outDeg[fn] = 0; }
+
+  // Deduplicate edges for call graph (one edge per from-to-type)
+  const seen = new Set();
+  const dedupEdges = [];
+  for (const e of parser.callEdges) {
+    const k = `${e.from}→${e.to}:${e.type}`;
+    if (!seen.has(k)) { seen.add(k); dedupEdges.push(e); }
+  }
+
+  for (const e of dedupEdges) {
+    if (e.type === 'call' && !showCalls) continue;
+    if (e.type === 'jump' && !showJumps) continue;
+    if (e.type === 'rst'  && !showRst)   continue;
+    outDeg[e.from] = (outDeg[e.from]||0) + 1;
+    inDeg[e.to]    = (inDeg[e.to]   ||0) + 1;
+  }
+
+  const totalDeg = fn => (inDeg[fn]||0) + (outDeg[fn]||0);
+
+  // Filter nodes
+  const visibleNodes = new Set();
+  for (const [name, info] of Object.entries(parser.labels)) {
+    if (info.isRST) { if (showRst) visibleNodes.add(name); continue; }
+    if (bankFilt !== '' && String(info.bank) !== bankFilt) continue;
+    if (totalDeg(name) < minConn) continue;
+    visibleNodes.add(name);
+  }
+
+  // Build elements
+  const elements = [];
+
+  for (const name of visibleNodes) {
+    const info = parser.labels[name];
+    const func = parser.functions[name];
+    const deg  = totalDeg(name);
+    const size = Math.max(10, Math.min(40, 10 + Math.sqrt(inDeg[name]||0) * 5));
+    const addr = info.address != null
+      ? '0x' + info.address.toString(16).toUpperCase().padStart(4,'0')
+      : '?';
+
+    elements.push({ data: {
+      id: name,
+      label: shortLabel(name),
+      fullLabel: name,
+      bank: info.bank,
+      address: addr,
+      inDeg: inDeg[name]||0,
+      outDeg: outDeg[name]||0,
+      size,
+      color: info.isRST ? '#a855f7' : bankColor(info.bank),
+      isRST: info.isRST ? 'yes' : null,
+      isData: info.isData ? 'yes' : null,
+      instrCount: func ? func.instructions.filter(x=>!x.isAnonLabel).length : 0,
+    }});
+  }
+
+  for (const e of dedupEdges) {
+    if (!visibleNodes.has(e.from) || !visibleNodes.has(e.to)) continue;
+    if (e.type === 'call' && !showCalls) continue;
+    if (e.type === 'jump' && !showJumps) continue;
+    if (e.type === 'rst'  && !showRst)   continue;
+
+    elements.push({ data: {
+      id: `${e.from}→${e.to}:${e.type}`,
+      source: e.from,
+      target: e.to,
+      edgeType: e.type,
+    }});
+  }
+
+  return elements;
+}
+
+// ─────────────────────────────────────────────────────────────
+// BUILD CFG ELEMENTS
+// ─────────────────────────────────────────────────────────────
+function buildCFGElements(funcName) {
+  const cfg = parser.buildCFG(funcName);
+  if (!cfg) return null;
+
+  const elements = [];
+  const color = bankColor(cfg.bank);
+
+  // Add EXIT node if any exit edges exist
+  const hasExit = cfg.edges.some(e => e.to === 'EXIT');
+  if (hasExit) {
+    elements.push({ data: { id:'EXIT', nodeType:'exit', blockLabel:'EXIT' } });
+  }
+
+  for (const blk of cfg.blocks) {
+    // Format instructions for label
+    const lines = [];
+    if (blk.anonLabels.length > 0) {
+      lines.push(blk.anonLabels.join(' ') + ':');
+    }
+    for (const instr of blk.instructions) {
+      const m = instr.mnemonic.padEnd(6);
+      lines.push(` ${m} ${instr.operands}`);
+    }
+    const blockLabel = lines.join('\n') || '(empty)';
+
+    elements.push({ data: {
+      id: blk.id,
+      nodeType: 'block',
+      blockLabel,
+      color,
+      instrCount: blk.instructions.length,
+      lineNum: blk.instructions[0]?.lineNum ?? '',
+    }});
+  }
+
+  for (let i = 0; i < cfg.edges.length; i++) {
+    const e = cfg.edges[i];
+    let edgeType = 'fallthrough';
+    if (e.to === 'EXIT') edgeType = 'cfg-exit';
+    else if (e.type === 'jump' && e.conditional) edgeType = 'cfg-jump-cond';
+    else if (e.type === 'jump') edgeType = 'cfg-jump';
+
+    elements.push({ data: {
+      id: `cfg_e${i}`,
+      source: e.from,
+      target: e.to,
+      edgeType,
+      label: e.label || '',
+    }});
+  }
+
+  return { elements, stats: { blocks: cfg.blocks.length, edges: cfg.edges.length } };
+}
+
+// ─────────────────────────────────────────────────────────────
+// LAYOUT RUNNER
+// ─────────────────────────────────────────────────────────────
+function runLayout(layoutId, eles) {
+  const target = eles || cy.elements(':visible');
+  const isElk   = layoutId.startsWith('elk-');
+  let opts;
+
+  switch (layoutId) {
+    // ── ELK layouts ──────────────────────────────────────────
+    case 'elk-layered-tb':
+      opts = {
+        name: 'elk',
+        elk: {
+          algorithm: 'layered',
+          'elk.direction': 'DOWN',
+          'elk.layered.spacing.nodeNodeBetweenLayers': 80,
+          'elk.spacing.nodeNode': 50,
+          'elk.layered.crossingMinimization.strategy': 'LAYER_SWEEP',
+          'elk.layered.nodePlacement.strategy': 'BRANDES_KOEPF',
+          'elk.edgeRouting': 'ORTHOGONAL',
+          'elk.layered.edgeRouting.orthogonalRoutingGenerator.routingOption': 'AVOID_OVERSHOOTING',
+        },
+        padding: 40,
+      }; break;
+    case 'elk-layered-lr':
+      opts = {
+        name: 'elk',
+        elk: {
+          algorithm: 'layered',
+          'elk.direction': 'RIGHT',
+          'elk.layered.spacing.nodeNodeBetweenLayers': 100,
+          'elk.spacing.nodeNode': 40,
+          'elk.layered.crossingMinimization.strategy': 'LAYER_SWEEP',
+          'elk.layered.nodePlacement.strategy': 'BRANDES_KOEPF',
+          'elk.edgeRouting': 'ORTHOGONAL',
+          'elk.layered.edgeRouting.orthogonalRoutingGenerator.routingOption': 'AVOID_OVERSHOOTING',
+        },
+        padding: 40,
+      }; break;
+    case 'elk-stress':
+      opts = {
+        name: 'elk',
+        elk: { algorithm: 'stress', 'elk.stress.desiredEdgeLength': 120 },
+        padding: 30,
+      }; break;
+    case 'elk-mrtree':
+      opts = {
+        name: 'elk',
+        elk: { algorithm: 'mrtree', 'elk.direction': 'DOWN', 'elk.spacing.nodeNode': 40 },
+        padding: 30,
+      }; break;
+    // ── Dagre layouts ─────────────────────────────────────────
+    case 'dagre-tb': opts = { name:'dagre', rankDir:'TB', nodeSep:40, rankSep:70, padding:30 }; break;
+    case 'dagre-lr': opts = { name:'dagre', rankDir:'LR', nodeSep:30, rankSep:80, padding:30 }; break;
+    // ── Altres ───────────────────────────────────────────────
+    case 'cose':
+      opts = { name:'cose', animate:false, randomize:true, idealEdgeLength:80,
+               nodeRepulsion:8000, gravity:0.1, numIter:1500, padding:20 }; break;
+    case 'breadthfirst': opts = { name:'breadthfirst', directed:true, spacingFactor:1.3, padding:30 }; break;
+    case 'circle':       opts = { name:'circle', padding:30 }; break;
+    case 'grid':         opts = { name:'grid', padding:30 }; break;
+    case 'concentric':   opts = { name:'concentric', concentric: n => n.data('inDeg')||0, levelWidth:()=>2, padding:30 }; break;
+    default: opts = { name:'dagre', rankDir:'TB' };
+  }
+
+  // Quan ELK acaba, activa curve-style:segments per usar els waypoints calculats
+  const layout = target.layout(opts);
+  layout.on('layoutstop', () => {
+    if (isElk) {
+      cy.edges().addClass('elk-routed');
+    } else {
+      cy.edges().removeClass('elk-routed');
+    }
+  });
+  layout.run();
+}
+
+// ─────────────────────────────────────────────────────────────
+// POPULATE BANK FILTER + LEGEND
+// ─────────────────────────────────────────────────────────────
+function populateBankUI() {
+  const banks = new Set();
+  for (const info of Object.values(parser.labels)) {
+    if (!info.isRST) banks.add(info.bank);
+  }
+
+  const sel = document.getElementById('bank-filter');
+  sel.innerHTML = '<option value="">All banks</option>';
+  for (const b of [...banks].sort((a,b)=>a-b)) {
+    const opt = document.createElement('option');
+    opt.value = b;
+    opt.textContent = `Bank ${b}`;
+    opt.style.color = bankColor(b);
+    sel.appendChild(opt);
+  }
+
+  const legend = document.getElementById('bank-legend');
+  legend.innerHTML = '';
+  for (const b of [...banks].sort((a,b)=>a-b)) {
+    const count = Object.values(parser.labels).filter(x => !x.isRST && x.bank === b).length;
+    legend.innerHTML += `
+      <div class="legend-item">
+        <div class="legend-dot" style="background:${bankColor(b)};"></div>
+        Bank ${b} <span style="color:#555577;font-size:10px;margin-left:4px;">(${count})</span>
+      </div>`;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// SHOW CALL GRAPH
+// ─────────────────────────────────────────────────────────────
+function showCallGraph() {
+  if (!parser) return;
+  setLoading(true);
+
+  setTimeout(() => {
+    const elements = buildCallGraphElements();
+    cy.elements().remove();
+    cy.add(elements);
+
+    const layoutId = document.getElementById('layout-select').value;
+    runLayout(layoutId);
+    cy.fit(40);
+    clearFocus();
+    setLoading(false);
+
+    const s = parser.stats();
+    document.getElementById('stats-display').textContent =
+      `${elements.filter(e=>!e.data.source).length} nodes · ${elements.filter(e=>e.data.source).length} edges | Total: ${s.functions} funcs · ${s.calls} calls · ${s.jumps} jumps`;
+  }, 30);
+}
+
+// ─────────────────────────────────────────────────────────────
+// SHOW CFG
+// ─────────────────────────────────────────────────────────────
+function showCFG(funcName) {
+  if (!parser) return;
+  const result = buildCFGElements(funcName);
+  if (!result) {
+    document.getElementById('cfg-info').textContent = 'Function not found.';
+    return;
+  }
+
+  cy.elements().remove();
+  cy.add(result.elements);
+  runLayout('dagre-tb');
+  cy.fit(40);
+  clearFocus();
+
+  document.getElementById('cfg-info').textContent =
+    `${result.stats.blocks} basic blocks · ${result.stats.edges} edges`;
+  document.getElementById('stats-display').textContent =
+    `CFG: ${funcName} — ${result.stats.blocks} blocks`;
+}
+
+// ─────────────────────────────────────────────────────────────
+// FOCUS MODE (neighborhood)
+// ─────────────────────────────────────────────────────────────
+function applyFocus(nodeId) {
+  const node = cy.getElementById(nodeId);
+  if (!node || node.empty()) return;
+
+  const hops = parseInt(document.getElementById('hop-count').value) || 2;
+  let neighborhood = node.closedNeighborhood();
+  for (let i = 1; i < hops; i++) {
+    neighborhood = neighborhood.union(neighborhood.closedNeighborhood());
+  }
+
+  cy.elements().addClass('faded');
+  neighborhood.removeClass('faded');
+  node.addClass('highlighted');
+
+  focusNode = nodeId;
+  document.getElementById('focus-mode-bar').classList.add('visible');
+  document.getElementById('focus-label-name').textContent = shortLabel(nodeId);
+
+  cy.animate({ fit: { eles: neighborhood, padding: 60 }, duration: 400 });
+}
+
+function clearFocus() {
+  cy.elements().removeClass('faded highlighted');
+  focusNode = null;
+  document.getElementById('focus-mode-bar').classList.remove('visible');
+}
+
+// ─────────────────────────────────────────────────────────────
+// NODE DETAILS PANEL
+// ─────────────────────────────────────────────────────────────
+function showNodeDetails(data) {
+  const panel = document.getElementById('details-content');
+
+  if (data.nodeType === 'block') {
+    panel.innerHTML = `
+      <div class="detail-name">Basic Block ${data.id}</div>
+      <div class="detail-label">Instructions</div>
+      <div class="detail-value">${data.instrCount}</div>
+      <div class="detail-label">First line #</div>
+      <div class="detail-value">${data.lineNum}</div>
+      <div class="detail-label">Disassembly</div>
+      <div class="instr-block">${formatBlockLabel(data.blockLabel)}</div>
+    `;
+    return;
+  }
+
+  if (!data.fullLabel) { panel.innerHTML = '<p class="muted">No details</p>'; return; }
+
+  const callers = parser.callEdges.filter(e => e.to   === data.fullLabel).map(e => e.from);
+  const callees = parser.callEdges.filter(e => e.from === data.fullLabel).map(e => e.to);
+
+  // Unique
+  const uCallers = [...new Set(callers)];
+  const uCallees = [...new Set(callees)];
+
+  // Bank address
+  const func = parser.functions[data.fullLabel];
+  const instrList = func ? func.instructions : [];
+
+  panel.innerHTML = `
+    <div class="detail-name">${data.fullLabel}</div>
+    ${data.address ? `<div class="detail-label">Address</div><div class="detail-value">${data.address}</div>` : ''}
+    <div class="detail-label">Bank</div>
+    <div class="detail-value">
+      <span class="bank-badge" style="background:${bankColor(data.bank)}">${data.bank}</span>
+    </div>
+    <div class="detail-label">Instructions</div>
+    <div class="detail-value">${data.instrCount}</div>
+    <div class="detail-label">In-degree (callers)</div>
+    <div class="detail-value">${data.inDeg}</div>
+    <div class="detail-label">Out-degree (callees)</div>
+    <div class="detail-value">${data.outDeg}</div>
+
+    <div class="detail-label">Called by (${uCallers.length})</div>
+    <ul class="caller-list">${uCallers.slice(0,15).map(c =>
+      `<li onclick="selectNode('${c}')" title="${c}">${shortLabel(c)}</li>`).join('')}
+      ${uCallers.length > 15 ? `<li style="color:var(--text-dim);cursor:default">+${uCallers.length-15} more</li>` : ''}
+    </ul>
+
+    <div class="detail-label">Calls / jumps to (${uCallees.length})</div>
+    <ul class="callee-list">${uCallees.slice(0,15).map(c =>
+      `<li onclick="selectNode('${c}')" title="${c}">${shortLabel(c)}</li>`).join('')}
+      ${uCallees.length > 15 ? `<li style="color:var(--text-dim);cursor:default">+${uCallees.length-15} more</li>` : ''}
+    </ul>
+
+    ${instrList.length > 0 ? `
+    <div class="detail-label">Instructions (${func.instructions.filter(x=>!x.isAnonLabel).length})</div>
+    <div class="instr-block">
+      ${instrList.map(x => x.isAnonLabel
+        ? `<div class="instr-line instr-label-anon">${x.sym}:</div>`
+        : `<div class="instr-line">
+            <span class="instr-mnemonic">${x.mnemonic}</span>
+            <span class="instr-operands"> ${x.operands}</span>
+            ${x.comment ? `<span class="instr-comment"> ${x.comment}</span>` : ''}
+           </div>`
+      ).join('')}
+    </div>` : ''}
+
+    <button class="small-btn" style="margin-top:10px" onclick="applyFocus('${data.fullLabel}')">FOCUS NEIGHBORHOOD</button>
+    ${currentView === 'callgraph' ? `<button class="small-btn" style="margin-top:4px" onclick="loadCFGForNode('${data.fullLabel}')">SHOW CFG</button>` : ''}
+  `;
+}
+
+function formatBlockLabel(label) {
+  return label.split('\n').map(line => {
+    const tl = line.trim();
+    if (tl.endsWith(':')) return `<div class="instr-line instr-label-anon">${escHtml(line)}</div>`;
+    const m = line.match(/^ (\w+)\s+(.*)/);
+    if (m) return `<div class="instr-line"><span class="instr-mnemonic">${escHtml(m[1])}</span><span class="instr-operands"> ${escHtml(m[2])}</span></div>`;
+    return `<div class="instr-line">${escHtml(line)}</div>`;
+  }).join('');
+}
+
+function clearDetails() {
+  document.getElementById('details-content').innerHTML = '<p class="muted">Click a node to inspect</p>';
+}
+
+function selectNode(name) {
+  const node = cy.getElementById(name);
+  if (node && !node.empty()) {
+    cy.animate({ center: { eles: node }, zoom: Math.max(cy.zoom(), 0.8), duration: 300 });
+    node.emit('tap');
+  }
+}
+
+function loadCFGForNode(name) {
+  document.getElementById('tab-cfg').click();
+  document.getElementById('cfg-func-input').value = name;
+  showCFG(name);
+}
+
+// ─────────────────────────────────────────────────────────────
+// SEARCH
+// ─────────────────────────────────────────────────────────────
+let searchTimeout = null;
+document.getElementById('canvas-search').addEventListener('input', function() {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => doSearch(this.value.trim()), 200);
+});
+
+function doSearch(query) {
+  cy.elements().removeClass('search-match');
+  const countEl = document.getElementById('search-count');
+  if (!query) { countEl.textContent = ''; return; }
+
+  const q = query.toLowerCase();
+  let count = 0;
+  cy.nodes().forEach(n => {
+    const lbl = (n.data('fullLabel') || n.data('id') || '').toLowerCase();
+    if (lbl.includes(q)) { n.addClass('search-match'); count++; }
+  });
+
+  countEl.textContent = count ? `${count} match${count>1?'es':''}` : 'no match';
+
+  if (count > 0) {
+    const matches = cy.nodes('.search-match');
+    cy.animate({ fit: { eles: matches, padding: 60 }, duration: 350 });
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// CFG AUTOCOMPLETE
+// ─────────────────────────────────────────────────────────────
+document.getElementById('cfg-func-input').addEventListener('input', function() {
+  const q = this.value.toLowerCase();
+  const sug = document.getElementById('cfg-suggestions');
+  if (!parser || !q) { sug.style.display = 'none'; return; }
+
+  const matches = Object.keys(parser.labels)
+    .filter(k => !parser.labels[k].isRST && k.toLowerCase().includes(q))
+    .slice(0, 12);
+
+  if (matches.length === 0) { sug.style.display = 'none'; return; }
+
+  sug.innerHTML = matches.map(m =>
+    `<div class="sug-item" data-value="${m}">${m}</div>`
+  ).join('');
+  sug.style.display = 'block';
+});
+
+document.getElementById('cfg-suggestions').addEventListener('click', function(e) {
+  const item = e.target.closest('.sug-item');
+  if (!item) return;
+  document.getElementById('cfg-func-input').value = item.dataset.value;
+  this.style.display = 'none';
+});
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('#cfg-func-input') && !e.target.closest('#cfg-suggestions')) {
+    document.getElementById('cfg-suggestions').style.display = 'none';
+  }
+});
+
+// ─────────────────────────────────────────────────────────────
+// UTILITIES
+// ─────────────────────────────────────────────────────────────
+function shortLabel(name) {
+  if (!name) return '';
+  // _LABEL_XXXX_ → L:XXXX, _DATA_XXXX_ → D:XXXX
+  return name
+    .replace(/^_LABEL_([0-9A-Fa-f]+)_$/, 'L:$1')
+    .replace(/^_DATA_([0-9A-Fa-f]+)_$/, 'D:$1')
+    .replace(/^RST_/, 'RST ');
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function setLoading(on) {
+  const bar = document.getElementById('loading-bar');
+  bar.style.width = on ? '70%' : '100%';
+  if (!on) setTimeout(() => { bar.style.width = '0%'; }, 400);
+}
+
+// ─────────────────────────────────────────────────────────────
+// FILE LOADING
+// ─────────────────────────────────────────────────────────────
+function loadFile(file) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    const text = e.target.result;
+    setLoading(true);
+    document.getElementById('canvas-hint').textContent = 'Parsing…';
+
+    setTimeout(() => {
+      try {
+        parser = new AsmParser().parse(text);
+        populateBankUI();
+
+        document.getElementById('canvas-overlay').classList.add('hidden');
+        const s = parser.stats();
+        document.getElementById('stats-display').textContent =
+          `${s.functions} functions · ${s.calls} calls · ${s.jumps} jumps · ${s.rsts} RSTs`;
+
+        if (currentView === 'callgraph') showCallGraph();
+        else if (currentView === 'cfg') { /* need user to pick func */ }
+
+      } catch(err) {
+        document.getElementById('canvas-hint').textContent = 'Parse error: ' + err.message;
+        console.error(err);
+        setLoading(false);
+      }
+    }, 30);
+  };
+  reader.readAsText(file);
+}
+
+// ─────────────────────────────────────────────────────────────
+// EVENT WIRING
+// ─────────────────────────────────────────────────────────────
+document.getElementById('file-input').addEventListener('change', function() {
+  if (this.files[0]) loadFile(this.files[0]);
+});
+
+// Drag and drop on canvas
+const canvasWrapper = document.getElementById('canvas-wrapper');
+canvasWrapper.addEventListener('dragover', e => { e.preventDefault(); canvasWrapper.style.outline = '2px dashed #4a9eff'; });
+canvasWrapper.addEventListener('dragleave', () => { canvasWrapper.style.outline = ''; });
+canvasWrapper.addEventListener('drop', e => {
+  e.preventDefault();
+  canvasWrapper.style.outline = '';
+  const file = e.dataTransfer.files[0];
+  if (file && (file.name.endsWith('.asm') || file.name.endsWith('.ASM'))) loadFile(file);
+});
+
+// View tabs
+document.querySelectorAll('.tab').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    currentView = this.dataset.view;
+
+    const isCG = currentView === 'callgraph';
+    document.getElementById('cg-section').classList.toggle('hidden', !isCG);
+    document.getElementById('layout-section').classList.toggle('hidden', false);
+    document.getElementById('focus-section').classList.toggle('hidden', false);
+    document.getElementById('cfg-section').classList.toggle('hidden', isCG);
+    document.getElementById('legend-section').classList.toggle('hidden', !isCG);
+
+    if (isCG && parser) showCallGraph();
+  });
+});
+
+// Controls
+document.getElementById('min-conn').addEventListener('input', function() {
+  document.getElementById('min-conn-val').textContent = this.value;
+});
+document.getElementById('rebuild-btn').addEventListener('click', () => {
+  if (parser) showCallGraph();
+});
+document.getElementById('relayout-btn').addEventListener('click', () => {
+  if (!cy) return;
+  runLayout(document.getElementById('layout-select').value);
+});
+document.getElementById('cfg-load-btn').addEventListener('click', () => {
+  const fn = document.getElementById('cfg-func-input').value.trim();
+  if (fn && parser) showCFG(fn);
+});
+document.getElementById('cfg-func-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('cfg-load-btn').click();
+});
+
+// Focus mode
+document.getElementById('focus-btn').addEventListener('click', () => {
+  const sel = cy.nodes(':selected');
+  if (!sel.empty()) applyFocus(sel.first().id());
+  else if (cy.nodes('.highlighted').length > 0) applyFocus(cy.nodes('.highlighted').first().id());
+});
+document.getElementById('focus-clear-sidebar-btn').addEventListener('click', clearFocus);
+document.getElementById('focus-clear-btn').addEventListener('click', clearFocus);
+
+// Canvas toolbar
+document.getElementById('fit-btn').addEventListener('click', () => cy && cy.fit(40));
+document.getElementById('zoom-in-btn').addEventListener('click', () => cy && cy.zoom(cy.zoom() * 1.4));
+document.getElementById('zoom-out-btn').addEventListener('click', () => cy && cy.zoom(cy.zoom() * 0.7));
+document.getElementById('export-png-btn').addEventListener('click', () => {
+  if (!cy) return;
+  const png = cy.png({ scale:2, full:true, bg:'#0d0d14' });
+  const a = document.createElement('a');
+  a.href = png;
+  a.download = `wb3-${currentView}-${Date.now()}.png`;
+  a.click();
+});
+
+// Initial state: hide cfg controls
+document.getElementById('cfg-section').classList.add('hidden');
+
+// ─────────────────────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────────────────────
+initCytoscape();
+</script>
+</body>
+</html>

@@ -1,0 +1,4435 @@
+[
+  {
+    "id": "fdcb00",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "0",
+    "opcode": "FD CB d 00",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb01",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "1",
+    "opcode": "FD CB d 01",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb02",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "2",
+    "opcode": "FD CB d 02",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb03",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "3",
+    "opcode": "FD CB d 03",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb04",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "4",
+    "opcode": "FD CB d 04",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb05",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "5",
+    "opcode": "FD CB d 05",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb06",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "6",
+    "opcode": "FD CB d 06",
+    "mnemonic": "RLC (IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Rota el byte de memòria situat a IY+d un bit cap a l'esquerra. El bit 7 torna al bit 0 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb07",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "7",
+    "opcode": "FD CB d 07",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb08",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "8",
+    "opcode": "FD CB d 08",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb09",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "9",
+    "opcode": "FD CB d 09",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb0a",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "A",
+    "opcode": "FD CB d 0A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb0b",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "B",
+    "opcode": "FD CB d 0B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb0c",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "C",
+    "opcode": "FD CB d 0C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb0d",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "D",
+    "opcode": "FD CB d 0D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb0e",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "E",
+    "opcode": "FD CB d 0E",
+    "mnemonic": "RRC (IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Rota el byte de memòria situat a IY+d un bit cap a la dreta. El bit 0 torna al bit 7 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb0f",
+    "group": "fdcb",
+    "row": "0x",
+    "col": "F",
+    "opcode": "FD CB d 0F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb10",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "0",
+    "opcode": "FD CB d 10",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb11",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "1",
+    "opcode": "FD CB d 11",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb12",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "2",
+    "opcode": "FD CB d 12",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb13",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "3",
+    "opcode": "FD CB d 13",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb14",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "4",
+    "opcode": "FD CB d 14",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb15",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "5",
+    "opcode": "FD CB d 15",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb16",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "6",
+    "opcode": "FD CB d 16",
+    "mnemonic": "RL (IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Rota el byte de memòria situat a IY+d cap a l'esquerra passant pel carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb17",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "7",
+    "opcode": "FD CB d 17",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb18",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "8",
+    "opcode": "FD CB d 18",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb19",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "9",
+    "opcode": "FD CB d 19",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb1a",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "A",
+    "opcode": "FD CB d 1A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb1b",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "B",
+    "opcode": "FD CB d 1B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb1c",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "C",
+    "opcode": "FD CB d 1C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb1d",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "D",
+    "opcode": "FD CB d 1D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb1e",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "E",
+    "opcode": "FD CB d 1E",
+    "mnemonic": "RR (IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Rota el byte de memòria situat a IY+d cap a la dreta passant pel carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb1f",
+    "group": "fdcb",
+    "row": "1x",
+    "col": "F",
+    "opcode": "FD CB d 1F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb20",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "0",
+    "opcode": "FD CB d 20",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb21",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "1",
+    "opcode": "FD CB d 21",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb22",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "2",
+    "opcode": "FD CB d 22",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb23",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "3",
+    "opcode": "FD CB d 23",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb24",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "4",
+    "opcode": "FD CB d 24",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb25",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "5",
+    "opcode": "FD CB d 25",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb26",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "6",
+    "opcode": "FD CB d 26",
+    "mnemonic": "SLA (IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Desplaça el byte de memòria situat a IY+d un bit cap a l'esquerra.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb27",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "7",
+    "opcode": "FD CB d 27",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb28",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "8",
+    "opcode": "FD CB d 28",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb29",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "9",
+    "opcode": "FD CB d 29",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb2a",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "A",
+    "opcode": "FD CB d 2A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb2b",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "B",
+    "opcode": "FD CB d 2B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb2c",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "C",
+    "opcode": "FD CB d 2C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb2d",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "D",
+    "opcode": "FD CB d 2D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb2e",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "E",
+    "opcode": "FD CB d 2E",
+    "mnemonic": "SRA (IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Desplaça el byte de memòria situat a IY+d un bit cap a la dreta conservant el bit de signe.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb2f",
+    "group": "fdcb",
+    "row": "2x",
+    "col": "F",
+    "opcode": "FD CB d 2F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb30",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "0",
+    "opcode": "FD CB d 30",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb31",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "1",
+    "opcode": "FD CB d 31",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb32",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "2",
+    "opcode": "FD CB d 32",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb33",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "3",
+    "opcode": "FD CB d 33",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb34",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "4",
+    "opcode": "FD CB d 34",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb35",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "5",
+    "opcode": "FD CB d 35",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb36",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "6",
+    "opcode": "FD CB d 36",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb37",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "7",
+    "opcode": "FD CB d 37",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb38",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "8",
+    "opcode": "FD CB d 38",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb39",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "9",
+    "opcode": "FD CB d 39",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb3a",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "A",
+    "opcode": "FD CB d 3A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb3b",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "B",
+    "opcode": "FD CB d 3B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb3c",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "C",
+    "opcode": "FD CB d 3C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb3d",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "D",
+    "opcode": "FD CB d 3D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb3e",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "E",
+    "opcode": "FD CB d 3E",
+    "mnemonic": "SRL (IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Desplaça el byte de memòria situat a IY+d un bit cap a la dreta i posa el bit 7 nou a 0.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb3f",
+    "group": "fdcb",
+    "row": "3x",
+    "col": "F",
+    "opcode": "FD CB d 3F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb40",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "0",
+    "opcode": "FD CB d 40",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb41",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "1",
+    "opcode": "FD CB d 41",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb42",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "2",
+    "opcode": "FD CB d 42",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb43",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "3",
+    "opcode": "FD CB d 43",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb44",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "4",
+    "opcode": "FD CB d 44",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb45",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "5",
+    "opcode": "FD CB d 45",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb46",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "6",
+    "opcode": "FD CB d 46",
+    "mnemonic": "BIT 0,(IY+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 0 del byte de memòria situat a IY+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb47",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "7",
+    "opcode": "FD CB d 47",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb48",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "8",
+    "opcode": "FD CB d 48",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb49",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "9",
+    "opcode": "FD CB d 49",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb4a",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "A",
+    "opcode": "FD CB d 4A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb4b",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "B",
+    "opcode": "FD CB d 4B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb4c",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "C",
+    "opcode": "FD CB d 4C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb4d",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "D",
+    "opcode": "FD CB d 4D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb4e",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "E",
+    "opcode": "FD CB d 4E",
+    "mnemonic": "BIT 1,(IY+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 1 del byte de memòria situat a IY+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb4f",
+    "group": "fdcb",
+    "row": "4x",
+    "col": "F",
+    "opcode": "FD CB d 4F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb50",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "0",
+    "opcode": "FD CB d 50",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb51",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "1",
+    "opcode": "FD CB d 51",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb52",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "2",
+    "opcode": "FD CB d 52",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb53",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "3",
+    "opcode": "FD CB d 53",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb54",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "4",
+    "opcode": "FD CB d 54",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb55",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "5",
+    "opcode": "FD CB d 55",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb56",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "6",
+    "opcode": "FD CB d 56",
+    "mnemonic": "BIT 2,(IY+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 2 del byte de memòria situat a IY+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb57",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "7",
+    "opcode": "FD CB d 57",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb58",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "8",
+    "opcode": "FD CB d 58",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb59",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "9",
+    "opcode": "FD CB d 59",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb5a",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "A",
+    "opcode": "FD CB d 5A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb5b",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "B",
+    "opcode": "FD CB d 5B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb5c",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "C",
+    "opcode": "FD CB d 5C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb5d",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "D",
+    "opcode": "FD CB d 5D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb5e",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "E",
+    "opcode": "FD CB d 5E",
+    "mnemonic": "BIT 3,(IY+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 3 del byte de memòria situat a IY+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb5f",
+    "group": "fdcb",
+    "row": "5x",
+    "col": "F",
+    "opcode": "FD CB d 5F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb60",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "0",
+    "opcode": "FD CB d 60",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb61",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "1",
+    "opcode": "FD CB d 61",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb62",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "2",
+    "opcode": "FD CB d 62",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb63",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "3",
+    "opcode": "FD CB d 63",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb64",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "4",
+    "opcode": "FD CB d 64",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb65",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "5",
+    "opcode": "FD CB d 65",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb66",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "6",
+    "opcode": "FD CB d 66",
+    "mnemonic": "BIT 4,(IY+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 4 del byte de memòria situat a IY+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb67",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "7",
+    "opcode": "FD CB d 67",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb68",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "8",
+    "opcode": "FD CB d 68",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb69",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "9",
+    "opcode": "FD CB d 69",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb6a",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "A",
+    "opcode": "FD CB d 6A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb6b",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "B",
+    "opcode": "FD CB d 6B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb6c",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "C",
+    "opcode": "FD CB d 6C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb6d",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "D",
+    "opcode": "FD CB d 6D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb6e",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "E",
+    "opcode": "FD CB d 6E",
+    "mnemonic": "BIT 5,(IY+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 5 del byte de memòria situat a IY+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb6f",
+    "group": "fdcb",
+    "row": "6x",
+    "col": "F",
+    "opcode": "FD CB d 6F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb70",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "0",
+    "opcode": "FD CB d 70",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb71",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "1",
+    "opcode": "FD CB d 71",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb72",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "2",
+    "opcode": "FD CB d 72",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb73",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "3",
+    "opcode": "FD CB d 73",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb74",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "4",
+    "opcode": "FD CB d 74",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb75",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "5",
+    "opcode": "FD CB d 75",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb76",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "6",
+    "opcode": "FD CB d 76",
+    "mnemonic": "BIT 6,(IY+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 6 del byte de memòria situat a IY+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb77",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "7",
+    "opcode": "FD CB d 77",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb78",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "8",
+    "opcode": "FD CB d 78",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb79",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "9",
+    "opcode": "FD CB d 79",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb7a",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "A",
+    "opcode": "FD CB d 7A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb7b",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "B",
+    "opcode": "FD CB d 7B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb7c",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "C",
+    "opcode": "FD CB d 7C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb7d",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "D",
+    "opcode": "FD CB d 7D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb7e",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "E",
+    "opcode": "FD CB d 7E",
+    "mnemonic": "BIT 7,(IY+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 7 del byte de memòria situat a IY+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb7f",
+    "group": "fdcb",
+    "row": "7x",
+    "col": "F",
+    "opcode": "FD CB d 7F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb80",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "0",
+    "opcode": "FD CB d 80",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb81",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "1",
+    "opcode": "FD CB d 81",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb82",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "2",
+    "opcode": "FD CB d 82",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb83",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "3",
+    "opcode": "FD CB d 83",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb84",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "4",
+    "opcode": "FD CB d 84",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb85",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "5",
+    "opcode": "FD CB d 85",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb86",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "6",
+    "opcode": "FD CB d 86",
+    "mnemonic": "RES 0,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 0 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb87",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "7",
+    "opcode": "FD CB d 87",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb88",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "8",
+    "opcode": "FD CB d 88",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb89",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "9",
+    "opcode": "FD CB d 89",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb8a",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "A",
+    "opcode": "FD CB d 8A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb8b",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "B",
+    "opcode": "FD CB d 8B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb8c",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "C",
+    "opcode": "FD CB d 8C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb8d",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "D",
+    "opcode": "FD CB d 8D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb8e",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "E",
+    "opcode": "FD CB d 8E",
+    "mnemonic": "RES 1,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 1 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb8f",
+    "group": "fdcb",
+    "row": "8x",
+    "col": "F",
+    "opcode": "FD CB d 8F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb90",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "0",
+    "opcode": "FD CB d 90",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb91",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "1",
+    "opcode": "FD CB d 91",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb92",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "2",
+    "opcode": "FD CB d 92",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb93",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "3",
+    "opcode": "FD CB d 93",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb94",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "4",
+    "opcode": "FD CB d 94",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb95",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "5",
+    "opcode": "FD CB d 95",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb96",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "6",
+    "opcode": "FD CB d 96",
+    "mnemonic": "RES 2,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 2 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb97",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "7",
+    "opcode": "FD CB d 97",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb98",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "8",
+    "opcode": "FD CB d 98",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb99",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "9",
+    "opcode": "FD CB d 99",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb9a",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "A",
+    "opcode": "FD CB d 9A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb9b",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "B",
+    "opcode": "FD CB d 9B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb9c",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "C",
+    "opcode": "FD CB d 9C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb9d",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "D",
+    "opcode": "FD CB d 9D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcb9e",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "E",
+    "opcode": "FD CB d 9E",
+    "mnemonic": "RES 3,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 3 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcb9f",
+    "group": "fdcb",
+    "row": "9x",
+    "col": "F",
+    "opcode": "FD CB d 9F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcba0",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "0",
+    "opcode": "FD CB d A0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcba1",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "1",
+    "opcode": "FD CB d A1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcba2",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "2",
+    "opcode": "FD CB d A2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcba3",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "3",
+    "opcode": "FD CB d A3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcba4",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "4",
+    "opcode": "FD CB d A4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcba5",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "5",
+    "opcode": "FD CB d A5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcba6",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "6",
+    "opcode": "FD CB d A6",
+    "mnemonic": "RES 4,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 4 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcba7",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "7",
+    "opcode": "FD CB d A7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcba8",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "8",
+    "opcode": "FD CB d A8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcba9",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "9",
+    "opcode": "FD CB d A9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbaa",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "A",
+    "opcode": "FD CB d AA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbab",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "B",
+    "opcode": "FD CB d AB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbac",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "C",
+    "opcode": "FD CB d AC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbad",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "D",
+    "opcode": "FD CB d AD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbae",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "E",
+    "opcode": "FD CB d AE",
+    "mnemonic": "RES 5,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 5 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcbaf",
+    "group": "fdcb",
+    "row": "Ax",
+    "col": "F",
+    "opcode": "FD CB d AF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbb0",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "0",
+    "opcode": "FD CB d B0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbb1",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "1",
+    "opcode": "FD CB d B1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbb2",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "2",
+    "opcode": "FD CB d B2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbb3",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "3",
+    "opcode": "FD CB d B3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbb4",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "4",
+    "opcode": "FD CB d B4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbb5",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "5",
+    "opcode": "FD CB d B5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbb6",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "6",
+    "opcode": "FD CB d B6",
+    "mnemonic": "RES 6,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 6 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcbb7",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "7",
+    "opcode": "FD CB d B7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbb8",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "8",
+    "opcode": "FD CB d B8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbb9",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "9",
+    "opcode": "FD CB d B9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbba",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "A",
+    "opcode": "FD CB d BA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbbb",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "B",
+    "opcode": "FD CB d BB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbbc",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "C",
+    "opcode": "FD CB d BC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbbd",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "D",
+    "opcode": "FD CB d BD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbbe",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "E",
+    "opcode": "FD CB d BE",
+    "mnemonic": "RES 7,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 7 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcbbf",
+    "group": "fdcb",
+    "row": "Bx",
+    "col": "F",
+    "opcode": "FD CB d BF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbc0",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "0",
+    "opcode": "FD CB d C0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbc1",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "1",
+    "opcode": "FD CB d C1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbc2",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "2",
+    "opcode": "FD CB d C2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbc3",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "3",
+    "opcode": "FD CB d C3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbc4",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "4",
+    "opcode": "FD CB d C4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbc5",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "5",
+    "opcode": "FD CB d C5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbc6",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "6",
+    "opcode": "FD CB d C6",
+    "mnemonic": "SET 0,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 0 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcbc7",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "7",
+    "opcode": "FD CB d C7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbc8",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "8",
+    "opcode": "FD CB d C8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbc9",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "9",
+    "opcode": "FD CB d C9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbca",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "A",
+    "opcode": "FD CB d CA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbcb",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "B",
+    "opcode": "FD CB d CB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbcc",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "C",
+    "opcode": "FD CB d CC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbcd",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "D",
+    "opcode": "FD CB d CD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbce",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "E",
+    "opcode": "FD CB d CE",
+    "mnemonic": "SET 1,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 1 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcbcf",
+    "group": "fdcb",
+    "row": "Cx",
+    "col": "F",
+    "opcode": "FD CB d CF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbd0",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "0",
+    "opcode": "FD CB d D0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbd1",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "1",
+    "opcode": "FD CB d D1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbd2",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "2",
+    "opcode": "FD CB d D2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbd3",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "3",
+    "opcode": "FD CB d D3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbd4",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "4",
+    "opcode": "FD CB d D4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbd5",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "5",
+    "opcode": "FD CB d D5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbd6",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "6",
+    "opcode": "FD CB d D6",
+    "mnemonic": "SET 2,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 2 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcbd7",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "7",
+    "opcode": "FD CB d D7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbd8",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "8",
+    "opcode": "FD CB d D8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbd9",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "9",
+    "opcode": "FD CB d D9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbda",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "A",
+    "opcode": "FD CB d DA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbdb",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "B",
+    "opcode": "FD CB d DB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbdc",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "C",
+    "opcode": "FD CB d DC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbdd",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "D",
+    "opcode": "FD CB d DD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbde",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "E",
+    "opcode": "FD CB d DE",
+    "mnemonic": "SET 3,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 3 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcbdf",
+    "group": "fdcb",
+    "row": "Dx",
+    "col": "F",
+    "opcode": "FD CB d DF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbe0",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "0",
+    "opcode": "FD CB d E0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbe1",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "1",
+    "opcode": "FD CB d E1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbe2",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "2",
+    "opcode": "FD CB d E2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbe3",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "3",
+    "opcode": "FD CB d E3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbe4",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "4",
+    "opcode": "FD CB d E4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbe5",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "5",
+    "opcode": "FD CB d E5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbe6",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "6",
+    "opcode": "FD CB d E6",
+    "mnemonic": "SET 4,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 4 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcbe7",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "7",
+    "opcode": "FD CB d E7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbe8",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "8",
+    "opcode": "FD CB d E8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbe9",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "9",
+    "opcode": "FD CB d E9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbea",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "A",
+    "opcode": "FD CB d EA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbeb",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "B",
+    "opcode": "FD CB d EB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbec",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "C",
+    "opcode": "FD CB d EC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbed",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "D",
+    "opcode": "FD CB d ED",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbee",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "E",
+    "opcode": "FD CB d EE",
+    "mnemonic": "SET 5,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 5 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcbef",
+    "group": "fdcb",
+    "row": "Ex",
+    "col": "F",
+    "opcode": "FD CB d EF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbf0",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "0",
+    "opcode": "FD CB d F0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbf1",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "1",
+    "opcode": "FD CB d F1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbf2",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "2",
+    "opcode": "FD CB d F2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbf3",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "3",
+    "opcode": "FD CB d F3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbf4",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "4",
+    "opcode": "FD CB d F4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbf5",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "5",
+    "opcode": "FD CB d F5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbf6",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "6",
+    "opcode": "FD CB d F6",
+    "mnemonic": "SET 6,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 6 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcbf7",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "7",
+    "opcode": "FD CB d F7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbf8",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "8",
+    "opcode": "FD CB d F8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbf9",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "9",
+    "opcode": "FD CB d F9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbfa",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "A",
+    "opcode": "FD CB d FA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbfb",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "B",
+    "opcode": "FD CB d FB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbfc",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "C",
+    "opcode": "FD CB d FC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbfd",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "D",
+    "opcode": "FD CB d FD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "fdcbfe",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "E",
+    "opcode": "FD CB d FE",
+    "mnemonic": "SET 7,(IY+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 7 del byte de memòria situat a IY+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "fdcbff",
+    "group": "fdcb",
+    "row": "Fx",
+    "col": "F",
+    "opcode": "FD CB d FF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de FD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  }
+]

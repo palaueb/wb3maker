@@ -1,0 +1,4579 @@
+[
+  {
+    "id": "ed00",
+    "group": "ed",
+    "row": "0x",
+    "col": "0",
+    "opcode": "ED 00",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed01",
+    "group": "ed",
+    "row": "0x",
+    "col": "1",
+    "opcode": "ED 01",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed02",
+    "group": "ed",
+    "row": "0x",
+    "col": "2",
+    "opcode": "ED 02",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed03",
+    "group": "ed",
+    "row": "0x",
+    "col": "3",
+    "opcode": "ED 03",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed04",
+    "group": "ed",
+    "row": "0x",
+    "col": "4",
+    "opcode": "ED 04",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed05",
+    "group": "ed",
+    "row": "0x",
+    "col": "5",
+    "opcode": "ED 05",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed06",
+    "group": "ed",
+    "row": "0x",
+    "col": "6",
+    "opcode": "ED 06",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed07",
+    "group": "ed",
+    "row": "0x",
+    "col": "7",
+    "opcode": "ED 07",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed08",
+    "group": "ed",
+    "row": "0x",
+    "col": "8",
+    "opcode": "ED 08",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed09",
+    "group": "ed",
+    "row": "0x",
+    "col": "9",
+    "opcode": "ED 09",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed0a",
+    "group": "ed",
+    "row": "0x",
+    "col": "A",
+    "opcode": "ED 0A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed0b",
+    "group": "ed",
+    "row": "0x",
+    "col": "B",
+    "opcode": "ED 0B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed0c",
+    "group": "ed",
+    "row": "0x",
+    "col": "C",
+    "opcode": "ED 0C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed0d",
+    "group": "ed",
+    "row": "0x",
+    "col": "D",
+    "opcode": "ED 0D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed0e",
+    "group": "ed",
+    "row": "0x",
+    "col": "E",
+    "opcode": "ED 0E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed0f",
+    "group": "ed",
+    "row": "0x",
+    "col": "F",
+    "opcode": "ED 0F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed10",
+    "group": "ed",
+    "row": "1x",
+    "col": "0",
+    "opcode": "ED 10",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed11",
+    "group": "ed",
+    "row": "1x",
+    "col": "1",
+    "opcode": "ED 11",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed12",
+    "group": "ed",
+    "row": "1x",
+    "col": "2",
+    "opcode": "ED 12",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed13",
+    "group": "ed",
+    "row": "1x",
+    "col": "3",
+    "opcode": "ED 13",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed14",
+    "group": "ed",
+    "row": "1x",
+    "col": "4",
+    "opcode": "ED 14",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed15",
+    "group": "ed",
+    "row": "1x",
+    "col": "5",
+    "opcode": "ED 15",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed16",
+    "group": "ed",
+    "row": "1x",
+    "col": "6",
+    "opcode": "ED 16",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed17",
+    "group": "ed",
+    "row": "1x",
+    "col": "7",
+    "opcode": "ED 17",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed18",
+    "group": "ed",
+    "row": "1x",
+    "col": "8",
+    "opcode": "ED 18",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed19",
+    "group": "ed",
+    "row": "1x",
+    "col": "9",
+    "opcode": "ED 19",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed1a",
+    "group": "ed",
+    "row": "1x",
+    "col": "A",
+    "opcode": "ED 1A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed1b",
+    "group": "ed",
+    "row": "1x",
+    "col": "B",
+    "opcode": "ED 1B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed1c",
+    "group": "ed",
+    "row": "1x",
+    "col": "C",
+    "opcode": "ED 1C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed1d",
+    "group": "ed",
+    "row": "1x",
+    "col": "D",
+    "opcode": "ED 1D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed1e",
+    "group": "ed",
+    "row": "1x",
+    "col": "E",
+    "opcode": "ED 1E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed1f",
+    "group": "ed",
+    "row": "1x",
+    "col": "F",
+    "opcode": "ED 1F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed20",
+    "group": "ed",
+    "row": "2x",
+    "col": "0",
+    "opcode": "ED 20",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed21",
+    "group": "ed",
+    "row": "2x",
+    "col": "1",
+    "opcode": "ED 21",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed22",
+    "group": "ed",
+    "row": "2x",
+    "col": "2",
+    "opcode": "ED 22",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed23",
+    "group": "ed",
+    "row": "2x",
+    "col": "3",
+    "opcode": "ED 23",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed24",
+    "group": "ed",
+    "row": "2x",
+    "col": "4",
+    "opcode": "ED 24",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed25",
+    "group": "ed",
+    "row": "2x",
+    "col": "5",
+    "opcode": "ED 25",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed26",
+    "group": "ed",
+    "row": "2x",
+    "col": "6",
+    "opcode": "ED 26",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed27",
+    "group": "ed",
+    "row": "2x",
+    "col": "7",
+    "opcode": "ED 27",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed28",
+    "group": "ed",
+    "row": "2x",
+    "col": "8",
+    "opcode": "ED 28",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed29",
+    "group": "ed",
+    "row": "2x",
+    "col": "9",
+    "opcode": "ED 29",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed2a",
+    "group": "ed",
+    "row": "2x",
+    "col": "A",
+    "opcode": "ED 2A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed2b",
+    "group": "ed",
+    "row": "2x",
+    "col": "B",
+    "opcode": "ED 2B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed2c",
+    "group": "ed",
+    "row": "2x",
+    "col": "C",
+    "opcode": "ED 2C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed2d",
+    "group": "ed",
+    "row": "2x",
+    "col": "D",
+    "opcode": "ED 2D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed2e",
+    "group": "ed",
+    "row": "2x",
+    "col": "E",
+    "opcode": "ED 2E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed2f",
+    "group": "ed",
+    "row": "2x",
+    "col": "F",
+    "opcode": "ED 2F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed30",
+    "group": "ed",
+    "row": "3x",
+    "col": "0",
+    "opcode": "ED 30",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed31",
+    "group": "ed",
+    "row": "3x",
+    "col": "1",
+    "opcode": "ED 31",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed32",
+    "group": "ed",
+    "row": "3x",
+    "col": "2",
+    "opcode": "ED 32",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed33",
+    "group": "ed",
+    "row": "3x",
+    "col": "3",
+    "opcode": "ED 33",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed34",
+    "group": "ed",
+    "row": "3x",
+    "col": "4",
+    "opcode": "ED 34",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed35",
+    "group": "ed",
+    "row": "3x",
+    "col": "5",
+    "opcode": "ED 35",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed36",
+    "group": "ed",
+    "row": "3x",
+    "col": "6",
+    "opcode": "ED 36",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed37",
+    "group": "ed",
+    "row": "3x",
+    "col": "7",
+    "opcode": "ED 37",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed38",
+    "group": "ed",
+    "row": "3x",
+    "col": "8",
+    "opcode": "ED 38",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed39",
+    "group": "ed",
+    "row": "3x",
+    "col": "9",
+    "opcode": "ED 39",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed3a",
+    "group": "ed",
+    "row": "3x",
+    "col": "A",
+    "opcode": "ED 3A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed3b",
+    "group": "ed",
+    "row": "3x",
+    "col": "B",
+    "opcode": "ED 3B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed3c",
+    "group": "ed",
+    "row": "3x",
+    "col": "C",
+    "opcode": "ED 3C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed3d",
+    "group": "ed",
+    "row": "3x",
+    "col": "D",
+    "opcode": "ED 3D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed3e",
+    "group": "ed",
+    "row": "3x",
+    "col": "E",
+    "opcode": "ED 3E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed3f",
+    "group": "ed",
+    "row": "3x",
+    "col": "F",
+    "opcode": "ED 3F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed40",
+    "group": "ed",
+    "row": "4x",
+    "col": "0",
+    "opcode": "ED 40",
+    "mnemonic": "IN B,(C)",
+    "clck": "12",
+    "siz": "2",
+    "description": "Llegeix un byte del port apuntat per BC i el carrega al registre B.",
+    "category": "io",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed41",
+    "group": "ed",
+    "row": "4x",
+    "col": "1",
+    "opcode": "ED 41",
+    "mnemonic": "OUT (C),B",
+    "clck": "12",
+    "siz": "2",
+    "description": "Escriu el contingut del registre B al port apuntat per BC.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed42",
+    "group": "ed",
+    "row": "4x",
+    "col": "2",
+    "opcode": "ED 42",
+    "mnemonic": "SBC HL,BC",
+    "clck": "15",
+    "siz": "2",
+    "description": "Resta BC i el carry de HL, i deixa el resultat a HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "És la versió de 16 bits de SBC."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed43",
+    "group": "ed",
+    "row": "4x",
+    "col": "3",
+    "opcode": "ED 43 nn nn",
+    "mnemonic": "LD (nn),BC",
+    "clck": "20",
+    "siz": "4",
+    "description": "Guarda el valor de 16 bits de BC a memòria començant a l'adreça nn.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "S'escriu primer el byte baix i després el byte alt."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed44",
+    "group": "ed",
+    "row": "4x",
+    "col": "4",
+    "opcode": "ED 44",
+    "mnemonic": "NEG",
+    "clck": "8",
+    "siz": "2",
+    "description": "Canvia A pel seu complement a dos. És equivalent a fer 0 - A.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "N queda activat; C indica si A era diferent de zero."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed45",
+    "group": "ed",
+    "row": "4x",
+    "col": "5",
+    "opcode": "ED 45",
+    "mnemonic": "RETN",
+    "clck": "14",
+    "siz": "2",
+    "description": "Torna d'una interrupció no màscable i restaura l'estat intern d'interrupcions.",
+    "category": "control",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags visibles."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed46",
+    "group": "ed",
+    "row": "4x",
+    "col": "6",
+    "opcode": "ED 46",
+    "mnemonic": "IM 0",
+    "clck": "8",
+    "siz": "2",
+    "description": "Activa el mode d'interrupció 0.",
+    "category": "control",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed47",
+    "group": "ed",
+    "row": "4x",
+    "col": "7",
+    "opcode": "ED 47",
+    "mnemonic": "LD I,A",
+    "clck": "9",
+    "siz": "2",
+    "description": "Copia el contingut d'A al registre I, usat en el mode d'interrupció 2.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed48",
+    "group": "ed",
+    "row": "4x",
+    "col": "8",
+    "opcode": "ED 48",
+    "mnemonic": "IN C,(C)",
+    "clck": "12",
+    "siz": "2",
+    "description": "Llegeix un byte del port apuntat per BC i el carrega al registre C.",
+    "category": "io",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed49",
+    "group": "ed",
+    "row": "4x",
+    "col": "9",
+    "opcode": "ED 49",
+    "mnemonic": "OUT (C),C",
+    "clck": "12",
+    "siz": "2",
+    "description": "Escriu el contingut del registre C al port apuntat per BC.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed4a",
+    "group": "ed",
+    "row": "4x",
+    "col": "A",
+    "opcode": "ED 4A",
+    "mnemonic": "ADC HL,BC",
+    "clck": "15",
+    "siz": "2",
+    "description": "Suma BC i el carry a HL, i deixa el resultat a HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "És la versió de 16 bits d'ADC."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed4b",
+    "group": "ed",
+    "row": "4x",
+    "col": "B",
+    "opcode": "ED 4B nn nn",
+    "mnemonic": "LD BC,(nn)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Llegeix dos bytes consecutius de memòria començant a nn i els carrega al registre BC.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "Es llegeix primer el byte baix i després el byte alt."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed4c",
+    "group": "ed",
+    "row": "4x",
+    "col": "C",
+    "opcode": "ED 4C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed4d",
+    "group": "ed",
+    "row": "4x",
+    "col": "D",
+    "opcode": "ED 4D",
+    "mnemonic": "RETI",
+    "clck": "14",
+    "siz": "2",
+    "description": "Torna d'una rutina d'interrupció màscable i senyalitza al maquinari que el servei ha acabat.",
+    "category": "control",
+    "flags": {
+      "affected": [],
+      "notes": "Normalment s'usa al final d'una ISR."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed4e",
+    "group": "ed",
+    "row": "4x",
+    "col": "E",
+    "opcode": "ED 4E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed4f",
+    "group": "ed",
+    "row": "4x",
+    "col": "F",
+    "opcode": "ED 4F",
+    "mnemonic": "LD R,A",
+    "clck": "9",
+    "siz": "2",
+    "description": "Copia el contingut d'A al registre de refresh R.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed50",
+    "group": "ed",
+    "row": "5x",
+    "col": "0",
+    "opcode": "ED 50",
+    "mnemonic": "IN D,(C)",
+    "clck": "12",
+    "siz": "2",
+    "description": "Llegeix un byte del port apuntat per BC i el carrega al registre D.",
+    "category": "io",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed51",
+    "group": "ed",
+    "row": "5x",
+    "col": "1",
+    "opcode": "ED 51",
+    "mnemonic": "OUT (C),D",
+    "clck": "12",
+    "siz": "2",
+    "description": "Escriu el contingut del registre D al port apuntat per BC.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed52",
+    "group": "ed",
+    "row": "5x",
+    "col": "2",
+    "opcode": "ED 52",
+    "mnemonic": "SBC HL,DE",
+    "clck": "15",
+    "siz": "2",
+    "description": "Resta DE i el carry de HL, i deixa el resultat a HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "És la versió de 16 bits de SBC."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed53",
+    "group": "ed",
+    "row": "5x",
+    "col": "3",
+    "opcode": "ED 53 nn nn",
+    "mnemonic": "LD (nn),DE",
+    "clck": "20",
+    "siz": "4",
+    "description": "Guarda el valor de 16 bits de DE a memòria començant a l'adreça nn.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "S'escriu primer el byte baix i després el byte alt."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed54",
+    "group": "ed",
+    "row": "5x",
+    "col": "4",
+    "opcode": "ED 54",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed55",
+    "group": "ed",
+    "row": "5x",
+    "col": "5",
+    "opcode": "ED 55",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed56",
+    "group": "ed",
+    "row": "5x",
+    "col": "6",
+    "opcode": "ED 56",
+    "mnemonic": "IM 1",
+    "clck": "8",
+    "siz": "2",
+    "description": "Activa el mode d'interrupció 1.",
+    "category": "control",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed57",
+    "group": "ed",
+    "row": "5x",
+    "col": "7",
+    "opcode": "ED 57",
+    "mnemonic": "LD A,I",
+    "clck": "9",
+    "siz": "2",
+    "description": "Copia el registre I a A.",
+    "category": "load",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "P/V rep el valor d'IFF2; C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed58",
+    "group": "ed",
+    "row": "5x",
+    "col": "8",
+    "opcode": "ED 58",
+    "mnemonic": "IN E,(C)",
+    "clck": "12",
+    "siz": "2",
+    "description": "Llegeix un byte del port apuntat per BC i el carrega al registre E.",
+    "category": "io",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed59",
+    "group": "ed",
+    "row": "5x",
+    "col": "9",
+    "opcode": "ED 59",
+    "mnemonic": "OUT (C),E",
+    "clck": "12",
+    "siz": "2",
+    "description": "Escriu el contingut del registre E al port apuntat per BC.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed5a",
+    "group": "ed",
+    "row": "5x",
+    "col": "A",
+    "opcode": "ED 5A",
+    "mnemonic": "ADC HL,DE",
+    "clck": "15",
+    "siz": "2",
+    "description": "Suma DE i el carry a HL, i deixa el resultat a HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "És la versió de 16 bits d'ADC."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed5b",
+    "group": "ed",
+    "row": "5x",
+    "col": "B",
+    "opcode": "ED 5B nn nn",
+    "mnemonic": "LD DE,(nn)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Llegeix dos bytes consecutius de memòria començant a nn i els carrega al registre DE.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "Es llegeix primer el byte baix i després el byte alt."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed5c",
+    "group": "ed",
+    "row": "5x",
+    "col": "C",
+    "opcode": "ED 5C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed5d",
+    "group": "ed",
+    "row": "5x",
+    "col": "D",
+    "opcode": "ED 5D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed5e",
+    "group": "ed",
+    "row": "5x",
+    "col": "E",
+    "opcode": "ED 5E",
+    "mnemonic": "IM 2",
+    "clck": "8",
+    "siz": "2",
+    "description": "Activa el mode d'interrupció 2.",
+    "category": "control",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed5f",
+    "group": "ed",
+    "row": "5x",
+    "col": "F",
+    "opcode": "ED 5F",
+    "mnemonic": "LD A,R",
+    "clck": "9",
+    "siz": "2",
+    "description": "Copia el registre de refresh R a A.",
+    "category": "load",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "P/V rep el valor d'IFF2; C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed60",
+    "group": "ed",
+    "row": "6x",
+    "col": "0",
+    "opcode": "ED 60",
+    "mnemonic": "IN H,(C)",
+    "clck": "12",
+    "siz": "2",
+    "description": "Llegeix un byte del port apuntat per BC i el carrega al registre H.",
+    "category": "io",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed61",
+    "group": "ed",
+    "row": "6x",
+    "col": "1",
+    "opcode": "ED 61",
+    "mnemonic": "OUT (C),H",
+    "clck": "12",
+    "siz": "2",
+    "description": "Escriu el contingut del registre H al port apuntat per BC.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed62",
+    "group": "ed",
+    "row": "6x",
+    "col": "2",
+    "opcode": "ED 62",
+    "mnemonic": "SBC HL,HL",
+    "clck": "15",
+    "siz": "2",
+    "description": "Resta HL i el carry de HL, i deixa el resultat a HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "És la versió de 16 bits de SBC."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed63",
+    "group": "ed",
+    "row": "6x",
+    "col": "3",
+    "opcode": "ED 63 nn nn",
+    "mnemonic": "LD (nn),HL",
+    "clck": "20",
+    "siz": "4",
+    "description": "Guarda el valor de 16 bits de HL a memòria començant a l'adreça nn.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "S'escriu primer el byte baix i després el byte alt."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed64",
+    "group": "ed",
+    "row": "6x",
+    "col": "4",
+    "opcode": "ED 64",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed65",
+    "group": "ed",
+    "row": "6x",
+    "col": "5",
+    "opcode": "ED 65",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed66",
+    "group": "ed",
+    "row": "6x",
+    "col": "6",
+    "opcode": "ED 66",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed67",
+    "group": "ed",
+    "row": "6x",
+    "col": "7",
+    "opcode": "ED 67",
+    "mnemonic": "RRD",
+    "clck": "18",
+    "siz": "2",
+    "description": "Rota nibbles entre A i el byte apuntat per HL cap a la dreta. És útil amb valors BCD.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "P/V",
+        "H",
+        "N"
+      ],
+      "notes": "H i N es reinicien; C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed68",
+    "group": "ed",
+    "row": "6x",
+    "col": "8",
+    "opcode": "ED 68",
+    "mnemonic": "IN L,(C)",
+    "clck": "12",
+    "siz": "2",
+    "description": "Llegeix un byte del port apuntat per BC i el carrega al registre L.",
+    "category": "io",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed69",
+    "group": "ed",
+    "row": "6x",
+    "col": "9",
+    "opcode": "ED 69",
+    "mnemonic": "OUT (C),L",
+    "clck": "12",
+    "siz": "2",
+    "description": "Escriu el contingut del registre L al port apuntat per BC.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed6a",
+    "group": "ed",
+    "row": "6x",
+    "col": "A",
+    "opcode": "ED 6A",
+    "mnemonic": "ADC HL,HL",
+    "clck": "15",
+    "siz": "2",
+    "description": "Suma HL i el carry a HL, i deixa el resultat a HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "És la versió de 16 bits d'ADC."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed6b",
+    "group": "ed",
+    "row": "6x",
+    "col": "B",
+    "opcode": "ED 6B nn nn",
+    "mnemonic": "LD HL,(nn)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Llegeix dos bytes consecutius de memòria començant a nn i els carrega al registre HL.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "Es llegeix primer el byte baix i després el byte alt."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed6c",
+    "group": "ed",
+    "row": "6x",
+    "col": "C",
+    "opcode": "ED 6C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed6d",
+    "group": "ed",
+    "row": "6x",
+    "col": "D",
+    "opcode": "ED 6D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed6e",
+    "group": "ed",
+    "row": "6x",
+    "col": "E",
+    "opcode": "ED 6E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed6f",
+    "group": "ed",
+    "row": "6x",
+    "col": "F",
+    "opcode": "ED 6F",
+    "mnemonic": "RLD",
+    "clck": "18",
+    "siz": "2",
+    "description": "Rota nibbles entre A i el byte apuntat per HL cap a l'esquerra. És útil amb valors BCD.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "P/V",
+        "H",
+        "N"
+      ],
+      "notes": "H i N es reinicien; C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed70",
+    "group": "ed",
+    "row": "7x",
+    "col": "0",
+    "opcode": "ED 70",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed71",
+    "group": "ed",
+    "row": "7x",
+    "col": "1",
+    "opcode": "ED 71",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed72",
+    "group": "ed",
+    "row": "7x",
+    "col": "2",
+    "opcode": "ED 72",
+    "mnemonic": "SBC HL,SP",
+    "clck": "15",
+    "siz": "2",
+    "description": "Resta SP i el carry de HL, i deixa el resultat a HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "És la versió de 16 bits de SBC."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed73",
+    "group": "ed",
+    "row": "7x",
+    "col": "3",
+    "opcode": "ED 73 nn nn",
+    "mnemonic": "LD (nn),SP",
+    "clck": "20",
+    "siz": "4",
+    "description": "Guarda el valor de 16 bits de SP a memòria començant a l'adreça nn.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "S'escriu primer el byte baix i després el byte alt."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed74",
+    "group": "ed",
+    "row": "7x",
+    "col": "4",
+    "opcode": "ED 74",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed75",
+    "group": "ed",
+    "row": "7x",
+    "col": "5",
+    "opcode": "ED 75",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed76",
+    "group": "ed",
+    "row": "7x",
+    "col": "6",
+    "opcode": "ED 76",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed77",
+    "group": "ed",
+    "row": "7x",
+    "col": "7",
+    "opcode": "ED 77",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed78",
+    "group": "ed",
+    "row": "7x",
+    "col": "8",
+    "opcode": "ED 78",
+    "mnemonic": "IN A,(C)",
+    "clck": "12",
+    "siz": "2",
+    "description": "Llegeix un byte del port apuntat per BC i el carrega al registre A.",
+    "category": "io",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed79",
+    "group": "ed",
+    "row": "7x",
+    "col": "9",
+    "opcode": "ED 79",
+    "mnemonic": "OUT (C),A",
+    "clck": "12",
+    "siz": "2",
+    "description": "Escriu el contingut del registre A al port apuntat per BC.",
+    "category": "io",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed7a",
+    "group": "ed",
+    "row": "7x",
+    "col": "A",
+    "opcode": "ED 7A",
+    "mnemonic": "ADC HL,SP",
+    "clck": "15",
+    "siz": "2",
+    "description": "Suma SP i el carry a HL, i deixa el resultat a HL.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "És la versió de 16 bits d'ADC."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed7b",
+    "group": "ed",
+    "row": "7x",
+    "col": "B",
+    "opcode": "ED 7B nn nn",
+    "mnemonic": "LD SP,(nn)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Llegeix dos bytes consecutius de memòria començant a nn i els carrega al registre SP.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "Es llegeix primer el byte baix i després el byte alt."
+    },
+    "documented": true
+  },
+  {
+    "id": "ed7c",
+    "group": "ed",
+    "row": "7x",
+    "col": "C",
+    "opcode": "ED 7C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed7d",
+    "group": "ed",
+    "row": "7x",
+    "col": "D",
+    "opcode": "ED 7D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed7e",
+    "group": "ed",
+    "row": "7x",
+    "col": "E",
+    "opcode": "ED 7E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed7f",
+    "group": "ed",
+    "row": "7x",
+    "col": "F",
+    "opcode": "ED 7F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed80",
+    "group": "ed",
+    "row": "8x",
+    "col": "0",
+    "opcode": "ED 80",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed81",
+    "group": "ed",
+    "row": "8x",
+    "col": "1",
+    "opcode": "ED 81",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed82",
+    "group": "ed",
+    "row": "8x",
+    "col": "2",
+    "opcode": "ED 82",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed83",
+    "group": "ed",
+    "row": "8x",
+    "col": "3",
+    "opcode": "ED 83",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed84",
+    "group": "ed",
+    "row": "8x",
+    "col": "4",
+    "opcode": "ED 84",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed85",
+    "group": "ed",
+    "row": "8x",
+    "col": "5",
+    "opcode": "ED 85",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed86",
+    "group": "ed",
+    "row": "8x",
+    "col": "6",
+    "opcode": "ED 86",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed87",
+    "group": "ed",
+    "row": "8x",
+    "col": "7",
+    "opcode": "ED 87",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed88",
+    "group": "ed",
+    "row": "8x",
+    "col": "8",
+    "opcode": "ED 88",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed89",
+    "group": "ed",
+    "row": "8x",
+    "col": "9",
+    "opcode": "ED 89",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed8a",
+    "group": "ed",
+    "row": "8x",
+    "col": "A",
+    "opcode": "ED 8A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed8b",
+    "group": "ed",
+    "row": "8x",
+    "col": "B",
+    "opcode": "ED 8B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed8c",
+    "group": "ed",
+    "row": "8x",
+    "col": "C",
+    "opcode": "ED 8C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed8d",
+    "group": "ed",
+    "row": "8x",
+    "col": "D",
+    "opcode": "ED 8D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed8e",
+    "group": "ed",
+    "row": "8x",
+    "col": "E",
+    "opcode": "ED 8E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed8f",
+    "group": "ed",
+    "row": "8x",
+    "col": "F",
+    "opcode": "ED 8F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed90",
+    "group": "ed",
+    "row": "9x",
+    "col": "0",
+    "opcode": "ED 90",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed91",
+    "group": "ed",
+    "row": "9x",
+    "col": "1",
+    "opcode": "ED 91",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed92",
+    "group": "ed",
+    "row": "9x",
+    "col": "2",
+    "opcode": "ED 92",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed93",
+    "group": "ed",
+    "row": "9x",
+    "col": "3",
+    "opcode": "ED 93",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed94",
+    "group": "ed",
+    "row": "9x",
+    "col": "4",
+    "opcode": "ED 94",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed95",
+    "group": "ed",
+    "row": "9x",
+    "col": "5",
+    "opcode": "ED 95",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed96",
+    "group": "ed",
+    "row": "9x",
+    "col": "6",
+    "opcode": "ED 96",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed97",
+    "group": "ed",
+    "row": "9x",
+    "col": "7",
+    "opcode": "ED 97",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed98",
+    "group": "ed",
+    "row": "9x",
+    "col": "8",
+    "opcode": "ED 98",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed99",
+    "group": "ed",
+    "row": "9x",
+    "col": "9",
+    "opcode": "ED 99",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed9a",
+    "group": "ed",
+    "row": "9x",
+    "col": "A",
+    "opcode": "ED 9A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed9b",
+    "group": "ed",
+    "row": "9x",
+    "col": "B",
+    "opcode": "ED 9B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed9c",
+    "group": "ed",
+    "row": "9x",
+    "col": "C",
+    "opcode": "ED 9C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed9d",
+    "group": "ed",
+    "row": "9x",
+    "col": "D",
+    "opcode": "ED 9D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed9e",
+    "group": "ed",
+    "row": "9x",
+    "col": "E",
+    "opcode": "ED 9E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ed9f",
+    "group": "ed",
+    "row": "9x",
+    "col": "F",
+    "opcode": "ED 9F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "eda0",
+    "group": "ed",
+    "row": "Ax",
+    "col": "0",
+    "opcode": "ED A0",
+    "mnemonic": "LDI",
+    "clck": "16",
+    "siz": "2",
+    "description": "Copia un byte de (HL) a (DE), incrementa HL i DE, i decrementa BC.",
+    "category": "load",
+    "flags": {
+      "affected": [
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "H i N es reinicien; P/V indica si encara queden bytes."
+    },
+    "documented": true
+  },
+  {
+    "id": "eda1",
+    "group": "ed",
+    "row": "Ax",
+    "col": "1",
+    "opcode": "ED A1",
+    "mnemonic": "CPI",
+    "clck": "16",
+    "siz": "2",
+    "description": "Compara A amb el byte apuntat per HL, incrementa HL i decrementa BC.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "C no canvia. És útil per recórrer una taula buscant un valor."
+    },
+    "documented": true
+  },
+  {
+    "id": "eda2",
+    "group": "ed",
+    "row": "Ax",
+    "col": "2",
+    "opcode": "ED A2",
+    "mnemonic": "INI",
+    "clck": "16",
+    "siz": "2",
+    "description": "Llegeix un byte del port (C), l'escriu a (HL), incrementa HL i decrementa B.",
+    "category": "io",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "Instrucció de bloc d'entrada."
+    },
+    "documented": true
+  },
+  {
+    "id": "eda3",
+    "group": "ed",
+    "row": "Ax",
+    "col": "3",
+    "opcode": "ED A3",
+    "mnemonic": "OUTI",
+    "clck": "16",
+    "siz": "2",
+    "description": "Escriu el byte de (HL) al port (C), incrementa HL i decrementa B.",
+    "category": "io",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "Instrucció de bloc de sortida."
+    },
+    "documented": true
+  },
+  {
+    "id": "eda4",
+    "group": "ed",
+    "row": "Ax",
+    "col": "4",
+    "opcode": "ED A4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "eda5",
+    "group": "ed",
+    "row": "Ax",
+    "col": "5",
+    "opcode": "ED A5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "eda6",
+    "group": "ed",
+    "row": "Ax",
+    "col": "6",
+    "opcode": "ED A6",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "eda7",
+    "group": "ed",
+    "row": "Ax",
+    "col": "7",
+    "opcode": "ED A7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "eda8",
+    "group": "ed",
+    "row": "Ax",
+    "col": "8",
+    "opcode": "ED A8",
+    "mnemonic": "LDD",
+    "clck": "16",
+    "siz": "2",
+    "description": "Copia un byte de (HL) a (DE), però decrementa HL i DE en lloc d'incrementar-los.",
+    "category": "load",
+    "flags": {
+      "affected": [
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "H i N es reinicien; P/V indica si encara queden bytes."
+    },
+    "documented": true
+  },
+  {
+    "id": "eda9",
+    "group": "ed",
+    "row": "Ax",
+    "col": "9",
+    "opcode": "ED A9",
+    "mnemonic": "CPD",
+    "clck": "16",
+    "siz": "2",
+    "description": "Compara A amb el byte apuntat per HL, però després decrementa HL i BC.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "edaa",
+    "group": "ed",
+    "row": "Ax",
+    "col": "A",
+    "opcode": "ED AA",
+    "mnemonic": "IND",
+    "clck": "16",
+    "siz": "2",
+    "description": "Llegeix un byte del port (C), l'escriu a (HL), decrementa HL i decrementa B.",
+    "category": "io",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "Instrucció de bloc d'entrada cap enrere."
+    },
+    "documented": true
+  },
+  {
+    "id": "edab",
+    "group": "ed",
+    "row": "Ax",
+    "col": "B",
+    "opcode": "ED AB",
+    "mnemonic": "OUTD",
+    "clck": "16",
+    "siz": "2",
+    "description": "Escriu el byte de (HL) al port (C), decrementa HL i decrementa B.",
+    "category": "io",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "Instrucció de bloc de sortida cap enrere."
+    },
+    "documented": true
+  },
+  {
+    "id": "edac",
+    "group": "ed",
+    "row": "Ax",
+    "col": "C",
+    "opcode": "ED AC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edad",
+    "group": "ed",
+    "row": "Ax",
+    "col": "D",
+    "opcode": "ED AD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edae",
+    "group": "ed",
+    "row": "Ax",
+    "col": "E",
+    "opcode": "ED AE",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edaf",
+    "group": "ed",
+    "row": "Ax",
+    "col": "F",
+    "opcode": "ED AF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edb0",
+    "group": "ed",
+    "row": "Bx",
+    "col": "0",
+    "opcode": "ED B0",
+    "mnemonic": "LDIR",
+    "clck": "21 / 16",
+    "siz": "2",
+    "description": "Repeteix LDI automàticament fins que BC arriba a zero.",
+    "category": "load",
+    "flags": {
+      "affected": [
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "Quan encara queden bytes, repeteix la còpia."
+    },
+    "documented": true
+  },
+  {
+    "id": "edb1",
+    "group": "ed",
+    "row": "Bx",
+    "col": "1",
+    "opcode": "ED B1",
+    "mnemonic": "CPIR",
+    "clck": "21 / 16",
+    "siz": "2",
+    "description": "Repeteix CPI automàticament fins trobar coincidència o fins que BC arriba a zero.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "edb2",
+    "group": "ed",
+    "row": "Bx",
+    "col": "2",
+    "opcode": "ED B2",
+    "mnemonic": "INIR",
+    "clck": "21 / 16",
+    "siz": "2",
+    "description": "Repeteix INI automàticament fins que B arriba a zero.",
+    "category": "io",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "Instrucció repetitiva d'entrada de bloc."
+    },
+    "documented": true
+  },
+  {
+    "id": "edb3",
+    "group": "ed",
+    "row": "Bx",
+    "col": "3",
+    "opcode": "ED B3",
+    "mnemonic": "OTIR",
+    "clck": "21 / 16",
+    "siz": "2",
+    "description": "Repeteix OUTI automàticament fins que B arriba a zero.",
+    "category": "io",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "Instrucció repetitiva de sortida de bloc."
+    },
+    "documented": true
+  },
+  {
+    "id": "edb4",
+    "group": "ed",
+    "row": "Bx",
+    "col": "4",
+    "opcode": "ED B4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edb5",
+    "group": "ed",
+    "row": "Bx",
+    "col": "5",
+    "opcode": "ED B5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edb6",
+    "group": "ed",
+    "row": "Bx",
+    "col": "6",
+    "opcode": "ED B6",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edb7",
+    "group": "ed",
+    "row": "Bx",
+    "col": "7",
+    "opcode": "ED B7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edb8",
+    "group": "ed",
+    "row": "Bx",
+    "col": "8",
+    "opcode": "ED B8",
+    "mnemonic": "LDDR",
+    "clck": "21 / 16",
+    "siz": "2",
+    "description": "Repeteix LDD automàticament fins que BC arriba a zero.",
+    "category": "load",
+    "flags": {
+      "affected": [
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "Quan encara queden bytes, repeteix la còpia cap enrere."
+    },
+    "documented": true
+  },
+  {
+    "id": "edb9",
+    "group": "ed",
+    "row": "Bx",
+    "col": "9",
+    "opcode": "ED B9",
+    "mnemonic": "CPDR",
+    "clck": "21 / 16",
+    "siz": "2",
+    "description": "Repeteix CPD automàticament fins trobar coincidència o fins que BC arriba a zero.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "edba",
+    "group": "ed",
+    "row": "Bx",
+    "col": "A",
+    "opcode": "ED BA",
+    "mnemonic": "INDR",
+    "clck": "21 / 16",
+    "siz": "2",
+    "description": "Repeteix IND automàticament fins que B arriba a zero.",
+    "category": "io",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "Instrucció repetitiva d'entrada de bloc cap enrere."
+    },
+    "documented": true
+  },
+  {
+    "id": "edbb",
+    "group": "ed",
+    "row": "Bx",
+    "col": "B",
+    "opcode": "ED BB",
+    "mnemonic": "OTDR",
+    "clck": "21 / 16",
+    "siz": "2",
+    "description": "Repeteix OUTD automàticament fins que B arriba a zero.",
+    "category": "io",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "Instrucció repetitiva de sortida de bloc cap enrere."
+    },
+    "documented": true
+  },
+  {
+    "id": "edbc",
+    "group": "ed",
+    "row": "Bx",
+    "col": "C",
+    "opcode": "ED BC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edbd",
+    "group": "ed",
+    "row": "Bx",
+    "col": "D",
+    "opcode": "ED BD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edbe",
+    "group": "ed",
+    "row": "Bx",
+    "col": "E",
+    "opcode": "ED BE",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edbf",
+    "group": "ed",
+    "row": "Bx",
+    "col": "F",
+    "opcode": "ED BF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edc0",
+    "group": "ed",
+    "row": "Cx",
+    "col": "0",
+    "opcode": "ED C0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edc1",
+    "group": "ed",
+    "row": "Cx",
+    "col": "1",
+    "opcode": "ED C1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edc2",
+    "group": "ed",
+    "row": "Cx",
+    "col": "2",
+    "opcode": "ED C2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edc3",
+    "group": "ed",
+    "row": "Cx",
+    "col": "3",
+    "opcode": "ED C3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edc4",
+    "group": "ed",
+    "row": "Cx",
+    "col": "4",
+    "opcode": "ED C4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edc5",
+    "group": "ed",
+    "row": "Cx",
+    "col": "5",
+    "opcode": "ED C5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edc6",
+    "group": "ed",
+    "row": "Cx",
+    "col": "6",
+    "opcode": "ED C6",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edc7",
+    "group": "ed",
+    "row": "Cx",
+    "col": "7",
+    "opcode": "ED C7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edc8",
+    "group": "ed",
+    "row": "Cx",
+    "col": "8",
+    "opcode": "ED C8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edc9",
+    "group": "ed",
+    "row": "Cx",
+    "col": "9",
+    "opcode": "ED C9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edca",
+    "group": "ed",
+    "row": "Cx",
+    "col": "A",
+    "opcode": "ED CA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edcb",
+    "group": "ed",
+    "row": "Cx",
+    "col": "B",
+    "opcode": "ED CB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edcc",
+    "group": "ed",
+    "row": "Cx",
+    "col": "C",
+    "opcode": "ED CC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edcd",
+    "group": "ed",
+    "row": "Cx",
+    "col": "D",
+    "opcode": "ED CD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edce",
+    "group": "ed",
+    "row": "Cx",
+    "col": "E",
+    "opcode": "ED CE",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edcf",
+    "group": "ed",
+    "row": "Cx",
+    "col": "F",
+    "opcode": "ED CF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edd0",
+    "group": "ed",
+    "row": "Dx",
+    "col": "0",
+    "opcode": "ED D0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edd1",
+    "group": "ed",
+    "row": "Dx",
+    "col": "1",
+    "opcode": "ED D1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edd2",
+    "group": "ed",
+    "row": "Dx",
+    "col": "2",
+    "opcode": "ED D2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edd3",
+    "group": "ed",
+    "row": "Dx",
+    "col": "3",
+    "opcode": "ED D3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edd4",
+    "group": "ed",
+    "row": "Dx",
+    "col": "4",
+    "opcode": "ED D4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edd5",
+    "group": "ed",
+    "row": "Dx",
+    "col": "5",
+    "opcode": "ED D5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edd6",
+    "group": "ed",
+    "row": "Dx",
+    "col": "6",
+    "opcode": "ED D6",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edd7",
+    "group": "ed",
+    "row": "Dx",
+    "col": "7",
+    "opcode": "ED D7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edd8",
+    "group": "ed",
+    "row": "Dx",
+    "col": "8",
+    "opcode": "ED D8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edd9",
+    "group": "ed",
+    "row": "Dx",
+    "col": "9",
+    "opcode": "ED D9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edda",
+    "group": "ed",
+    "row": "Dx",
+    "col": "A",
+    "opcode": "ED DA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "eddb",
+    "group": "ed",
+    "row": "Dx",
+    "col": "B",
+    "opcode": "ED DB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "eddc",
+    "group": "ed",
+    "row": "Dx",
+    "col": "C",
+    "opcode": "ED DC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "eddd",
+    "group": "ed",
+    "row": "Dx",
+    "col": "D",
+    "opcode": "ED DD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edde",
+    "group": "ed",
+    "row": "Dx",
+    "col": "E",
+    "opcode": "ED DE",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "eddf",
+    "group": "ed",
+    "row": "Dx",
+    "col": "F",
+    "opcode": "ED DF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ede0",
+    "group": "ed",
+    "row": "Ex",
+    "col": "0",
+    "opcode": "ED E0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ede1",
+    "group": "ed",
+    "row": "Ex",
+    "col": "1",
+    "opcode": "ED E1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ede2",
+    "group": "ed",
+    "row": "Ex",
+    "col": "2",
+    "opcode": "ED E2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ede3",
+    "group": "ed",
+    "row": "Ex",
+    "col": "3",
+    "opcode": "ED E3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ede4",
+    "group": "ed",
+    "row": "Ex",
+    "col": "4",
+    "opcode": "ED E4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ede5",
+    "group": "ed",
+    "row": "Ex",
+    "col": "5",
+    "opcode": "ED E5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ede6",
+    "group": "ed",
+    "row": "Ex",
+    "col": "6",
+    "opcode": "ED E6",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ede7",
+    "group": "ed",
+    "row": "Ex",
+    "col": "7",
+    "opcode": "ED E7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ede8",
+    "group": "ed",
+    "row": "Ex",
+    "col": "8",
+    "opcode": "ED E8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ede9",
+    "group": "ed",
+    "row": "Ex",
+    "col": "9",
+    "opcode": "ED E9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edea",
+    "group": "ed",
+    "row": "Ex",
+    "col": "A",
+    "opcode": "ED EA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edeb",
+    "group": "ed",
+    "row": "Ex",
+    "col": "B",
+    "opcode": "ED EB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edec",
+    "group": "ed",
+    "row": "Ex",
+    "col": "C",
+    "opcode": "ED EC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "eded",
+    "group": "ed",
+    "row": "Ex",
+    "col": "D",
+    "opcode": "ED ED",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edee",
+    "group": "ed",
+    "row": "Ex",
+    "col": "E",
+    "opcode": "ED EE",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edef",
+    "group": "ed",
+    "row": "Ex",
+    "col": "F",
+    "opcode": "ED EF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edf0",
+    "group": "ed",
+    "row": "Fx",
+    "col": "0",
+    "opcode": "ED F0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edf1",
+    "group": "ed",
+    "row": "Fx",
+    "col": "1",
+    "opcode": "ED F1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edf2",
+    "group": "ed",
+    "row": "Fx",
+    "col": "2",
+    "opcode": "ED F2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edf3",
+    "group": "ed",
+    "row": "Fx",
+    "col": "3",
+    "opcode": "ED F3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edf4",
+    "group": "ed",
+    "row": "Fx",
+    "col": "4",
+    "opcode": "ED F4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edf5",
+    "group": "ed",
+    "row": "Fx",
+    "col": "5",
+    "opcode": "ED F5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edf6",
+    "group": "ed",
+    "row": "Fx",
+    "col": "6",
+    "opcode": "ED F6",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edf7",
+    "group": "ed",
+    "row": "Fx",
+    "col": "7",
+    "opcode": "ED F7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edf8",
+    "group": "ed",
+    "row": "Fx",
+    "col": "8",
+    "opcode": "ED F8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edf9",
+    "group": "ed",
+    "row": "Fx",
+    "col": "9",
+    "opcode": "ED F9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edfa",
+    "group": "ed",
+    "row": "Fx",
+    "col": "A",
+    "opcode": "ED FA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edfb",
+    "group": "ed",
+    "row": "Fx",
+    "col": "B",
+    "opcode": "ED FB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edfc",
+    "group": "ed",
+    "row": "Fx",
+    "col": "C",
+    "opcode": "ED FC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edfd",
+    "group": "ed",
+    "row": "Fx",
+    "col": "D",
+    "opcode": "ED FD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edfe",
+    "group": "ed",
+    "row": "Fx",
+    "col": "E",
+    "opcode": "ED FE",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "edff",
+    "group": "ed",
+    "row": "Fx",
+    "col": "F",
+    "opcode": "ED FF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició ED no té una instrucció documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  }
+]

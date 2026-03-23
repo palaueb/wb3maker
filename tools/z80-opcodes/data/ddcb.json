@@ -1,0 +1,4435 @@
+[
+  {
+    "id": "ddcb00",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "0",
+    "opcode": "DD CB d 00",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb01",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "1",
+    "opcode": "DD CB d 01",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb02",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "2",
+    "opcode": "DD CB d 02",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb03",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "3",
+    "opcode": "DD CB d 03",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb04",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "4",
+    "opcode": "DD CB d 04",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb05",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "5",
+    "opcode": "DD CB d 05",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb06",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "6",
+    "opcode": "DD CB d 06",
+    "mnemonic": "RLC (IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Rota el byte de memòria situat a IX+d un bit cap a l'esquerra. El bit 7 torna al bit 0 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb07",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "7",
+    "opcode": "DD CB d 07",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb08",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "8",
+    "opcode": "DD CB d 08",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb09",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "9",
+    "opcode": "DD CB d 09",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb0a",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "A",
+    "opcode": "DD CB d 0A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb0b",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "B",
+    "opcode": "DD CB d 0B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb0c",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "C",
+    "opcode": "DD CB d 0C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb0d",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "D",
+    "opcode": "DD CB d 0D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb0e",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "E",
+    "opcode": "DD CB d 0E",
+    "mnemonic": "RRC (IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Rota el byte de memòria situat a IX+d un bit cap a la dreta. El bit 0 torna al bit 7 i també passa al carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb0f",
+    "group": "ddcb",
+    "row": "0x",
+    "col": "F",
+    "opcode": "DD CB d 0F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb10",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "0",
+    "opcode": "DD CB d 10",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb11",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "1",
+    "opcode": "DD CB d 11",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb12",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "2",
+    "opcode": "DD CB d 12",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb13",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "3",
+    "opcode": "DD CB d 13",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb14",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "4",
+    "opcode": "DD CB d 14",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb15",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "5",
+    "opcode": "DD CB d 15",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb16",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "6",
+    "opcode": "DD CB d 16",
+    "mnemonic": "RL (IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Rota el byte de memòria situat a IX+d cap a l'esquerra passant pel carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb17",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "7",
+    "opcode": "DD CB d 17",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb18",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "8",
+    "opcode": "DD CB d 18",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb19",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "9",
+    "opcode": "DD CB d 19",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb1a",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "A",
+    "opcode": "DD CB d 1A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb1b",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "B",
+    "opcode": "DD CB d 1B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb1c",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "C",
+    "opcode": "DD CB d 1C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb1d",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "D",
+    "opcode": "DD CB d 1D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb1e",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "E",
+    "opcode": "DD CB d 1E",
+    "mnemonic": "RR (IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Rota el byte de memòria situat a IX+d cap a la dreta passant pel carry.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb1f",
+    "group": "ddcb",
+    "row": "1x",
+    "col": "F",
+    "opcode": "DD CB d 1F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb20",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "0",
+    "opcode": "DD CB d 20",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb21",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "1",
+    "opcode": "DD CB d 21",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb22",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "2",
+    "opcode": "DD CB d 22",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb23",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "3",
+    "opcode": "DD CB d 23",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb24",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "4",
+    "opcode": "DD CB d 24",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb25",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "5",
+    "opcode": "DD CB d 25",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb26",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "6",
+    "opcode": "DD CB d 26",
+    "mnemonic": "SLA (IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Desplaça el byte de memòria situat a IX+d un bit cap a l'esquerra.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb27",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "7",
+    "opcode": "DD CB d 27",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb28",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "8",
+    "opcode": "DD CB d 28",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb29",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "9",
+    "opcode": "DD CB d 29",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb2a",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "A",
+    "opcode": "DD CB d 2A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb2b",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "B",
+    "opcode": "DD CB d 2B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb2c",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "C",
+    "opcode": "DD CB d 2C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb2d",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "D",
+    "opcode": "DD CB d 2D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb2e",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "E",
+    "opcode": "DD CB d 2E",
+    "mnemonic": "SRA (IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Desplaça el byte de memòria situat a IX+d un bit cap a la dreta conservant el bit de signe.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb2f",
+    "group": "ddcb",
+    "row": "2x",
+    "col": "F",
+    "opcode": "DD CB d 2F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb30",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "0",
+    "opcode": "DD CB d 30",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb31",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "1",
+    "opcode": "DD CB d 31",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb32",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "2",
+    "opcode": "DD CB d 32",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb33",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "3",
+    "opcode": "DD CB d 33",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb34",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "4",
+    "opcode": "DD CB d 34",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb35",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "5",
+    "opcode": "DD CB d 35",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb36",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "6",
+    "opcode": "DD CB d 36",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb37",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "7",
+    "opcode": "DD CB d 37",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb38",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "8",
+    "opcode": "DD CB d 38",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb39",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "9",
+    "opcode": "DD CB d 39",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb3a",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "A",
+    "opcode": "DD CB d 3A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb3b",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "B",
+    "opcode": "DD CB d 3B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb3c",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "C",
+    "opcode": "DD CB d 3C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb3d",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "D",
+    "opcode": "DD CB d 3D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb3e",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "E",
+    "opcode": "DD CB d 3E",
+    "mnemonic": "SRL (IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Desplaça el byte de memòria situat a IX+d un bit cap a la dreta i posa el bit 7 nou a 0.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i N es reinicien. C rep el bit desplaçat o rotat."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb3f",
+    "group": "ddcb",
+    "row": "3x",
+    "col": "F",
+    "opcode": "DD CB d 3F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb40",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "0",
+    "opcode": "DD CB d 40",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb41",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "1",
+    "opcode": "DD CB d 41",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb42",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "2",
+    "opcode": "DD CB d 42",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb43",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "3",
+    "opcode": "DD CB d 43",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb44",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "4",
+    "opcode": "DD CB d 44",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb45",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "5",
+    "opcode": "DD CB d 45",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb46",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "6",
+    "opcode": "DD CB d 46",
+    "mnemonic": "BIT 0,(IX+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 0 del byte de memòria situat a IX+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb47",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "7",
+    "opcode": "DD CB d 47",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb48",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "8",
+    "opcode": "DD CB d 48",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb49",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "9",
+    "opcode": "DD CB d 49",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb4a",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "A",
+    "opcode": "DD CB d 4A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb4b",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "B",
+    "opcode": "DD CB d 4B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb4c",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "C",
+    "opcode": "DD CB d 4C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb4d",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "D",
+    "opcode": "DD CB d 4D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb4e",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "E",
+    "opcode": "DD CB d 4E",
+    "mnemonic": "BIT 1,(IX+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 1 del byte de memòria situat a IX+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb4f",
+    "group": "ddcb",
+    "row": "4x",
+    "col": "F",
+    "opcode": "DD CB d 4F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb50",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "0",
+    "opcode": "DD CB d 50",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb51",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "1",
+    "opcode": "DD CB d 51",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb52",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "2",
+    "opcode": "DD CB d 52",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb53",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "3",
+    "opcode": "DD CB d 53",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb54",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "4",
+    "opcode": "DD CB d 54",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb55",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "5",
+    "opcode": "DD CB d 55",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb56",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "6",
+    "opcode": "DD CB d 56",
+    "mnemonic": "BIT 2,(IX+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 2 del byte de memòria situat a IX+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb57",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "7",
+    "opcode": "DD CB d 57",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb58",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "8",
+    "opcode": "DD CB d 58",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb59",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "9",
+    "opcode": "DD CB d 59",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb5a",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "A",
+    "opcode": "DD CB d 5A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb5b",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "B",
+    "opcode": "DD CB d 5B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb5c",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "C",
+    "opcode": "DD CB d 5C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb5d",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "D",
+    "opcode": "DD CB d 5D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb5e",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "E",
+    "opcode": "DD CB d 5E",
+    "mnemonic": "BIT 3,(IX+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 3 del byte de memòria situat a IX+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb5f",
+    "group": "ddcb",
+    "row": "5x",
+    "col": "F",
+    "opcode": "DD CB d 5F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb60",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "0",
+    "opcode": "DD CB d 60",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb61",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "1",
+    "opcode": "DD CB d 61",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb62",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "2",
+    "opcode": "DD CB d 62",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb63",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "3",
+    "opcode": "DD CB d 63",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb64",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "4",
+    "opcode": "DD CB d 64",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb65",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "5",
+    "opcode": "DD CB d 65",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb66",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "6",
+    "opcode": "DD CB d 66",
+    "mnemonic": "BIT 4,(IX+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 4 del byte de memòria situat a IX+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb67",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "7",
+    "opcode": "DD CB d 67",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb68",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "8",
+    "opcode": "DD CB d 68",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb69",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "9",
+    "opcode": "DD CB d 69",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb6a",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "A",
+    "opcode": "DD CB d 6A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb6b",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "B",
+    "opcode": "DD CB d 6B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb6c",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "C",
+    "opcode": "DD CB d 6C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb6d",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "D",
+    "opcode": "DD CB d 6D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb6e",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "E",
+    "opcode": "DD CB d 6E",
+    "mnemonic": "BIT 5,(IX+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 5 del byte de memòria situat a IX+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb6f",
+    "group": "ddcb",
+    "row": "6x",
+    "col": "F",
+    "opcode": "DD CB d 6F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb70",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "0",
+    "opcode": "DD CB d 70",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb71",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "1",
+    "opcode": "DD CB d 71",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb72",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "2",
+    "opcode": "DD CB d 72",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb73",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "3",
+    "opcode": "DD CB d 73",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb74",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "4",
+    "opcode": "DD CB d 74",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb75",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "5",
+    "opcode": "DD CB d 75",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb76",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "6",
+    "opcode": "DD CB d 76",
+    "mnemonic": "BIT 6,(IX+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 6 del byte de memòria situat a IX+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb77",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "7",
+    "opcode": "DD CB d 77",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb78",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "8",
+    "opcode": "DD CB d 78",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb79",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "9",
+    "opcode": "DD CB d 79",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb7a",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "A",
+    "opcode": "DD CB d 7A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb7b",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "B",
+    "opcode": "DD CB d 7B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb7c",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "C",
+    "opcode": "DD CB d 7C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb7d",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "D",
+    "opcode": "DD CB d 7D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb7e",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "E",
+    "opcode": "DD CB d 7E",
+    "mnemonic": "BIT 7,(IX+d)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Comprova si el bit 7 del byte de memòria situat a IX+d és 1 o 0. No modifica el valor llegit.",
+    "category": "bit",
+    "flags": {
+      "affected": [
+        "Z",
+        "H",
+        "N"
+      ],
+      "notes": "H es posa a 1, N es reinicia i C no canvia. En les formes indexades hi ha matisos no documentats en alguns flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb7f",
+    "group": "ddcb",
+    "row": "7x",
+    "col": "F",
+    "opcode": "DD CB d 7F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb80",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "0",
+    "opcode": "DD CB d 80",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb81",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "1",
+    "opcode": "DD CB d 81",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb82",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "2",
+    "opcode": "DD CB d 82",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb83",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "3",
+    "opcode": "DD CB d 83",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb84",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "4",
+    "opcode": "DD CB d 84",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb85",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "5",
+    "opcode": "DD CB d 85",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb86",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "6",
+    "opcode": "DD CB d 86",
+    "mnemonic": "RES 0,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 0 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb87",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "7",
+    "opcode": "DD CB d 87",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb88",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "8",
+    "opcode": "DD CB d 88",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb89",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "9",
+    "opcode": "DD CB d 89",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb8a",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "A",
+    "opcode": "DD CB d 8A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb8b",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "B",
+    "opcode": "DD CB d 8B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb8c",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "C",
+    "opcode": "DD CB d 8C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb8d",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "D",
+    "opcode": "DD CB d 8D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb8e",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "E",
+    "opcode": "DD CB d 8E",
+    "mnemonic": "RES 1,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 1 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb8f",
+    "group": "ddcb",
+    "row": "8x",
+    "col": "F",
+    "opcode": "DD CB d 8F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb90",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "0",
+    "opcode": "DD CB d 90",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb91",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "1",
+    "opcode": "DD CB d 91",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb92",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "2",
+    "opcode": "DD CB d 92",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb93",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "3",
+    "opcode": "DD CB d 93",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb94",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "4",
+    "opcode": "DD CB d 94",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb95",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "5",
+    "opcode": "DD CB d 95",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb96",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "6",
+    "opcode": "DD CB d 96",
+    "mnemonic": "RES 2,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 2 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb97",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "7",
+    "opcode": "DD CB d 97",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb98",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "8",
+    "opcode": "DD CB d 98",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb99",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "9",
+    "opcode": "DD CB d 99",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb9a",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "A",
+    "opcode": "DD CB d 9A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb9b",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "B",
+    "opcode": "DD CB d 9B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb9c",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "C",
+    "opcode": "DD CB d 9C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb9d",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "D",
+    "opcode": "DD CB d 9D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb9e",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "E",
+    "opcode": "DD CB d 9E",
+    "mnemonic": "RES 3,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 3 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcb9f",
+    "group": "ddcb",
+    "row": "9x",
+    "col": "F",
+    "opcode": "DD CB d 9F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcba0",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "0",
+    "opcode": "DD CB d A0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcba1",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "1",
+    "opcode": "DD CB d A1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcba2",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "2",
+    "opcode": "DD CB d A2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcba3",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "3",
+    "opcode": "DD CB d A3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcba4",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "4",
+    "opcode": "DD CB d A4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcba5",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "5",
+    "opcode": "DD CB d A5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcba6",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "6",
+    "opcode": "DD CB d A6",
+    "mnemonic": "RES 4,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 4 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcba7",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "7",
+    "opcode": "DD CB d A7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcba8",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "8",
+    "opcode": "DD CB d A8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcba9",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "9",
+    "opcode": "DD CB d A9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbaa",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "A",
+    "opcode": "DD CB d AA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbab",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "B",
+    "opcode": "DD CB d AB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbac",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "C",
+    "opcode": "DD CB d AC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbad",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "D",
+    "opcode": "DD CB d AD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbae",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "E",
+    "opcode": "DD CB d AE",
+    "mnemonic": "RES 5,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 5 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcbaf",
+    "group": "ddcb",
+    "row": "Ax",
+    "col": "F",
+    "opcode": "DD CB d AF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbb0",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "0",
+    "opcode": "DD CB d B0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbb1",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "1",
+    "opcode": "DD CB d B1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbb2",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "2",
+    "opcode": "DD CB d B2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbb3",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "3",
+    "opcode": "DD CB d B3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbb4",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "4",
+    "opcode": "DD CB d B4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbb5",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "5",
+    "opcode": "DD CB d B5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbb6",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "6",
+    "opcode": "DD CB d B6",
+    "mnemonic": "RES 6,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 6 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcbb7",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "7",
+    "opcode": "DD CB d B7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbb8",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "8",
+    "opcode": "DD CB d B8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbb9",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "9",
+    "opcode": "DD CB d B9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbba",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "A",
+    "opcode": "DD CB d BA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbbb",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "B",
+    "opcode": "DD CB d BB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbbc",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "C",
+    "opcode": "DD CB d BC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbbd",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "D",
+    "opcode": "DD CB d BD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbbe",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "E",
+    "opcode": "DD CB d BE",
+    "mnemonic": "RES 7,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 0 el bit 7 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcbbf",
+    "group": "ddcb",
+    "row": "Bx",
+    "col": "F",
+    "opcode": "DD CB d BF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbc0",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "0",
+    "opcode": "DD CB d C0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbc1",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "1",
+    "opcode": "DD CB d C1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbc2",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "2",
+    "opcode": "DD CB d C2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbc3",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "3",
+    "opcode": "DD CB d C3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbc4",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "4",
+    "opcode": "DD CB d C4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbc5",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "5",
+    "opcode": "DD CB d C5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbc6",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "6",
+    "opcode": "DD CB d C6",
+    "mnemonic": "SET 0,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 0 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcbc7",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "7",
+    "opcode": "DD CB d C7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbc8",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "8",
+    "opcode": "DD CB d C8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbc9",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "9",
+    "opcode": "DD CB d C9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbca",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "A",
+    "opcode": "DD CB d CA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbcb",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "B",
+    "opcode": "DD CB d CB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbcc",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "C",
+    "opcode": "DD CB d CC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbcd",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "D",
+    "opcode": "DD CB d CD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbce",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "E",
+    "opcode": "DD CB d CE",
+    "mnemonic": "SET 1,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 1 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcbcf",
+    "group": "ddcb",
+    "row": "Cx",
+    "col": "F",
+    "opcode": "DD CB d CF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbd0",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "0",
+    "opcode": "DD CB d D0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbd1",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "1",
+    "opcode": "DD CB d D1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbd2",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "2",
+    "opcode": "DD CB d D2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbd3",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "3",
+    "opcode": "DD CB d D3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbd4",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "4",
+    "opcode": "DD CB d D4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbd5",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "5",
+    "opcode": "DD CB d D5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbd6",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "6",
+    "opcode": "DD CB d D6",
+    "mnemonic": "SET 2,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 2 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcbd7",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "7",
+    "opcode": "DD CB d D7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbd8",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "8",
+    "opcode": "DD CB d D8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbd9",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "9",
+    "opcode": "DD CB d D9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbda",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "A",
+    "opcode": "DD CB d DA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbdb",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "B",
+    "opcode": "DD CB d DB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbdc",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "C",
+    "opcode": "DD CB d DC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbdd",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "D",
+    "opcode": "DD CB d DD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbde",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "E",
+    "opcode": "DD CB d DE",
+    "mnemonic": "SET 3,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 3 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcbdf",
+    "group": "ddcb",
+    "row": "Dx",
+    "col": "F",
+    "opcode": "DD CB d DF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbe0",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "0",
+    "opcode": "DD CB d E0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbe1",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "1",
+    "opcode": "DD CB d E1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbe2",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "2",
+    "opcode": "DD CB d E2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbe3",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "3",
+    "opcode": "DD CB d E3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbe4",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "4",
+    "opcode": "DD CB d E4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbe5",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "5",
+    "opcode": "DD CB d E5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbe6",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "6",
+    "opcode": "DD CB d E6",
+    "mnemonic": "SET 4,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 4 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcbe7",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "7",
+    "opcode": "DD CB d E7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbe8",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "8",
+    "opcode": "DD CB d E8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbe9",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "9",
+    "opcode": "DD CB d E9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbea",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "A",
+    "opcode": "DD CB d EA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbeb",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "B",
+    "opcode": "DD CB d EB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbec",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "C",
+    "opcode": "DD CB d EC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbed",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "D",
+    "opcode": "DD CB d ED",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbee",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "E",
+    "opcode": "DD CB d EE",
+    "mnemonic": "SET 5,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 5 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcbef",
+    "group": "ddcb",
+    "row": "Ex",
+    "col": "F",
+    "opcode": "DD CB d EF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbf0",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "0",
+    "opcode": "DD CB d F0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbf1",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "1",
+    "opcode": "DD CB d F1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbf2",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "2",
+    "opcode": "DD CB d F2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbf3",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "3",
+    "opcode": "DD CB d F3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbf4",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "4",
+    "opcode": "DD CB d F4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbf5",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "5",
+    "opcode": "DD CB d F5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbf6",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "6",
+    "opcode": "DD CB d F6",
+    "mnemonic": "SET 6,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 6 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcbf7",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "7",
+    "opcode": "DD CB d F7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbf8",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "8",
+    "opcode": "DD CB d F8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbf9",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "9",
+    "opcode": "DD CB d F9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbfa",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "A",
+    "opcode": "DD CB d FA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbfb",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "B",
+    "opcode": "DD CB d FB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbfc",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "C",
+    "opcode": "DD CB d FC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbfd",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "D",
+    "opcode": "DD CB d FD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcbfe",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "E",
+    "opcode": "DD CB d FE",
+    "mnemonic": "SET 7,(IX+d)",
+    "clck": "23",
+    "siz": "4",
+    "description": "Posa a 1 el bit 7 del byte de memòria situat a IX+d i escriu el resultat a la mateixa adreça.",
+    "category": "bit",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcbff",
+    "group": "ddcb",
+    "row": "Fx",
+    "col": "F",
+    "opcode": "DD CB d FF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "4",
+    "description": "Aquesta posició de DD CB d xx no té una forma documentada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  }
+]

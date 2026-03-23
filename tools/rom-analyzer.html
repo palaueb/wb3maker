@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROM Analyzer — Wonder Boy III</title>
+  <link rel="stylesheet" href="rom-analyzer.css">
+</head>
+<body>
+
+<header>
+  <h1>ROM Analyzer</h1>
+  <span class="sub">Wonder Boy III: The Dragon's Trap — SMS</span>
+  <span class="phase-badge">PHASE 0</span>
+</header>
+
+<main>
+  <div id="error-msg"></div>
+
+  <!-- PROJECTS ──────────────────────────────────── -->
+  <div class="panel" id="panel-projects">
+    <div class="ph">
+      <span class="dot"></span> PROJECTS
+      <div class="ph-actions">
+        <div id="save-btn-wrap">
+          <span class="autosave-msg" id="autosave-msg">✓ Saved</span>
+          <button class="btn small success" id="btn-save-project" disabled>⬆ SAVE</button>
+        </div>
+      </div>
+    </div>
+    <div class="pb">
+      <div class="project-list" id="project-list">
+        <div style="color:var(--dim);font-size:11px;font-style:italic">Loading projects…</div>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap">
+        <div class="form-group">
+          <label>New project name</label>
+          <input type="text" id="new-project-name" placeholder="e.g. world" style="width:180px">
+        </div>
+        <button class="btn primary small" id="btn-create-project">CREATE</button>
+        <div id="project-upload-wrap" style="display:none;gap:8px;align-items:flex-end;display:none">
+          <span style="font-size:11px;color:var(--dim)">Upload to active project:</span>
+          <label class="btn small" style="cursor:pointer">ROM (.sms/.zip)<input type="file" id="upload-rom-input" accept=".sms,.zip" style="display:none"></label>
+          <label class="btn small" style="cursor:pointer">ASM (.asm)<input type="file" id="upload-asm-input" accept=".asm" style="display:none"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOAD ─────────────────────────────────────── -->
+  <div class="panel">
+    <div class="ph"><span class="dot"></span> LOAD FILES</div>
+    <div class="pb" style="padding:0">
+      <div id="drop-zone">
+        <input type="file" id="file-input" accept=".sms,.zip,.json,.asm" multiple>
+        <div class="drop-icon">▤</div>
+        <div class="drop-title">Drop files here or click to browse</div>
+        <div class="drop-sub">
+          ROM: <b>.sms</b> or <b>.zip</b> &nbsp;·&nbsp;
+          Map: <b>.json</b> &nbsp;·&nbsp;
+          Disassembly: <b>.asm</b> &nbsp;·&nbsp;
+          Drop multiple files at once to restore a session
+        </div>
+      </div>
+      <div style="padding:10px 16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--border)">
+        <div id="loaded-files" style="display:flex;gap:8px;flex-wrap:wrap;flex:1"></div>
+        <button class="btn small" id="btn-load-json" style="display:none">+ Load JSON map</button>
+        <input type="file" id="json-input" accept=".json" style="display:none">
+        <button class="btn small purple" id="btn-load-asm" style="display:none">+ Import disassembly</button>
+        <input type="file" id="asm-input" accept=".asm" style="display:none">
+      </div>
+    </div>
+  </div>
+
+  <!-- ROM INFO ──────────────────────────────────── -->
+  <div class="panel hidden" id="panel-info">
+    <div class="ph"><span class="dot"></span> ROM INFO</div>
+    <div class="pb">
+      <div class="info-grid">
+        <div class="info-item" style="grid-column:span 2"><div class="info-label">File</div><div class="info-value" id="info-file">—</div></div>
+        <div class="info-item"><div class="info-label">Size</div><div class="info-value" id="info-size">—</div></div>
+        <div class="info-item"><div class="info-label">TMR SEGA</div><div class="info-value" id="info-tmr">—</div></div>
+        <div class="info-item"><div class="info-label">Product · Region</div><div class="info-value" id="info-product">—</div></div>
+        <div class="info-item"><div class="info-label">Version</div><div class="info-value" id="info-version">—</div></div>
+        <div class="info-item" style="grid-column:1/-1"><div class="info-label">Checksums</div><div class="info-value" id="info-checksums">—</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANKS ─────────────────────────────────────── -->
+  <div class="panel hidden" id="panel-banks">
+    <div class="ph"><span class="dot"></span> MEMORY BANKS <span style="margin-left:8px;color:var(--dim)">16 × 16KB (0x4000) — SMS Sega mapper</span></div>
+    <div class="pb">
+      <div class="banks-grid" id="banks-grid"></div>
+    </div>
+  </div>
+
+  <!-- MEMORY MAP ────────────────────────────────── -->
+  <div class="panel hidden" id="panel-map">
+    <div class="ph">
+      <span class="dot"></span> MEMORY MAP
+        <div class="ph-actions">
+          <button class="btn small purple" id="btn-show-import">⊞ IMPORT FROM ASM</button>
+          <button class="btn small" id="btn-review-asm-splits" disabled>⚡ REVIEW ASM SPLITS</button>
+          <button class="btn small success" id="btn-export-json">⬇ Export JSON</button>
+        </div>
+      </div>
+    <div class="pb">
+
+      <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+      <div class="progress-label" id="prog-label"><span>0%</span> mapped — 0 / 0 bytes</div>
+
+      <div style="position:relative;margin-bottom:4px">
+        <canvas id="rommap-canvas" height="28"></canvas>
+      </div>
+      <div class="rommap-legend" id="rommap-legend"></div>
+
+      <!-- Import preview -->
+      <div id="import-preview">
+        <div style="font-size:12px;color:var(--purple);letter-spacing:1px;margin-bottom:8px">⊞ DISASSEMBLY IMPORT PREVIEW</div>
+        <div class="import-summary" id="import-summary"></div>
+        <div class="import-filter">
+          <label>Min. size to import:</label>
+          <input type="number" id="imp-minsize" value="4" min="1" style="width:70px">
+          <span>bytes &nbsp;(removes tiny padding/fill bytes)</span>
+        </div>
+        <div class="import-types" id="import-type-breakdown"></div>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button class="btn purple" id="btn-do-import">IMPORT REGIONS</button>
+          <button class="btn" id="btn-import-merge">MERGE (skip duplicates)</button>
+          <button class="btn" id="btn-cancel-import">CANCEL</button>
+        </div>
+      </div>
+
+      <div id="asm-split-review">
+        <div style="font-size:12px;color:var(--accent2);letter-spacing:1px;margin-bottom:8px">⚡ ASM SPLIT REVIEW</div>
+        <div class="import-summary" id="asm-split-summary"></div>
+        <div style="font-size:11px;color:var(--dim)">This reviews the current project and splits existing non-ASM regions at boundaries found in the loaded disassembly. The first fragment keeps the original region ID.</div>
+        <div class="review-list" id="asm-split-list"></div>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <button class="btn purple" id="btn-apply-asm-splits">APPLY SPLITS</button>
+          <button class="btn" id="btn-cancel-asm-splits">CANCEL</button>
+        </div>
+      </div>
+
+      <hr class="sep">
+
+      <div style="margin-bottom:6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button class="btn primary small" id="btn-toggle-add">+ ADD REGION</button>
+        <button class="btn small" id="btn-fill-gaps" style="display:none">⬛ FILL GAPS</button>
+        <span style="font-size:10px;color:var(--dim)" id="region-count-label"></span>
+      </div>
+      <div style="margin-bottom:6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <input type="text" id="map-filter" placeholder="filter name / offset / notes…" style="width:220px;font-size:11px">
+        <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11px;color:var(--dim);white-space:nowrap;user-select:none">
+          <input type="checkbox" id="chk-unknown-only"> UNKNOWN ONLY
+        </label>
+        <span style="font-size:10px;color:var(--dim);white-space:nowrap;margin-left:4px">↓ BANK:</span>
+        <div id="map-bank-jumps" style="display:flex;gap:3px;flex-wrap:wrap"></div>
+      </div>
+      <div style="margin-bottom:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <input type="text" id="map-textsearch" placeholder="search text string in ROM…" style="width:210px;font-size:11px" title="Search for ASCII text in ROM bytes (e.g. HUMAN, GAME OVER…)">
+        <button class="btn small" id="btn-textsearch">⌕ SEARCH TEXT</button>
+        <span id="textsearch-status" style="font-size:11px;color:var(--dim)"></span>
+        <button class="btn small danger" id="btn-textsearch-clear" style="display:none">✕ CLEAR</button>
+      </div>
+      <div id="textsearch-results" style="display:none;margin-bottom:10px;max-height:220px;overflow:auto;border:1px solid var(--border2);background:var(--bg3)"></div>
+
+      <div id="add-region-form">
+        <div class="carve-hint"><b>CARVE mode:</b> automatically splits any overlapping regions into before/after fragments. Specify offset + size, or offset + end offset.</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Offset (hex)</label>
+            <input type="text" id="frm-offset" placeholder="0x0000" style="width:110px">
+          </div>
+          <div class="form-group">
+            <label>Size (bytes)</label>
+            <input type="number" id="frm-size" placeholder="32" min="1" style="width:100px">
+          </div>
+          <div class="form-group">
+            <label>or End offset</label>
+            <input type="text" id="frm-end" placeholder="0x12FF" style="width:110px">
+          </div>
+          <div class="form-group">
+            <label>Type</label>
+            <select id="frm-type" style="width:140px">
+              <option value="gfx_tiles">GFX Tiles</option>
+              <option value="gfx_sprites">GFX Sprites</option>
+              <option value="tile_map">Tile Map (BG)</option>
+              <option value="palette">Palette</option>
+              <option value="map_screens">Map / Screens</option>
+              <option value="code">Code</option>
+              <option value="music">Music / SFX</option>
+              <option value="text">Text / Dialog</option>
+              <option value="meta_sprite">Metasprite</option>
+              <option value="palette_manual">Palette (custom)</option>
+              <option value="null">NULL</option>
+              <option value="unknown">Unknown</option>
+            </select>
+          </div>
+          <div class="form-group" style="flex:1;min-width:140px">
+            <label>Name</label>
+            <input type="text" id="frm-name" placeholder="e.g. Main tileset" style="width:100%">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group" style="flex:1">
+            <label>Notes</label>
+            <input type="text" id="frm-notes" placeholder="optional" style="width:100%">
+          </div>
+          <div class="form-group" style="justify-content:flex-end">
+            <label>&nbsp;</label>
+            <div style="display:flex;gap:6px">
+              <button class="btn primary" id="btn-add-region">CARVE</button>
+              <button class="btn" id="btn-cancel-add">CANCEL</button>
+              <button class="btn small" id="btn-quickfill" style="display:none">← VIEWER OFFSET</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="map-table-wrap" style="overflow:auto;max-height:600px;border:1px solid var(--border);border-radius:4px">
+        <table class="region-table">
+          <thead style="position:sticky;top:0;z-index:2;background:var(--panel)">
+            <tr><th>Offset (abs)</th><th>Z80 Addr</th><th>Size</th><th>Type</th><th>Name</th><th>Notes</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="regions-tbody"></tbody>
+        </table>
+        <div id="regions-empty" style="color:var(--dim);font-size:11px;padding:12px 4px;font-style:italic">No regions defined yet.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LABORATORY ────────────────────────────────── -->
+  <div class="panel hidden" id="panel-lab">
+    <div class="ph">
+      <span class="dot" style="background:var(--yellow)"></span>
+      INSPECTOR
+      <span id="lab-title" style="color:var(--text);margin-left:6px;font-size:11px;text-transform:none;letter-spacing:0"></span>
+      <div class="ph-actions">
+        <div class="lab-nav">
+          <button class="btn small" id="btn-lab-prev">◀ PREV</button>
+          <span class="lab-nav-count" id="lab-nav-count">— / —</span>
+          <button class="btn small" id="btn-lab-next">NEXT ▶</button>
+        </div>
+        <div class="lab-merge-sep"></div>
+        <button class="btn small" id="btn-lab-add-merge">+ ADD</button>
+        <button class="btn small" id="btn-lab-empty-merge">EMPTY</button>
+        <button class="btn small primary" id="btn-lab-do-merge" disabled>MERGE (0)</button>
+        <div class="lab-merge-sep"></div>
+        <button class="btn small" id="btn-lab-to-viewer" style="display:none">OPEN IN TILE VIEWER</button>
+        <button class="btn small" id="btn-lab-to-table">↑ TABLE</button>
+        <button class="btn small" id="btn-close-lab">× CLOSE</button>
+      </div>
+    </div>
+    <div class="pb">
+      <div class="lab-grid">
+        <!-- Left: hex dump + optional ASM context -->
+        <div>
+          <div class="lab-section-title" style="display:flex;align-items:center">
+            HEX DUMP
+            <span id="lab-hex-addr" style="margin-left:auto;color:var(--yellow);font-size:10px;letter-spacing:.5px;font-weight:normal;font-style:normal;min-width:180px;text-align:right"></span>
+          </div>
+          <div id="lab-hex-dump"></div>
+          <div class="lab-split-bar">
+            <span style="font-size:10px;color:var(--dim);letter-spacing:1px;text-transform:uppercase;flex-shrink:0">Split at</span>
+            <input type="text" id="lab-split-offset" placeholder="0x1120 (click a row)" style="width:150px">
+            <button class="btn small danger" id="btn-lab-split">SPLIT</button>
+          </div>
+          <div id="lab-split-preview" style="font-size:11px;color:var(--dim);margin-top:5px;padding:5px 8px;background:var(--bg);border:1px solid var(--border);display:none">
+          </div>
+          <div class="lab-section-title" id="lab-asm-title" style="margin-top:10px;display:none">ASM CONTEXT</div>
+          <div id="lab-asm-context"></div>
+          <div class="lab-section-title" id="lab-xrefs-title" style="margin-top:10px;display:none">XREFS</div>
+          <div id="lab-xrefs" class="lab-xrefs"></div>
+        </div>
+        <!-- Right: type-specific preview + tile/palette -->
+        <div>
+          <div id="lab-type-preview"></div>
+          <div id="lab-tiles-section" style="display:none">
+            <div class="lab-section-title">AS TILES (4bpp SMS planar)</div>
+            <canvas id="lab-tile-canvas"></canvas>
+          </div>
+          <div id="lab-palette-section" style="display:none">
+            <div class="lab-section-title" style="margin-top:12px;display:flex;align-items:center;gap:8px">
+              AS PALETTE (00BBGGRR per byte)
+              <button class="btn small" id="btn-lab-apply-pal" title="Apply these colors to the tile viewer palette">APPLY TO VIEWER</button>
+            </div>
+            <div id="lab-pal-swatches"></div>
+            <div style="margin-top:10px" id="lab-pal-from-registry-wrap">
+              <div class="lab-section-title">USE SAVED PALETTE</div>
+              <div id="lab-pal-from-registry" style="display:flex;flex-wrap:wrap;gap:6px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="lab-section-title">PATTERN ANALYSIS</div>
+      <div class="lab-stats" id="lab-stats"></div>
+
+      <!-- Classify -->
+      <div class="lab-section-title">CLASSIFY</div>
+      <div class="lab-type-btns" id="lab-type-btns"></div>
+      <div class="form-row">
+        <div class="form-group" style="min-width:180px;flex:1">
+          <label>Name</label>
+          <input type="text" id="lab-name" style="width:100%">
+        </div>
+        <div class="form-group" style="flex:2">
+          <label>Notes</label>
+          <input type="text" id="lab-notes" style="width:100%">
+        </div>
+        <div class="form-group" style="justify-content:flex-end">
+          <label>&nbsp;</label>
+          <div style="display:flex;gap:6px">
+            <button class="btn success" id="btn-lab-save">SAVE &amp; CLOSE</button>
+            <button class="btn danger small" id="btn-lab-delete">DELETE REGION</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PALETTE REGISTRY ──────────────────────────── -->
+  <div class="panel hidden" id="panel-palettes">
+    <div class="ph">
+      <span class="dot"></span> PALETTE REGISTRY
+      <span style="margin-left:8px;color:var(--dim);font-size:10px">1 byte per color, 00BBGGRR</span>
+      <div class="ph-actions">
+        <button class="btn small" id="btn-new-palette-rom">+ PALETTE FROM ROM</button>
+        <button class="btn small" id="btn-new-palette-manual" style="border-color:#ffa500;color:#ffa500">+ CUSTOM PALETTE (manual)</button>
+      </div>
+    </div>
+    <div class="pb" id="palette-registry-body">
+      <div class="pal-empty">No palette regions defined.</div>
+    </div>
+  </div>
+
+  <!-- TILE VIEWER ───────────────────────────────── -->
+  <div class="panel hidden" id="panel-viewer">
+    <div class="ph"><span class="dot"></span> TILE VIEWER</div>
+    <div class="pb">
+      <div class="controls-row">
+        <div class="ctrl-group">
+          <label>Offset (hex)</label>
+          <input type="text" id="ctrl-offset" value="0x0000" style="width:110px">
+        </div>
+        <div class="ctrl-group">
+          <label>Tile count</label>
+          <input type="number" id="ctrl-count" value="256" min="1" max="4096" style="width:85px">
+        </div>
+        <div class="ctrl-group">
+          <label>Tiles/row</label>
+          <input type="number" id="ctrl-perrow" value="16" min="1" max="64" style="width:78px">
+        </div>
+        <div class="ctrl-group">
+          <label>Zoom</label>
+          <select id="ctrl-zoom" style="width:75px">
+            <option value="2">2×</option>
+            <option value="3" selected>3×</option>
+            <option value="4">4×</option>
+            <option value="6">6×</option>
+            <option value="8">8×</option>
+          </select>
+        </div>
+        <div class="ctrl-group" style="justify-content:flex-end"><label>&nbsp;</label>
+          <button class="btn primary" id="btn-render">RENDER</button></div>
+        <div class="ctrl-group" style="justify-content:flex-end"><label>&nbsp;</label>
+          <button class="btn" id="btn-prev-page">◀ PREV</button></div>
+        <div class="ctrl-group" style="justify-content:flex-end"><label>&nbsp;</label>
+          <button class="btn" id="btn-next-page">NEXT ▶</button></div>
+        <div class="ctrl-group" style="justify-content:flex-end"><label>&nbsp;</label>
+          <button class="btn small" id="btn-add-from-viewer">+ ADD AS REGION</button></div>
+      </div>
+
+      <div class="palette-row">
+        <span class="palette-label">Palette</span>
+        <select id="viewer-pal-select" style="font-size:11px;padding:3px 6px;max-width:180px" title="Apply a saved palette region">
+          <option value="">— manual —</option>
+        </select>
+        <div id="palette-swatches"></div>
+        <div style="display:flex;gap:5px;margin-left:8px;align-items:center">
+          <button class="btn small" id="btn-pal-reset">RESET</button>
+          <button class="btn small" id="btn-pal-gray">GRAY</button>
+          <span style="color:var(--dim);font-size:10px;margin-left:6px">ROTATE</span>
+          <button class="btn small" id="btn-pal-rot-left">◀</button>
+          <span id="pal-rot-display" style="font-size:11px;min-width:28px;text-align:center;color:var(--accent)">+0</span>
+          <button class="btn small" id="btn-pal-rot-right">▶</button>
+          <button class="btn small" id="btn-pal-rot-reset" title="Reset rotation">↺</button>
+        </div>
+      </div>
+
+      <div id="canvas-wrap"><canvas id="tile-canvas"></canvas></div>
+      <div id="status-bar">
+        <span id="status-hover">Hover a tile to inspect</span>
+        <span id="status-range"></span>
+        <span id="status-bank"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPRITE / BG COMPOSER ──────────────────────── -->
+  <div class="panel hidden" id="panel-composer">
+    <div class="ph">
+      <span class="dot" style="background:var(--accent2)"></span>
+      SPRITE / BG COMPOSER
+      <div class="ph-actions">
+        <button class="btn small primary" id="btn-comp-update" style="display:none">↺ UPDATE</button>
+        <button class="btn small success" id="btn-comp-save">SAVE AS NEW</button>
+        <button class="btn small" id="btn-comp-export-png">⬇ PNG</button>
+      </div>
+    </div>
+    <div class="pb">
+
+      <!-- Common controls -->
+      <div class="composer-controls">
+        <div class="ctrl-group">
+          <label>Name</label>
+          <input type="text" id="comp-name" placeholder="e.g. Player idle" style="width:160px">
+        </div>
+        <div class="ctrl-group">
+          <label>Tile region</label>
+          <select id="comp-tile-region" style="width:180px"><option value="">— none —</option></select>
+        </div>
+        <div class="ctrl-group">
+          <label>Palette</label>
+          <select id="comp-palette" style="width:160px">
+            <option value="">Viewer palette</option>
+          </select>
+        </div>
+        <div class="ctrl-group">
+          <label>Zoom preview</label>
+          <select id="comp-zoom" style="width:80px">
+            <option value="2">2×</option>
+            <option value="3" selected>3×</option>
+            <option value="4">4×</option>
+            <option value="6">6×</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="composer-tabs">
+        <button class="composer-tab active" data-tab="manual">MANUAL (tile-by-tile)</button>
+        <button class="composer-tab" data-tab="tilemap">FROM TILE MAP</button>
+      </div>
+
+      <!-- MANUAL pane -->
+      <div class="composer-pane active" id="comp-pane-manual">
+        <div class="composer-controls">
+          <div class="ctrl-group">
+            <label>Width (tiles)</label>
+            <input type="number" id="comp-w" value="2" min="1" max="64" style="width:65px">
+          </div>
+          <div class="ctrl-group">
+            <label>Height (tiles)</label>
+            <input type="number" id="comp-h" value="4" min="1" max="64" style="width:65px">
+          </div>
+          <div class="ctrl-group"><label>&nbsp;</label>
+            <button class="btn small" id="btn-comp-resize">RESIZE GRID</button></div>
+          <div class="ctrl-group"><label>&nbsp;</label>
+            <button class="btn small danger" id="btn-comp-clear-grid">CLEAR ALL</button></div>
+          <div style="font-size:11px;color:var(--dim);align-self:flex-end;padding-bottom:5px">
+            Click tile in picker → click cell in grid to place. Right-click cell to clear.
+          </div>
+        </div>
+        <div class="composer-layout">
+          <!-- Tile picker -->
+          <div>
+            <div class="composer-section-title">TILE PICKER
+              <span id="comp-sel-label" style="color:var(--accent);margin-left:6px">no tile selected</span>
+            </div>
+            <div class="ctrl-group" style="margin-bottom:6px">
+              <label>Offset within region</label>
+              <input type="number" id="comp-picker-start" value="0" min="0" style="width:75px">
+              <label style="margin-top:3px">Count</label>
+              <input type="number" id="comp-picker-count" value="128" min="1" max="512" style="width:75px">
+              <button class="btn small" style="margin-top:3px" id="btn-comp-picker-render">REFRESH</button>
+            </div>
+            <div id="comp-picker-wrap" style="position:relative">
+              <canvas id="comp-picker-canvas"></canvas>
+            </div>
+          </div>
+          <!-- Composition grid -->
+          <div>
+            <div class="composer-section-title">COMPOSITION GRID</div>
+            <div id="comp-grid-wrap">
+              <canvas id="comp-grid-canvas"></canvas>
+            </div>
+          </div>
+          <!-- Preview -->
+          <div>
+            <div class="composer-section-title">PREVIEW</div>
+            <canvas id="comp-preview-canvas"></canvas>
+            <div id="comp-cell-info" style="font-size:10px;color:var(--dim);margin-top:4px;min-height:16px"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FROM TILE MAP pane -->
+      <div class="composer-pane" id="comp-pane-tilemap">
+        <div class="composer-controls">
+          <div class="ctrl-group">
+            <label>Tile Map region</label>
+            <select id="comp-tilemap-region" style="width:180px"><option value="">— none —</option></select>
+          </div>
+          <div class="ctrl-group">
+            <label>Crop X (tiles)</label>
+            <input type="number" id="comp-crop-x" value="0" min="0" style="width:65px">
+          </div>
+          <div class="ctrl-group">
+            <label>Crop Y (tiles)</label>
+            <input type="number" id="comp-crop-y" value="0" min="0" style="width:65px">
+          </div>
+          <div class="ctrl-group">
+            <label>Width (tiles)</label>
+            <input type="number" id="comp-crop-w" value="32" min="1" style="width:65px">
+          </div>
+          <div class="ctrl-group">
+            <label>Height (tiles)</label>
+            <input type="number" id="comp-crop-h" value="28" min="1" style="width:65px">
+          </div>
+          <div class="ctrl-group"><label>&nbsp;</label>
+            <button class="btn primary" id="btn-comp-render-tilemap">RENDER</button></div>
+        </div>
+        <div>
+          <div class="composer-section-title">TILE MAP PREVIEW</div>
+          <div style="overflow:auto;max-height:600px;background:#000;border:1px solid var(--border)">
+            <canvas id="comp-tilemap-canvas" style="display:block;image-rendering:pixelated"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Saved compositions -->
+      <div class="composer-saved-list" id="comp-saved-list"></div>
+    </div>
+  </div>
+
+  <!-- SMS STATE SIMULATOR ────────────────────────── -->
+  <div class="panel hidden" id="panel-simulator">
+    <div class="ph">
+      <span class="dot" style="background:#00ff88"></span>
+      SMS STATE SIMULATOR
+      <span style="font-size:10px;color:var(--dim);margin-left:6px">VRAM · CRAM · Name Table → render</span>
+      <div class="ph-actions">
+        <button class="btn small" id="btn-sim-import-vram" title="Load 16KB VRAM binary dump (e.g. from Emulicious)">📂 VRAM</button>
+        <button class="btn small" id="btn-sim-import-cram" title="Paste 32 CRAM hex bytes (e.g. from Emulicious color RAM)">📂 CRAM</button>
+        <button class="btn small success" id="btn-sim-run">▶ RUN</button>
+        <button class="btn small danger" id="btn-sim-reset">⟳ RESET</button>
+      </div>
+    </div>
+    <input type="file" id="sim-vram-file" style="display:none" accept=".bin,.vram,.raw,.sav">
+    <div class="pb">
+
+      <!-- ── ROOM BROWSER ────────────────────────── -->
+      <div style="border:1px solid #2a4a3a;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(0,255,136,.03)">
+        <div style="font-size:11px;color:#00ff88;font-weight:bold;letter-spacing:1px;margin-bottom:6px">ROOM BROWSER</div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Reads the screen table from the ROM (each entry = Z80 addr in bank → ROM offset → screen_prog data).
+          All 31 room backgrounds for WB3 World are in the table at <code style="color:#4a9eff">$1CCC0</code>, bank 7.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <span style="font-size:10px;color:var(--dim)">Table offset:</span>
+          <input type="text" id="sim-room-table-off" value="0x1CCC0" class="region-input" style="width:80px;font-size:11px">
+          <span style="font-size:10px;color:var(--dim)">Entries:</span>
+          <input type="number" id="sim-room-count" value="31" min="1" max="128" class="region-input" style="width:48px;font-size:11px">
+          <span style="font-size:10px;color:var(--dim)">Bank:</span>
+          <input type="number" id="sim-room-bank" value="7" min="0" max="15" class="region-input" style="width:40px;font-size:11px">
+          <button class="btn small primary" id="btn-sim-parse-table">PARSE TABLE</button>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+          <select id="sim-room-sel" class="region-input" style="font-size:11px;padding:2px 4px;flex:1;min-width:220px;display:none"></select>
+          <button class="btn small success" id="btn-sim-render-room" style="display:none">▶ RENDER</button>
+          <button class="btn small" id="btn-sim-add-nt-step" style="display:none" title="Add selected room as NAME TABLE step">+ TO STEPS</button>
+        </div>
+        <div id="sim-room-info" style="font-size:10px;color:var(--dim);margin-top:5px;min-height:14px;"></div>
+      </div>
+
+      <!-- ── INIT STEPS ──────────────────────────── -->
+      <div style="border:1px solid #2a3a4a;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(74,158,255,.02)">
+        <div style="font-size:11px;color:#4a9eff;font-weight:bold;letter-spacing:1px;margin-bottom:6px">INIT STEPS
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">CRAM + VRAM tile loaders (from ROM data regions)</span>
+        </div>
+        <div id="sim-steps" style="display:flex;flex-direction:column;gap:4px;margin-bottom:8px;"></div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:4px;">
+          <select id="sim-step-type" class="region-input" style="font-size:11px;padding:2px 4px;">
+            <option value="cram_bg">CRAM · BG palette (slots 0–15)</option>
+            <option value="cram_spr">CRAM · SPR palette (slots 16–31)</option>
+            <option value="vram_8fb">TILE PATTERNS · 5-byte format</option>
+            <option value="vram_998">TILE PATTERNS · variable format</option>
+            <option value="nt_604">NAME TABLE · screen_prog</option>
+          </select>
+          <select id="sim-step-region" class="region-input" style="font-size:11px;padding:2px 4px;min-width:160px;">
+            <option value="">— select region —</option>
+          </select>
+          <span style="font-size:10px;color:var(--dim);white-space:nowrap">bank:</span>
+          <select id="sim-step-bank" class="region-input" style="font-size:11px;padding:2px 4px;min-width:50px;"></select>
+          <button class="btn small primary" id="btn-sim-add-step">+ ADD</button>
+        </div>
+        <div id="sim-step-hint" style="font-size:10px;color:var(--dim);font-style:italic;padding-left:2px;min-height:14px;"></div>
+      </div>
+
+      <!-- Import status (VRAM/CRAM binary) -->
+      <div id="sim-import-status" style="font-size:10px;margin-bottom:8px;line-height:1.8;display:none;">
+        <span id="sim-vram-status" style="color:#00ff88;margin-right:12px"></span>
+        <span id="sim-cram-status" style="color:#ffcc00"></span>
+      </div>
+
+      <!-- Output -->
+      <div id="sim-info" style="font-size:11px;color:var(--dim);margin-bottom:6px;min-height:16px;"></div>
+      <canvas id="sim-canvas" style="display:none;image-rendering:pixelated;max-width:100%;border:1px solid var(--border);"></canvas>
+      <div id="sim-log" style="font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:8px;max-height:140px;overflow-y:auto;line-height:1.5;"></div>
+    </div>
+  </div>
+
+  <!-- RAM MAP ────────────────────────────────────── -->
+  <div class="panel hidden" id="panel-ram">
+    <div class="ph">
+      <span class="dot" style="background:var(--yellow)"></span>
+      RAM MAP
+      <span style="font-size:10px;color:var(--dim);margin-left:6px">SMS · $C000–$DFFF (8 KB)</span>
+      <div class="ph-actions">
+        <button class="btn small" id="btn-ram-add-toggle">+ ADD ENTRY</button>
+      </div>
+    </div>
+    <div class="pb">
+      <!-- Add form -->
+      <div id="ram-add-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" id="ram-frm-addr" placeholder="$C000" style="width:90px">
+          </div>
+          <div class="form-group">
+            <label>Size (bytes)</label>
+            <input type="number" id="ram-frm-size" value="1" min="1" style="width:65px">
+          </div>
+          <div class="form-group">
+            <label>Type</label>
+            <select id="ram-frm-type" style="width:110px">
+              <option value="byte">byte</option>
+              <option value="word">word (2B)</option>
+              <option value="flag">flag</option>
+              <option value="counter">counter</option>
+              <option value="pointer">pointer</option>
+              <option value="buffer">buffer</option>
+              <option value="other">other</option>
+            </select>
+          </div>
+          <div class="form-group" style="flex:1;min-width:130px">
+            <label>Name</label>
+            <input type="text" id="ram-frm-name" placeholder="e.g. player_health" style="width:100%">
+          </div>
+          <div class="form-group" style="flex:2;min-width:160px">
+            <label>Notes</label>
+            <input type="text" id="ram-frm-notes" placeholder="what does this do?" style="width:100%">
+          </div>
+          <div class="form-group" style="justify-content:flex-end">
+            <button class="btn primary small" id="btn-ram-confirm">ADD</button>
+          </div>
+        </div>
+      </div>
+      <!-- Table -->
+      <div style="overflow-x:auto">
+        <table class="region-table" id="ram-table">
+          <thead>
+            <tr>
+              <th>ADDR</th><th>SIZE</th><th>TYPE</th><th>NAME</th><th>NOTES</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="ram-tbody"></tbody>
+        </table>
+        <div id="ram-empty" style="color:var(--dim);font-size:11px;padding:18px 0;text-align:center;letter-spacing:1px">
+          No RAM entries — click + ADD ENTRY to start documenting
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<div id="rommap-tooltip"></div>
+<div id="toast"></div>
+
+<script src="js/state.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/asm.js"></script>
+<script src="js/panel-banks.js"></script>
+<script src="js/panel-map.js"></script>
+<script src="js/panel-lab.js"></script>
+<script src="js/panel-palettes.js"></script>
+<script src="js/panel-composer.js"></script>
+<script src="js/panel-simulator.js"></script>
+<script src="js/panel-viewer.js"></script>
+<script src="js/panel-projects.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

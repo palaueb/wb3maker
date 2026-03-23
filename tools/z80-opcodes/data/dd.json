@@ -1,0 +1,4438 @@
+[
+  {
+    "id": "dd00",
+    "group": "dd",
+    "row": "0x",
+    "col": "0",
+    "opcode": "DD 00",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd01",
+    "group": "dd",
+    "row": "0x",
+    "col": "1",
+    "opcode": "DD 01",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd02",
+    "group": "dd",
+    "row": "0x",
+    "col": "2",
+    "opcode": "DD 02",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd03",
+    "group": "dd",
+    "row": "0x",
+    "col": "3",
+    "opcode": "DD 03",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd04",
+    "group": "dd",
+    "row": "0x",
+    "col": "4",
+    "opcode": "DD 04",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd05",
+    "group": "dd",
+    "row": "0x",
+    "col": "5",
+    "opcode": "DD 05",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd06",
+    "group": "dd",
+    "row": "0x",
+    "col": "6",
+    "opcode": "DD 06",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd07",
+    "group": "dd",
+    "row": "0x",
+    "col": "7",
+    "opcode": "DD 07",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd08",
+    "group": "dd",
+    "row": "0x",
+    "col": "8",
+    "opcode": "DD 08",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd09",
+    "group": "dd",
+    "row": "0x",
+    "col": "9",
+    "opcode": "DD 09",
+    "mnemonic": "ADD IX,BC",
+    "clck": "15",
+    "siz": "2",
+    "description": "Suma BC a IX i deixa el resultat al mateix registre indexat.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "H",
+        "N",
+        "C"
+      ],
+      "notes": "S, Z i P/V no canvien."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd0a",
+    "group": "dd",
+    "row": "0x",
+    "col": "A",
+    "opcode": "DD 0A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd0b",
+    "group": "dd",
+    "row": "0x",
+    "col": "B",
+    "opcode": "DD 0B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd0c",
+    "group": "dd",
+    "row": "0x",
+    "col": "C",
+    "opcode": "DD 0C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd0d",
+    "group": "dd",
+    "row": "0x",
+    "col": "D",
+    "opcode": "DD 0D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd0e",
+    "group": "dd",
+    "row": "0x",
+    "col": "E",
+    "opcode": "DD 0E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd0f",
+    "group": "dd",
+    "row": "0x",
+    "col": "F",
+    "opcode": "DD 0F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd10",
+    "group": "dd",
+    "row": "1x",
+    "col": "0",
+    "opcode": "DD 10",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd11",
+    "group": "dd",
+    "row": "1x",
+    "col": "1",
+    "opcode": "DD 11",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd12",
+    "group": "dd",
+    "row": "1x",
+    "col": "2",
+    "opcode": "DD 12",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd13",
+    "group": "dd",
+    "row": "1x",
+    "col": "3",
+    "opcode": "DD 13",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd14",
+    "group": "dd",
+    "row": "1x",
+    "col": "4",
+    "opcode": "DD 14",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd15",
+    "group": "dd",
+    "row": "1x",
+    "col": "5",
+    "opcode": "DD 15",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd16",
+    "group": "dd",
+    "row": "1x",
+    "col": "6",
+    "opcode": "DD 16",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd17",
+    "group": "dd",
+    "row": "1x",
+    "col": "7",
+    "opcode": "DD 17",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd18",
+    "group": "dd",
+    "row": "1x",
+    "col": "8",
+    "opcode": "DD 18",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd19",
+    "group": "dd",
+    "row": "1x",
+    "col": "9",
+    "opcode": "DD 19",
+    "mnemonic": "ADD IX,DE",
+    "clck": "15",
+    "siz": "2",
+    "description": "Suma DE a IX i deixa el resultat al mateix registre indexat.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "H",
+        "N",
+        "C"
+      ],
+      "notes": "S, Z i P/V no canvien."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd1a",
+    "group": "dd",
+    "row": "1x",
+    "col": "A",
+    "opcode": "DD 1A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd1b",
+    "group": "dd",
+    "row": "1x",
+    "col": "B",
+    "opcode": "DD 1B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd1c",
+    "group": "dd",
+    "row": "1x",
+    "col": "C",
+    "opcode": "DD 1C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd1d",
+    "group": "dd",
+    "row": "1x",
+    "col": "D",
+    "opcode": "DD 1D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd1e",
+    "group": "dd",
+    "row": "1x",
+    "col": "E",
+    "opcode": "DD 1E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd1f",
+    "group": "dd",
+    "row": "1x",
+    "col": "F",
+    "opcode": "DD 1F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd20",
+    "group": "dd",
+    "row": "2x",
+    "col": "0",
+    "opcode": "DD 20",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd21",
+    "group": "dd",
+    "row": "2x",
+    "col": "1",
+    "opcode": "DD 21 nn nn",
+    "mnemonic": "LD IX,nn",
+    "clck": "14",
+    "siz": "4",
+    "description": "Carrega un valor immediat de 16 bits al registre IX.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd22",
+    "group": "dd",
+    "row": "2x",
+    "col": "2",
+    "opcode": "DD 22 nn nn",
+    "mnemonic": "LD (nn),IX",
+    "clck": "20",
+    "siz": "4",
+    "description": "Guarda el valor de IX a memòria començant a l'adreça nn.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "Escriu primer el byte baix i després el byte alt."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd23",
+    "group": "dd",
+    "row": "2x",
+    "col": "3",
+    "opcode": "DD 23",
+    "mnemonic": "INC IX",
+    "clck": "10",
+    "siz": "2",
+    "description": "Incrementa IX en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd24",
+    "group": "dd",
+    "row": "2x",
+    "col": "4",
+    "opcode": "DD 24",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd25",
+    "group": "dd",
+    "row": "2x",
+    "col": "5",
+    "opcode": "DD 25",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd26",
+    "group": "dd",
+    "row": "2x",
+    "col": "6",
+    "opcode": "DD 26",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd27",
+    "group": "dd",
+    "row": "2x",
+    "col": "7",
+    "opcode": "DD 27",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd28",
+    "group": "dd",
+    "row": "2x",
+    "col": "8",
+    "opcode": "DD 28",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd29",
+    "group": "dd",
+    "row": "2x",
+    "col": "9",
+    "opcode": "DD 29",
+    "mnemonic": "ADD IX,IX",
+    "clck": "15",
+    "siz": "2",
+    "description": "Suma IX amb ell mateix.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "H",
+        "N",
+        "C"
+      ],
+      "notes": "S, Z i P/V no canvien."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd2a",
+    "group": "dd",
+    "row": "2x",
+    "col": "A",
+    "opcode": "DD 2A nn nn",
+    "mnemonic": "LD IX,(nn)",
+    "clck": "20",
+    "siz": "4",
+    "description": "Llegeix un valor de 16 bits de memòria començant a nn i el carrega a IX.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd2b",
+    "group": "dd",
+    "row": "2x",
+    "col": "B",
+    "opcode": "DD 2B",
+    "mnemonic": "DEC IX",
+    "clck": "10",
+    "siz": "2",
+    "description": "Decrementa IX en 1.",
+    "category": "alu",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd2c",
+    "group": "dd",
+    "row": "2x",
+    "col": "C",
+    "opcode": "DD 2C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd2d",
+    "group": "dd",
+    "row": "2x",
+    "col": "D",
+    "opcode": "DD 2D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd2e",
+    "group": "dd",
+    "row": "2x",
+    "col": "E",
+    "opcode": "DD 2E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd2f",
+    "group": "dd",
+    "row": "2x",
+    "col": "F",
+    "opcode": "DD 2F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd30",
+    "group": "dd",
+    "row": "3x",
+    "col": "0",
+    "opcode": "DD 30",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd31",
+    "group": "dd",
+    "row": "3x",
+    "col": "1",
+    "opcode": "DD 31",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd32",
+    "group": "dd",
+    "row": "3x",
+    "col": "2",
+    "opcode": "DD 32",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd33",
+    "group": "dd",
+    "row": "3x",
+    "col": "3",
+    "opcode": "DD 33",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd34",
+    "group": "dd",
+    "row": "3x",
+    "col": "4",
+    "opcode": "DD 34 d",
+    "mnemonic": "INC (IX+d)",
+    "clck": "23",
+    "siz": "3",
+    "description": "Incrementa en 1 el byte de memòria situat a IX+d.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd35",
+    "group": "dd",
+    "row": "3x",
+    "col": "5",
+    "opcode": "DD 35 d",
+    "mnemonic": "DEC (IX+d)",
+    "clck": "23",
+    "siz": "3",
+    "description": "Decrementa en 1 el byte de memòria situat a IX+d.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N"
+      ],
+      "notes": "C no canvia."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd36",
+    "group": "dd",
+    "row": "3x",
+    "col": "6",
+    "opcode": "DD 36 d n",
+    "mnemonic": "LD (IX+d),n",
+    "clck": "19",
+    "siz": "4",
+    "description": "Escriu un byte immediat a la memòria situada a IX+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "Ideal per camps dins d'estructures indexades."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd37",
+    "group": "dd",
+    "row": "3x",
+    "col": "7",
+    "opcode": "DD 37",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd38",
+    "group": "dd",
+    "row": "3x",
+    "col": "8",
+    "opcode": "DD 38",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd39",
+    "group": "dd",
+    "row": "3x",
+    "col": "9",
+    "opcode": "DD 39",
+    "mnemonic": "ADD IX,SP",
+    "clck": "15",
+    "siz": "2",
+    "description": "Suma SP a IX i deixa el resultat a IX.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "H",
+        "N",
+        "C"
+      ],
+      "notes": "S, Z i P/V no canvien."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd3a",
+    "group": "dd",
+    "row": "3x",
+    "col": "A",
+    "opcode": "DD 3A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd3b",
+    "group": "dd",
+    "row": "3x",
+    "col": "B",
+    "opcode": "DD 3B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd3c",
+    "group": "dd",
+    "row": "3x",
+    "col": "C",
+    "opcode": "DD 3C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd3d",
+    "group": "dd",
+    "row": "3x",
+    "col": "D",
+    "opcode": "DD 3D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd3e",
+    "group": "dd",
+    "row": "3x",
+    "col": "E",
+    "opcode": "DD 3E",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd3f",
+    "group": "dd",
+    "row": "3x",
+    "col": "F",
+    "opcode": "DD 3F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd40",
+    "group": "dd",
+    "row": "4x",
+    "col": "0",
+    "opcode": "DD 40",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd41",
+    "group": "dd",
+    "row": "4x",
+    "col": "1",
+    "opcode": "DD 41",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd42",
+    "group": "dd",
+    "row": "4x",
+    "col": "2",
+    "opcode": "DD 42",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd43",
+    "group": "dd",
+    "row": "4x",
+    "col": "3",
+    "opcode": "DD 43",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd44",
+    "group": "dd",
+    "row": "4x",
+    "col": "4",
+    "opcode": "DD 44",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd45",
+    "group": "dd",
+    "row": "4x",
+    "col": "5",
+    "opcode": "DD 45",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd46",
+    "group": "dd",
+    "row": "4x",
+    "col": "6",
+    "opcode": "DD 46 d",
+    "mnemonic": "LD B,(IX+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Llegeix el byte de memòria situat a IX+d i el carrega al registre B.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd47",
+    "group": "dd",
+    "row": "4x",
+    "col": "7",
+    "opcode": "DD 47",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd48",
+    "group": "dd",
+    "row": "4x",
+    "col": "8",
+    "opcode": "DD 48",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd49",
+    "group": "dd",
+    "row": "4x",
+    "col": "9",
+    "opcode": "DD 49",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd4a",
+    "group": "dd",
+    "row": "4x",
+    "col": "A",
+    "opcode": "DD 4A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd4b",
+    "group": "dd",
+    "row": "4x",
+    "col": "B",
+    "opcode": "DD 4B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd4c",
+    "group": "dd",
+    "row": "4x",
+    "col": "C",
+    "opcode": "DD 4C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd4d",
+    "group": "dd",
+    "row": "4x",
+    "col": "D",
+    "opcode": "DD 4D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd4e",
+    "group": "dd",
+    "row": "4x",
+    "col": "E",
+    "opcode": "DD 4E d",
+    "mnemonic": "LD C,(IX+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Llegeix el byte de memòria situat a IX+d i el carrega al registre C.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd4f",
+    "group": "dd",
+    "row": "4x",
+    "col": "F",
+    "opcode": "DD 4F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd50",
+    "group": "dd",
+    "row": "5x",
+    "col": "0",
+    "opcode": "DD 50",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd51",
+    "group": "dd",
+    "row": "5x",
+    "col": "1",
+    "opcode": "DD 51",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd52",
+    "group": "dd",
+    "row": "5x",
+    "col": "2",
+    "opcode": "DD 52",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd53",
+    "group": "dd",
+    "row": "5x",
+    "col": "3",
+    "opcode": "DD 53",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd54",
+    "group": "dd",
+    "row": "5x",
+    "col": "4",
+    "opcode": "DD 54",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd55",
+    "group": "dd",
+    "row": "5x",
+    "col": "5",
+    "opcode": "DD 55",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd56",
+    "group": "dd",
+    "row": "5x",
+    "col": "6",
+    "opcode": "DD 56 d",
+    "mnemonic": "LD D,(IX+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Llegeix el byte de memòria situat a IX+d i el carrega al registre D.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd57",
+    "group": "dd",
+    "row": "5x",
+    "col": "7",
+    "opcode": "DD 57",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd58",
+    "group": "dd",
+    "row": "5x",
+    "col": "8",
+    "opcode": "DD 58",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd59",
+    "group": "dd",
+    "row": "5x",
+    "col": "9",
+    "opcode": "DD 59",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd5a",
+    "group": "dd",
+    "row": "5x",
+    "col": "A",
+    "opcode": "DD 5A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd5b",
+    "group": "dd",
+    "row": "5x",
+    "col": "B",
+    "opcode": "DD 5B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd5c",
+    "group": "dd",
+    "row": "5x",
+    "col": "C",
+    "opcode": "DD 5C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd5d",
+    "group": "dd",
+    "row": "5x",
+    "col": "D",
+    "opcode": "DD 5D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd5e",
+    "group": "dd",
+    "row": "5x",
+    "col": "E",
+    "opcode": "DD 5E d",
+    "mnemonic": "LD E,(IX+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Llegeix el byte de memòria situat a IX+d i el carrega al registre E.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd5f",
+    "group": "dd",
+    "row": "5x",
+    "col": "F",
+    "opcode": "DD 5F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd60",
+    "group": "dd",
+    "row": "6x",
+    "col": "0",
+    "opcode": "DD 60",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd61",
+    "group": "dd",
+    "row": "6x",
+    "col": "1",
+    "opcode": "DD 61",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd62",
+    "group": "dd",
+    "row": "6x",
+    "col": "2",
+    "opcode": "DD 62",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd63",
+    "group": "dd",
+    "row": "6x",
+    "col": "3",
+    "opcode": "DD 63",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd64",
+    "group": "dd",
+    "row": "6x",
+    "col": "4",
+    "opcode": "DD 64",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd65",
+    "group": "dd",
+    "row": "6x",
+    "col": "5",
+    "opcode": "DD 65",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd66",
+    "group": "dd",
+    "row": "6x",
+    "col": "6",
+    "opcode": "DD 66 d",
+    "mnemonic": "LD H,(IX+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Llegeix el byte de memòria situat a IX+d i el carrega al registre H.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd67",
+    "group": "dd",
+    "row": "6x",
+    "col": "7",
+    "opcode": "DD 67",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd68",
+    "group": "dd",
+    "row": "6x",
+    "col": "8",
+    "opcode": "DD 68",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd69",
+    "group": "dd",
+    "row": "6x",
+    "col": "9",
+    "opcode": "DD 69",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd6a",
+    "group": "dd",
+    "row": "6x",
+    "col": "A",
+    "opcode": "DD 6A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd6b",
+    "group": "dd",
+    "row": "6x",
+    "col": "B",
+    "opcode": "DD 6B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd6c",
+    "group": "dd",
+    "row": "6x",
+    "col": "C",
+    "opcode": "DD 6C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd6d",
+    "group": "dd",
+    "row": "6x",
+    "col": "D",
+    "opcode": "DD 6D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd6e",
+    "group": "dd",
+    "row": "6x",
+    "col": "E",
+    "opcode": "DD 6E d",
+    "mnemonic": "LD L,(IX+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Llegeix el byte de memòria situat a IX+d i el carrega al registre L.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd6f",
+    "group": "dd",
+    "row": "6x",
+    "col": "F",
+    "opcode": "DD 6F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd70",
+    "group": "dd",
+    "row": "7x",
+    "col": "0",
+    "opcode": "DD 70 d",
+    "mnemonic": "LD (IX+d),B",
+    "clck": "19",
+    "siz": "3",
+    "description": "Escriu el contingut del registre B a la memòria situada a IX+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd71",
+    "group": "dd",
+    "row": "7x",
+    "col": "1",
+    "opcode": "DD 71 d",
+    "mnemonic": "LD (IX+d),C",
+    "clck": "19",
+    "siz": "3",
+    "description": "Escriu el contingut del registre C a la memòria situada a IX+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd72",
+    "group": "dd",
+    "row": "7x",
+    "col": "2",
+    "opcode": "DD 72 d",
+    "mnemonic": "LD (IX+d),D",
+    "clck": "19",
+    "siz": "3",
+    "description": "Escriu el contingut del registre D a la memòria situada a IX+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd73",
+    "group": "dd",
+    "row": "7x",
+    "col": "3",
+    "opcode": "DD 73 d",
+    "mnemonic": "LD (IX+d),E",
+    "clck": "19",
+    "siz": "3",
+    "description": "Escriu el contingut del registre E a la memòria situada a IX+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd74",
+    "group": "dd",
+    "row": "7x",
+    "col": "4",
+    "opcode": "DD 74 d",
+    "mnemonic": "LD (IX+d),H",
+    "clck": "19",
+    "siz": "3",
+    "description": "Escriu el contingut del registre H a la memòria situada a IX+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd75",
+    "group": "dd",
+    "row": "7x",
+    "col": "5",
+    "opcode": "DD 75 d",
+    "mnemonic": "LD (IX+d),L",
+    "clck": "19",
+    "siz": "3",
+    "description": "Escriu el contingut del registre L a la memòria situada a IX+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd76",
+    "group": "dd",
+    "row": "7x",
+    "col": "6",
+    "opcode": "DD 76",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd77",
+    "group": "dd",
+    "row": "7x",
+    "col": "7",
+    "opcode": "DD 77 d",
+    "mnemonic": "LD (IX+d),A",
+    "clck": "19",
+    "siz": "3",
+    "description": "Escriu el contingut del registre A a la memòria situada a IX+d.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd78",
+    "group": "dd",
+    "row": "7x",
+    "col": "8",
+    "opcode": "DD 78",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd79",
+    "group": "dd",
+    "row": "7x",
+    "col": "9",
+    "opcode": "DD 79",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd7a",
+    "group": "dd",
+    "row": "7x",
+    "col": "A",
+    "opcode": "DD 7A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd7b",
+    "group": "dd",
+    "row": "7x",
+    "col": "B",
+    "opcode": "DD 7B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd7c",
+    "group": "dd",
+    "row": "7x",
+    "col": "C",
+    "opcode": "DD 7C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd7d",
+    "group": "dd",
+    "row": "7x",
+    "col": "D",
+    "opcode": "DD 7D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd7e",
+    "group": "dd",
+    "row": "7x",
+    "col": "E",
+    "opcode": "DD 7E d",
+    "mnemonic": "LD A,(IX+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Llegeix el byte de memòria situat a IX+d i el carrega al registre A.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd7f",
+    "group": "dd",
+    "row": "7x",
+    "col": "F",
+    "opcode": "DD 7F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd80",
+    "group": "dd",
+    "row": "8x",
+    "col": "0",
+    "opcode": "DD 80",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd81",
+    "group": "dd",
+    "row": "8x",
+    "col": "1",
+    "opcode": "DD 81",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd82",
+    "group": "dd",
+    "row": "8x",
+    "col": "2",
+    "opcode": "DD 82",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd83",
+    "group": "dd",
+    "row": "8x",
+    "col": "3",
+    "opcode": "DD 83",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd84",
+    "group": "dd",
+    "row": "8x",
+    "col": "4",
+    "opcode": "DD 84",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd85",
+    "group": "dd",
+    "row": "8x",
+    "col": "5",
+    "opcode": "DD 85",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd86",
+    "group": "dd",
+    "row": "8x",
+    "col": "6",
+    "opcode": "DD 86 d",
+    "mnemonic": "ADD A,(IX+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Suma el byte de memòria situat a IX+d a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "A rep el resultat de la suma."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd87",
+    "group": "dd",
+    "row": "8x",
+    "col": "7",
+    "opcode": "DD 87",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd88",
+    "group": "dd",
+    "row": "8x",
+    "col": "8",
+    "opcode": "DD 88",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd89",
+    "group": "dd",
+    "row": "8x",
+    "col": "9",
+    "opcode": "DD 89",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd8a",
+    "group": "dd",
+    "row": "8x",
+    "col": "A",
+    "opcode": "DD 8A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd8b",
+    "group": "dd",
+    "row": "8x",
+    "col": "B",
+    "opcode": "DD 8B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd8c",
+    "group": "dd",
+    "row": "8x",
+    "col": "C",
+    "opcode": "DD 8C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd8d",
+    "group": "dd",
+    "row": "8x",
+    "col": "D",
+    "opcode": "DD 8D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd8e",
+    "group": "dd",
+    "row": "8x",
+    "col": "E",
+    "opcode": "DD 8E d",
+    "mnemonic": "ADC A,(IX+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Suma el byte de memòria situat a IX+d i el carry a A.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "Inclou el carry en l'operació."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd8f",
+    "group": "dd",
+    "row": "8x",
+    "col": "F",
+    "opcode": "DD 8F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd90",
+    "group": "dd",
+    "row": "9x",
+    "col": "0",
+    "opcode": "DD 90",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd91",
+    "group": "dd",
+    "row": "9x",
+    "col": "1",
+    "opcode": "DD 91",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd92",
+    "group": "dd",
+    "row": "9x",
+    "col": "2",
+    "opcode": "DD 92",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd93",
+    "group": "dd",
+    "row": "9x",
+    "col": "3",
+    "opcode": "DD 93",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd94",
+    "group": "dd",
+    "row": "9x",
+    "col": "4",
+    "opcode": "DD 94",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd95",
+    "group": "dd",
+    "row": "9x",
+    "col": "5",
+    "opcode": "DD 95",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd96",
+    "group": "dd",
+    "row": "9x",
+    "col": "6",
+    "opcode": "DD 96 d",
+    "mnemonic": "SUB (IX+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Resta de A el byte de memòria situat a IX+d.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "A rep el resultat de la resta."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd97",
+    "group": "dd",
+    "row": "9x",
+    "col": "7",
+    "opcode": "DD 97",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd98",
+    "group": "dd",
+    "row": "9x",
+    "col": "8",
+    "opcode": "DD 98",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd99",
+    "group": "dd",
+    "row": "9x",
+    "col": "9",
+    "opcode": "DD 99",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd9a",
+    "group": "dd",
+    "row": "9x",
+    "col": "A",
+    "opcode": "DD 9A",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd9b",
+    "group": "dd",
+    "row": "9x",
+    "col": "B",
+    "opcode": "DD 9B",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd9c",
+    "group": "dd",
+    "row": "9x",
+    "col": "C",
+    "opcode": "DD 9C",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd9d",
+    "group": "dd",
+    "row": "9x",
+    "col": "D",
+    "opcode": "DD 9D",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dd9e",
+    "group": "dd",
+    "row": "9x",
+    "col": "E",
+    "opcode": "DD 9E d",
+    "mnemonic": "SBC A,(IX+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Resta de A el byte de memòria situat a IX+d i el carry.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "Inclou el carry en la resta."
+    },
+    "documented": true
+  },
+  {
+    "id": "dd9f",
+    "group": "dd",
+    "row": "9x",
+    "col": "F",
+    "opcode": "DD 9F",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dda0",
+    "group": "dd",
+    "row": "Ax",
+    "col": "0",
+    "opcode": "DD A0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dda1",
+    "group": "dd",
+    "row": "Ax",
+    "col": "1",
+    "opcode": "DD A1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dda2",
+    "group": "dd",
+    "row": "Ax",
+    "col": "2",
+    "opcode": "DD A2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dda3",
+    "group": "dd",
+    "row": "Ax",
+    "col": "3",
+    "opcode": "DD A3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dda4",
+    "group": "dd",
+    "row": "Ax",
+    "col": "4",
+    "opcode": "DD A4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dda5",
+    "group": "dd",
+    "row": "Ax",
+    "col": "5",
+    "opcode": "DD A5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dda6",
+    "group": "dd",
+    "row": "Ax",
+    "col": "6",
+    "opcode": "DD A6 d",
+    "mnemonic": "AND (IX+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Fa un AND lògic entre A i el byte de memòria situat a IX+d.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H queda activat; C es reinicia."
+    },
+    "documented": true
+  },
+  {
+    "id": "dda7",
+    "group": "dd",
+    "row": "Ax",
+    "col": "7",
+    "opcode": "DD A7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dda8",
+    "group": "dd",
+    "row": "Ax",
+    "col": "8",
+    "opcode": "DD A8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dda9",
+    "group": "dd",
+    "row": "Ax",
+    "col": "9",
+    "opcode": "DD A9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddaa",
+    "group": "dd",
+    "row": "Ax",
+    "col": "A",
+    "opcode": "DD AA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddab",
+    "group": "dd",
+    "row": "Ax",
+    "col": "B",
+    "opcode": "DD AB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddac",
+    "group": "dd",
+    "row": "Ax",
+    "col": "C",
+    "opcode": "DD AC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddad",
+    "group": "dd",
+    "row": "Ax",
+    "col": "D",
+    "opcode": "DD AD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddae",
+    "group": "dd",
+    "row": "Ax",
+    "col": "E",
+    "opcode": "DD AE d",
+    "mnemonic": "XOR (IX+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Fa un XOR lògic entre A i el byte de memòria situat a IX+d.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i C es reinicien."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddaf",
+    "group": "dd",
+    "row": "Ax",
+    "col": "F",
+    "opcode": "DD AF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddb0",
+    "group": "dd",
+    "row": "Bx",
+    "col": "0",
+    "opcode": "DD B0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddb1",
+    "group": "dd",
+    "row": "Bx",
+    "col": "1",
+    "opcode": "DD B1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddb2",
+    "group": "dd",
+    "row": "Bx",
+    "col": "2",
+    "opcode": "DD B2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddb3",
+    "group": "dd",
+    "row": "Bx",
+    "col": "3",
+    "opcode": "DD B3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddb4",
+    "group": "dd",
+    "row": "Bx",
+    "col": "4",
+    "opcode": "DD B4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddb5",
+    "group": "dd",
+    "row": "Bx",
+    "col": "5",
+    "opcode": "DD B5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddb6",
+    "group": "dd",
+    "row": "Bx",
+    "col": "6",
+    "opcode": "DD B6 d",
+    "mnemonic": "OR (IX+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Fa un OR lògic entre A i el byte de memòria situat a IX+d.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "H i C es reinicien."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddb7",
+    "group": "dd",
+    "row": "Bx",
+    "col": "7",
+    "opcode": "DD B7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddb8",
+    "group": "dd",
+    "row": "Bx",
+    "col": "8",
+    "opcode": "DD B8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddb9",
+    "group": "dd",
+    "row": "Bx",
+    "col": "9",
+    "opcode": "DD B9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddba",
+    "group": "dd",
+    "row": "Bx",
+    "col": "A",
+    "opcode": "DD BA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddbb",
+    "group": "dd",
+    "row": "Bx",
+    "col": "B",
+    "opcode": "DD BB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddbc",
+    "group": "dd",
+    "row": "Bx",
+    "col": "C",
+    "opcode": "DD BC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddbd",
+    "group": "dd",
+    "row": "Bx",
+    "col": "D",
+    "opcode": "DD BD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddbe",
+    "group": "dd",
+    "row": "Bx",
+    "col": "E",
+    "opcode": "DD BE d",
+    "mnemonic": "CP (IX+d)",
+    "clck": "19",
+    "siz": "3",
+    "description": "Compara A amb el byte de memòria situat a IX+d sense guardar el resultat.",
+    "category": "alu",
+    "flags": {
+      "affected": [
+        "S",
+        "Z",
+        "H",
+        "P/V",
+        "N",
+        "C"
+      ],
+      "notes": "Només canvien flags; A no es modifica."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddbf",
+    "group": "dd",
+    "row": "Bx",
+    "col": "F",
+    "opcode": "DD BF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddc0",
+    "group": "dd",
+    "row": "Cx",
+    "col": "0",
+    "opcode": "DD C0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddc1",
+    "group": "dd",
+    "row": "Cx",
+    "col": "1",
+    "opcode": "DD C1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddc2",
+    "group": "dd",
+    "row": "Cx",
+    "col": "2",
+    "opcode": "DD C2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddc3",
+    "group": "dd",
+    "row": "Cx",
+    "col": "3",
+    "opcode": "DD C3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddc4",
+    "group": "dd",
+    "row": "Cx",
+    "col": "4",
+    "opcode": "DD C4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddc5",
+    "group": "dd",
+    "row": "Cx",
+    "col": "5",
+    "opcode": "DD C5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddc6",
+    "group": "dd",
+    "row": "Cx",
+    "col": "6",
+    "opcode": "DD C6",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddc7",
+    "group": "dd",
+    "row": "Cx",
+    "col": "7",
+    "opcode": "DD C7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddc8",
+    "group": "dd",
+    "row": "Cx",
+    "col": "8",
+    "opcode": "DD C8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddc9",
+    "group": "dd",
+    "row": "Cx",
+    "col": "9",
+    "opcode": "DD C9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddca",
+    "group": "dd",
+    "row": "Cx",
+    "col": "A",
+    "opcode": "DD CA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcb",
+    "group": "dd",
+    "row": "Cx",
+    "col": "B",
+    "opcode": "DD CB d xx",
+    "mnemonic": "PREFIX DD CB",
+    "clck": "variable",
+    "siz": "2+",
+    "description": "Obre la subtaula indexada DD CB: després venen el desplaçament d i el byte final de l'operació de bits sobre (IX+d).",
+    "category": "prefix",
+    "flags": {
+      "affected": [],
+      "notes": "No és una instrucció completa per si sola."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddcc",
+    "group": "dd",
+    "row": "Cx",
+    "col": "C",
+    "opcode": "DD CC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcd",
+    "group": "dd",
+    "row": "Cx",
+    "col": "D",
+    "opcode": "DD CD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddce",
+    "group": "dd",
+    "row": "Cx",
+    "col": "E",
+    "opcode": "DD CE",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddcf",
+    "group": "dd",
+    "row": "Cx",
+    "col": "F",
+    "opcode": "DD CF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddd0",
+    "group": "dd",
+    "row": "Dx",
+    "col": "0",
+    "opcode": "DD D0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddd1",
+    "group": "dd",
+    "row": "Dx",
+    "col": "1",
+    "opcode": "DD D1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddd2",
+    "group": "dd",
+    "row": "Dx",
+    "col": "2",
+    "opcode": "DD D2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddd3",
+    "group": "dd",
+    "row": "Dx",
+    "col": "3",
+    "opcode": "DD D3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddd4",
+    "group": "dd",
+    "row": "Dx",
+    "col": "4",
+    "opcode": "DD D4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddd5",
+    "group": "dd",
+    "row": "Dx",
+    "col": "5",
+    "opcode": "DD D5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddd6",
+    "group": "dd",
+    "row": "Dx",
+    "col": "6",
+    "opcode": "DD D6",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddd7",
+    "group": "dd",
+    "row": "Dx",
+    "col": "7",
+    "opcode": "DD D7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddd8",
+    "group": "dd",
+    "row": "Dx",
+    "col": "8",
+    "opcode": "DD D8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddd9",
+    "group": "dd",
+    "row": "Dx",
+    "col": "9",
+    "opcode": "DD D9",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddda",
+    "group": "dd",
+    "row": "Dx",
+    "col": "A",
+    "opcode": "DD DA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dddb",
+    "group": "dd",
+    "row": "Dx",
+    "col": "B",
+    "opcode": "DD DB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dddc",
+    "group": "dd",
+    "row": "Dx",
+    "col": "C",
+    "opcode": "DD DC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dddd",
+    "group": "dd",
+    "row": "Dx",
+    "col": "D",
+    "opcode": "DD DD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddde",
+    "group": "dd",
+    "row": "Dx",
+    "col": "E",
+    "opcode": "DD DE",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dddf",
+    "group": "dd",
+    "row": "Dx",
+    "col": "F",
+    "opcode": "DD DF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dde0",
+    "group": "dd",
+    "row": "Ex",
+    "col": "0",
+    "opcode": "DD E0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dde1",
+    "group": "dd",
+    "row": "Ex",
+    "col": "1",
+    "opcode": "DD E1",
+    "mnemonic": "POP IX",
+    "clck": "14",
+    "siz": "2",
+    "description": "Recupera dos bytes de la pila i els posa a IX.",
+    "category": "stack",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dde2",
+    "group": "dd",
+    "row": "Ex",
+    "col": "2",
+    "opcode": "DD E2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dde3",
+    "group": "dd",
+    "row": "Ex",
+    "col": "3",
+    "opcode": "DD E3",
+    "mnemonic": "EX (SP),IX",
+    "clck": "23",
+    "siz": "2",
+    "description": "Intercanvia el contingut de IX amb els dos bytes apuntats per SP.",
+    "category": "exchange",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dde4",
+    "group": "dd",
+    "row": "Ex",
+    "col": "4",
+    "opcode": "DD E4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dde5",
+    "group": "dd",
+    "row": "Ex",
+    "col": "5",
+    "opcode": "DD E5",
+    "mnemonic": "PUSH IX",
+    "clck": "15",
+    "siz": "2",
+    "description": "Guarda IX a la pila.",
+    "category": "stack",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "dde6",
+    "group": "dd",
+    "row": "Ex",
+    "col": "6",
+    "opcode": "DD E6",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dde7",
+    "group": "dd",
+    "row": "Ex",
+    "col": "7",
+    "opcode": "DD E7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dde8",
+    "group": "dd",
+    "row": "Ex",
+    "col": "8",
+    "opcode": "DD E8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dde9",
+    "group": "dd",
+    "row": "Ex",
+    "col": "9",
+    "opcode": "DD E9",
+    "mnemonic": "JP (IX)",
+    "clck": "8",
+    "siz": "2",
+    "description": "Salta a l'adreça continguda a IX.",
+    "category": "jump",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddea",
+    "group": "dd",
+    "row": "Ex",
+    "col": "A",
+    "opcode": "DD EA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddeb",
+    "group": "dd",
+    "row": "Ex",
+    "col": "B",
+    "opcode": "DD EB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddec",
+    "group": "dd",
+    "row": "Ex",
+    "col": "C",
+    "opcode": "DD EC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "dded",
+    "group": "dd",
+    "row": "Ex",
+    "col": "D",
+    "opcode": "DD ED",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddee",
+    "group": "dd",
+    "row": "Ex",
+    "col": "E",
+    "opcode": "DD EE",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddef",
+    "group": "dd",
+    "row": "Ex",
+    "col": "F",
+    "opcode": "DD EF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddf0",
+    "group": "dd",
+    "row": "Fx",
+    "col": "0",
+    "opcode": "DD F0",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddf1",
+    "group": "dd",
+    "row": "Fx",
+    "col": "1",
+    "opcode": "DD F1",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddf2",
+    "group": "dd",
+    "row": "Fx",
+    "col": "2",
+    "opcode": "DD F2",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddf3",
+    "group": "dd",
+    "row": "Fx",
+    "col": "3",
+    "opcode": "DD F3",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddf4",
+    "group": "dd",
+    "row": "Fx",
+    "col": "4",
+    "opcode": "DD F4",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddf5",
+    "group": "dd",
+    "row": "Fx",
+    "col": "5",
+    "opcode": "DD F5",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddf6",
+    "group": "dd",
+    "row": "Fx",
+    "col": "6",
+    "opcode": "DD F6",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddf7",
+    "group": "dd",
+    "row": "Fx",
+    "col": "7",
+    "opcode": "DD F7",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddf8",
+    "group": "dd",
+    "row": "Fx",
+    "col": "8",
+    "opcode": "DD F8",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddf9",
+    "group": "dd",
+    "row": "Fx",
+    "col": "9",
+    "opcode": "DD F9",
+    "mnemonic": "LD SP,IX",
+    "clck": "10",
+    "siz": "2",
+    "description": "Copia IX al registre SP.",
+    "category": "load",
+    "flags": {
+      "affected": [],
+      "notes": "No altera flags."
+    },
+    "documented": true
+  },
+  {
+    "id": "ddfa",
+    "group": "dd",
+    "row": "Fx",
+    "col": "A",
+    "opcode": "DD FA",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddfb",
+    "group": "dd",
+    "row": "Fx",
+    "col": "B",
+    "opcode": "DD FB",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddfc",
+    "group": "dd",
+    "row": "Fx",
+    "col": "C",
+    "opcode": "DD FC",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddfd",
+    "group": "dd",
+    "row": "Fx",
+    "col": "D",
+    "opcode": "DD FD",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddfe",
+    "group": "dd",
+    "row": "Fx",
+    "col": "E",
+    "opcode": "DD FE",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  },
+  {
+    "id": "ddff",
+    "group": "dd",
+    "row": "Fx",
+    "col": "F",
+    "opcode": "DD FF",
+    "mnemonic": "—",
+    "clck": "—",
+    "siz": "2",
+    "description": "Aquesta posició del prefix DD no té una forma documentada separada al manual oficial.",
+    "category": "undocumented",
+    "flags": {
+      "affected": [],
+      "notes": "Sense instrucció documentada al manual oficial per aquesta posició de la subtaula."
+    },
+    "documented": false
+  }
+]
