@@ -555,6 +555,7 @@
         <button class="btn small" id="btn-sim-import-vram" title="Load 16KB VRAM binary dump (e.g. from Emulicious)">📂 VRAM</button>
         <button class="btn small" id="btn-sim-import-cram" title="Paste 32 CRAM hex bytes (e.g. from Emulicious color RAM)">📂 CRAM</button>
         <button class="btn small success" id="btn-sim-run">▶ RUN</button>
+        <button class="btn small" id="btn-sim-save-scene" title="Save current steps as a named scene in the gallery">💾 SAVE SCENE</button>
         <button class="btn small danger" id="btn-sim-reset">⟳ RESET</button>
       </div>
     </div>
@@ -619,6 +620,15 @@
       <div id="sim-info" style="font-size:11px;color:var(--dim);margin-bottom:6px;min-height:16px;"></div>
       <canvas id="sim-canvas" style="display:none;image-rendering:pixelated;max-width:100%;border:1px solid var(--border);"></canvas>
       <div id="sim-log" style="font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:8px;max-height:140px;overflow-y:auto;line-height:1.5;"></div>
+
+      <!-- ── SCENE GALLERY ───────────────────────────── -->
+      <div style="border:1px solid #2a2a4a;border-radius:4px;padding:8px;margin-top:12px;background:rgba(120,80,255,.02)">
+        <div style="font-size:11px;color:#a78bfa;font-weight:bold;letter-spacing:1px;margin-bottom:8px">SCENE GALLERY
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">saved step combinations</span>
+        </div>
+        <div id="sim-gallery-empty" style="font-size:11px;color:var(--dim);font-style:italic">No scenes saved yet. Configure steps, click RUN, then 💾 SAVE SCENE.</div>
+        <div id="sim-gallery" style="display:flex;flex-wrap:wrap;gap:10px;"></div>
+      </div>
     </div>
   </div>
 

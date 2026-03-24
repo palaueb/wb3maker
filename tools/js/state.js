@@ -54,7 +54,7 @@ var asmFileName = '';
 var mapData = {
   schemaVersion:1, romVersion:'unknown',
   romMD5:'', romName:'', romSizeBytes:0,
-  regions:[], compositions:[], ram:[], notes:'',
+  regions:[], compositions:[], ram:[], simScenes:[], notes:'',
 };
 
 var viewerPalette = [...DEFAULT_PALETTE];

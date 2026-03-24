@@ -149,6 +149,92 @@ function renderSMSState(state, canvas, zoom) {
   ctx.putImageData(img, 0, 0);
 }
 
+// ── Scene Gallery ─────────────────────────────────────────────────────────────
+function simRenderGallery() {
+  const scenes = mapData.simScenes || [];
+  const container = document.getElementById('sim-gallery');
+  const empty = document.getElementById('sim-gallery-empty');
+  if (!container) return;
+  if (!scenes.length) {
+    container.innerHTML = '';
+    if (empty) empty.style.display = '';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+  container.innerHTML = scenes.map((sc, i) => {
+    const thumbHtml = sc.thumb
+      ? `<img src="${sc.thumb}" style="width:128px;height:auto;image-rendering:pixelated;display:block;border:1px solid var(--border);border-radius:2px;">`
+      : `<div style="width:128px;height:56px;background:#0a0a0a;border:1px solid var(--border);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--dim)">no render</div>`;
+    const stepSummary = (sc.steps || []).map(s => {
+      const colors = {cram_bg:'#ffcc00',cram_spr:'#ffa500',vram_8fb:'#ff6b35',vram_998:'#ff35a0',nt_604:'#00d4ff',nt_604_raw:'#00ff88'};
+      return `<span style="color:${colors[s.type]||'#aaa'};font-size:9px">${s.type.toUpperCase()}</span>`;
+    }).join(' ');
+    return `<div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:4px;padding:6px;display:flex;flex-direction:column;align-items:center;gap:5px;width:140px;">
+      ${thumbHtml}
+      <div style="font-size:11px;color:var(--text);font-weight:bold;text-align:center;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${sc.name.replace(/"/g,'&quot;')}">${sc.name}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:2px;justify-content:center">${stepSummary}</div>
+      <div style="display:flex;gap:3px;">
+        <button class="btn small primary" onclick="simLoadScene(${i})" title="Load steps from this scene">LOAD</button>
+        <button class="btn small" onclick="simRenameScene(${i})" title="Rename">✎</button>
+        <button class="btn small danger" onclick="simDeleteScene(${i})" title="Delete">✕</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function simSaveScene() {
+  if (!simSteps.length) { showToast('No steps to save', true); return; }
+  if (!mapData.simScenes) mapData.simScenes = [];
+  const defaultName = 'Scene ' + (mapData.simScenes.length + 1);
+  const name = window.prompt('Scene name:', defaultName);
+  if (name === null) return;
+  // Capture thumbnail: downscale the rendered canvas to 128×112
+  let thumb = null;
+  const canvas = document.getElementById('sim-canvas');
+  if (canvas && canvas.style.display !== 'none' && canvas.width > 0) {
+    const tc = document.createElement('canvas');
+    tc.width = 128; tc.height = 112;
+    tc.getContext('2d').drawImage(canvas, 0, 0, 128, 112);
+    thumb = tc.toDataURL('image/png');
+  }
+  mapData.simScenes.push({
+    id: 'sc' + Date.now().toString(36),
+    name: name.trim() || defaultName,
+    steps: JSON.parse(JSON.stringify(simSteps)),
+    thumb,
+  });
+  simRenderGallery();
+  triggerAutoSave();
+  showToast(`Scene "${name.trim() || defaultName}" saved`);
+}
+
+function simLoadScene(idx) {
+  const sc = (mapData.simScenes || [])[idx];
+  if (!sc) return;
+  simSteps = JSON.parse(JSON.stringify(sc.steps));
+  simRenderStepsList();
+  showToast(`Scene "${sc.name}" loaded — ${sc.steps.length} steps`);
+}
+
+function simRenameScene(idx) {
+  const sc = (mapData.simScenes || [])[idx];
+  if (!sc) return;
+  const name = window.prompt('Rename scene:', sc.name);
+  if (name === null || !name.trim()) return;
+  sc.name = name.trim();
+  simRenderGallery();
+  triggerAutoSave();
+}
+
+function simDeleteScene(idx) {
+  const sc = (mapData.simScenes || [])[idx];
+  if (!sc) return;
+  if (!confirm(`Delete scene "${sc.name}"?`)) return;
+  mapData.simScenes.splice(idx, 1);
+  simRenderGallery();
+  triggerAutoSave();
+}
+
 // ── Simulator Panel ──────────────────────────────────────────────────────────
 let simSteps = []; // [{type, regionId, bank}]
 let simImportedVRAM = null; // Uint8Array(16384) loaded from binary file
@@ -264,8 +350,8 @@ function simRefreshStepTypeRegionFilter() {
   const type = document.getElementById('sim-step-type').value;
   const sel  = document.getElementById('sim-step-region');
   const palTypes    = ['palette','palette_manual'];
-  const loaderTypes = ['vram_loader','vram_loader_8fb','vram_loader_998','gfx_tiles','gfx_sprites','unknown'];
-  const ntTypes     = ['screen_prog','unknown'];
+  const loaderTypes = ['vram_loader','vram_loader_8fb','vram_loader_998','gfx_tiles','gfx_sprites'];
+  const ntTypes     = ['screen_prog'];
   let allowed;
   if (type === 'cram_bg' || type === 'cram_spr') allowed = palTypes;
   else if (type === 'vram_8fb' || type === 'vram_998') allowed = loaderTypes;
@@ -441,4 +527,7 @@ function initSimulatorPanel() {
     document.getElementById('sim-cram-status').textContent = '';
   });
   simRenderStepsList();
+  simRenderGallery();
+
+  document.getElementById('btn-sim-save-scene').addEventListener('click', simSaveScene);
 }

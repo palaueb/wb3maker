@@ -277,6 +277,7 @@ function loadMapJson(jsonText,fileName){
   mapData.regions=data.regions??[];
   mapData.compositions=data.compositions??[];
   mapData.ram=data.ram??[];
+  mapData.simScenes=data.simScenes??[];
   mapData.notes=data.notes??'';
   _pendingAsmSplitPlan=null;
   document.getElementById('asm-split-review').classList.remove('open');
@@ -288,7 +289,7 @@ function loadMapJson(jsonText,fileName){
   _ramIdCounter=maxRamId+1;
   if(romData){
     ['panel-banks','panel-map','panel-palettes','panel-viewer','panel-composer','panel-simulator','panel-ram'].forEach(id=>document.getElementById(id).classList.remove('hidden'));
-    refreshMapUI();doRender();ramRenderTable();
+    refreshMapUI();doRender();ramRenderTable();simRenderGallery();
   }
   showToast(`Map loaded: ${fileName} — ${mapData.regions.length} regions`);
   updateBadges();
