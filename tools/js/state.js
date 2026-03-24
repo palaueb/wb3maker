@@ -12,6 +12,7 @@ var TYPE_META = {
   tile_map:    {label:'Tile Map',    color:'#00e5cc'},
   palette:     {label:'Palette',     color:'#ffcc00'},
   map_screens: {label:'Map/Screens', color:'#00ff88'},
+  pointer_table:   {label:'Pointer Table',   color:'#7ee787'},
   code:        {label:'Code',        color:'#4a9eff'},
   music:       {label:'Music/SFX',   color:'#a855f7'},
   text:        {label:'Text',        color:'#6bffb8'},
@@ -21,6 +22,10 @@ var TYPE_META = {
   data_array:      {label:'Data Array',       color:'#c0882a'},
   screen_prog:     {label:'Screen Bytecode',  color:'#00d4ff'},
   vram_loader:     {label:'VRAM Loader',      color:'#d4a0ff'},
+  vram_loader_8fb: {label:'VRAM Loader 8FB',  color:'#c084fc'},
+  vram_loader_998: {label:'VRAM Loader 998',  color:'#f472b6'},
+  room_subrecord:  {label:'Room Subrecord',   color:'#8bd450'},
+  room_seq_table:  {label:'Room Seq Table',   color:'#57d3a0'},
   null:            {label:'NULL',             color:'#333355'},
   unknown:         {label:'Unknown',         color:'#555577'},
 };

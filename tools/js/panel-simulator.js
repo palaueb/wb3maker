@@ -85,66 +85,19 @@ function simRunLoader998(romData, scriptOffset, state) {
 
 // _LABEL_604_ screen_prog → writes name table entries to state.vram[$3800..]
 function simRunScreenProg604(romData, scriptOffset, bank8000, state) {
-  const NT_BASE = 0x3800, COLS = 32, ROWS = 28;
-  const log = [];
-  let pc = scriptOffset;
-  let vramAddr = NT_BASE;
-  let storedVDPaddr = (0x78 << 8) | 0x00;
-  let currentAttr = 0;
-  const MAX = 50000; let iter = 0;
-  function vdpPairToVram(v) { return (v & 0xFF) | (((v >> 8) & 0x3F) << 8); }
-  function z80ToRom(z80) {
-    if (z80 < 0x8000) return z80;
-    if (z80 < 0xC000) return bank8000 * 0x4000 + (z80 - 0x8000);
-    return -1;
+  const NT_BASE = 0x3800;
+  const decoded = decodeScreenProg604(romData, scriptOffset, bank8000, { ntBase: NT_BASE });
+  for (let i = 0; i < decoded.cells.length; i++) {
+    const cell = decoded.cells[i];
+    if (!cell.writes) continue;
+    state.vram[NT_BASE + i * 2] = cell.tileIdx & 0xFF;
+    state.vram[NT_BASE + i * 2 + 1] = cell.attr & 0xFF;
   }
-  function writeNT(va, tileIdx, attr) {
-    const pos = (va - NT_BASE);
-    if (pos >= 0 && pos + 1 < (COLS * ROWS * 2)) {
-      state.vram[NT_BASE + pos]     = tileIdx & 0xFF;
-      state.vram[NT_BASE + pos + 1] = attr;
-    }
-  }
-  while (iter++ < MAX && pc < romData.length) {
-    const b = romData[pc++];
-    if (b < 0xF0) {
-      writeNT(vramAddr, b, currentAttr);
-      vramAddr += 2;
-      continue;
-    }
-    switch (b & 0x07) {
-      case 0: iter = MAX; log.push(`$F${b===0xF0?'0':'7'} END`); break;
-      case 1: currentAttr = romData[pc++]; log.push(`$F1 ATTR=$${currentAttr.toString(16).toUpperCase().padStart(2,'0')}`); break;
-      case 2: {
-        const lo = romData[pc++], hi = romData[pc++];
-        storedVDPaddr = lo | (hi << 8);
-        vramAddr = vdpPairToVram(storedVDPaddr);
-        log.push(`$F2 VRAM=$${vramAddr.toString(16).toUpperCase().padStart(4,'0')}`);
-        break;
-      }
-      case 3: { const t = romData[pc++]; writeNT(vramAddr, t, currentAttr); vramAddr += 2; break; }
-      case 4: {
-        const lo = romData[pc++], hi = romData[pc++];
-        const z80 = lo | (hi << 8);
-        const np = z80ToRom(z80);
-        if (np < 0 || np >= romData.length) { iter = MAX; log.push(`$F4 JUMP out of range`); }
-        else { pc = np; log.push(`$F4 JUMP $${z80.toString(16).toUpperCase().padStart(4,'0')}`); }
-        break;
-      }
-      case 5: {
-        const count = romData[pc++], tileIdx = romData[pc++];
-        for (let i = 0; i < count; i++) { writeNT(vramAddr, tileIdx, currentAttr); vramAddr += 2; }
-        break;
-      }
-      case 6: {
-        storedVDPaddr = (storedVDPaddr + 0x0040) & 0xFFFF;
-        if ((storedVDPaddr >> 8) >= 0x7F) storedVDPaddr = (storedVDPaddr & 0x00FF) | (0x78 << 8);
-        vramAddr = vdpPairToVram(storedVDPaddr);
-        log.push(`$F6 NEXT ROW → VRAM $${vramAddr.toString(16).toUpperCase().padStart(4,'0')}`);
-        break;
-      }
-    }
-  }
+  const log = decoded.trace.map(step => {
+    const hexBytes = step.bytes.map(v => v.toString(16).toUpperCase().padStart(2, '0')).join(' ');
+    return `ROM $${step.romOffset.toString(16).toUpperCase().padStart(5, '0')}  ${hexBytes.padEnd(8, ' ')}  ${step.detail}`;
+  });
+  if (decoded.warnings.length) log.push(...decoded.warnings.map(w => `WARN ${w}`));
   return log;
 }
 
@@ -311,7 +264,7 @@ function simRefreshStepTypeRegionFilter() {
   const type = document.getElementById('sim-step-type').value;
   const sel  = document.getElementById('sim-step-region');
   const palTypes    = ['palette','palette_manual'];
-  const loaderTypes = ['vram_loader','gfx_tiles','gfx_sprites','unknown'];
+  const loaderTypes = ['vram_loader','vram_loader_8fb','vram_loader_998','gfx_tiles','gfx_sprites','unknown'];
   const ntTypes     = ['screen_prog','unknown'];
   let allowed;
   if (type === 'cram_bg' || type === 'cram_spr') allowed = palTypes;

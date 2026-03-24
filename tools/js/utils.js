@@ -173,3 +173,566 @@ function romOffsetToZ80(offset) {
   const pageBase = bank === 0 ? 0x0000 : bank === 1 ? 0x4000 : 0x8000;
   return pageBase + (offset % BANK_SIZE);
 }
+
+function vdpCtrlWordToVram(vdp16) {
+  return (vdp16 & 0xFF) | (((vdp16 >> 8) & 0x3F) << 8);
+}
+
+function screenProg604Z80ToRom(z80, bank8000) {
+  if (z80 < 0x8000) return z80;
+  if (z80 < 0xC000) return bank8000 * 0x4000 + (z80 - 0x8000);
+  return -1;
+}
+
+function z80PointerToRomOffset(z80, tableOffset) {
+  const tableBank = bankOf(tableOffset);
+  if (z80 < 0x4000) return z80;
+  if (z80 < 0x8000) return BANK_SIZE + (z80 - 0x4000);
+  if (z80 < 0xC000) return tableBank * BANK_SIZE + (z80 - 0x8000);
+  return -1;
+}
+
+function decodePointerTableLE(bytes, baseOffset, options) {
+  options = options || {};
+  const stride = options.stride || 2;
+  const limit = options.limit || Math.floor(bytes.length / stride);
+  const entries = [];
+  let validTargets = 0;
+  for (let i = 0; i < limit; i++) {
+    const off = i * stride;
+    if (off + 1 >= bytes.length) break;
+    const word = bytes[off] | (bytes[off + 1] << 8);
+    const romTarget = z80PointerToRomOffset(word, baseOffset);
+    if (romTarget >= 0) validTargets++;
+    entries.push({
+      index: i,
+      entryOffset: baseOffset + off,
+      z80: word,
+      romTarget,
+    });
+  }
+  return {
+    entries,
+    stats: {
+      entries: entries.length,
+      validTargets,
+      validRatio: entries.length ? (validTargets / entries.length) : 0,
+    },
+  };
+}
+
+function decodeScreenProg604(rom, scriptOffset, bank8000, options) {
+  options = options || {};
+  const cols = options.cols || 32;
+  const rows = options.rows || 28;
+  const ntBase = options.ntBase || 0x3800;
+  const maxOps = options.maxOps || 4096;
+  const maxPcVisits = options.maxPcVisits || 64;
+  const cells = new Array(cols * rows).fill(null).map(() => ({
+    tileIdx: 0,
+    attr: 0,
+    writes: 0,
+    lastRomOffset: -1,
+    source: '',
+  }));
+  const trace = [];
+  const warnings = [];
+  const visitedOffsets = [];
+  const visitedSet = new Set();
+  const pcVisits = new Map();
+  let pc = scriptOffset;
+  let storedVDPaddr = 0x7800;
+  let vramAddr = ntBase;
+  let currentAttr = 0;
+  let endReason = 'Reached max ops';
+  let ops = 0;
+
+  function markVisited(start, len) {
+    for (let i = 0; i < len; i++) {
+      const off = start + i;
+      if (off < 0 || off >= rom.length || visitedSet.has(off)) continue;
+      visitedSet.add(off);
+      visitedOffsets.push(off);
+    }
+  }
+
+  function posFromVram(addr) {
+    const cell = (addr - ntBase) >> 1;
+    return {
+      cell,
+      col: cell % cols,
+      row: Math.floor(cell / cols),
+      inBounds: cell >= 0 && cell < cols * rows,
+    };
+  }
+
+  function posLabel(addr) {
+    const pos = posFromVram(addr);
+    const rc = pos.inBounds ? `col ${pos.col}, row ${pos.row}` : 'outside name table';
+    return `VRAM $${addr.toString(16).toUpperCase().padStart(4, '0')} · ${rc}`;
+  }
+
+  function attrFlags(attr) {
+    const flags = [];
+    if (attr & 0x01) flags.push('tile+256');
+    if (attr & 0x02) flags.push('hflip');
+    if (attr & 0x04) flags.push('vflip');
+    if (attr & 0x08) flags.push('spr-pal');
+    if (attr & 0x10) flags.push('priority');
+    return flags.length ? flags.join(', ') : 'none';
+  }
+
+  function pushTrace(entry) {
+    trace.push(entry);
+  }
+
+  function writeCell(addr, tileIdx, attr, source, romOffset) {
+    const pos = posFromVram(addr);
+    if (!pos.inBounds) return;
+    const cell = cells[pos.cell];
+    cell.tileIdx = tileIdx & 0xFF;
+    cell.attr = attr & 0xFF;
+    cell.writes++;
+    cell.lastRomOffset = romOffset;
+    cell.source = source || '';
+  }
+
+  function readByte() {
+    if (pc >= rom.length) return null;
+    return rom[pc++];
+  }
+
+  while (pc < rom.length && ops < maxOps) {
+    const visitCount = (pcVisits.get(pc) || 0) + 1;
+    pcVisits.set(pc, visitCount);
+    if (visitCount > maxPcVisits) {
+      endReason = `Loop guard: ROM $${pc.toString(16).toUpperCase().padStart(5, '0')} visited ${visitCount} times`;
+      warnings.push(endReason);
+      break;
+    }
+
+    const start = pc;
+    const b = readByte();
+    if (b === null) {
+      endReason = 'Unexpected EOF';
+      warnings.push(endReason);
+      break;
+    }
+    markVisited(start, 1);
+    ops++;
+
+    if (b < 0xF0) {
+      const before = vramAddr;
+      writeCell(before, b, currentAttr, 'direct', start);
+      vramAddr += 2;
+      pushTrace({
+        kind: 'tile',
+        romOffset: start,
+        length: 1,
+        bytes: [b],
+        detail: `tile=$${b.toString(16).toUpperCase().padStart(2, '0')} @ ${posLabel(before)} attr=$${currentAttr.toString(16).toUpperCase().padStart(2, '0')}`,
+      });
+      continue;
+    }
+
+    switch (b & 0x07) {
+      case 0: {
+        endReason = `$${b.toString(16).toUpperCase()} END @ ROM $${start.toString(16).toUpperCase().padStart(5, '0')}`;
+        pushTrace({
+          kind: 'end',
+          romOffset: start,
+          length: 1,
+          bytes: [b],
+          detail: endReason,
+        });
+        pc = rom.length;
+        break;
+      }
+      case 1: {
+        const attr = readByte();
+        if (attr === null) {
+          endReason = `$F1 truncated @ ROM $${start.toString(16).toUpperCase().padStart(5, '0')}`;
+          warnings.push(endReason);
+          pc = rom.length;
+          break;
+        }
+        markVisited(start + 1, 1);
+        currentAttr = attr;
+        pushTrace({
+          kind: 'attr',
+          romOffset: start,
+          length: 2,
+          bytes: [b, attr],
+          detail: `attr=$${attr.toString(16).toUpperCase().padStart(2, '0')} · ${attrFlags(attr)}`,
+        });
+        break;
+      }
+      case 2: {
+        const lo = readByte();
+        const hi = readByte();
+        if (lo === null || hi === null) {
+          endReason = `$F2 truncated @ ROM $${start.toString(16).toUpperCase().padStart(5, '0')}`;
+          warnings.push(endReason);
+          pc = rom.length;
+          break;
+        }
+        markVisited(start + 1, 2);
+        storedVDPaddr = lo | (hi << 8);
+        vramAddr = vdpCtrlWordToVram(storedVDPaddr);
+        pushTrace({
+          kind: 'addr',
+          romOffset: start,
+          length: 3,
+          bytes: [b, lo, hi],
+          detail: `${posLabel(vramAddr)} (VDP $${storedVDPaddr.toString(16).toUpperCase().padStart(4, '0')})`,
+        });
+        break;
+      }
+      case 3: {
+        const tile = readByte();
+        if (tile === null) {
+          endReason = `$F3 truncated @ ROM $${start.toString(16).toUpperCase().padStart(5, '0')}`;
+          warnings.push(endReason);
+          pc = rom.length;
+          break;
+        }
+        markVisited(start + 1, 1);
+        const before = vramAddr;
+        writeCell(before, tile, currentAttr, 'literal', start);
+        vramAddr += 2;
+        pushTrace({
+          kind: 'literal',
+          romOffset: start,
+          length: 2,
+          bytes: [b, tile],
+          detail: `tile=$${tile.toString(16).toUpperCase().padStart(2, '0')} @ ${posLabel(before)} attr=$${currentAttr.toString(16).toUpperCase().padStart(2, '0')}`,
+        });
+        break;
+      }
+      case 4: {
+        const lo = readByte();
+        const hi = readByte();
+        if (lo === null || hi === null) {
+          endReason = `$F4 truncated @ ROM $${start.toString(16).toUpperCase().padStart(5, '0')}`;
+          warnings.push(endReason);
+          pc = rom.length;
+          break;
+        }
+        markVisited(start + 1, 2);
+        const z80 = lo | (hi << 8);
+        const target = screenProg604Z80ToRom(z80, bank8000);
+        pushTrace({
+          kind: 'jump',
+          romOffset: start,
+          length: 3,
+          bytes: [b, lo, hi],
+          detail: `Z80 $${z80.toString(16).toUpperCase().padStart(4, '0')} → ${target < 0 ? 'invalid' : 'ROM $' + target.toString(16).toUpperCase().padStart(5, '0')}`,
+          jumpTarget: target,
+          jumpZ80: z80,
+        });
+        if (target < 0 || target >= rom.length) {
+          endReason = `$F4 JUMP out of range (Z80 $${z80.toString(16).toUpperCase().padStart(4, '0')})`;
+          warnings.push(endReason);
+          pc = rom.length;
+        } else {
+          pc = target;
+        }
+        break;
+      }
+      case 5: {
+        const count = readByte();
+        const tile = readByte();
+        if (count === null || tile === null) {
+          endReason = `$F5 truncated @ ROM $${start.toString(16).toUpperCase().padStart(5, '0')}`;
+          warnings.push(endReason);
+          pc = rom.length;
+          break;
+        }
+        markVisited(start + 1, 2);
+        const before = vramAddr;
+        for (let i = 0; i < count; i++) {
+          writeCell(vramAddr, tile, currentAttr, 'fill', start);
+          vramAddr += 2;
+        }
+        pushTrace({
+          kind: 'fill',
+          romOffset: start,
+          length: 3,
+          bytes: [b, count, tile],
+          detail: `count=${count} tile=$${tile.toString(16).toUpperCase().padStart(2, '0')} from ${posLabel(before)}`,
+        });
+        break;
+      }
+      case 6: {
+        storedVDPaddr = (storedVDPaddr + 0x0040) & 0xFFFF;
+        if ((storedVDPaddr >> 8) >= 0x7F) storedVDPaddr = (storedVDPaddr & 0x00FF) | 0x7800;
+        vramAddr = vdpCtrlWordToVram(storedVDPaddr);
+        for (let i = 0; i < cols; i++) {
+          writeCell(vramAddr + i * 2, 0x20, 0x08, 'row-prefill', start);
+        }
+        pushTrace({
+          kind: 'row',
+          romOffset: start,
+          length: 1,
+          bytes: [b],
+          detail: `${posLabel(vramAddr)} · prefill ${cols} cells with tile=$20 attr=$08`,
+        });
+        break;
+      }
+    }
+  }
+
+  if (ops >= maxOps && endReason === 'Reached max ops') {
+    warnings.push(endReason);
+  }
+
+  let writtenCells = 0;
+  let bgWrites = 0;
+  let sprWrites = 0;
+  let minCol = cols, minRow = rows, maxCol = -1, maxRow = -1;
+  const uniqueTiles = new Set();
+  for (let i = 0; i < cells.length; i++) {
+    const cell = cells[i];
+    if (!cell.writes) continue;
+    writtenCells++;
+    uniqueTiles.add((cell.tileIdx | ((cell.attr & 0x01) << 8)) & 0x1FF);
+    if (cell.attr & 0x08) sprWrites++;
+    else bgWrites++;
+    const row = Math.floor(i / cols);
+    const col = i % cols;
+    if (row < minRow) minRow = row;
+    if (row > maxRow) maxRow = row;
+    if (col < minCol) minCol = col;
+    if (col > maxCol) maxCol = col;
+  }
+
+  return {
+    scriptOffset,
+    bank8000,
+    cols,
+    rows,
+    ntBase,
+    cells,
+    trace,
+    warnings,
+    visitedOffsets,
+    currentAttr,
+    finalVramAddr: vramAddr,
+    endReason,
+    stats: {
+      ops,
+      writtenCells,
+      uniqueTiles: uniqueTiles.size,
+      bgWrites,
+      sprWrites,
+      jumps: trace.filter(t => t.kind === 'jump').length,
+      bbox: writtenCells ? { minCol, minRow, maxCol, maxRow } : null,
+    },
+  };
+}
+
+function decodeVramLoader8FBData(bytes, options) {
+  options = options || {};
+  const inheritFF = options.inheritFF !== false;
+  const defaultBank = options.defaultBank || 0;
+  const romLength = options.romLength || 0;
+  const entries = [];
+  const warnings = [];
+  let pc = 0;
+  let curVramTile = 0;
+  let curBank = defaultBank;
+  let curBlockIdx = 0;
+  let terminated = false;
+  let endReason = 'Unexpected EOF';
+  let totalTiles = 0;
+  let maxVramTile = -1;
+  let invalidSources = 0;
+
+  while (pc < bytes.length) {
+    const start = pc;
+    const count = bytes[pc++];
+    if (count === 0) {
+      terminated = true;
+      endReason = `END @ +$${start.toString(16).toUpperCase().padStart(2, '0')}`;
+      break;
+    }
+    if (pc + 3 >= bytes.length) {
+      endReason = `Truncated 8FB entry @ +$${start.toString(16).toUpperCase().padStart(2, '0')}`;
+      warnings.push(endReason);
+      pc = bytes.length;
+      break;
+    }
+    const vlo = bytes[pc++], vhi = bytes[pc++], slo = bytes[pc++], shi = bytes[pc++];
+    if (inheritFF) {
+      if (vlo !== 0xFF || vhi !== 0xFF) curVramTile = vlo | (vhi << 8);
+      if (slo !== 0xFF || shi !== 0xFF) {
+        curBank = shi >> 1;
+        curBlockIdx = ((shi & 1) << 8) | slo;
+      }
+    } else {
+      curVramTile = vlo | (vhi << 8);
+      curBank = shi >> 1;
+      curBlockIdx = ((shi & 1) << 8) | slo;
+    }
+    const romSrc = curBank * 0x4000 + curBlockIdx * 32;
+    if (romLength && (romSrc < 0 || romSrc + count * 32 > romLength)) invalidSources++;
+    entries.push({
+      kind: 'copy',
+      start,
+      length: 5,
+      count,
+      vramTile: curVramTile,
+      vramAddr: curVramTile * 32,
+      bank: curBank,
+      blockIndex: curBlockIdx,
+      romSrc,
+      bytes: [count, vlo, vhi, slo, shi],
+    });
+    totalTiles += count;
+    maxVramTile = Math.max(maxVramTile, curVramTile + count - 1);
+    curVramTile += count;
+    curBlockIdx += count;
+  }
+
+  return {
+    format: '8fb',
+    entries,
+    warnings,
+    terminated,
+    endReason,
+    consumedBytes: pc,
+    stats: {
+      entries: entries.length,
+      totalTiles,
+      maxVramTile,
+      invalidSources,
+    },
+  };
+}
+
+function decodeVramLoader998Data(bytes, options) {
+  options = options || {};
+  const defaultBank = options.defaultBank || 0;
+  const forceBank = options.forceBank;
+  const romLength = options.romLength || 0;
+  const maxOps = options.maxOps || 4096;
+  const entries = [];
+  const warnings = [];
+  let pc = 0;
+  let vramPtr = 0;
+  let terminated = false;
+  let endReason = 'Unexpected EOF';
+  let totalTiles = 0;
+  let maxVramTile = -1;
+  let invalidSources = 0;
+  let ops = 0;
+
+  while (pc < bytes.length && ops < maxOps) {
+    const start = pc;
+    const b = bytes[pc++];
+    ops++;
+    if (b === 0) {
+      terminated = true;
+      endReason = `END @ +$${start.toString(16).toUpperCase().padStart(2, '0')}`;
+      break;
+    }
+    const hasSetPos = !!(b & 0x80);
+    const count = b & 0x7F;
+    let tileSlot = null;
+    if (hasSetPos) {
+      if (pc >= bytes.length) {
+        endReason = `Truncated 998 set-pos @ +$${start.toString(16).toUpperCase().padStart(2, '0')}`;
+        warnings.push(endReason);
+        pc = bytes.length;
+        break;
+      }
+      tileSlot = bytes[pc++];
+      vramPtr = tileSlot * 32;
+    }
+    if (count === 0x7F) {
+      entries.push({
+        kind: 'zero',
+        start,
+        length: hasSetPos ? 2 : 1,
+        count: 1,
+        vramTile: vramPtr >> 5,
+        vramAddr: vramPtr,
+        bank: null,
+        blockIndex: null,
+        romSrc: null,
+        setPos: hasSetPos,
+        tileSlot,
+        bytes: Array.from(bytes.subarray(start, pc)),
+      });
+      totalTiles += 1;
+      maxVramTile = Math.max(maxVramTile, vramPtr >> 5);
+      vramPtr += 32;
+      continue;
+    }
+    if (count === 0) {
+      entries.push({
+        kind: 'noop',
+        start,
+        length: hasSetPos ? 2 : 1,
+        count: 0,
+        vramTile: vramPtr >> 5,
+        vramAddr: vramPtr,
+        bank: null,
+        blockIndex: null,
+        romSrc: null,
+        setPos: hasSetPos,
+        tileSlot,
+        bytes: Array.from(bytes.subarray(start, pc)),
+      });
+      continue;
+    }
+    if (pc + 1 >= bytes.length) {
+      endReason = `Truncated 998 copy @ +$${start.toString(16).toUpperCase().padStart(2, '0')}`;
+      warnings.push(endReason);
+      pc = bytes.length;
+      break;
+    }
+    const srcLo = bytes[pc++], srcHi = bytes[pc++];
+    const bank = forceBank != null ? forceBank : (srcHi >> 1);
+    const blockIndex = ((srcHi & 1) << 8) | srcLo;
+    const romSrc = bank * 0x4000 + blockIndex * 32;
+    if (romLength && (romSrc < 0 || romSrc + count * 32 > romLength)) invalidSources++;
+    entries.push({
+      kind: 'copy',
+      start,
+      length: pc - start,
+      count,
+      vramTile: vramPtr >> 5,
+      vramAddr: vramPtr,
+      bank,
+      blockIndex,
+      romSrc,
+      setPos: hasSetPos,
+      tileSlot,
+      bytes: Array.from(bytes.subarray(start, pc)),
+    });
+    totalTiles += count;
+    maxVramTile = Math.max(maxVramTile, (vramPtr >> 5) + count - 1);
+    vramPtr += count * 32;
+  }
+
+  if (ops >= maxOps && !terminated) {
+    endReason = 'Reached max ops';
+    warnings.push(endReason);
+  }
+
+  return {
+    format: '998',
+    entries,
+    warnings,
+    terminated,
+    endReason,
+    consumedBytes: pc,
+    stats: {
+      entries: entries.length,
+      totalTiles,
+      maxVramTile,
+      invalidSources,
+    },
+  };
+}

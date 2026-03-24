@@ -143,10 +143,10 @@ Fitxer HTML autònom (~3000 línies, tot vanilla JS). Panells en ordre de dalt a
 | Memory Banks | `panel-banks` | 16 bancs × 16KB, % analitzat per banc |
 | Tile Viewer | `panel-viewer` | Visor de tiles SMS 4bpp, paleta editable |
 | Memory Map | `panel-map` | Taula de regions, CARVE, importar ASM |
-| Inspector | `panel-lab` | Hex dump, estadístiques, classificació |
+| Inspector | `panel-lab` | Hex dump, classificació, DISCOVERY, previews estructurals |
 | Palette Registry | `panel-palettes` | Paletes guardades, APPLY TO VIEWER |
 | Sprite/BG Composer | `panel-composer` | Compositor manual i des de tile map |
-| SMS State Simulator | `panel-simulator` | Simula hardware SMS: VRAM, CRAM, name table → render complet |
+| SMS State Simulator | `panel-simulator` | Simulador experimental; útil com a suport, no com a via principal de descoberta |
 
 ### Tipus de regions (`TYPE_META`)
 
@@ -156,14 +156,22 @@ Fitxer HTML autònom (~3000 línies, tot vanilla JS). Panells en ordre de dalt a
 | `gfx_sprites` | GFX Sprites | `#ff35a0` |
 | `tile_map` | Tile Map | `#00e5cc` |
 | `palette` | Palette | `#ffcc00` |
-| `palette_manual` | Palette (custom) | `#ffa500` |
 | `map_screens` | Map/Screens | `#00ff88` |
+| `pointer_table` | Pointer Table | `#7ee787` |
 | `code` | Code | `#4a9eff` |
 | `music` | Music/SFX | `#a855f7` |
 | `text` | Text | `#6bffb8` |
 | `meta_sprite` | Metasprite | `#ff88aa` |
-| `screen_prog` | Screen Prog | `#00d4ff` |
-| `vram_loader` | VRAM Loader | `#ff9944` |
+| `palette_manual` | Palette (custom) | `#ffa500` |
+| `data_table` | Data Table | `#e8a020` |
+| `data_array` | Data Array | `#c0882a` |
+| `screen_prog` | Screen Bytecode | `#00d4ff` |
+| `vram_loader` | VRAM Loader | `#d4a0ff` |
+| `vram_loader_8fb` | VRAM Loader 8FB | `#c084fc` |
+| `vram_loader_998` | VRAM Loader 998 | `#f472b6` |
+| `room_subrecord` | Room Subrecord | `#8bd450` |
+| `room_seq_table` | Room Seq Table | `#57d3a0` |
+| `null` | NULL | `#333355` |
 | `unknown` | Unknown | `#555577` |
 
 > **Cobertura de bancs:** Només els tipus **no-`unknown`** compten com a "analitzats" a la barra de progrés.
@@ -218,12 +226,21 @@ Fitxer HTML autònom (~3000 línies, tot vanilla JS). Panells en ordre de dalt a
 - SPLIT AT: divideix una regió en dos fragments amb preview en viu
 - Navegació PREV/NEXT entre regions + counter + scroll a la fila activa a la taula
 - Merge queue: + ADD / EMPTY / MERGE(N) per fusionar múltiples regions en una
+- DISCOVERY: classificació heurística amb puntuació, motius, `USE TYPE` i `SPLIT @ ...`
 
 **Preview per tipus (columna dreta de l'Inspector):**
 - `code` → lookup al fitxer `.asm` carregat (WLA-DX format)
 - `text` → decodificació ASCII amb % de caràcters imprimibles
 - `tile_map` → renderitzat Canvas (requereix regió `gfx_tiles` + `palette`)
 - `palette_manual` → editor de 16 slots, cada slot = offset ROM → color SMS
+- `screen_prog` → decoder compartit de `_LABEL_604_`, render, resum, warnings i execution trace byte a byte
+- `pointer_table` → llista `index / entry / z80 / rom target / region`, amb `OPEN` del target
+- `vram_loader_8fb` / `vram_loader_998` → parsers estructurals separats, no un únic format ambigu
+
+**Notes pràctiques de reverse engineering:**
+- Les `pointer_table` reals solen apuntar a ROM i tenir una estructura coherent d'entrades.
+- Molts `.dw` generats pel disassembler dins streams de dades **no** son taules reals: només son bytes reinterpretats.
+- Si una suposada `pointer_table` apunta a `_RAM_xxxx_`, té una sola entrada o cau enmig d'un `screen_prog`, s'ha de considerar sospitosa fins que el flux de codi la confirmi.
 
 **Palette Registry:**
 - Paletes contígues (`palette`) i manuals (`palette_manual`) en el mateix panell
@@ -258,6 +275,8 @@ smsState = {
 | `nt_604_raw` | Com `nt_604` però amb `romOff`+`bank` directes (usat per Room Browser) |
 
 > **IMPORTANT:** `_LABEL_8FB_`, `_LABEL_998_`, `_LABEL_604_` etc. son **CODI** (rutines Z80). Els passos del simulador apunten a les DATA que aquelles rutines processen. Mai confondre el label de la rutina amb l'adreça de les dades.
+
+> **Estat actual:** el simulador és útil per provar loaders i renderitzar experiments, però **no resol automàticament** la relació real entre `screen_prog` i els patrons VRAM de cada escena. Per al reverse engineering del joc, la via principal és l'Inspector + DISCOVERY + previews estructurals.
 
 **Arquitectura interna del simulador:**
 
@@ -317,7 +336,7 @@ Si count≠$7F → llegeix [src_lo, src_hi]:
 
 ### `_LABEL_604_` — Screen Prog / Name Table Writer
 
-Escriu entrades a la name table VRAM ($3800–$3FFF). Opcodes $F0–$FF, bytes < $F0 = direct tile. Veure secció "Format SMS Tile Map".
+Escriu entrades a la name table VRAM ($3800–$3FFF). El projecte té ara un decoder compartit basat en el comportament real de la rutina, reutilitzat per l'Inspector i el simulador. El stream és seqüencial; el disassembler sovint el parteix malament en falses `.dw` o "Pointer Table".
 
 ### `_LABEL_98F_` — Set VDP Write Address
 
@@ -360,6 +379,8 @@ ROM $1CCC0 (banc 7, Z80 $8CC0): **31 entrades × 2 bytes** = 62 bytes.
 
 Cada entrada és un **word little-endian** que és una adreça Z80 al banc 7. Apunta a l'inici del stream `screen_prog` (`_LABEL_604_`) per al background d'aquella room.
 
+> **Important:** el comentari del disassembler `indexed by _RAM_CF81_` és una heurística errònia. `_RAM_CF81_` és un flag de V-blank/frame. La rutina consumidora real és `_LABEL_5EB_`, i l'índex li arriba en el registre `A`.
+
 **Conversió Z80 ↔ ROM per al banc 7:**
 ```
 rom_offset = z80_addr + 0x14000
@@ -367,11 +388,11 @@ rom_offset = z80_addr + 0x14000
 // per tant: rom_offset = 7×$4000 + (z80_addr - $8000) = z80_addr + $14000
 ```
 
-**Exemple:** entrada 0 → Z80 `$8CE2` → ROM `$1CCE2` (`_DATA_1CCE2_`)
+**Exemple correcte:** entrada 0 → Z80 `$8CFE` → ROM `$1CCFE`
 
 **Accés per codi:** `_LABEL_5EB_` fa `A = room_id` → `HL = _DATA_1CCC0_ + room_id*2` → `rst $18` (carrega ptr a HL) → `call _LABEL_604_`.
 
-> **AVÍS disassembler:** WLA-DX de vegades etiqueta bytes enmig d'un stream `screen_prog` com a "Pointer Table". NO son taules de punters reals — son bytes del flux seqüencial que `_LABEL_604_` llegeix in-line. El decoder funciona correctament si rep l'offset d'inici correcte.
+> **AVÍS disassembler:** WLA-DX/Emulicious de vegades etiqueten bytes enmig d'un stream `screen_prog` com a "Pointer Table". NO son taules de punters reals: son bytes del flux seqüencial que `_LABEL_604_` llegeix in-line. Exemple típic: seqüències com `.dw $2000 | _RAM_D178_` dins blocs textuals o de pantalla.
 
 ### Rutina `_LABEL_604_` — Screen Prog Decoder (detall complet)
 
@@ -452,6 +473,7 @@ Llegeix l'entrada activa de la room_seq_table:
 
 | Adreça | Nom | Contingut |
 |--------|-----|-----------|
+| `$CF81` | `_RAM_CF81_` | Flag de V-blank / frame acabat; **no** selector de `_DATA_1CCC0_` |
 | `$CFFA` | `_RAM_CFFA_` | Ptr Z80 al tile data record de la room actual (set per `_LABEL_48A9_`) |
 | `$CF5E` | `_RAM_CF5E_` | 8 bytes de paràmetres de room; bytes 0–1 = ptr a room_seq_table |
 | `$D0E0` | `_RAM_D0E0_` | Paràmetre de room (byte 1 de room_seq_table) |
@@ -470,7 +492,7 @@ Llegeix l'entrada activa de la room_seq_table:
 ### Cadena de punters traçada per la Room 0
 
 ```
-_DATA_1CCC0_[0]    = $8CE2 → ROM $1CCE2   screen_prog data (name table room 0)
+_DATA_1CCC0_[0]    = $8CFE → ROM $1CCFE   screen_prog data (name table room 0)
 
 Sub-record @ ROM $100B4:
   _RAM_CF5E_ ← [$44,$8D,$B1,$A1,$90,$AD,$10,$FF]
@@ -526,32 +548,48 @@ Motor que executa les pantalles creades amb físiques fidels al joc original.
 
 - **2025-03** — Sessió inicial. Arquitectura definida. Decisió 100% frontend + ROM upload. MD5 fingerprinting. Inici Fase 0.
 - **2026-03 (1)** — Fase 0 en desenvolupament actiu. Implementades: Memory Map amb CARVE, Inspector amb hex dump complet + `BB:ZZZZ`, preview per tipus, merge de regions, `palette_manual`, `tile_map`, Sprite/BG Composer (modes manual + tilemap), sistema de projectes via `api.php`.
-- **2026-03 (2)** — Reverse engineering intensiu. Descoberta l'arquitectura completa de rooms: `_DATA_1CCC0_` (31 entries), `_LABEL_5EB_` dispatcher, `_LABEL_2620_`/`_LABEL_26F4_` chain, room_seq_table format (7 bytes/entry), sub-record format (18 bytes), RST vectors. Room Browser implementat al simulador: renderitza directament des de ROM els 31 backgrounds sense cap dump extern. Confirmació que la pantalla de títol NO té screen_prog per al background principal (codi Z80 directe), però les files 24–27 venen de `_DATA_1CE3A_` (entrada 1 de `_DATA_1CCC0_`).
+- **2026-03 (2)** — Reverse engineering intensiu. Descoberta l'arquitectura de rooms: `_DATA_1CCC0_` (31 entrades), `_LABEL_5EB_` dispatcher, `_LABEL_2620_`/`_LABEL_26F4_` chain, room_seq_table format (7 bytes/entry), sub-record format, RST vectors i la diferència entre `screen_prog` (name table) i loaders `8FB/998` (patterns VRAM).
+- **2026-03 (3)** — L'Inspector passa a ser l'eina principal de descoberta. Afegits: `DISCOVERY`, tipus `pointer_table`, `vram_loader_8fb`, `vram_loader_998`, `room_subrecord`, `room_seq_table`, preview estructural de pointer tables, decoder compartit real de `_LABEL_604_`, execution trace de `screen_prog` i avís explícit sobre falses taules `.dw` generades pel disassembler.
 
 ---
 
 ## Propera tasca per a Claude
 
-### Prioritat 1 — Completar el per-room tile loading automàtic
+### Prioritat 1 — Render real de `screen_prog` contra VRAM sintètica
 
-El Room Browser ja renderitza les 31 name tables directament des de ROM. Però els tiles VRAM que referencia cada room poden no estar carregats. Cal:
+El problema principal actual no és el decoder de `_LABEL_604_`, sinó la font dels tiles. Cal:
 
-1. **Parsejar `_DATA_10000_.inc`** (ROM $10000–$10C96): llegir les room_seq_tables (7 bytes/entry, acaba $FF) per a cada room_id. Implementar `simParseRoomSeqTable(romOff)`.
+1. Construir una **VRAM sintètica** de 16KB per escena.
+2. Omplir-la amb els loaders `8FB/998` correctes abans de renderitzar el `screen_prog`.
+3. Fer que la preview `SCREEN BYTECODE` llegeixi els tiles des d'aquesta VRAM, no d'un offset lineal de ROM.
+4. Mostrar la **proveniència dels slots VRAM**: quin loader omple cada slot i quins slots queden sense resoldre.
 
-2. **Seguir el punter tile-data** (bytes 5–6 de la seq_table entry activa → `_RAM_CFFA_` Z80 addr, banc 4): apunta al registre de tiles de la room.
+### Prioritat 2 — Scene recipes / càrrega per pantalla
 
-3. **Extreure P2** del sub-record (`_DATA_10C96_.inc`): P2 és el Z80 ptr a les dades per a `_LABEL_8FB_`. Convertir a ROM offset (banc deduïble del context) i afegir com a step `vram_8fb` automàtic.
+Per renderitzar pantalles reals com hospital, continue/new game o altres rooms cal modelar una recepta:
 
-4. **Botó "AUTO-LOAD TILES"** al Room Browser: per a la room seleccionada, segueix tota la cadena de punters i pre-popula els steps VRAM necessaris.
+- `screen_prog`
+- `vram_loader_8fb`
+- `vram_loader_998`
+- paleta BG / SPR
+- bank i/o context necessari
 
-### Prioritat 2 — Pantalla de títol (background principal)
+Aquestes receptes poden ser derivades del reverse engineering i guardades com a metadades del projecte.
 
-La name table del background de títol es construeix per codi Z80 directe (no script de dades). Opcions:
-- Analitzar la rutina d'inicialització del títol per trobar el patró d'escriptura directa
-- O bé usar el dump de VRAM d'Emulicious per a la comparació (mode Import VRAM)
+### Prioritat 3 — Traça de feeders cap a `8FB/998`
+
+Cal seguir millor la cadena:
+
+`selector RAM/estat → pointer_table/subrecord → dades loader → slots VRAM`
+
+L'objectiu és etiquetar millor `map.json` i distingir entre:
+- taules de punters reals
+- subrecords de room
+- falses `.dw` del disassembler
 
 ### Notes d'implementació
 
 - Conversió Z80→ROM per banc 4: `rom_off = 4×$4000 + (z80 - $8000) = z80 + $8000`
-- La cadena completa: `room_id → _DATA_1CCC0_[id*2] → screen_prog` (ja funciona) + `room_id → _DATA_10000_ room_seq_table → sub-record → P2 → _LABEL_8FB_ data` (pendent)
+- Conversió Z80→ROM per banc 7: `rom_off = 7×$4000 + (z80 - $8000) = z80 + $14000`
+- `_LABEL_5EB_` consumeix `_DATA_1CCC0_`, però l'índex li entra en `A`; no surt de `_RAM_CF81_`
 - Els fitxers `.inc` son dumps binaris; cal llegir-los com a `Uint8Array`, no com a text

@@ -223,6 +223,17 @@ select{cursor:pointer;}select option{background:var(--bg3);}
 .lab-stat-val{font-size:15px;color:var(--accent);}
 .lab-stat-val.ok{color:var(--green);}.lab-stat-val.warn{color:var(--yellow);}
 .lab-stat-lbl{font-size:9px;color:var(--dim);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
+.lab-discovery{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.lab-discovery-empty{background:var(--bg3);border:1px solid var(--border);padding:10px 12px;color:var(--dim);font-size:11px;font-style:italic;}
+.lab-discovery-card{background:var(--bg3);border:1px solid var(--border);padding:8px 10px;}
+.lab-discovery-card.top{border-color:var(--accent);}
+.lab-discovery-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;}
+.lab-discovery-type{font-size:11px;letter-spacing:1px;text-transform:uppercase;}
+.lab-discovery-score{font-size:10px;padding:2px 7px;border:1px solid currentColor;}
+.lab-discovery-summary{font-size:11px;color:var(--text);flex:1;}
+.lab-discovery-details{display:flex;flex-wrap:wrap;gap:6px 10px;margin-bottom:6px;}
+.lab-discovery-detail{font-size:10px;color:var(--dim);}
+.lab-discovery-actions{display:flex;flex-wrap:wrap;gap:6px;}
 .lab-type-btns{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
 .lab-type-btn{padding:5px 12px;border:1px solid;font-size:11px;cursor:pointer;letter-spacing:1px;background:transparent;font-family:var(--mono);transition:opacity .1s,background .1s;text-transform:uppercase;opacity:.45;}
 .lab-type-btn.selected,.lab-type-btn:hover{opacity:1;}

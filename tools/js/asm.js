@@ -99,7 +99,7 @@ function buildAsmAnalysis(text){
       pushDataRegion({
         offset:parseInt(mPtr[1],16),
         size:parseInt(mPtr[3],10)*2,
-        type:'code',
+        type:'pointer_table',
         bank:currentBank,
         name:`Pointer Table @ 0x${mPtr[1].toUpperCase()}`,
         notes:line.replace(/^;\s*/,''),

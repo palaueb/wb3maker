@@ -7,6 +7,7 @@ let _labId = null;
 let _mergeList = [];
 let _labAsmByteMap = null;
 let _labCurrentPaletteColors = [];
+let _labDiscoveryItems = [];
 
 function updateMergeUI() {
   const n = _mergeList.length;
@@ -52,6 +53,7 @@ function openLaboratory(id){
   labRenderTiles(bytes);
   labRenderPalette(bytes);
   labRenderStats(bytes,size);
+  labRenderDiscovery(r, bytes, offset);
   labRenderTypePreview(r.type, bytes, offset);
   labRenderClassify(r);
   labShowSidePanels(r.type);
@@ -376,6 +378,80 @@ function labRenderXrefs(region){
   }));
 }
 
+function getAsmCanonicalLabelForRegion(region) {
+  if (!region) return null;
+  if (region.asmLabel) return region.asmLabel;
+  if (region.name && /^_(?:DATA|LABEL|CODE)_[0-9A-Fa-f]+_$/.test(region.name)) return region.name;
+  const off = parseHex(region.offset);
+  if (off === null) return null;
+  return `_DATA_${off.toString(16).toUpperCase()}_`;
+}
+
+function labFindAsmConsumersForLabel(label) {
+  if (!asmText || !label) return [];
+  const lines = asmText.split('\n');
+  const labelRe = new RegExp(`\\b${label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`);
+  const codeLabelRe = /^(_LABEL_[0-9A-Fa-f]+_):/i;
+  let currentCodeLabel = null;
+  const grouped = new Map();
+  for (let i = 0; i < lines.length; i++) {
+    const raw = lines[i];
+    const trimmed = raw.trim();
+    const mCode = trimmed.match(codeLabelRe);
+    if (mCode) {
+      currentCodeLabel = mCode[1];
+      continue;
+    }
+    if (!currentCodeLabel) continue;
+    if (!trimmed || trimmed.startsWith(';')) continue;
+    if (trimmed.startsWith(label + ':')) continue;
+    if (!labelRe.test(trimmed)) continue;
+    if (!grouped.has(currentCodeLabel)) grouped.set(currentCodeLabel, []);
+    grouped.get(currentCodeLabel).push({ lineNo: i + 1, text: trimmed });
+  }
+  return [...grouped.entries()].map(([consumer, hits]) => ({ consumer, hits }));
+}
+
+function labFindAsmCallersOfLabel(label) {
+  if (!asmText || !label) return [];
+  const lines = asmText.split('\n');
+  const callRe = new RegExp(`\\b(call|jp|jr)\\s+${label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+  const codeLabelRe = /^(_LABEL_[0-9A-Fa-f]+_):/i;
+  let currentCodeLabel = null;
+  const callers = [];
+
+  function extractASetup(idx) {
+    const snippets = [];
+    for (let j = idx - 1; j >= Math.max(0, idx - 4); j--) {
+      const t = lines[j].trim();
+      if (!t || t.startsWith(';')) continue;
+      if (t.match(codeLabelRe)) break;
+      if (/\ba\b/i.test(t)) snippets.unshift(t);
+    }
+    const compact = snippets.filter(t =>
+      /^(xor a|ld a,|add a,|adc a,|sub |inc a|dec a)/i.test(t)
+    );
+    return compact.join(' ; ');
+  }
+
+  for (let i = 0; i < lines.length; i++) {
+    const trimmed = lines[i].trim();
+    const mCode = trimmed.match(codeLabelRe);
+    if (mCode) {
+      currentCodeLabel = mCode[1];
+      continue;
+    }
+    if (!currentCodeLabel || !callRe.test(trimmed)) continue;
+    callers.push({
+      caller: currentCodeLabel,
+      lineNo: i + 1,
+      callLine: trimmed,
+      aSetup: extractASetup(i),
+    });
+  }
+  return callers;
+}
+
 function labRenderTiles(bytes){
   const canvas=document.getElementById('lab-tile-canvas');
   if(bytes.length<32){canvas.width=0;canvas.height=0;return;}
@@ -446,16 +522,318 @@ function labRenderPalette(bytes){
   }
 }
 
+function labAnalyzeBytePatterns(bytes, size) {
+  const sample = bytes.subarray(0, Math.min(bytes.length, 4096));
+  const freq = new Array(256).fill(0);
+  for (const b of sample) freq[b]++;
+  const unique = freq.filter(f => f > 0).length;
+  let entropy = 0;
+  for (const f of freq) {
+    if (!f) continue;
+    const p = f / sample.length;
+    entropy -= p * Math.log2(p);
+  }
+  let maxF = 0, maxB = 0;
+  for (let i = 0; i < 256; i++) if (freq[i] > maxF) { maxF = freq[i]; maxB = i; }
+  const nullPct = sample.length ? ((freq[0] / sample.length) * 100) : 0;
+  const printable = Array.from(sample).filter(b => b >= 0x20 && b < 0x7F).length;
+  const printablePct = sample.length ? ((printable / sample.length) * 100) : 0;
+  return {
+    sample,
+    freq,
+    unique,
+    entropy,
+    maxF,
+    maxB,
+    nullPct,
+    printablePct,
+    tileAligned: size % 32 === 0,
+    paletteSized: size === 16 || size === 32,
+  };
+}
+
+function labFormatDiscoveryScore(score) {
+  if (score >= 80) return { label: `STRONG ${score}`, color: 'var(--green)' };
+  if (score >= 55) return { label: `PLAUSIBLE ${score}`, color: 'var(--yellow)' };
+  return { label: `WEAK ${score}`, color: 'var(--dim)' };
+}
+
+function labBuildDiscoveryCandidates(region, bytes, baseOffset) {
+  const size = region.size ?? bytes.length;
+  const stats = labAnalyzeBytePatterns(bytes, size);
+  const candidates = [];
+
+  if (asmText) {
+    const asmLines = getAsmLinesForRegion(baseOffset, baseOffset + size) || [];
+    if (asmLines.length) {
+      const codeLines = asmLines.filter(l => {
+        const t = l.trim();
+        return t && !t.startsWith(';') && !t.startsWith('.') && !t.match(/^[A-Z_@][A-Z0-9_@.]*:\s*(;.*)?$/i);
+      }).length;
+      const dataLines = asmLines.filter(l => l.trim().match(/^\.(DB|DW)\b/i)).length;
+      const labelLines = asmLines.filter(l => l.trim().match(/^[A-Z_@][A-Z0-9_@.]*:/i)).length;
+      const score = Math.max(0, Math.min(95, 25 + codeLines * 8 + labelLines * 6 - dataLines * 5));
+      if (score >= 30) {
+        candidates.push({
+          type: 'code',
+          score,
+          summary: codeLines
+            ? `${codeLines} instruction line(s) visible in ASM`
+            : `${asmLines.length} ASM line(s) found at this offset`,
+          details: [
+            `${labelLines} label(s)`,
+            `${dataLines} data directive(s)`,
+            `ASM span ${asmLines.length} line(s)`,
+          ],
+        });
+      }
+    }
+  }
+
+  if (romData) {
+    const screenBank = Math.floor(baseOffset / BANK_SIZE);
+    const screen = decodeScreenProg604(romData, baseOffset, screenBank, { ntBase: 0x3800 });
+    const visitedEnd = screen.visitedOffsets.length ? (Math.max(...screen.visitedOffsets) + 1) : null;
+    let score = 0;
+    if (screen.endReason.includes('END')) score += 35;
+    if (!screen.warnings.length) score += 10;
+    score += Math.min(30, screen.stats.writtenCells >= 32 ? 30 : screen.stats.writtenCells);
+    score += screen.trace.some(t => t.kind !== 'tile') ? 20 : 0;
+    if (screen.warnings.length) score -= 35;
+    if (!screen.stats.writtenCells) score = 0;
+    if (score > 0) {
+      candidates.push({
+        type: 'screen_prog',
+        score: Math.max(0, Math.min(99, score)),
+        summary: `${screen.stats.writtenCells} cell(s), ${screen.stats.uniqueTiles} unique tile(s), ${screen.trace.length} op(s)`,
+        details: [
+          `end: ${screen.endReason}`,
+          screen.stats.bbox ? `box c${screen.stats.bbox.minCol}-${screen.stats.bbox.maxCol} r${screen.stats.bbox.minRow}-${screen.stats.bbox.maxRow}` : 'no visible bounding box',
+          screen.warnings.length ? `${screen.warnings.length} warning(s)` : 'no structural warnings',
+        ],
+        splitOffset: visitedEnd && visitedEnd > baseOffset && visitedEnd < baseOffset + size ? visitedEnd : null,
+        config: { bank8000: screenBank },
+      });
+    }
+  }
+
+  if (size % 2 === 0 && size >= 4) {
+    const ptrs = decodePointerTableLE(bytes, baseOffset, { limit: Math.min(64, Math.floor(size / 2)) });
+    let score = 0;
+    if (ptrs.stats.validRatio >= 0.9) score += 55;
+    else if (ptrs.stats.validRatio >= 0.6) score += 35;
+    else if (ptrs.stats.validRatio >= 0.3) score += 20;
+    score += Math.min(20, Math.floor(ptrs.stats.entries / 8));
+    if (score >= 20) {
+      candidates.push({
+        type: 'pointer_table',
+        score: Math.min(95, score),
+        summary: `${ptrs.stats.entries} pointer entr${ptrs.stats.entries === 1 ? 'y' : 'ies'} · ${(ptrs.stats.validRatio * 100).toFixed(0)}% resolve to ROM`,
+        details: [
+          `${ptrs.stats.validTargets}/${ptrs.stats.entries} valid target(s)`,
+          `table bank ${bankOf(baseOffset)}`,
+          'clickable target preview available',
+        ],
+      });
+    }
+  }
+
+  const loader8 = decodeVramLoader8FBData(bytes, { defaultBank: bankOf(baseOffset), romLength: romData ? romData.length : 0 });
+  let loader8Score = 0;
+  if (loader8.terminated) loader8Score += 35;
+  if (!loader8.warnings.length) loader8Score += 10;
+  loader8Score += Math.min(25, loader8.stats.entries * 7);
+  loader8Score += Math.min(20, Math.floor(loader8.stats.totalTiles / 2));
+  loader8Score -= loader8.stats.invalidSources * 10;
+  if (loader8.stats.entries) {
+    candidates.push({
+      type: 'vram_loader_8fb',
+      score: Math.max(0, Math.min(99, loader8Score)),
+      summary: `8FB-style loader · ${loader8.stats.entries} entr${loader8.stats.entries === 1 ? 'y' : 'ies'} · ${loader8.stats.totalTiles} tile(s)`,
+      details: [
+        `end: ${loader8.endReason}`,
+        `max VRAM tile $${Math.max(0, loader8.stats.maxVramTile).toString(16).toUpperCase().padStart(3, '0')}`,
+        loader8.stats.invalidSources ? `${loader8.stats.invalidSources} source range issue(s)` : 'all sources inside ROM',
+      ],
+      splitOffset: loader8.terminated && loader8.consumedBytes < size ? (baseOffset + loader8.consumedBytes) : null,
+      config: { format: '8fb' },
+    });
+  }
+
+  const loader998 = decodeVramLoader998Data(bytes, { defaultBank: bankOf(baseOffset), romLength: romData ? romData.length : 0 });
+  let loader998Score = 0;
+  if (loader998.terminated) loader998Score += 35;
+  if (!loader998.warnings.length) loader998Score += 10;
+  loader998Score += Math.min(25, loader998.stats.entries * 6);
+  loader998Score += Math.min(25, loader998.stats.totalTiles);
+  loader998Score -= loader998.stats.invalidSources * 10;
+  if (loader998.stats.entries) {
+    candidates.push({
+      type: 'vram_loader_998',
+      score: Math.max(0, Math.min(99, loader998Score)),
+      summary: `998-style loader · ${loader998.stats.entries} op(s) · ${loader998.stats.totalTiles} tile(s)`,
+      details: [
+        `end: ${loader998.endReason}`,
+        `max VRAM tile $${Math.max(0, loader998.stats.maxVramTile).toString(16).toUpperCase().padStart(3, '0')}`,
+        loader998.stats.invalidSources ? `${loader998.stats.invalidSources} source range issue(s)` : 'all sources inside ROM',
+      ],
+      splitOffset: loader998.terminated && loader998.consumedBytes < size ? (baseOffset + loader998.consumedBytes) : null,
+      config: { format: '998' },
+    });
+  }
+
+  if (stats.paletteSized && stats.unique <= 32) {
+    let score = 25;
+    if (stats.paletteSized) score += 25;
+    if (stats.unique <= 16) score += 15;
+    if (bytes.every(b => b <= 0x3F)) score += 25;
+    candidates.push({
+      type: 'palette',
+      score: Math.min(95, score),
+      summary: `${size} byte palette-sized block`,
+      details: [
+        `${stats.unique} unique byte value(s)`,
+        bytes.every(b => b <= 0x3F) ? 'all values fit SMS CRAM range' : 'contains values outside SMS CRAM range',
+        `${stats.nullPct.toFixed(1)}% zero bytes`,
+      ],
+    });
+  }
+
+  if (stats.tileAligned && size >= 32) {
+    let score = 15;
+    if (stats.tileAligned) score += 25;
+    if (stats.entropy >= 4.5 && stats.entropy <= 7.8) score += 25;
+    if (stats.unique >= 16) score += 10;
+    candidates.push({
+      type: 'gfx_tiles',
+      score: Math.min(85, score),
+      summary: `${Math.floor(size / 32)} tile(s) if decoded as SMS planar graphics`,
+      details: [
+        `entropy ${stats.entropy.toFixed(2)}/8`,
+        `${stats.unique} unique byte value(s)`,
+        `${stats.nullPct.toFixed(1)}% zero bytes`,
+      ],
+    });
+  }
+
+  if (size % 2 === 0 && size >= 64) {
+    const entries = Math.floor(size / 2);
+    let hiFlags = 0;
+    for (let i = 1; i < bytes.length; i += 2) hiFlags += (bytes[i] & 0xF8) ? 1 : 0;
+    const score = 15 + Math.min(30, Math.floor(entries / 32)) + (hiFlags ? 10 : 0);
+    candidates.push({
+      type: 'tile_map',
+      score: Math.min(75, score),
+      summary: `${entries} 2-byte entries if interpreted as tile map`,
+      details: [
+        `size is multiple of 2`,
+        hiFlags ? `${hiFlags} entry hi-byte(s) use flip/palette/priority bits` : 'mostly low tile indices only',
+        `raw grid candidate: 32×${Math.ceil(entries / 32)}`,
+      ],
+    });
+  }
+
+  if (stats.printablePct >= 25) {
+    let score = Math.min(90, Math.round(stats.printablePct));
+    if (stats.printablePct >= 70) score += 10;
+    candidates.push({
+      type: 'text',
+      score: Math.min(95, score),
+      summary: `${stats.printablePct.toFixed(1)}% printable ASCII`,
+      details: [
+        `${stats.unique} unique byte value(s)`,
+        `${stats.nullPct.toFixed(1)}% zero bytes`,
+        stats.printablePct >= 70 ? 'looks text-like' : 'mixed printable / control data',
+      ],
+    });
+  }
+
+  if (stats.nullPct >= 85) {
+    candidates.push({
+      type: 'null',
+      score: Math.min(95, Math.round(stats.nullPct)),
+      summary: `${stats.nullPct.toFixed(1)}% zero bytes`,
+      details: [
+        `most common = $${stats.maxB.toString(16).toUpperCase().padStart(2, '0')} ×${stats.maxF}`,
+        `entropy ${stats.entropy.toFixed(2)}/8`,
+        'likely padding / cleared data',
+      ],
+    });
+  }
+
+  return candidates
+    .filter(c => c.score >= 20)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 6);
+}
+
+function labApplyDiscoveryCandidate(candidate) {
+  if (!_labId || !candidate) return;
+  const region = mapData.regions.find(x => x.id === _labId);
+  if (!region) return;
+  if (candidate.type === 'screen_prog') {
+    region.params = region.params || {};
+    region.params.screenProg = {
+      ...(region.params.screenProg || {}),
+      ...(candidate.config || {}),
+    };
+  } else if (candidate.type === 'vram_loader' || candidate.type === 'vram_loader_8fb' || candidate.type === 'vram_loader_998') {
+    region.params = region.params || {};
+    region.params = {
+      ...region.params,
+      ...(candidate.config || {}),
+    };
+  }
+  const nameInput = document.getElementById('lab-name');
+  if (!nameInput.value.trim() && candidate.type === 'screen_prog') nameInput.value = `screen_prog @ ${hexStr(parseHex(region.offset) ?? 0)}`;
+}
+
+function labRenderDiscovery(region, bytes, baseOffset) {
+  const wrap = document.getElementById('lab-discovery');
+  wrap.className = 'lab-discovery';
+  _labDiscoveryItems = labBuildDiscoveryCandidates(region, bytes, baseOffset);
+  if (!_labDiscoveryItems.length) {
+    wrap.innerHTML = `<div class="lab-discovery-empty">No strong structural match yet. Try changing the type manually and inspect the preview / ASM / hex alignment.</div>`;
+    return;
+  }
+  wrap.innerHTML = _labDiscoveryItems.map((item, idx) => {
+    const score = labFormatDiscoveryScore(item.score);
+    return `<div class="lab-discovery-card${idx===0?' top':''}">
+      <div class="lab-discovery-head">
+        <span class="lab-discovery-type" style="color:${TYPE_META[item.type]?.color || 'var(--text)'}">${TYPE_META[item.type]?.label || item.type}</span>
+        <span class="lab-discovery-score" style="color:${score.color}">${score.label}</span>
+        <span class="lab-discovery-summary">${item.summary}</span>
+      </div>
+      <div class="lab-discovery-details">
+        ${item.details.map(detail => `<span class="lab-discovery-detail">${detail.replace(/</g,'&lt;')}</span>`).join('')}
+      </div>
+      <div class="lab-discovery-actions">
+        <button class="btn small lab-disc-use" data-idx="${idx}">USE TYPE</button>
+        ${item.splitOffset ? `<button class="btn small lab-disc-split" data-idx="${idx}">SPLIT @ ${hexStr(item.splitOffset)}</button>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+  wrap.querySelectorAll('.lab-disc-use').forEach(btn => btn.addEventListener('click', () => {
+    const item = _labDiscoveryItems[parseInt(btn.dataset.idx, 10)];
+    labApplyDiscoveryCandidate(item);
+    labSelectType(item.type);
+    showToast(`Selected ${TYPE_META[item.type]?.label || item.type}`);
+  }));
+  wrap.querySelectorAll('.lab-disc-split').forEach(btn => btn.addEventListener('click', () => {
+    const item = _labDiscoveryItems[parseInt(btn.dataset.idx, 10)];
+    if (!item || !item.splitOffset) return;
+    splitRegionAt(_labId, item.splitOffset);
+  }));
+}
+
 function labRenderStats(bytes,size){
-  const sample=bytes.subarray(0,Math.min(bytes.length,4096));
-  const freq=new Array(256).fill(0);
-  for(const b of sample)freq[b]++;
-  const unique=freq.filter(f=>f>0).length;
-  let entropy=0;
-  for(const f of freq){if(f>0){const p=f/sample.length;entropy-=p*Math.log2(p);}}
-  let maxF=0,maxB=0;
-  for(let i=0;i<256;i++)if(freq[i]>maxF){maxF=freq[i];maxB=i;}
-  const nullPct=((freq[0]/sample.length)*100).toFixed(1);
+  const stats=labAnalyzeBytePatterns(bytes,size);
+  const sample=stats.sample;
+  const unique=stats.unique;
+  const entropy=stats.entropy;
+  const maxF=stats.maxF;
+  const maxB=stats.maxB;
+  const nullPct=stats.nullPct.toFixed(1);
   const tileOk=size%32===0;
   const palOk=size>=16&&size<=32;
   let hint='',hintColor='var(--dim)';
@@ -711,18 +1089,58 @@ function labRenderTypePreview(type, bytes, baseOffset) {
     const tileOffDec = document.createElement('button');
     tileOffDec.className = 'btn small';
     tileOffDec.textContent = '◀';
-    tileOffDec.title = 'Decrease tile offset by 1 tile (32 bytes)';
+    tileOffDec.title = 'Decrease tile offset by 32 bytes';
     tileOffDec.style.cssText = 'padding:2px 5px;font-size:11px;';
     const tileOffInc = document.createElement('button');
     tileOffInc.className = 'btn small';
     tileOffInc.textContent = '▶';
-    tileOffInc.title = 'Increase tile offset by 1 tile (32 bytes)';
+    tileOffInc.title = 'Increase tile offset by 32 bytes';
     tileOffInc.style.cssText = 'padding:2px 5px;font-size:11px;';
-    tileOffDec.addEventListener('click', () => {
+
+    function bindRepeatButton(btn, stepFn) {
+      let holdTimer = null;
+      let repeatTimer = null;
+      let repeated = false;
+
+      function clearRepeat() {
+        if (holdTimer) clearTimeout(holdTimer);
+        if (repeatTimer) clearInterval(repeatTimer);
+        holdTimer = null;
+        repeatTimer = null;
+      }
+
+      btn.addEventListener('click', e => {
+        if (repeated) {
+          e.preventDefault();
+          repeated = false;
+          return;
+        }
+        stepFn();
+      });
+
+      btn.addEventListener('pointerdown', e => {
+        if (e.button !== 0) return;
+        repeated = false;
+        clearRepeat();
+        holdTimer = setTimeout(() => {
+          repeated = true;
+          stepFn();
+          repeatTimer = setInterval(stepFn, 60);
+        }, 250);
+      });
+
+      const stopRepeat = () => clearRepeat();
+      btn.addEventListener('pointerup', stopRepeat);
+      btn.addEventListener('pointercancel', stopRepeat);
+      btn.addEventListener('pointerleave', stopRepeat);
+      window.addEventListener('blur', stopRepeat);
+    }
+
+    bindRepeatButton(tileOffDec, () => {
       const v = parseHex(tileOffInput.value.trim());
       if (v !== null && v >= 32) { tileOffInput.value = '0x' + (v - 32).toString(16).toUpperCase().padStart(5,'0'); renderScreenProg(); }
     });
-    tileOffInc.addEventListener('click', () => {
+    bindRepeatButton(tileOffInc, () => {
       const v = parseHex(tileOffInput.value.trim());
       if (v !== null) { tileOffInput.value = '0x' + (v + 32).toString(16).toUpperCase().padStart(5,'0'); renderScreenProg(); }
     });
@@ -778,14 +1196,32 @@ function labRenderTypePreview(type, bytes, baseOffset) {
         if (!defaultPalId) defaultPalId = r.id;
       }
     }
-    tileSel.value = defaultTileId;
-    palSel.value = defaultPalId;
+    const savedParams = activeRegion?.params?.screenProg || {};
+    tileSel.value = savedParams.tileRegionId || defaultTileId;
+    palSel.value = savedParams.palRegionId || defaultPalId;
+    palSprSel.value = savedParams.palSprRegionId || '';
+    bankSel.value = String(savedParams.bank8000 ?? defaultBank);
+
+    function persistScreenProgParams() {
+      if (!activeRegion) return;
+      activeRegion.params = activeRegion.params || {};
+      activeRegion.params.screenProg = {
+        tileRegionId: tileSel.value || '',
+        palRegionId: palSel.value || '',
+        palSprRegionId: palSprSel.value || '',
+        bank8000: parseInt(bankSel.value, 10) || defaultBank,
+        tileOffset: tileOffInput.value.trim(),
+        forceSpr: forceSprChk.checked,
+      };
+    }
+
     function syncTileOffset() {
       const r = mapData.regions.find(x => x.id === tileSel.value);
       if (r) tileOffInput.value = r.offset;
     }
     tileSel.addEventListener('change', () => { syncTileOffset(); renderScreenProg(); });
-    syncTileOffset();
+    if (savedParams.tileOffset) tileOffInput.value = savedParams.tileOffset;
+    else syncTileOffset();
 
     ctrlRow.appendChild(tileLbl); ctrlRow.appendChild(tileSel);
     ctrlRow.appendChild(tileOffLbl); ctrlRow.appendChild(tileOffDec); ctrlRow.appendChild(tileOffInput); ctrlRow.appendChild(tileOffInc);
@@ -795,6 +1231,7 @@ function labRenderTypePreview(type, bytes, baseOffset) {
     const forceSprChk = document.createElement('input');
     forceSprChk.type = 'checkbox';
     forceSprChk.title = 'Force SPR palette on all tiles (ignores attr bit3)';
+    forceSprChk.checked = !!savedParams.forceSpr;
     forceSprLabel.appendChild(forceSprChk);
     forceSprLabel.appendChild(document.createTextNode('FORCE SPR'));
 
@@ -808,106 +1245,37 @@ function labRenderTypePreview(type, bytes, baseOffset) {
     info.className = 'preview-info';
     const canvas = document.createElement('canvas');
     canvas.style.cssText = 'display:block;image-rendering:pixelated;max-width:100%;border:1px solid var(--border);margin-top:4px';
-    const logBox = document.createElement('div');
-    logBox.style.cssText = 'font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:6px;max-height:100px;overflow-y:auto;line-height:1.5;';
-    el.appendChild(info); el.appendChild(canvas); el.appendChild(logBox);
+    const warnBox = document.createElement('div');
+    warnBox.style.cssText = 'margin-top:6px;';
+    const traceBox = document.createElement('div');
+    traceBox.className = 'type-preview-box screen-prog-trace';
+    traceBox.style.marginTop = '6px';
+    el.appendChild(info);
+    el.appendChild(canvas);
+    el.appendChild(warnBox);
+    el.appendChild(traceBox);
 
-    function z80ToRom(z80, bank8000) {
-      if (z80 < 0x8000) return z80;
-      if (z80 < 0xC000) return bank8000 * 0x4000 + (z80 - 0x8000);
-      return -1;
-    }
-
-    function runDecoder() {
-      const bank8000 = parseInt(bankSel.value);
-      const COLS = 32, ROWS = 28, NT_BASE = 0x3800;
-      const nt = new Array(COLS * ROWS).fill(null).map(() => ({tileIdx: 0, attr: 0}));
-      let pc = baseOffset;
-      let storedVDPaddr = (0x78 << 8) | 0x00;
-      let vramAddr = NT_BASE;
-
-      function vdpPairToVram(vdp16) {
-        return (vdp16 & 0xFF) | (((vdp16 >> 8) & 0x3F) << 8);
-      }
-      function posLabel(va) {
-        const p = (va - NT_BASE) >> 1;
-        return `VRAM $${va.toString(16).toUpperCase().padStart(4,'0')} · col ${p % COLS}, row ${Math.floor(p / COLS)}`;
-      }
-
-      let currentAttr = 0;
-      const MAX = 50000;
-      let iter = 0, tilesWritten = 0;
-      let endReason = 'max iterations reached';
-      const log = [];
-
-      while (iter++ < MAX && romData && pc < romData.length) {
-        const b = romData[pc++];
-
-        if (b < 0xF0) {
-          const pos = (vramAddr - NT_BASE) >> 1;
-          if (pos >= 0 && pos < COLS * ROWS) { nt[pos].tileIdx = b; nt[pos].attr = currentAttr; tilesWritten++; }
-          vramAddr += 2;
-          continue;
-        }
-
-        switch (b & 0x07) {
-          case 0:
-            endReason = `$${b.toString(16).toUpperCase()} END @ ROM $${(pc-1).toString(16).toUpperCase().padStart(5,'0')}`;
-            iter = MAX;
-            break;
-          case 1: {
-            currentAttr = romData[pc++];
-            log.push(`$F1 ATTR ← $${currentAttr.toString(16).toUpperCase().padStart(2,'0')}`);
-            break;
+    function attachTraceRowHover() {
+      traceBox.querySelectorAll('[data-trace-start]').forEach(row => {
+        row.addEventListener('mouseover', () => {
+          const start = parseInt(row.dataset.traceStart, 10);
+          const len = parseInt(row.dataset.traceLen, 10);
+          for (let i = 0; i < len; i++) {
+            document.querySelector(`#lab-hex-dump .hex-byte[data-boff="${start + i}"]`)?.classList.add('hl-asm');
           }
-          case 2: {
-            const lo = romData[pc++], hi = romData[pc++];
-            storedVDPaddr = lo | (hi << 8);
-            vramAddr = vdpPairToVram(storedVDPaddr);
-            log.push(`$F2 ${posLabel(vramAddr)}`);
-            break;
-          }
-          case 3: {
-            const t = romData[pc++];
-            const pos = (vramAddr - NT_BASE) >> 1;
-            if (pos >= 0 && pos < COLS * ROWS) { nt[pos].tileIdx = t; nt[pos].attr = currentAttr; tilesWritten++; }
-            vramAddr += 2;
-            break;
-          }
-          case 4: {
-            const lo = romData[pc++], hi = romData[pc++];
-            const z80 = lo | (hi << 8);
-            const newPc = z80ToRom(z80, bank8000);
-            log.push(`$F4 JUMP Z80 $${z80.toString(16).toUpperCase().padStart(4,'0')} → ROM $${newPc < 0 ? '???' : newPc.toString(16).toUpperCase().padStart(5,'0')}`);
-            if (newPc < 0 || newPc >= romData.length) { endReason = `$F4 JUMP out of range (Z80 $${z80.toString(16).toUpperCase()})`; iter = MAX; }
-            else pc = newPc;
-            break;
-          }
-          case 5: {
-            const count = romData[pc++], tileIdx = romData[pc++];
-            log.push(`$F5 FILL ×${count} tile=$${tileIdx.toString(16).toUpperCase().padStart(2,'0')} @ ${posLabel(vramAddr)}`);
-            for (let i = 0; i < count; i++) {
-              const pos = (vramAddr - NT_BASE) >> 1;
-              if (pos >= 0 && pos < COLS * ROWS) { nt[pos].tileIdx = tileIdx; nt[pos].attr = currentAttr; tilesWritten++; }
-              vramAddr += 2;
-            }
-            break;
-          }
-          case 6: {
-            storedVDPaddr = (storedVDPaddr + 0x0040) & 0xFFFF;
-            if ((storedVDPaddr >> 8) >= 0x7F) storedVDPaddr = (storedVDPaddr & 0x00FF) | (0x78 << 8);
-            vramAddr = vdpPairToVram(storedVDPaddr);
-            log.push(`$F6 NEXT ROW → ${posLabel(vramAddr)}`);
-            break;
-          }
-        }
-      }
-      return { nt, tilesWritten, endReason, log, iter };
+        });
+        row.addEventListener('mouseout', () => {
+          document.querySelectorAll('#lab-hex-dump .hex-byte.hl-asm').forEach(s => s.classList.remove('hl-asm'));
+        });
+      });
     }
 
     function renderScreenProg() {
       if (!romData) { info.textContent = '⚠ No ROM loaded'; canvas.style.display = 'none'; return; }
-      const { nt, tilesWritten, endReason, log } = runDecoder();
+      persistScreenProgParams();
+
+      const decoded = decodeScreenProg604(romData, baseOffset, parseInt(bankSel.value, 10), { ntBase: 0x3800 });
+      const cells = decoded.cells;
 
       const COLS = 32, ROWS = 28, zoom = 2;
       canvas.width = COLS * 8 * zoom;
@@ -941,7 +1309,7 @@ function labRenderTypePreview(type, bytes, baseOffset) {
         const pxd = img.data;
 
         for (let i = 0; i < COLS * ROWS; i++) {
-          const {tileIdx, attr} = nt[i];
+          const {tileIdx, attr} = cells[i];
           const ti = tileIdx | ((attr & 0x01) << 8);
           const hflip = (attr >> 1) & 1;
           const vflip = (attr >> 2) & 1;
@@ -967,25 +1335,65 @@ function labRenderTypePreview(type, bytes, baseOffset) {
         ctx.fillStyle = '#111'; ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.font = `${zoom*3}px monospace`;
         for (let i = 0; i < COLS * ROWS; i++) {
-          const {tileIdx} = nt[i];
-          if (!tileIdx) continue;
-          ctx.fillStyle = `hsl(${(tileIdx * 37) % 360},60%,50%)`;
-          ctx.fillText(tileIdx.toString(16).toUpperCase().padStart(2,'0'),
+          const {tileIdx, attr, writes} = cells[i];
+          if (!writes) continue;
+          const ti = tileIdx | ((attr & 0x01) << 8);
+          ctx.fillStyle = `hsl(${(ti * 37) % 360},60%,50%)`;
+          ctx.fillText(ti.toString(16).toUpperCase().padStart(3,'0'),
             (i % COLS) * 8 * zoom, Math.floor(i / COLS) * 8 * zoom + zoom * 7);
         }
       }
 
-      let nBG = 0, nSPR = 0;
-      for (let i = 0; i < COLS * ROWS; i++) {
-        const a = nt[i].attr;
-        if (nt[i].tileIdx === 0 && a === 0) continue;
-        if ((a >> 3) & 1) nSPR++; else nBG++;
-      }
-      const sprWarn = (nSPR === 0 && palSprSel.value)
+      const bbox = decoded.stats.bbox
+        ? ` · box c${decoded.stats.bbox.minCol}-${decoded.stats.bbox.maxCol} r${decoded.stats.bbox.minRow}-${decoded.stats.bbox.maxRow}`
+        : '';
+      const sprWarn = (decoded.stats.sprWrites === 0 && palSprSel.value)
         ? ' · <span style="color:#ffcc00">⚠ PAL SPR unused — bytecode never sets bit3 ($F1 attr & 8)</span>'
         : '';
-      info.innerHTML = `${tilesWritten} tiles written · BG pal: ${nBG} · SPR pal: ${nSPR}${forceSpr?' [FORCE SPR]':''}${sprWarn} · end: ${endReason}`;
-      logBox.innerHTML = log.map(l => `<div>${l.replace(/</g,'&lt;')}</div>`).join('');
+      info.innerHTML =
+        `${decoded.stats.writtenCells} cells written · ${decoded.stats.uniqueTiles} unique tiles · ` +
+        `BG: ${decoded.stats.bgWrites} · SPR: ${decoded.stats.sprWrites}${bbox}` +
+        `${forceSpr ? ' [FORCE SPR]' : ''}${sprWarn} · ${decoded.trace.length} ops · end: ${decoded.endReason}`;
+
+      warnBox.innerHTML = decoded.warnings.length
+        ? decoded.warnings.map(w => `<div class="preview-warn">${w.replace(/</g,'&lt;')}</div>`).join('')
+        : '';
+
+      const kindLabel = {
+        tile: 'TILE',
+        literal: 'F3 TILE',
+        attr: 'F1 ATTR',
+        addr: 'F2 VRAM',
+        jump: 'F4 JUMP',
+        fill: 'F5 FILL',
+        row: 'F6 ROW',
+        end: 'END',
+      };
+      const rowsHtml = decoded.trace.map(step => {
+        const bytesHex = step.bytes.map(v => v.toString(16).toUpperCase().padStart(2, '0')).join(' ');
+        return `<tr data-trace-start="${step.romOffset}" data-trace-len="${step.length}">
+          <td style="padding:2px 6px;color:var(--accent);white-space:nowrap">${hexStr(step.romOffset)}</td>
+          <td style="padding:2px 6px;color:var(--yellow);white-space:nowrap">${bytesHex}</td>
+          <td style="padding:2px 6px;color:var(--text);white-space:nowrap">${kindLabel[step.kind] || step.kind}</td>
+          <td style="padding:2px 6px;color:var(--dim)">${step.detail.replace(/</g,'&lt;')}</td>
+        </tr>`;
+      }).join('');
+      traceBox.innerHTML = `
+        <div style="font-size:10px;color:var(--dim);letter-spacing:1px;margin-bottom:6px">
+          EXECUTION TRACE · hovered rows highlight source bytes in the hex dump
+        </div>
+        <table style="width:100%;border-collapse:collapse;font-size:10px">
+          <thead>
+            <tr style="color:var(--dim);border-bottom:1px solid var(--border)">
+              <th style="padding:2px 6px;text-align:left">ROM</th>
+              <th style="padding:2px 6px;text-align:left">BYTES</th>
+              <th style="padding:2px 6px;text-align:left">OP</th>
+              <th style="padding:2px 6px;text-align:left">EFFECT</th>
+            </tr>
+          </thead>
+          <tbody>${rowsHtml || '<tr><td colspan="4" style="padding:6px;color:var(--dim)">No ops decoded</td></tr>'}</tbody>
+        </table>`;
+      attachTraceRowHover();
     }
 
     tileOffInput.addEventListener('change', renderScreenProg);
@@ -998,14 +1406,96 @@ function labRenderTypePreview(type, bytes, baseOffset) {
     return;
   }
 
-  if (type === 'vram_loader') {
+  if (type === 'pointer_table') {
     const title = document.createElement('div');
     title.className = 'lab-section-title';
-    title.textContent = `VRAM LOADER (_LABEL_8FB_) — ${bytes.length} bytes @ ${hexStr(baseOffset)}`;
+    title.textContent = `POINTER TABLE — ${Math.floor(bytes.length / 2)} entries @ ${hexStr(baseOffset)}`;
+    el.appendChild(title);
+
+    const decoded = decodePointerTableLE(bytes, baseOffset);
+    const asmGuess = (activeRegion?.notes || '').match(/indexed by ([^,)]+)/i)?.[1] || '';
+    const regionLabel = getAsmCanonicalLabelForRegion(activeRegion);
+    const consumers = labFindAsmConsumersForLabel(regionLabel);
+    const primaryConsumer = consumers[0]?.consumer || '';
+    const callers = primaryConsumer ? labFindAsmCallersOfLabel(primaryConsumer) : [];
+    const info = document.createElement('div');
+    info.className = 'preview-info';
+    info.textContent =
+      `${decoded.stats.entries} entries · ${(decoded.stats.validRatio * 100).toFixed(0)}% resolve to ROM targets in current banking model`;
+    el.appendChild(info);
+
+    const metaBox = document.createElement('div');
+    metaBox.className = 'type-preview-box';
+    metaBox.style.marginBottom = '8px';
+    metaBox.innerHTML = `
+      <div style="margin-bottom:4px"><span style="color:var(--dim)">ASM guess:</span> ${asmGuess ? `<span style="color:var(--yellow)">${asmGuess}</span> <span style="color:var(--dim)">(heuristic comment)</span>` : '<span style="color:var(--dim)">none</span>'}</div>
+      <div style="margin-bottom:4px"><span style="color:var(--dim)">Consumer routine:</span> ${primaryConsumer ? `<span style="color:var(--accent)">${primaryConsumer}</span>` : '<span style="color:var(--dim)">not found</span>'}</div>
+      <div><span style="color:var(--dim)">Caller index setup:</span> ${
+        callers.length
+          ? callers.slice(0, 6).map(c => `<div style="margin-top:3px;color:var(--text)">${c.caller} · line ${c.lineNo}${c.aSetup ? ` · <span style="color:var(--yellow)">${c.aSetup.replace(/</g,'&lt;')}</span>` : ''}</div>`).join('')
+          : '<span style="color:var(--dim)"> not found</span>'
+      }</div>`;
+    el.appendChild(metaBox);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'type-preview-box';
+    let html = `<table style="width:100%;border-collapse:collapse;font-size:10px">
+      <thead><tr style="color:var(--dim);border-bottom:1px solid var(--border)">
+        <th style="padding:2px 6px;text-align:left">#</th>
+        <th style="padding:2px 6px;text-align:left">ENTRY</th>
+        <th style="padding:2px 6px;text-align:left">Z80</th>
+        <th style="padding:2px 6px;text-align:left">ROM TARGET</th>
+        <th style="padding:2px 6px;text-align:left">REGION</th>
+        <th style="padding:2px 6px;text-align:left"></th>
+      </tr></thead><tbody>`;
+    decoded.entries.forEach(entry => {
+      const targetRegion = entry.romTarget >= 0 ? findRegionContainingOffset(entry.romTarget) : null;
+      const targetLabel = entry.romTarget >= 0 ? `_DATA_${entry.romTarget.toString(16).toUpperCase()}_` : '';
+      html += `<tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:2px 6px;color:var(--dim)">${entry.index}</td>
+        <td style="padding:2px 6px;color:var(--accent)">${hexStr(entry.entryOffset)}</td>
+        <td style="padding:2px 6px;color:var(--yellow)">${entry.z80.toString(16).toUpperCase().padStart(4,'0')}</td>
+        <td style="padding:2px 6px;color:${entry.romTarget >= 0 ? 'var(--text)' : 'var(--red)'}">${entry.romTarget >= 0 ? hexStr(entry.romTarget) + ' · ' + bankAddrStr(entry.romTarget) : 'invalid'}</td>
+        <td style="padding:2px 6px;color:var(--dim)">${targetRegion ? (targetRegion.name || targetRegion.offset) : (targetLabel || '—')}</td>
+        <td style="padding:2px 6px">${entry.romTarget >= 0 ? `<button class="btn small ptr-open" data-target="${entry.romTarget}">OPEN</button>` : ''}</td>
+      </tr>`;
+    });
+    html += '</tbody></table>';
+    wrap.innerHTML = html;
+    el.appendChild(wrap);
+    wrap.querySelectorAll('.ptr-open').forEach(btn => btn.addEventListener('click', () => {
+      const target = parseInt(btn.dataset.target, 10);
+      const region = findRegionContainingOffset(target);
+      if (region) {
+        openLaboratory(region.id);
+        return;
+      }
+      showToast(`No mapped region at ${hexStr(target)}. CARVE it first if needed.`, true);
+    }));
+    return;
+  }
+
+  if (type === 'vram_loader' || type === 'vram_loader_8fb' || type === 'vram_loader_998') {
+    const title = document.createElement('div');
+    title.className = 'lab-section-title';
+    title.textContent = `VRAM LOADER — ${bytes.length} bytes @ ${hexStr(baseOffset)}`;
     el.appendChild(title);
 
     const ctrlRow = document.createElement('div');
     ctrlRow.style.cssText = 'display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;';
+
+    const fmtLbl = document.createElement('span');
+    fmtLbl.style.cssText = 'font-size:10px;color:var(--dim);letter-spacing:1px;white-space:nowrap';
+    fmtLbl.textContent = 'FORMAT:';
+    const fmtSel = document.createElement('select');
+    fmtSel.className = 'region-input';
+    fmtSel.style.cssText = 'font-size:11px;padding:2px 4px;min-width:90px;';
+    [['auto','AUTO'],['8fb','8FB'],['998','998']].forEach(([v,l]) => {
+      const o = document.createElement('option');
+      o.value = v;
+      o.textContent = l;
+      fmtSel.appendChild(o);
+    });
 
     const palLbl = document.createElement('span');
     palLbl.style.cssText = 'font-size:10px;color:var(--dim);letter-spacing:1px;white-space:nowrap';
@@ -1046,6 +1536,9 @@ function labRenderTypePreview(type, bytes, baseOffset) {
 
     const _loaderRegion = mapData.regions.find(x => x.id === _labId);
     const _savedParams = _loaderRegion?.params || {};
+    if (type === 'vram_loader_8fb') fmtSel.value = '8fb';
+    else if (type === 'vram_loader_998') fmtSel.value = '998';
+    else if (_savedParams.format !== undefined) fmtSel.value = _savedParams.format;
     if (_savedParams.palRegionId !== undefined) palSel.value = _savedParams.palRegionId;
     else if (palSel.options.length > 1) palSel.selectedIndex = 1;
     if (_savedParams.bank !== undefined) bankSel.value = _savedParams.bank;
@@ -1053,9 +1546,16 @@ function labRenderTypePreview(type, bytes, baseOffset) {
 
     function persistParams() {
       const reg = mapData.regions.find(x => x.id === _labId);
-      if (reg) reg.params = { palRegionId: palSel.value, bank: parseInt(bankSel.value), overrideBank: overrideChk.checked };
+      if (reg) reg.params = {
+        ...reg.params,
+        format: fmtSel.value,
+        palRegionId: palSel.value,
+        bank: parseInt(bankSel.value),
+        overrideBank: overrideChk.checked,
+      };
     }
 
+    ctrlRow.appendChild(fmtLbl); ctrlRow.appendChild(fmtSel);
     ctrlRow.appendChild(palLbl); ctrlRow.appendChild(palSel);
     ctrlRow.appendChild(bankLbl); ctrlRow.appendChild(bankSel);
     ctrlRow.appendChild(overrideLbl);
@@ -1067,11 +1567,12 @@ function labRenderTypePreview(type, bytes, baseOffset) {
     table.style.cssText = 'font-size:10px;border-collapse:collapse;width:100%;';
     table.innerHTML = `<thead><tr style="color:var(--dim);border-bottom:1px solid var(--border)">
       <th style="padding:2px 6px;text-align:left">#</th>
+      <th style="padding:2px 6px;text-align:left">KIND</th>
       <th style="padding:2px 6px;text-align:right">COUNT</th>
       <th style="padding:2px 6px;text-align:right">VRAM TILE</th>
       <th style="padding:2px 6px;text-align:right">VRAM ADDR</th>
       <th style="padding:2px 6px;text-align:right">BANK · ROM SRC</th>
-      <th style="padding:2px 6px;text-align:right"></th>
+      <th style="padding:2px 6px;text-align:right">BYTES</th>
     </tr></thead>`;
     const tbody = document.createElement('tbody');
     table.appendChild(tbody);
@@ -1084,45 +1585,35 @@ function labRenderTypePreview(type, bytes, baseOffset) {
     canvas.style.cssText = 'display:block;image-rendering:pixelated;max-width:100%;border:1px solid var(--border);margin-top:4px';
     el.appendChild(canvasInfo); el.appendChild(canvas);
 
-    function parseEntries() {
-      const forceBank = overrideChk.checked ? parseInt(bankSel.value) : null;
-      const entries = [];
-      let pc = 0;
-      let curVramTile = 0, curBank = parseInt(bankSel.value), curBlockIdx = 0;
-      while (pc + 5 <= bytes.length) {
-        const count = bytes[pc];
-        if (count === 0) break;
-        const vlo = bytes[pc+1], vhi = bytes[pc+2];
-        const slo = bytes[pc+3], shi = bytes[pc+4];
-        pc += 5;
-
-        if (vlo !== 0xFF || vhi !== 0xFF) {
-          curVramTile = vlo | (vhi << 8);
-        }
-        if (slo !== 0xFF || shi !== 0xFF) {
-          curBank     = (forceBank !== null) ? forceBank : (shi >> 1);
-          curBlockIdx = ((shi & 1) << 8) | slo;
-        } else if (forceBank !== null) {
-          curBank = forceBank;
-        }
-        const vramByteAddr = curVramTile * 32;
-        const romSrcOffset = curBank * 0x4000 + curBlockIdx * 32;
-
-        entries.push({ count, vramTile: curVramTile, vramAddr: vramByteAddr, bank: curBank, romSrc: romSrcOffset });
-
-        curVramTile += count;
-        curBlockIdx += count;
-      }
-      return entries;
+    function scoreLoader(decoded) {
+      let score = 0;
+      if (decoded.terminated) score += 35;
+      if (!decoded.warnings.length) score += 10;
+      score += Math.min(25, decoded.stats.entries * 6);
+      score += Math.min(25, decoded.stats.totalTiles);
+      score -= decoded.stats.invalidSources * 10;
+      return score;
     }
 
-    function renderCanvas(entries, palColors, highlightIdx) {
-      if (!romData || entries.length === 0) return;
+    function pickDecodedLoader() {
+      const bank = parseInt(bankSel.value);
+      const forceBank = overrideChk.checked ? bank : null;
+      const d8 = decodeVramLoader8FBData(bytes, { defaultBank: bank, romLength: romData ? romData.length : 0 });
+      const d998 = decodeVramLoader998Data(bytes, { defaultBank: bank, forceBank, romLength: romData ? romData.length : 0 });
+      if (fmtSel.value === '8fb') return d8;
+      if (fmtSel.value === '998') return d998;
+      return scoreLoader(d998) > scoreLoader(d8) ? d998 : d8;
+    }
+
+    function renderCanvas(decoded, palColors, highlightIdx) {
+      if (!romData || !decoded.entries.length) return;
       const TILES_PER_ROW = 32;
       const zoom = 2;
       let maxTile = 0;
-      entries.forEach(e => { maxTile = Math.max(maxTile, e.vramTile + e.count); });
-      const rows = Math.ceil(maxTile / TILES_PER_ROW);
+      decoded.entries.forEach(e => {
+        if (e.kind === 'copy' || e.kind === 'zero') maxTile = Math.max(maxTile, e.vramTile + e.count);
+      });
+      const rows = Math.max(1, Math.ceil(maxTile / TILES_PER_ROW));
       canvas.width  = TILES_PER_ROW * 8 * zoom;
       canvas.height = rows * 8 * zoom;
       canvas.style.display = 'block';
@@ -1131,8 +1622,25 @@ function labRenderTypePreview(type, bytes, baseOffset) {
       const img = ctx.createImageData(canvas.width, canvas.height);
       const pxd = img.data;
 
-      entries.forEach((e, ei) => {
+      decoded.entries.forEach((e, ei) => {
         const isHL = (highlightIdx === -1 || highlightIdx === ei);
+        if (e.kind !== 'copy') {
+          if (e.kind === 'zero') {
+            for (let t = 0; t < e.count; t++) {
+              const vramTile = e.vramTile + t;
+              const bx = (vramTile % TILES_PER_ROW) * 8 * zoom;
+              const by = Math.floor(vramTile / TILES_PER_ROW) * 8 * zoom;
+              for (let py = 0; py < 8; py++) for (let px = 0; px < 8; px++) {
+                const shade = isHL ? 0x44 : 0x22;
+                for (let zy = 0; zy < zoom; zy++) for (let zx = 0; zx < zoom; zx++) {
+                  const idx = ((by + py*zoom + zy) * canvas.width + (bx + px*zoom + zx)) * 4;
+                  pxd[idx] = shade; pxd[idx+1] = shade; pxd[idx+2] = shade; pxd[idx+3] = 255;
+                }
+              }
+            }
+          }
+          return;
+        }
         for (let t = 0; t < e.count; t++) {
           const vramTile = e.vramTile + t;
           const romOff = e.romSrc + t * 32;
@@ -1159,8 +1667,8 @@ function labRenderTypePreview(type, bytes, baseOffset) {
       });
       ctx.putImageData(img, 0, 0);
 
-      if (highlightIdx >= 0 && highlightIdx < entries.length) {
-        const e = entries[highlightIdx];
+      if (highlightIdx >= 0 && highlightIdx < decoded.entries.length) {
+        const e = decoded.entries[highlightIdx];
         ctx.strokeStyle = '#d4a0ff';
         ctx.lineWidth = 1;
         const x0 = (e.vramTile % TILES_PER_ROW) * 8 * zoom;
@@ -1177,7 +1685,8 @@ function labRenderTypePreview(type, bytes, baseOffset) {
         ? (palReg.type === 'palette_manual' ? resolvePaletteManualColors(palReg) : decodePaletteAt(romData, parseHex(palReg.offset) ?? 0, 16))
         : viewerPalette;
 
-      const entries = parseEntries();
+      const decoded = pickDecodedLoader();
+      const entries = decoded.entries;
       tbody.innerHTML = '';
       let totalTiles = 0;
       let maxVramTile = 0;
@@ -1187,23 +1696,32 @@ function labRenderTypePreview(type, bytes, baseOffset) {
         maxVramTile = Math.max(maxVramTile, e.vramTile + e.count - 1);
         const tr = document.createElement('tr');
         tr.style.cssText = `border-bottom:1px solid var(--border);cursor:pointer;`;
+        const byteText = e.bytes.map(b => b.toString(16).toUpperCase().padStart(2, '0')).join(' ');
+        const srcText = e.romSrc == null
+          ? '—'
+          : `BK${e.bank} · $${e.romSrc.toString(16).toUpperCase().padStart(5,'0')}`;
         tr.innerHTML = `
           <td style="padding:2px 6px;color:var(--dim)">${i+1}</td>
+          <td style="padding:2px 6px;color:var(--text)">${e.kind.toUpperCase()}</td>
           <td style="padding:2px 6px;text-align:right">${e.count}</td>
           <td style="padding:2px 6px;text-align:right;font-family:var(--mono)">$${e.vramTile.toString(16).toUpperCase().padStart(3,'0')}</td>
           <td style="padding:2px 6px;text-align:right;font-family:var(--mono)">$${e.vramAddr.toString(16).toUpperCase().padStart(4,'0')}</td>
-          <td style="padding:2px 6px;text-align:right;font-family:var(--mono)">BK${e.bank} · $${e.romSrc.toString(16).toUpperCase().padStart(5,'0')}</td>
-          <td style="padding:2px 6px;text-align:right;color:var(--dim)">—</td>`;
-        tr.addEventListener('mouseenter', () => { tr.style.background = 'var(--hover)'; renderCanvas(entries, palColors, i); });
-        tr.addEventListener('mouseleave', () => { tr.style.background = ''; renderCanvas(entries, palColors, -1); });
-        tr.addEventListener('click', () => renderCanvas(entries, palColors, i));
+          <td style="padding:2px 6px;text-align:right;font-family:var(--mono)">${srcText}</td>
+          <td style="padding:2px 6px;text-align:right;color:var(--dim);font-family:var(--mono)">${byteText}</td>`;
+        tr.addEventListener('mouseenter', () => { tr.style.background = 'var(--hover)'; renderCanvas(decoded, palColors, i); });
+        tr.addEventListener('mouseleave', () => { tr.style.background = ''; renderCanvas(decoded, palColors, -1); });
+        tr.addEventListener('click', () => renderCanvas(decoded, palColors, i));
         tbody.appendChild(tr);
       });
 
-      canvasInfo.textContent = `${entries.length} entries · ${totalTiles} tiles total · VRAM $${(maxVramTile*32).toString(16).toUpperCase().padStart(4,'0')} max`;
-      renderCanvas(entries, palColors, -1);
+      const suffix = decoded.warnings.length ? ` · ${decoded.warnings.join(' | ')}` : '';
+      canvasInfo.textContent =
+        `${decoded.format.toUpperCase()} · ${entries.length} op(s) · ${totalTiles} tile(s) total · ` +
+        `VRAM $${Math.max(0, maxVramTile*32).toString(16).toUpperCase().padStart(4,'0')} max · ${decoded.endReason}${suffix}`;
+      renderCanvas(decoded, palColors, -1);
     }
 
+    fmtSel.addEventListener('change', () => { persistParams(); render(); });
     palSel.addEventListener('change', () => { persistParams(); render(); });
     bankSel.addEventListener('change', () => { persistParams(); render(); });
     overrideChk.addEventListener('change', () => { persistParams(); render(); });
@@ -1695,6 +2213,25 @@ function labShowSidePanels(type){
   document.getElementById('lab-palette-section').style.display = isPal  ? '' : 'none';
 }
 
+function labSelectType(type){
+  const wrap=document.getElementById('lab-type-btns');
+  const btn=wrap.querySelector(`.lab-type-btn[data-type="${type}"]`);
+  if(!btn)return;
+  wrap.querySelectorAll('.lab-type-btn').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+  if(type==='null') document.getElementById('lab-name').value='NULL BYTES';
+  document.getElementById('btn-lab-to-viewer').style.display=
+    (type==='gfx_tiles'||type==='gfx_sprites')?'':'none';
+  labShowSidePanels(type);
+  if(_labId){
+    const r=mapData.regions.find(x=>x.id===_labId);
+    if(r&&romData){
+      const off=parseHex(r.offset)??0;
+      labRenderTypePreview(type, romData.subarray(off,Math.min(off+(r.size??0),romData.length)), off);
+    }
+  }
+}
+
 function labRenderClassify(region){
   const wrap=document.getElementById('lab-type-btns');
   wrap.innerHTML='';
@@ -1703,21 +2240,7 @@ function labRenderClassify(region){
     btn.className='lab-type-btn'+(region.type===type?' selected':'');
     btn.style.cssText=`color:${meta.color};border-color:${meta.color}`;
     btn.textContent=meta.label;btn.dataset.type=type;
-    btn.addEventListener('click',()=>{
-      wrap.querySelectorAll('.lab-type-btn').forEach(b=>b.classList.remove('selected'));
-      btn.classList.add('selected');
-      if(type==='null') document.getElementById('lab-name').value='NULL BYTES';
-      document.getElementById('btn-lab-to-viewer').style.display=
-        (type==='gfx_tiles'||type==='gfx_sprites')?'':'none';
-      labShowSidePanels(type);
-      if(_labId){
-        const r=mapData.regions.find(x=>x.id===_labId);
-        if(r&&romData){
-          const off=parseHex(r.offset)??0;
-          labRenderTypePreview(type, romData.subarray(off,Math.min(off+(r.size??0),romData.length)), off);
-        }
-      }
-    });
+    btn.addEventListener('click',()=>labSelectType(type));
     wrap.appendChild(btn);
   }
   document.getElementById('lab-name').value=region.name||'';
