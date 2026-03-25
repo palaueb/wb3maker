@@ -269,7 +269,7 @@ function loadMapJson(jsonText,fileName){
   if(romData&&data.romMD5&&data.romMD5!==romMD5){
     showToast(`MD5 mismatch! JSON is for ${data.romMD5.slice(0,8)}… current ROM is ${romMD5.slice(0,8)}…`,true);return;
   }
-  mapData.schemaVersion=data.schemaVersion??1;
+  mapData.schemaVersion=Math.max(data.schemaVersion??1,2);
   mapData.romVersion=data.romVersion??'unknown';
   if(data.romMD5)mapData.romMD5=data.romMD5;
   if(data.romName)mapData.romName=data.romName;

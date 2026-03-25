@@ -56,6 +56,7 @@ function openLaboratory(id){
   labRenderDiscovery(r, bytes, offset);
   labRenderTypePreview(r.type, bytes, offset);
   labRenderClassify(r);
+  labRenderAnalysisEditor(r);
   labShowSidePanels(r.type);
 
   const toViewer=document.getElementById('btn-lab-to-viewer');
@@ -243,8 +244,8 @@ function splitRegionAt(id,splitOffset){
   if(splitOffset<=start||splitOffset>=end){
     showToast(`Split offset must be inside the region (${hexStr(start)}–${hexStr(end-1)})`,true);return;
   }
-  const part1={...r,id:genId(),size:splitOffset-start};
-  const part2={...r,id:genId(),offset:hexStr(splitOffset),size:end-splitOffset};
+  const part1={...r,id:genId(),size:splitOffset-start,analysis:undefined};
+  const part2={...r,id:genId(),offset:hexStr(splitOffset),size:end-splitOffset,analysis:undefined};
   mapData.regions=mapData.regions.filter(x=>x.id!==id);
   mapData.regions.push(part1,part2);
   mapData.regions.sort((a,b)=>(parseHex(a.offset)??0)-(parseHex(b.offset)??0));
@@ -283,10 +284,10 @@ function splitRegionByLabels(id){
   const parts=[];
   let prev=regionStart;
   for(const sp of sorted){
-    parts.push({...r,id:genId(),offset:hexStr(prev),size:sp-prev});
+    parts.push({...r,id:genId(),offset:hexStr(prev),size:sp-prev,analysis:undefined});
     prev=sp;
   }
-  parts.push({...r,id:genId(),offset:hexStr(prev),size:regionEnd-prev});
+  parts.push({...r,id:genId(),offset:hexStr(prev),size:regionEnd-prev,analysis:undefined});
   mapData.regions=mapData.regions.filter(x=>x.id!==id);
   for(const p of parts)mapData.regions.push(p);
   mapData.regions.sort((a,b)=>(parseHex(a.offset)??0)-(parseHex(b.offset)??0));
@@ -1201,6 +1202,16 @@ function labRenderTypePreview(type, bytes, baseOffset) {
     palSel.value = savedParams.palRegionId || defaultPalId;
     palSprSel.value = savedParams.palSprRegionId || '';
     bankSel.value = String(savedParams.bank8000 ?? defaultBank);
+    const viewLbl = document.createElement('span');
+    viewLbl.style.cssText = 'font-size:10px;color:var(--dim);letter-spacing:1px;white-space:nowrap';
+    viewLbl.textContent = 'VIEW';
+    const viewSel = document.createElement('select');
+    viewSel.className = 'region-input';
+    viewSel.style.cssText = 'font-size:11px;padding:2px 4px;min-width:104px';
+    viewSel.innerHTML = `
+      <option value="visible">VISIBLE 32×28</option>
+      <option value="full_nt">FULL NT 32×32</option>`;
+    viewSel.value = savedParams.renderExtent || 'visible';
 
     function persistScreenProgParams() {
       if (!activeRegion) return;
@@ -1211,6 +1222,7 @@ function labRenderTypePreview(type, bytes, baseOffset) {
         palSprRegionId: palSprSel.value || '',
         bank8000: parseInt(bankSel.value, 10) || defaultBank,
         tileOffset: tileOffInput.value.trim(),
+        renderExtent: viewSel.value || 'visible',
         forceSpr: forceSprChk.checked,
       };
     }
@@ -1220,12 +1232,14 @@ function labRenderTypePreview(type, bytes, baseOffset) {
       if (r) tileOffInput.value = r.offset;
     }
     tileSel.addEventListener('change', () => { syncTileOffset(); renderScreenProg(); });
+    viewSel.addEventListener('change', renderScreenProg);
     if (savedParams.tileOffset) tileOffInput.value = savedParams.tileOffset;
     else syncTileOffset();
 
     ctrlRow.appendChild(tileLbl); ctrlRow.appendChild(tileSel);
     ctrlRow.appendChild(tileOffLbl); ctrlRow.appendChild(tileOffDec); ctrlRow.appendChild(tileOffInput); ctrlRow.appendChild(tileOffInc);
     ctrlRow.appendChild(bankLbl); ctrlRow.appendChild(bankSel);
+    ctrlRow.appendChild(viewLbl); ctrlRow.appendChild(viewSel);
     const forceSprLabel = document.createElement('label');
     forceSprLabel.style.cssText = 'display:flex;align-items:center;gap:4px;font-size:10px;color:var(--accent2);letter-spacing:1px;cursor:pointer;white-space:nowrap;user-select:none;margin-left:6px;';
     const forceSprChk = document.createElement('input');
@@ -1274,10 +1288,18 @@ function labRenderTypePreview(type, bytes, baseOffset) {
       if (!romData) { info.textContent = '⚠ No ROM loaded'; canvas.style.display = 'none'; return; }
       persistScreenProgParams();
 
-      const decoded = decodeScreenProg604(romData, baseOffset, parseInt(bankSel.value, 10), { ntBase: 0x3800 });
+      const fullNt = viewSel.value === 'full_nt';
+      const decoded = decodeScreenProg604(romData, baseOffset, parseInt(bankSel.value, 10), {
+        ntBase: 0x3800,
+        rows: fullNt ? 32 : 28
+      });
       const cells = decoded.cells;
 
-      const COLS = 32, ROWS = 28, zoom = 2;
+      const COLS = 32;
+      const ROWS = fullNt
+        ? Math.max(28, Math.min(32, (decoded.stats.bbox?.maxRow ?? 27) + 1))
+        : 28;
+      const zoom = 2;
       canvas.width = COLS * 8 * zoom;
       canvas.height = ROWS * 8 * zoom;
       canvas.style.display = 'block';
@@ -1353,7 +1375,7 @@ function labRenderTypePreview(type, bytes, baseOffset) {
       info.innerHTML =
         `${decoded.stats.writtenCells} cells written · ${decoded.stats.uniqueTiles} unique tiles · ` +
         `BG: ${decoded.stats.bgWrites} · SPR: ${decoded.stats.sprWrites}${bbox}` +
-        `${forceSpr ? ' [FORCE SPR]' : ''}${sprWarn} · ${decoded.trace.length} ops · end: ${decoded.endReason}`;
+        `${forceSpr ? ' [FORCE SPR]' : ''}${sprWarn} · view ${fullNt ? `32×${ROWS}` : '32×28'} · ${decoded.trace.length} ops · end: ${decoded.endReason}`;
 
       warnBox.innerHTML = decoded.warnings.length
         ? decoded.warnings.map(w => `<div class="preview-warn">${w.replace(/</g,'&lt;')}</div>`).join('')
@@ -2209,8 +2231,11 @@ function labRenderTypePreview(type, bytes, baseOffset) {
 function labShowSidePanels(type){
   const isTile = type==='gfx_tiles'||type==='gfx_sprites';
   const isPal  = type==='palette'||type==='palette_manual';
+  const isUnknown = type==='unknown';
   document.getElementById('lab-tiles-section').style.display   = isTile ? '' : 'none';
   document.getElementById('lab-palette-section').style.display = isPal  ? '' : 'none';
+  document.getElementById('lab-discovery-title').style.display = isUnknown ? '' : 'none';
+  document.getElementById('lab-discovery').style.display = isUnknown ? '' : 'none';
 }
 
 function labSelectType(type){
@@ -2247,6 +2272,319 @@ function labRenderClassify(region){
   document.getElementById('lab-notes').value=region.notes||'';
 }
 
+let _labAnalysisExtra = {};
+
+function labUniqueStrings(items){
+  return [...new Set((items||[]).map(v=>String(v||'').trim()).filter(Boolean))];
+}
+
+function labListToText(items){
+  return labUniqueStrings(items).join('\n');
+}
+
+function labTextToList(text){
+  return labUniqueStrings(String(text||'').split(/\r?\n/));
+}
+
+function labExtractAnalysisExtra(raw){
+  if(!raw||typeof raw!=='object'||Array.isArray(raw))return {};
+  const extra=JSON.parse(JSON.stringify(raw));
+  delete extra.kind;
+  delete extra.summary;
+  delete extra.confidence;
+  delete extra.tags;
+  delete extra.evidence;
+  if(extra.relations&&typeof extra.relations==='object'&&!Array.isArray(extra.relations)){
+    delete extra.relations.calledBy;
+    delete extra.relations.calls;
+    delete extra.relations.relatedRegions;
+    if(!Object.keys(extra.relations).length)delete extra.relations;
+  }
+  if(extra.effects&&typeof extra.effects==='object'&&!Array.isArray(extra.effects)){
+    delete extra.effects.readsRAM;
+    delete extra.effects.writesRAM;
+    delete extra.effects.writesVRAM;
+    delete extra.effects.writesCRAM;
+    delete extra.effects.bankSwitches;
+    if(!Object.keys(extra.effects).length)delete extra.effects;
+  }
+  return extra;
+}
+
+function labNormalizeAnalysis(region){
+  const raw=region?.analysis&&typeof region.analysis==='object'&&!Array.isArray(region.analysis)
+    ?region.analysis
+    :{};
+  return {
+    kind: typeof raw.kind==='string' ? raw.kind : '',
+    summary: typeof raw.summary==='string' ? raw.summary : '',
+    confidence: typeof raw.confidence==='string' ? raw.confidence : '',
+    tags: labUniqueStrings(raw.tags),
+    relations: {
+      calledBy: labUniqueStrings(raw.relations?.calledBy),
+      calls: labUniqueStrings(raw.relations?.calls),
+      relatedRegions: labUniqueStrings(raw.relations?.relatedRegions),
+    },
+    effects: {
+      readsRAM: labUniqueStrings(raw.effects?.readsRAM),
+      writesRAM: labUniqueStrings(raw.effects?.writesRAM),
+      writesVRAM: labUniqueStrings(raw.effects?.writesVRAM),
+      writesCRAM: labUniqueStrings(raw.effects?.writesCRAM),
+      bankSwitches: labUniqueStrings(raw.effects?.bankSwitches),
+    },
+    evidence: labUniqueStrings(raw.evidence),
+  };
+}
+
+function labSetAnalysisStatus(msg, isError){
+  const el = document.getElementById('lab-analysis-status');
+  if(!el)return;
+  el.textContent = msg || '';
+  el.style.color = isError ? 'var(--red)' : 'var(--dim)';
+}
+
+function labRenderAnalysisEditor(region){
+  const meta=labNormalizeAnalysis(region);
+  _labAnalysisExtra=labExtractAnalysisExtra(region.analysis);
+  document.getElementById('lab-analysis-kind').value=meta.kind||'';
+  document.getElementById('lab-analysis-summary').value=meta.summary||'';
+  document.getElementById('lab-analysis-confidence').value=meta.confidence||'';
+  document.getElementById('lab-analysis-tags').value=labListToText(meta.tags);
+  document.getElementById('lab-analysis-called-by').value=labListToText(meta.relations.calledBy);
+  document.getElementById('lab-analysis-calls').value=labListToText(meta.relations.calls);
+  document.getElementById('lab-analysis-related-regions').value=labListToText(meta.relations.relatedRegions);
+  document.getElementById('lab-analysis-reads-ram').value=labListToText(meta.effects.readsRAM);
+  document.getElementById('lab-analysis-writes-ram').value=labListToText(meta.effects.writesRAM);
+  document.getElementById('lab-analysis-writes-vram').value=labListToText(meta.effects.writesVRAM);
+  document.getElementById('lab-analysis-writes-cram').value=labListToText(meta.effects.writesCRAM);
+  document.getElementById('lab-analysis-bank-switches').value=labListToText(meta.effects.bankSwitches);
+  document.getElementById('lab-analysis-evidence').value=labListToText(meta.evidence);
+  labSetAnalysisStatus(region.analysis ? 'Loaded from region.analysis' : 'Empty = no structured metadata yet', false);
+}
+
+function labBuildAnalysisFromForm(){
+  const analysis={
+    kind: document.getElementById('lab-analysis-kind').value.trim(),
+    summary: document.getElementById('lab-analysis-summary').value.trim(),
+    confidence: document.getElementById('lab-analysis-confidence').value.trim(),
+    tags: labTextToList(document.getElementById('lab-analysis-tags').value),
+    relations: {
+      calledBy: labTextToList(document.getElementById('lab-analysis-called-by').value),
+      calls: labTextToList(document.getElementById('lab-analysis-calls').value),
+      relatedRegions: labTextToList(document.getElementById('lab-analysis-related-regions').value),
+    },
+    effects: {
+      readsRAM: labTextToList(document.getElementById('lab-analysis-reads-ram').value),
+      writesRAM: labTextToList(document.getElementById('lab-analysis-writes-ram').value),
+      writesVRAM: labTextToList(document.getElementById('lab-analysis-writes-vram').value),
+      writesCRAM: labTextToList(document.getElementById('lab-analysis-writes-cram').value),
+      bankSwitches: labTextToList(document.getElementById('lab-analysis-bank-switches').value),
+    },
+    evidence: labTextToList(document.getElementById('lab-analysis-evidence').value),
+  };
+  if(!analysis.kind)delete analysis.kind;
+  if(!analysis.summary)delete analysis.summary;
+  if(!analysis.confidence)delete analysis.confidence;
+  if(!analysis.tags.length)delete analysis.tags;
+  if(!analysis.relations.calledBy.length)delete analysis.relations.calledBy;
+  if(!analysis.relations.calls.length)delete analysis.relations.calls;
+  if(!analysis.relations.relatedRegions.length)delete analysis.relations.relatedRegions;
+  if(!Object.keys(analysis.relations).length)delete analysis.relations;
+  if(!analysis.effects.readsRAM.length)delete analysis.effects.readsRAM;
+  if(!analysis.effects.writesRAM.length)delete analysis.effects.writesRAM;
+  if(!analysis.effects.writesVRAM.length)delete analysis.effects.writesVRAM;
+  if(!analysis.effects.writesCRAM.length)delete analysis.effects.writesCRAM;
+  if(!analysis.effects.bankSwitches.length)delete analysis.effects.bankSwitches;
+  if(!Object.keys(analysis.effects).length)delete analysis.effects;
+  if(!analysis.evidence.length)delete analysis.evidence;
+
+  const extra=JSON.parse(JSON.stringify(_labAnalysisExtra||{}));
+  if(extra.relations&&analysis.relations){
+    extra.relations={...extra.relations,...analysis.relations};
+    delete analysis.relations;
+  }
+  if(extra.effects&&analysis.effects){
+    extra.effects={...extra.effects,...analysis.effects};
+    delete analysis.effects;
+  }
+  const merged={...extra,...analysis};
+  if(extra.relations||analysis.relations)merged.relations={...(extra.relations||{}),...(analysis.relations||{})};
+  if(extra.effects||analysis.effects)merged.effects={...(extra.effects||{}),...(analysis.effects||{})};
+  if(merged.relations&&!Object.keys(merged.relations).length)delete merged.relations;
+  if(merged.effects&&!Object.keys(merged.effects).length)delete merged.effects;
+  return merged;
+}
+
+function labHasMeaningfulAnalysis(analysis){
+  if(!analysis||typeof analysis!=='object'||Array.isArray(analysis))return false;
+  return Object.keys(analysis).length>0;
+}
+
+function labCollectAsmRamEffects(asmLines){
+  const reads=new Set();
+  const writes=new Set();
+  for(const raw of asmLines||[]){
+    const refs=raw.match(/_RAM_[0-9A-Fa-f]+_/g)||[];
+    for(const ref of refs){
+      const writePat=new RegExp(`\\b(?:ld\\s+\\(${ref}\\)\\s*,|inc\\s+\\(${ref}\\)|dec\\s+\\(${ref}\\)|set\\s+\\d+,\\s*\\(${ref}\\)|res\\s+\\d+,\\s*\\(${ref}\\))`,'i');
+      const readPat=new RegExp(`\\(${ref}\\)`,'i');
+      const rmwPat=new RegExp(`\\b(?:inc|dec|set|res)\\s+\\(${ref}\\)`,'i');
+      if(writePat.test(raw))writes.add(ref);
+      if(readPat.test(raw)&&(!writePat.test(raw)||rmwPat.test(raw)))reads.add(ref);
+    }
+  }
+  return {reads:[...reads].sort(),writes:[...writes].sort()};
+}
+
+function labInferAnalysisFromAsm(region){
+  const meta=getAsmMetaForRegion(region);
+  const off=parseHex(region.offset)??0;
+  const asmLines=getAsmLinesForRegion(off, off+(region.size??0))||[];
+  const calledBy=labUniqueStrings((meta?.xrefsIn||[]).map(x=>x.label));
+  const calls=labUniqueStrings((meta?.xrefsOut||[]).map(x=>x.label));
+  const relatedRegions=new Set();
+  const tags=new Set();
+  const writesVRAM=new Set();
+  const writesCRAM=new Set();
+  const bankSwitches=new Set();
+  const evidence=new Set();
+  const ram=labCollectAsmRamEffects(asmLines);
+  let kind='';
+  let confidence='';
+
+  for(let i=0;i<asmLines.length;i++){
+    const line=asmLines[i];
+    const prev=asmLines[i-1]||'';
+    const dataRefs=line.match(/_DATA_[0-9A-Fa-f]+_/g)||[];
+    dataRefs.forEach(ref=>relatedRegions.add(ref));
+    if(/Port_VDPData|rst\s+\$30/i.test(line)){
+      writesVRAM.add('VDP data port');
+      tags.add('vdp');
+      tags.add('vram');
+    }
+    if(/Port_VDPAddress|rst\s+\$28/i.test(line)){
+      tags.add('vdp');
+      if(/\$C0/i.test(line)||/\$C0/i.test(prev))writesCRAM.add('VDP control / CRAM address');
+      else writesVRAM.add('VDP address port');
+    }
+    if(/_RAM_FFFF_|_RAM_DFFF_/i.test(line))bankSwitches.add('_RAM_FFFF_');
+    if(/_LABEL_1023_|_LABEL_1036_/i.test(line))bankSwitches.add(line.match(/_LABEL_[0-9A-Fa-f]+_/i)[0]);
+  }
+
+  if(region.type==='code'||/^_LABEL_[0-9A-Fa-f]+_$/i.test(region.name||'')||meta?.asmLabel){
+    kind='routine';
+    confidence=meta?.asmLabel?'high':'medium';
+  }else if(region.type==='vram_loader_8fb'){
+    kind='vram_loader_script';
+    confidence='high';
+    relatedRegions.add('_LABEL_8FB_');
+    tags.add('vram');
+  }else if(region.type==='vram_loader_998'){
+    kind='vram_loader_script';
+    confidence='high';
+    relatedRegions.add('_LABEL_998_');
+    tags.add('vram');
+  }else if(region.type==='screen_prog'){
+    kind='name_table_script';
+    confidence='high';
+    relatedRegions.add('_LABEL_604_');
+  }else if(region.type==='palette'||region.type==='palette_manual'){
+    kind='palette_source';
+    confidence='medium';
+    tags.add('palette');
+  }else if(region.type!=='unknown'){
+    kind='data_block';
+    confidence='medium';
+  }
+
+  if(meta?.asmLabel&&asmLines.some(line=>new RegExp(`\\b(?:jp|jr)\\s+${meta.asmLabel}\\b`,'i').test(line)))tags.add('loop');
+  if(bankSwitches.size)tags.add('bank-switch');
+  if(ram.writes.length)tags.add('ram-write');
+  if(ram.reads.length)tags.add('ram-read');
+
+  if(meta?.asmLabel)evidence.add(`ASM label: ${meta.asmLabel}`);
+  if(calledBy.length)evidence.add(`Incoming refs: ${calledBy.join(', ')}`);
+  if(calls.length)evidence.add(`Outgoing refs: ${calls.join(', ')}`);
+  if(ram.reads.length||ram.writes.length)evidence.add(`RAM refs: ${ram.reads.length} read / ${ram.writes.length} write`);
+  if(writesVRAM.size)evidence.add(`VDP/VRAM activity detected`);
+  if(writesCRAM.size)evidence.add(`Possible CRAM address/control activity`);
+
+  let summary='';
+  if(kind==='routine'){
+    const bits=['Routine'];
+    if(writesVRAM.size)bits.push('VDP activity');
+    if(calls.length)bits.push(`${calls.length} outgoing refs`);
+    if(ram.writes.length)bits.push(`${ram.writes.length} RAM writes`);
+    summary=bits.join(' · ');
+  }else if(kind==='vram_loader_script'){
+    summary=region.type==='vram_loader_998'
+      ?'998-format VRAM loader script'
+      :'8FB-format VRAM loader script';
+  }else if(kind==='name_table_script'){
+    summary='Name table / screen program data';
+  }else if(kind==='palette_source'){
+    summary='Palette bytes sourced from ROM';
+  }
+
+  return {
+    kind,
+    summary,
+    confidence,
+    tags:[...tags].sort(),
+    relations:{
+      calledBy,
+      calls,
+      relatedRegions:[...relatedRegions].sort(),
+    },
+    effects:{
+      readsRAM:ram.reads,
+      writesRAM:ram.writes,
+      writesVRAM:[...writesVRAM].sort(),
+      writesCRAM:[...writesCRAM].sort(),
+      bankSwitches:[...bankSwitches].sort(),
+    },
+    evidence:[...evidence],
+  };
+}
+
+function labMergeAnalysisValues(base, inferred){
+  return {
+    kind: base.kind || inferred.kind || '',
+    summary: base.summary || inferred.summary || '',
+    confidence: base.confidence || inferred.confidence || '',
+    tags: labUniqueStrings([...(base.tags||[]), ...(inferred.tags||[])]),
+    relations: {
+      calledBy: labUniqueStrings([...(base.relations?.calledBy||[]), ...(inferred.relations?.calledBy||[])]),
+      calls: labUniqueStrings([...(base.relations?.calls||[]), ...(inferred.relations?.calls||[])]),
+      relatedRegions: labUniqueStrings([...(base.relations?.relatedRegions||[]), ...(inferred.relations?.relatedRegions||[])]),
+    },
+    effects: {
+      readsRAM: labUniqueStrings([...(base.effects?.readsRAM||[]), ...(inferred.effects?.readsRAM||[])]),
+      writesRAM: labUniqueStrings([...(base.effects?.writesRAM||[]), ...(inferred.effects?.writesRAM||[])]),
+      writesVRAM: labUniqueStrings([...(base.effects?.writesVRAM||[]), ...(inferred.effects?.writesVRAM||[])]),
+      writesCRAM: labUniqueStrings([...(base.effects?.writesCRAM||[]), ...(inferred.effects?.writesCRAM||[])]),
+      bankSwitches: labUniqueStrings([...(base.effects?.bankSwitches||[]), ...(inferred.effects?.bankSwitches||[])]),
+    },
+    evidence: labUniqueStrings([...(base.evidence||[]), ...(inferred.evidence||[])]),
+  };
+}
+
+function labApplyAnalysisToForm(meta){
+  document.getElementById('lab-analysis-kind').value=meta.kind||'';
+  document.getElementById('lab-analysis-summary').value=meta.summary||'';
+  document.getElementById('lab-analysis-confidence').value=meta.confidence||'';
+  document.getElementById('lab-analysis-tags').value=labListToText(meta.tags);
+  document.getElementById('lab-analysis-called-by').value=labListToText(meta.relations?.calledBy);
+  document.getElementById('lab-analysis-calls').value=labListToText(meta.relations?.calls);
+  document.getElementById('lab-analysis-related-regions').value=labListToText(meta.relations?.relatedRegions);
+  document.getElementById('lab-analysis-reads-ram').value=labListToText(meta.effects?.readsRAM);
+  document.getElementById('lab-analysis-writes-ram').value=labListToText(meta.effects?.writesRAM);
+  document.getElementById('lab-analysis-writes-vram').value=labListToText(meta.effects?.writesVRAM);
+  document.getElementById('lab-analysis-writes-cram').value=labListToText(meta.effects?.writesCRAM);
+  document.getElementById('lab-analysis-bank-switches').value=labListToText(meta.effects?.bankSwitches);
+  document.getElementById('lab-analysis-evidence').value=labListToText(meta.evidence);
+}
+
 // ── Lab event listeners ───────────────────────────────────────────────────────
 
 document.getElementById('btn-lab-apply-pal').addEventListener('click',()=>{
@@ -2265,14 +2603,46 @@ document.getElementById('btn-lab-apply-pal').addEventListener('click',()=>{
 document.getElementById('btn-lab-save').addEventListener('click',()=>{
   const r=mapData.regions.find(x=>x.id===_labId);
   if(!r)return;
+  const analysisValue=labBuildAnalysisFromForm();
   const selType=document.querySelector('#lab-type-btns .lab-type-btn.selected')?.dataset.type;
   if(selType)r.type=selType;
   r.name=document.getElementById('lab-name').value.trim();
   r.notes=document.getElementById('lab-notes').value.trim();
+  if(labHasMeaningfulAnalysis(analysisValue))r.analysis=analysisValue;
+  else delete r.analysis;
   refreshMapUI();
   document.getElementById('panel-lab').classList.add('hidden');
   showToast(`"${r.name||r.offset}" saved as ${TYPE_META[r.type]?.label||r.type}`);
   _labId=null;
+});
+
+document.getElementById('btn-lab-analysis-autofill').addEventListener('click',()=>{
+  const r=mapData.regions.find(x=>x.id===_labId);
+  if(!r)return;
+  const current=labBuildAnalysisFromForm();
+  const inferred=labInferAnalysisFromAsm(r);
+  const merged=labMergeAnalysisValues(current, inferred);
+  labApplyAnalysisToForm(merged);
+  labSetAnalysisStatus('Auto-filled from ASM heuristics', false);
+  showToast('ROM control metadata auto-filled from ASM');
+});
+
+document.getElementById('btn-lab-analysis-clear').addEventListener('click',()=>{
+  document.getElementById('lab-analysis-kind').value='';
+  document.getElementById('lab-analysis-summary').value='';
+  document.getElementById('lab-analysis-confidence').value='';
+  document.getElementById('lab-analysis-tags').value='';
+  document.getElementById('lab-analysis-called-by').value='';
+  document.getElementById('lab-analysis-calls').value='';
+  document.getElementById('lab-analysis-related-regions').value='';
+  document.getElementById('lab-analysis-reads-ram').value='';
+  document.getElementById('lab-analysis-writes-ram').value='';
+  document.getElementById('lab-analysis-writes-vram').value='';
+  document.getElementById('lab-analysis-writes-cram').value='';
+  document.getElementById('lab-analysis-bank-switches').value='';
+  document.getElementById('lab-analysis-evidence').value='';
+  _labAnalysisExtra={};
+  labSetAnalysisStatus('Editor cleared — SAVE to remove region.analysis', false);
 });
 
 document.getElementById('btn-close-lab').addEventListener('click',()=>{

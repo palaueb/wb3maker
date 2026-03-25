@@ -41,6 +41,7 @@ function buildAsmAnalysis(text){
   const rCodeLabel=/^(_LABEL_[0-9A-Fa-f]+_):/i;
   const rDataLabel=/^(_DATA_[0-9A-Fa-f]+_):/i;
   const rCodeRef=/\b(call|jp|jr|djnz)\s+(?:[a-z]{1,3}\s*,\s*)?(_LABEL_[0-9A-Fa-f]+_)\b/ig;
+  const rDataRef=/(_(?:DATA|CODE)_[0-9A-Fa-f]+_)\b/ig;
   const rRstRef=/\brst\s+\$([0-9A-Fa-f]{1,2})\b(?:\s*;\s*(_LABEL_[0-9A-Fa-f]+_))?/ig;
 
   let lastComment=null;  // { offset, size, type, notes }
@@ -75,6 +76,12 @@ function buildAsmAnalysis(text){
       let mRef;
       while((mRef=rCodeRef.exec(rawLine))!==null){
         refsRaw.push({from:currentCodeLabel,to:mRef[2],kind:mRef[1].toLowerCase(),lineIndex:i});
+      }
+      const codePart=rawLine.split(';')[0]||rawLine;
+      rDataRef.lastIndex=0;
+      let mDataRef;
+      while((mDataRef=rDataRef.exec(codePart))!==null){
+        refsRaw.push({from:currentCodeLabel,to:mDataRef[1],kind:'use',lineIndex:i});
       }
       rRstRef.lastIndex=0;
       let mRst;
@@ -158,7 +165,14 @@ function buildAsmAnalysis(text){
   for(const r of dataRegions){
     if(!uniqueDataByOffset.has(r.offset))uniqueDataByOffset.set(r.offset,r);
   }
-  const dataRegionsFinal=[...uniqueDataByOffset.values()];
+  const dataRegionsFinal=[...uniqueDataByOffset.values()].map(r=>{
+    const hex=r.offset.toString(16).toUpperCase();
+    const named=typeof r.name==='string'&&/^_(?:DATA|CODE|LABEL)_[0-9A-Fa-f]+_$/.test(r.name)?r.name:null;
+    return {
+      ...r,
+      asmLabel:named||`_DATA_${hex}_`
+    };
+  });
 
   const boundaryOffsets=new Set(dataRegionsFinal.map(r=>r.offset));
   for(const l of codeLabels)boundaryOffsets.add(l.offset);
@@ -193,12 +207,36 @@ function buildAsmAnalysis(text){
     });
 
   const codeRegionMap=new Map(codeRegions.map(r=>[r.asmLabel,r]));
+  const allAsmRegions=[...dataRegionsFinal,...codeRegions];
+  const labelRegionMap=new Map();
+  for(const region of allAsmRegions){
+    const labels=new Set();
+    if(region.asmLabel)labels.add(region.asmLabel);
+    if(typeof region.name==='string'&&/^_(?:DATA|CODE|LABEL)_[0-9A-Fa-f]+_$/.test(region.name))labels.add(region.name);
+    if(Number.isFinite(region.offset)){
+      const hex=region.offset.toString(16).toUpperCase();
+      if(region.type==='code'||region.asmKind==='code_label')labels.add(`_LABEL_${hex}_`);
+      else{
+        labels.add(`_DATA_${hex}_`);
+        if(region.asmKind==='jump_table')labels.add(`_CODE_${hex}_`);
+      }
+    }
+    for(const label of labels){
+      if(!labelRegionMap.has(label))labelRegionMap.set(label,region);
+    }
+  }
   const resolvedRefs=refsRaw
     .map(ref=>{
       const from=codeRegionMap.get(ref.from);
-      const to=codeRegionMap.get(ref.to);
+      const to=labelRegionMap.get(ref.to);
       if(!from||!to)return null;
-      return {...ref,fromOffset:from.offset,toOffset:to.offset};
+      return {
+        ...ref,
+        from:from.asmLabel,
+        to:to.asmLabel||ref.to,
+        fromOffset:from.offset,
+        toOffset:to.offset
+      };
     })
     .filter(Boolean);
 
@@ -211,12 +249,12 @@ function buildAsmAnalysis(text){
     refsInByLabel.get(ref.to).push(ref);
   }
 
-  for(const region of codeRegions){
+  for(const region of allAsmRegions){
     region.xrefsOut=normalizeAsmXrefs(refsOutByLabel.get(region.asmLabel)||[],'out');
     region.xrefsIn =normalizeAsmXrefs(refsInByLabel.get(region.asmLabel)||[],'in');
   }
 
-  const finalRegions=[...dataRegionsFinal,...codeRegions]
+  const finalRegions=allAsmRegions
     .map(r=>({...r,offset:hexStr(r.offset)}))
     .sort((a,b)=>(parseHex(a.offset)??0)-(parseHex(b.offset)??0));
 
@@ -224,8 +262,8 @@ function buildAsmAnalysis(text){
     regions:finalRegions,
     codeRegions:codeRegions.map(r=>({...r,offset:hexStr(r.offset)})),
     dataRegions:dataRegionsFinal.map(r=>({...r,offset:hexStr(r.offset)})),
-    byOffset:new Map(codeRegions.map(r=>[r.offset,{...r,offset:hexStr(r.offset)}])),
-    byLabel:new Map(codeRegions.map(r=>[r.asmLabel,{...r,offset:hexStr(r.offset)}]))
+    byOffset:new Map(allAsmRegions.map(r=>[r.offset,{...r,offset:hexStr(r.offset)}])),
+    byLabel:new Map(allAsmRegions.map(r=>[r.asmLabel,{...r,offset:hexStr(r.offset)}]))
   };
 }
 

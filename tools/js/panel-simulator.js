@@ -114,9 +114,10 @@ function simLoadCRAM(romData, romOffset, count, cramStart, state) {
 }
 
 // Render SMS state (VRAM name table + tile patterns + CRAM) to canvas
-function renderSMSState(state, canvas, zoom) {
+function renderSMSState(state, canvas, zoom, options) {
   zoom = zoom || 2;
-  const COLS = 32, ROWS = 28, NT_BASE = 0x3800;
+  options = options || {};
+  const COLS = options.cols || 32, ROWS = options.rows || 28, NT_BASE = options.ntBase || 0x3800;
   canvas.width  = COLS * 8 * zoom;
   canvas.height = ROWS * 8 * zoom;
   canvas.style.display = 'block';
@@ -147,6 +148,23 @@ function renderSMSState(state, canvas, zoom) {
     }
   }
   ctx.putImageData(img, 0, 0);
+}
+
+function simGetRenderRowsFromState(state, fullMode) {
+  if (!fullMode) return 28;
+  const NT_BASE = 0x3800;
+  let maxRow = 27;
+  for (let row = 31; row >= 28; row--) {
+    let hasData = false;
+    for (let col = 0; col < 32; col++) {
+      const i = row * 32 + col;
+      const lo = state.vram[NT_BASE + i * 2];
+      const hi = state.vram[NT_BASE + i * 2 + 1];
+      if (lo || hi) { hasData = true; break; }
+    }
+    if (hasData) { maxRow = row; break; }
+  }
+  return Math.max(28, Math.min(32, maxRow + 1));
 }
 
 // ── Scene Gallery ─────────────────────────────────────────────────────────────
@@ -318,13 +336,16 @@ function simRenderRoom() {
   const slots = [...usedSlots].sort((a,b) => a-b);
   const minSlot = slots[0] ?? 0, maxSlot = slots[slots.length-1] ?? 0;
   const minOff = minSlot * 32, maxOff = maxSlot * 32 + 31;
+  const fullMode = !!document.getElementById('sim-full-nt')?.checked;
+  const renderRows = simGetRenderRowsFromState(state, fullMode);
 
   const canvas = document.getElementById('sim-canvas');
-  renderSMSState(state, canvas);
+  renderSMSState(state, canvas, 2, { rows: renderRows });
 
   document.getElementById('sim-info').innerHTML =
     `Room ${entry.index} · ${log.length} ops · ` +
-    `<span style="color:#00d4ff">Tiles used: ${slots.length} unique · slots ${minSlot}–${maxSlot} · VRAM $${minOff.toString(16).toUpperCase().padStart(4,'0')}–$${maxOff.toString(16).toUpperCase().padStart(4,'0')}</span>`;
+    `<span style="color:#00d4ff">Tiles used: ${slots.length} unique · slots ${minSlot}–${maxSlot} · VRAM $${minOff.toString(16).toUpperCase().padStart(4,'0')}–$${maxOff.toString(16).toUpperCase().padStart(4,'0')}</span>` +
+    ` · view ${fullMode ? `32×${renderRows}` : '32×28'}`;
   document.getElementById('sim-log').innerHTML =
     `<div style="color:#4a9eff;margin-bottom:3px">VRAM tile slots used: [${slots.map(s=>s.toString(16).toUpperCase().padStart(2,'0')).join(' ')}]</div>` +
     log.slice(0, 40).map(l => `<div>${l.replace(/</g,'&lt;')}</div>`).join('') +
@@ -390,13 +411,15 @@ function simRenderStepsList() {
 function simRunAll() {
   if (!romData && !simImportedVRAM) { document.getElementById('sim-info').textContent = '⚠ No ROM loaded and no VRAM imported'; return; }
   const state = simBuildBaseState();
+  const fullMode = !!document.getElementById('sim-full-nt')?.checked;
   if (simSteps.length === 0 && (simImportedVRAM || simImportedCRAM)) {
     // Just render the imported state
     const canvas = document.getElementById('sim-canvas');
-    renderSMSState(state, canvas);
+    const renderRows = simGetRenderRowsFromState(state, fullMode);
+    renderSMSState(state, canvas, 2, { rows: renderRows });
     const nzVram = state.vram.filter(b => b !== 0).length;
     document.getElementById('sim-info').innerHTML =
-      `Imported state rendered · VRAM: ${nzVram} non-zero bytes · CRAM: ${state.cram.filter(c=>c!=='#000000').length}/32 colors`;
+      `Imported state rendered · VRAM: ${nzVram} non-zero bytes · CRAM: ${state.cram.filter(c=>c!=='#000000').length}/32 colors · view ${fullMode ? `32×${renderRows}` : '32×28'}`;
     return;
   }
   // Base state (CRAM + VRAM) already built by simBuildBaseState above.
@@ -415,10 +438,11 @@ function simRunAll() {
     }
   }
   const canvas = document.getElementById('sim-canvas');
-  renderSMSState(state, canvas);
+  const renderRows = simGetRenderRowsFromState(state, fullMode);
+  renderSMSState(state, canvas, 2, { rows: renderRows });
   const ntSteps = simSteps.filter(s => s.type === 'nt_604').length;
   document.getElementById('sim-info').innerHTML =
-    `${simSteps.length} step(s) · ${ntSteps} name table(s) applied · VRAM: ${state.vram.filter(b=>b!==0).length} non-zero bytes · CRAM: ${state.cram.filter(c=>c!=='#000000').length}/32 colors`;
+    `${simSteps.length} step(s) · ${ntSteps} name table(s) applied · VRAM: ${state.vram.filter(b=>b!==0).length} non-zero bytes · CRAM: ${state.cram.filter(c=>c!=='#000000').length}/32 colors · view ${fullMode ? `32×${renderRows}` : '32×28'}`;
   document.getElementById('sim-log').innerHTML =
     allLog.slice(0,80).map(l => `<div>${l.replace(/</g,'&lt;')}</div>`).join('') +
     (allLog.length > 80 ? `<div style="color:#555">… +${allLog.length-80} more</div>` : '');

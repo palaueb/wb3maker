@@ -17,7 +17,14 @@ function renderRegionsTable(){
   const visible=mapData.regions.filter(r=>{
     if(unknownOnly&&r.type!=='unknown')return false;
     if(filterText){
-      const haystack=(r.name+' '+r.offset+' '+(r.notes||'')+' '+(r.asmLabel||'')).toLowerCase();
+      const haystack=(
+        r.name+' '+
+        r.offset+' '+
+        (r.notes||'')+' '+
+        (r.asmLabel||'')+' '+
+        JSON.stringify(r.analysis||{})+' '+
+        JSON.stringify(r.params||{})
+      ).toLowerCase();
       if(!haystack.includes(filterText))return false;
     }
     return true;
@@ -53,6 +60,7 @@ function renderRegionsTable(){
           ${Object.entries(TYPE_META).map(([v,m])=>`<option value="${v}"${v===r.type?' selected':''}>${m.label}</option>`).join('')}
         </select>
         ${r.source==='asm'?'<span class="src-badge">asm</span>':''}
+        ${r.analysis?'<span class="src-badge" title="Has structured ROM-control metadata">meta</span>':''}
       </td>
       <td style="color:${isUnknown?'var(--dim)':'var(--text)'}">${r.name||'<span style="color:var(--dim);font-style:italic">unlabeled</span>'}</td>
       <td style="color:var(--dim);font-size:11px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${r.notes||''}">${r.notes||''}</td>
@@ -131,9 +139,9 @@ function carveRegion(r) {
     const eEnd   = eStart + (e.size ?? 0);
     if (eEnd <= newStart || eStart >= newEnd) { kept.push(e); continue; } // no overlap
     // Before fragment
-    if (eStart < newStart) kept.push({ ...e, id: genId(), size: newStart - eStart });
+    if (eStart < newStart) kept.push({ ...e, id: genId(), size: newStart - eStart, analysis: undefined });
     // After fragment
-    if (eEnd > newEnd)     kept.push({ ...e, id: genId(), offset: hexStr(newEnd), size: eEnd - newEnd });
+    if (eEnd > newEnd)     kept.push({ ...e, id: genId(), offset: hexStr(newEnd), size: eEnd - newEnd, analysis: undefined });
     splitCount++;
   }
   kept.push(r);
