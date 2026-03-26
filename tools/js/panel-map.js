@@ -1,5 +1,15 @@
 'use strict';
 
+function populateMapTypeFilter(){
+  const sel=document.getElementById('map-type-filter');
+  if(!sel)return;
+  const current=sel.value||'';
+  const options=['<option value="">ALL TYPES</option>']
+    .concat(Object.entries(TYPE_META).map(([value,meta])=>`<option value="${value}">${meta.label}</option>`));
+  sel.innerHTML=options.join('');
+  sel.value=current;
+}
+
 // ═══════════════════════════════════════════════════════
 //  REGIONS TABLE
 // ═══════════════════════════════════════════════════════
@@ -13,8 +23,10 @@ function renderRegionsTable(){
 
   // Apply filters
   const filterText=(document.getElementById('map-filter')?.value||'').toLowerCase().trim();
+  const typeFilter=(document.getElementById('map-type-filter')?.value||'').trim();
   const unknownOnly=document.getElementById('chk-unknown-only')?.checked||false;
   const visible=mapData.regions.filter(r=>{
+    if(typeFilter&&r.type!==typeFilter)return false;
     if(unknownOnly&&r.type!=='unknown')return false;
     if(filterText){
       const haystack=(
@@ -30,7 +42,7 @@ function renderRegionsTable(){
     return true;
   });
 
-  const filterActive=filterText||unknownOnly;
+  const filterActive=filterText||unknownOnly||typeFilter;
   label.textContent=total
     ?(filterActive?`Showing ${visible.length} / ${total} — ${mapped} labeled, ${total-mapped} unknown`:`${total} regions — ${mapped} labeled, ${total-mapped} unknown`)
     :'';
@@ -176,7 +188,9 @@ function refreshMapUI(){
 //  ADD REGION FORM event bindings
 // ═══════════════════════════════════════════════════════
 document.getElementById('map-filter').addEventListener('input',renderRegionsTable);
+document.getElementById('map-type-filter').addEventListener('change',renderRegionsTable);
 document.getElementById('chk-unknown-only').addEventListener('change',renderRegionsTable);
+populateMapTypeFilter();
 
 document.getElementById('btn-toggle-add').addEventListener('click',()=>{
   const f=document.getElementById('add-region-form');

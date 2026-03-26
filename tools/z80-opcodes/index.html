@@ -65,6 +65,88 @@
               <li><strong>Description</strong> = explicacio simplificada del comportament.</li>
             </ul>
           </article>
+
+          <article class="panel panel-registers">
+            <h2>Registres Z80 (SMS)</h2>
+            <div class="reg-grid">
+              <div class="reg-group">
+                <h3 class="reg-group-title">Registres principals</h3>
+                <dl class="reg-list">
+                  <dt><code>A</code></dt>
+                  <dd>Acumulador (8 bit). Operand destí de la majoria d'operacions ALU. Les instruccions IN/OUT i flags treballen sobre A.</dd>
+                  <dt><code>F</code></dt>
+                  <dd>Flags (8 bit). Bits: <span class="flag-bit">S</span> signe · <span class="flag-bit">Z</span> zero · <span class="flag-bit">H</span> half-carry · <span class="flag-bit">P/V</span> paritat/overflow · <span class="flag-bit">N</span> suma/resta · <span class="flag-bit">C</span> carry.</dd>
+                  <dt><code>AF</code></dt>
+                  <dd>Parell A+F (16 bit). <code>PUSH AF</code> / <code>POP AF</code> guarda/restaura acumulador i flags d'un sol cop.</dd>
+                  <dt><code>B</code></dt>
+                  <dd>Registre de propòsit general (8 bit). Usat sovint com a comptador en bucles (<code>DJNZ</code> decrementa B).</dd>
+                  <dt><code>C</code></dt>
+                  <dd>Registre de propòsit general (8 bit). Usat habitualment com a adreça de port en instruccions <code>IN r,(C)</code> / <code>OUT (C),r</code>.</dd>
+                  <dt><code>BC</code></dt>
+                  <dd>Parell B+C (16 bit). Comptador de bytes en <code>LDIR</code>/<code>LDDR</code>/<code>CPIR</code>/<code>CPDR</code>.</dd>
+                  <dt><code>D</code></dt>
+                  <dd>Registre de propòsit general (8 bit). Byte alt del parell DE.</dd>
+                  <dt><code>E</code></dt>
+                  <dd>Registre de propòsit general (8 bit). Byte baix del parell DE.</dd>
+                  <dt><code>DE</code></dt>
+                  <dd>Parell D+E (16 bit). Adreça destí en <code>LDIR</code>/<code>LDDR</code>. Resultat temporal en operacions de 16 bit al codi WB3.</dd>
+                  <dt><code>H</code></dt>
+                  <dd>Registre de propòsit general (8 bit). Byte alt del parell HL.</dd>
+                  <dt><code>L</code></dt>
+                  <dd>Registre de propòsit general (8 bit). Byte baix del parell HL.</dd>
+                  <dt><code>HL</code></dt>
+                  <dd>Parell H+L (16 bit). Punter principal d'accés a memòria (<code>LD A,(HL)</code>, <code>LD (HL),r</code>). Adreça font en <code>LDIR</code>/<code>LDDR</code>.</dd>
+                </dl>
+              </div>
+
+              <div class="reg-group">
+                <h3 class="reg-group-title">Registres d'índex i especials</h3>
+                <dl class="reg-list">
+                  <dt><code>IX</code></dt>
+                  <dd>Registre d'índex X (16 bit). Permet adreçament desplaçat: <code>LD A,(IX+d)</code>. Prefixat per <code>DD</code>. A la SMS sol usar-se com a punter a taules o estructures.</dd>
+                  <dt><code>IY</code></dt>
+                  <dd>Registre d'índex Y (16 bit). Igual que IX però prefixat per <code>FD</code>. Al codi WB3 <code>IY</code> apunta sovint al bloc de variables de RAM actives.</dd>
+                  <dt><code>SP</code></dt>
+                  <dd>Stack Pointer (16 bit). Apunta al cim de la pila. <code>PUSH</code> decrementa SP 2; <code>POP</code> l'incrementa 2. Inicialitzat a <code>$DFF0</code> o similar en el boot SMS.</dd>
+                  <dt><code>PC</code></dt>
+                  <dd>Program Counter (16 bit). Adreça de la propera instrucció. No és directament accessible; es modifica amb salts i crides (<code>JP</code>, <code>CALL</code>, <code>RET</code>).</dd>
+                  <dt><code>I</code></dt>
+                  <dd>Registre d'interrupció (8 bit). Byte alt del vector d'interrupció mode 2. A la SMS generalment no s'usa mode 2; <code>I</code> es posa a 0 en el boot.</dd>
+                  <dt><code>R</code></dt>
+                  <dd>Registre de refresc de DRAM (8 bit). S'incrementa automàticament en cada fetch. No té ús funcional a la SMS però pot llegir-se com a font de pseudo-aleatòrietat.</dd>
+                </dl>
+              </div>
+
+              <div class="reg-group">
+                <h3 class="reg-group-title">Registres alternatius (shadow)</h3>
+                <dl class="reg-list">
+                  <dt><code>AF'</code></dt>
+                  <dd>Còpia alternativa d'AF. <code>EX AF,AF'</code> intercanvia A i F amb les shadow copies instantàniament (1 cicle).</dd>
+                  <dt><code>BC' DE' HL'</code></dt>
+                  <dd>Còpies alternatives de BC, DE i HL. <code>EXX</code> intercanvia els tres parells principals amb els shadow. Útil per preservar contexte en rutines d'interrupció sense usar la pila.</dd>
+                </dl>
+              </div>
+
+              <div class="reg-group">
+                <h3 class="reg-group-title">Flags de F (detall)</h3>
+                <table class="flags-table">
+                  <thead>
+                    <tr><th>Bit</th><th>Símbol</th><th>Nom</th><th>Descripció</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>7</td><td><code>S</code></td><td>Sign</td><td>Còpia del bit 7 del resultat. 1 = negatiu (en aritmètica signada).</td></tr>
+                    <tr><td>6</td><td><code>Z</code></td><td>Zero</td><td>1 si el resultat és zero.</td></tr>
+                    <tr><td>5</td><td><code>Y</code></td><td>—</td><td>Còpia del bit 5 del resultat (no documentat; no s'usa a la SMS).</td></tr>
+                    <tr><td>4</td><td><code>H</code></td><td>Half-carry</td><td>Carry del nibble baix al nibble alt (bits 3→4). Usat per <code>DAA</code>.</td></tr>
+                    <tr><td>3</td><td><code>X</code></td><td>—</td><td>Còpia del bit 3 del resultat (no documentat).</td></tr>
+                    <tr><td>2</td><td><code>P/V</code></td><td>Parity/oVerflow</td><td>Paritat en instruccions de bits/lògica; overflow en aritmètica signada.</td></tr>
+                    <tr><td>1</td><td><code>N</code></td><td>Add/Subtract</td><td>0 si l'última operació fou suma, 1 si resta. Usat per <code>DAA</code>.</td></tr>
+                    <tr><td>0</td><td><code>C</code></td><td>Carry</td><td>Carry/borrow aritmètic, o bit desplaçat fora en instruccions de rotació/shift.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </article>
         </section>
 
         <section class="panel panel-table">
