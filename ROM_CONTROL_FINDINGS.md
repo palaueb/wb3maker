@@ -164,6 +164,133 @@ Per a `map.json`, aquesta cadena s'hauria de poder representar explícitament ai
 Confidence:
 high
 
+### Plantilla pràctica per Emulicious
+
+Why it matters:
+La idea és tenir una configuració mínima que et deixi veure, en viu, quan el joc ha decidit una room nova, quan la comença a carregar i quan només està fent fade o refresh de pantalla.
+
+#### Watches recomanats
+
+Mira aquests com a bytes:
+
+- `$CF81` `V-BLANK FLAG`
+- `$CF82` `TILE LOADING FLAG`
+- `$CFE1` `SCROLL FLAG`
+- `$CFE2` `PAL DIRTY`
+- `$CFDB` `FADE_FACTOR`
+- `$C26E` `ROOM TYPE / TRANSITION MODE`
+- `$D0E0` `ROOM PARAM BYTE`
+
+Mira aquests com a words little-endian:
+
+- `$C26C` `DEFERRED ROOM PTR`
+- `$CFFA` `CURRENT ROOM TILE PTR`
+- `$D0E1` `ROOM SCROLL THRESHOLD`
+- `$D0FE` `ROOM WORK PTR`
+- `$CF5E` `ROOM PARAMS[0:1] -> room_seq_table ptr`
+
+Si vols més context visual:
+
+- `$CF8C` `X-Scroll`
+- `$CF8D` `Y-Scroll`
+- `$CF9B` `Shadow paleta 0`
+- `$CFAB` `Shadow paleta 1`
+
+#### Breakpoints recomanats
+
+Per entendre qui decideix la room:
+
+- execute a `_LABEL_48A9_`
+- write a `$C26C`
+- write a `$C26E`
+- write a `$CFFA`
+
+Per entendre la càrrega efectiva:
+
+- execute a `_LABEL_2620_`
+- execute a `_LABEL_26F4_`
+- execute a `_LABEL_5EB_`
+
+Per entendre què s'escriu al VDP:
+
+- execute a `_LABEL_8FB_`
+- execute a `_LABEL_998_`
+- execute a `_LABEL_604_`
+
+#### Seqüència curta de debugging
+
+Per seguir una porta:
+
+1. Mou el personatge fins a la porta.
+2. Vigila si canvien `$C26C` i `$C26E`.
+3. Si canvien, el target de room ja està resolt.
+4. Quan entri a `_LABEL_4C32_`, mira quina branca de `_DATA_4CAD_` executa.
+5. Quan entri a `_LABEL_2620_`, la càrrega real de la room ja ha començat.
+6. Si entra a `_LABEL_5EB_`, està resolent el `screen_prog` visible.
+7. Si entra a `_LABEL_8FB_` o `_LABEL_998_`, està carregant patterns a VRAM.
+8. Si `$CF82=1`, encara hi ha càrrega VDP activa.
+9. Si `$CFDB` varia i `$CFE2=1`, estàs en fase de fade/paleta.
+10. Espera que `$CF81=1` per validar que el frame carregat ja ha arribat a VDP.
+
+#### Lectura ràpida de símptomes
+
+- Canvia `$C26C`, però no `$CFFA`: encara estàs en fase de transició diferida.
+- Canvia `$CFFA`: ja hi ha un nou `tile data record` actiu.
+- Entra a `_LABEL_5EB_`, però no a `_LABEL_8FB_`: probablement només canvia la name table visible.
+- Entra a `_LABEL_8FB_` o `_LABEL_998_`: hi ha càrrega nova de tiles/patterns.
+- `$CFE1=1` sense gaire moviment a la resta: probablement només hi ha refresh de scroll/pantalla.
+- `$CFE2=1` i `$CFDB` variant: tens una transició visual més que no una nova room completa.
+
+Confidence:
+high
+
+### Watch list de RAM per debugar càrrega de pantalles a l'emulador
+
+Why it matters:
+Quan estàs dins l'emulador no vols rellegir tota la cadena de codi. Vols 4 o 5 adreces que et diguin ràpidament:
+- si hi ha una transició en curs
+- quina room s'ha seleccionat
+- quin record de room s'està consumint
+- si s'està escrivint VRAM o paleta
+
+Watch list recomanada:
+
+| Adreça | Nom | Què et diu |
+|--------|-----|------------|
+| `$C26C-$C26D` | `DEFERRED ROOM PTR` | Quin record de room/transició queda pendent de consumir. Si canvia abans d'una porta o transició, tens el target ja resolt. |
+| `$C26E` | `ROOM TYPE / TRANSITION MODE` | Quin tipus de loader/transició s'executarà. És la clau per saber quina branca de `_DATA_4CAD_` entrarà. |
+| `$CFFA-$CFFB` | `CURRENT ROOM TILE PTR` | Punter al tile-data record de la room actual. Si canvia, normalment estàs entrant a una càrrega real de room. |
+| `$CF5E-$CF65` | `ROOM PARAMS` | Bloc de 8 bytes del sub-record actual. Sobretot els bytes `0-1`, que apunten a la `room_seq_table`. |
+| `$D0E0` | `ROOM PARAM BYTE` | Paràmetre de room carregat des de `room_seq_table`. Útil per veure canvis de tipus/context entre rooms. |
+| `$D0E1-$D0E2` | `ROOM SCROLL THRESHOLD` | Llindar de scroll de l'entrada activa. Quan canvïa entre rooms, tens una pista molt bona de canvi de seqüència. |
+| `$D0FE-$D0FF` | `ROOM WORK PTR` | Cursor de treball del loader. Durant `_LABEL_26F4_` et deixa veure per quin camp del sub-record va passant. |
+| `$CF82` | `TILE LOADING FLAG` | Si és `1`, hi ha escriptura crítica a VRAM en marxa (`_LABEL_604_`, `_LABEL_8FB_`, `_LABEL_998_`, etc.). |
+| `$CFE1` | `SCROLL FLAG` | Es posa a `1` quan hi ha refresc de pantalla/scroll pendent després d'una càrrega o transició. |
+| `$CFE2` | `PAL DIRTY` | Si és `1`, la paleta reconstruïda encara s'ha de flushar al VDP. |
+| `$CFDB` | `FADE_FACTOR` | Et diu si la pantalla està en fade-in/fade-out durant la transició. |
+| `$CF81` | `V-BLANK FLAG` | Molt útil per saber si el frame ja ha tancat i si el que veus a RAM ja s'ha pogut reflectir a VDP. |
+
+Breakpoints útils:
+
+- `_LABEL_48A9_`: quan vols saber qui ha decidit la room/seqüència entrant.
+- `_LABEL_4C32_`: quan vols veure quin mode de transició consumirà `_RAM_C26E_`.
+- `_LABEL_2620_`: quan comença la càrrega efectiva del `room_record`.
+- `_LABEL_26F4_`: quan comença la càrrega del `sub-record`.
+- `_LABEL_5EB_`: quan es resol el `screen_prog` visible.
+- `_LABEL_8FB_` i `_LABEL_998_`: quan vols veure càrrega de patterns a VRAM.
+- `_LABEL_604_`: quan vols veure escriptura de name table.
+
+Practical debugging flow:
+
+1. Vigila `$C26C`, `$C26E` i `$CFFA`.
+2. Quan canviïn, para a `_LABEL_4C32_` o `_LABEL_2620_`.
+3. Si `$CF82=1`, segueix `_LABEL_8FB_`, `_LABEL_998_` o `_LABEL_604_` segons el cas.
+4. Si `$CFE2=1`, mira el cicle de paleta; si `$CFE1=1`, mira el refresc de pantalla.
+5. Si tens dubte de si la pantalla ja és “real”, espera que `$CF81` marque frame complet.
+
+Confidence:
+high
+
 ### `_LABEL_26F4_` és el loader central de recursos per-room
 
 Why it matters:
@@ -370,3 +497,50 @@ Per a `map.json`, aquesta secció apunta a tres millores concretes:
 
 Confidence:
 mixed
+
+### Entrada per porta: animació de transició i càrrega real de la room estan separades
+
+Why it matters:
+Per trobar les taules de sales interiors no n'hi ha prou amb mirar `_DATA_1CCC0_`. La porta no resol sola el contingut visible; el codi separa clarament:
+- la detecció/animació d'entrada
+- la resolució del target de room
+- la càrrega efectiva de la room nova
+
+ROM regions:
+- `_LABEL_107_` a `0x00107`
+- `_LABEL_3F8_` a `0x003F8`
+- `_LABEL_4B31_` a `0x04B31`
+- `_LABEL_4C32_` a `0x04C32`
+- `_DATA_4CAD_` a `0x04CAD`
+- `_LABEL_48A9_` a `0x048A9`
+- `_DATA_10C96_` / `_DATA_10C90_`
+
+Evidence:
+- [projects/WORLD/map.json](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/map.json#L643)
+- [projects/WORLD/Wonder Boy III - The Dragon's Trap (World) (Digital).asm](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/Wonder%20Boy%20III%20-%20The%20Dragon's%20Trap%20(World)%20(Digital).asm#L1046)
+- [projects/WORLD/Wonder Boy III - The Dragon's Trap (World) (Digital).asm](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/Wonder%20Boy%20III%20-%20The%20Dragon's%20Trap%20(World)%20(Digital).asm#L1458)
+- [projects/WORLD/Wonder Boy III - The Dragon's Trap (World) (Digital).asm](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/Wonder%20Boy%20III%20-%20The%20Dragon's%20Trap%20(World)%20(Digital).asm#L11398)
+
+Execution effect:
+- `_LABEL_107_` és un bucle especial de càrrega. En comptes del loop normal de gameplay, crida repetidament `_LABEL_2B14_`, `_LABEL_3E1_`, `_LABEL_3F8_` i `_LABEL_4BD_`.
+- `_LABEL_3F8_` és la rutina central de `start level / load screen`: carrega paleta i VRAM base (`_LABEL_8B2_`, `_LABEL_8FB_`, `_LABEL_998_`) i després entra a `_LABEL_2620_` amb un `room_record` principal (`_DATA_10C96_` per al camí normal, `_DATA_10C90_` per a un cas especial de new game/menu).
+- La transició de porta del jugador passa per la màquina d'estats indexada per `_RAM_C260_`. En aquest flux, `_LABEL_4B31_` prepara l'animació i el desplaçament d'entrada, mentre `_LABEL_4C32_` és el punt on es consumeix el target de room ja preparat.
+- `_LABEL_4C32_` no busca la room: agafa `_RAM_C26E_` i `_RAM_C26C_`, i fa dispatch via `_DATA_4CAD_` cap a diverses branques de càrrega (`_LABEL_4CED_`, `_LABEL_4D08_`, `_LABEL_4D72_`, `_LABEL_4D3A_`, `_LABEL_4E05_`, `_LABEL_4E25_`, `_LABEL_4E49_`).
+- `_LABEL_48A9_` és la rutina upstream que resol l'entrada activa de seqüència i omple `_RAM_C26C_` / `_RAM_C26E_`. Això vol dir que la porta consumeix un target de room ja decidit abans.
+
+Map impact:
+Per al mapa conceptual del joc, la cadena correcta és:
+- `door trigger / player transition`
+- `state machine _RAM_C260_`
+- `_LABEL_4B31_` (animació d'entrada)
+- `_LABEL_4C32_` (consum del target de room)
+- `_DATA_4CAD_` (tipus de transició / loader concret)
+- `_LABEL_2620_` / `_LABEL_26F4_` / `_LABEL_5EB_` (càrrega efectiva)
+
+No és correcte modelar-ho com:
+- `door -> _DATA_1CCC0_`
+
+`_DATA_1CCC0_` només aporta el `screen_prog` visible d'algunes rooms; la transició de porta real passa abans per la maquinària de room records i dispatch de tipus.
+
+Confidence:
+high

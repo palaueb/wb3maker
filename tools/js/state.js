@@ -16,6 +16,7 @@ var TYPE_META = {
   code:        {label:'Code',        color:'#4a9eff'},
   music:       {label:'Music/SFX',   color:'#a855f7'},
   text:        {label:'Text',        color:'#6bffb8'},
+  raw_byte:    {label:'Raw Byte',    color:'#f59e0b'},
   meta_sprite:     {label:'Metasprite',      color:'#ff88aa'},
   palette_manual:  {label:'Palette (custom)',color:'#ffa500'},
   data_table:      {label:'Data Table',       color:'#e8a020'},
@@ -52,7 +53,7 @@ var romName  = '';
 var asmFileName = '';
 
 var mapData = {
-  schemaVersion:2, romVersion:'unknown',
+  schemaVersion:3, romVersion:'unknown',
   romMD5:'', romName:'', romSizeBytes:0,
   regions:[], compositions:[], ram:[], simScenes:[], notes:'',
 };

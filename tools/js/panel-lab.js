@@ -859,9 +859,8 @@ function labRenderTypePreview(type, bytes, baseOffset) {
   el.innerHTML = '';
   _labAsmByteMap = null;
   const activeRegion = _labId ? mapData.regions.find(x=>x.id===_labId) : null;
-  const asmCodeMeta = getAsmMetaForRegion(activeRegion);
 
-  if (type === 'code' || asmCodeMeta) {
+  if (type === 'code') {
     const titleRow = document.createElement('div');
     titleRow.style.cssText = 'display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;';
     const title = document.createElement('div');
@@ -1923,6 +1922,51 @@ function labRenderTypePreview(type, bytes, baseOffset) {
     return;
   }
 
+  if (type === 'raw_byte') {
+    const title = document.createElement('div');
+    title.className = 'lab-section-title';
+    title.textContent = `RAW BYTE — ${bytes.length} byte${bytes.length===1?'':'s'} @ ${hexStr(baseOffset)}`;
+    el.appendChild(title);
+
+    const box = document.createElement('div');
+    box.className = 'type-preview-box';
+
+    const rows = [];
+    const limit = Math.min(bytes.length, 256);
+    for (let i = 0; i < limit; i++) {
+      const b = bytes[i];
+      const signed = b >= 0x80 ? b - 0x100 : b;
+      const chr = (b >= 0x20 && b < 0x7F) ? String.fromCharCode(b) : '.';
+      const bin = b.toString(2).padStart(8,'0');
+      rows.push(`<tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:2px 6px;color:var(--accent)">${hexStr(baseOffset + i)}</td>
+        <td style="padding:2px 6px;color:var(--yellow)">0x${b.toString(16).toUpperCase().padStart(2,'0')}</td>
+        <td style="padding:2px 6px;color:var(--cyan);font-family:monospace">${bin}</td>
+        <td style="padding:2px 6px;color:var(--text)">${b}</td>
+        <td style="padding:2px 6px;color:var(--text)">${signed}</td>
+        <td style="padding:2px 6px;color:var(--dim)">${chr.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</td>
+      </tr>`);
+    }
+    box.innerHTML = `
+      <div class="preview-info">${bytes.length} literal byte(s) listed one by one · useful for flags, constants, counters or single-value params</div>
+      <table style="width:100%;border-collapse:collapse;font-size:10px">
+        <thead>
+          <tr style="color:var(--dim);border-bottom:1px solid var(--border)">
+            <th style="padding:2px 6px;text-align:left">ROM</th>
+            <th style="padding:2px 6px;text-align:left">HEX</th>
+            <th style="padding:2px 6px;text-align:left">BIN</th>
+            <th style="padding:2px 6px;text-align:left">U8</th>
+            <th style="padding:2px 6px;text-align:left">S8</th>
+            <th style="padding:2px 6px;text-align:left">ASCII</th>
+          </tr>
+        </thead>
+        <tbody>${rows.join('')}</tbody>
+      </table>
+      ${bytes.length>limit?`<div style="margin-top:6px;color:var(--dim);font-size:10px">Showing first ${limit} byte(s)</div>`:''}`;
+    el.appendChild(box);
+    return;
+  }
+
   if (type === 'palette_manual') {
     const r = mapData.regions.find(x => x.id === _labId);
     if (!r) return;
@@ -2311,28 +2355,45 @@ function labExtractAnalysisExtra(raw){
   return extra;
 }
 
-function labNormalizeAnalysis(region){
+function labGetAnalysisLayers(region){
   const raw=region?.analysis&&typeof region.analysis==='object'&&!Array.isArray(region.analysis)
     ?region.analysis
     :{};
+  if(raw.manual||raw.inferred){
+    return {
+      manual: raw.manual&&typeof raw.manual==='object'&&!Array.isArray(raw.manual) ? JSON.parse(JSON.stringify(raw.manual)) : {},
+      inferred: raw.inferred&&typeof raw.inferred==='object'&&!Array.isArray(raw.inferred) ? JSON.parse(JSON.stringify(raw.inferred)) : {},
+      layered: true,
+    };
+  }
   return {
-    kind: typeof raw.kind==='string' ? raw.kind : '',
-    summary: typeof raw.summary==='string' ? raw.summary : '',
-    confidence: typeof raw.confidence==='string' ? raw.confidence : '',
-    tags: labUniqueStrings(raw.tags),
+    manual: JSON.parse(JSON.stringify(raw)),
+    inferred: {},
+    layered: false,
+  };
+}
+
+function labNormalizeAnalysis(region){
+  const layers=labGetAnalysisLayers(region);
+  const merged=labMergeAnalysisValues(layers.manual, layers.inferred);
+  return {
+    kind: typeof merged.kind==='string' ? merged.kind : '',
+    summary: typeof merged.summary==='string' ? merged.summary : '',
+    confidence: typeof merged.confidence==='string' ? merged.confidence : '',
+    tags: labUniqueStrings(merged.tags),
     relations: {
-      calledBy: labUniqueStrings(raw.relations?.calledBy),
-      calls: labUniqueStrings(raw.relations?.calls),
-      relatedRegions: labUniqueStrings(raw.relations?.relatedRegions),
+      calledBy: labUniqueStrings(merged.relations?.calledBy),
+      calls: labUniqueStrings(merged.relations?.calls),
+      relatedRegions: labUniqueStrings(merged.relations?.relatedRegions),
     },
     effects: {
-      readsRAM: labUniqueStrings(raw.effects?.readsRAM),
-      writesRAM: labUniqueStrings(raw.effects?.writesRAM),
-      writesVRAM: labUniqueStrings(raw.effects?.writesVRAM),
-      writesCRAM: labUniqueStrings(raw.effects?.writesCRAM),
-      bankSwitches: labUniqueStrings(raw.effects?.bankSwitches),
+      readsRAM: labUniqueStrings(merged.effects?.readsRAM),
+      writesRAM: labUniqueStrings(merged.effects?.writesRAM),
+      writesVRAM: labUniqueStrings(merged.effects?.writesVRAM),
+      writesCRAM: labUniqueStrings(merged.effects?.writesCRAM),
+      bankSwitches: labUniqueStrings(merged.effects?.bankSwitches),
     },
-    evidence: labUniqueStrings(raw.evidence),
+    evidence: labUniqueStrings(merged.evidence),
   };
 }
 
@@ -2344,8 +2405,9 @@ function labSetAnalysisStatus(msg, isError){
 }
 
 function labRenderAnalysisEditor(region){
+  const layers=labGetAnalysisLayers(region);
   const meta=labNormalizeAnalysis(region);
-  _labAnalysisExtra=labExtractAnalysisExtra(region.analysis);
+  _labAnalysisExtra=labExtractAnalysisExtra(layers.manual);
   document.getElementById('lab-analysis-kind').value=meta.kind||'';
   document.getElementById('lab-analysis-summary').value=meta.summary||'';
   document.getElementById('lab-analysis-confidence').value=meta.confidence||'';
@@ -2359,11 +2421,33 @@ function labRenderAnalysisEditor(region){
   document.getElementById('lab-analysis-writes-cram').value=labListToText(meta.effects.writesCRAM);
   document.getElementById('lab-analysis-bank-switches').value=labListToText(meta.effects.bankSwitches);
   document.getElementById('lab-analysis-evidence').value=labListToText(meta.evidence);
-  labSetAnalysisStatus(region.analysis ? 'Loaded from region.analysis' : 'Empty = no structured metadata yet', false);
+  const parts=[];
+  if(labHasMeaningfulAnalysis(layers.manual))parts.push('manual');
+  if(labHasMeaningfulAnalysis(layers.inferred))parts.push('inferred');
+  labSetAnalysisStatus(parts.length ? `Loaded ${parts.join(' + ')} analysis` : 'Empty = no structured metadata yet', false);
+}
+
+function labNormalizeManualAnalysisShape(analysis){
+  if(!analysis.kind)delete analysis.kind;
+  if(!analysis.summary)delete analysis.summary;
+  if(!analysis.confidence)delete analysis.confidence;
+  if(!analysis.tags.length)delete analysis.tags;
+  if(!analysis.relations.calledBy.length)delete analysis.relations.calledBy;
+  if(!analysis.relations.calls.length)delete analysis.relations.calls;
+  if(!analysis.relations.relatedRegions.length)delete analysis.relations.relatedRegions;
+  if(!Object.keys(analysis.relations).length)delete analysis.relations;
+  if(!analysis.effects.readsRAM.length)delete analysis.effects.readsRAM;
+  if(!analysis.effects.writesRAM.length)delete analysis.effects.writesRAM;
+  if(!analysis.effects.writesVRAM.length)delete analysis.effects.writesVRAM;
+  if(!analysis.effects.writesCRAM.length)delete analysis.effects.writesCRAM;
+  if(!analysis.effects.bankSwitches.length)delete analysis.effects.bankSwitches;
+  if(!Object.keys(analysis.effects).length)delete analysis.effects;
+  if(!analysis.evidence.length)delete analysis.evidence;
+  return analysis;
 }
 
 function labBuildAnalysisFromForm(){
-  const analysis={
+  const analysis=labNormalizeManualAnalysisShape({
     kind: document.getElementById('lab-analysis-kind').value.trim(),
     summary: document.getElementById('lab-analysis-summary').value.trim(),
     confidence: document.getElementById('lab-analysis-confidence').value.trim(),
@@ -2381,22 +2465,7 @@ function labBuildAnalysisFromForm(){
       bankSwitches: labTextToList(document.getElementById('lab-analysis-bank-switches').value),
     },
     evidence: labTextToList(document.getElementById('lab-analysis-evidence').value),
-  };
-  if(!analysis.kind)delete analysis.kind;
-  if(!analysis.summary)delete analysis.summary;
-  if(!analysis.confidence)delete analysis.confidence;
-  if(!analysis.tags.length)delete analysis.tags;
-  if(!analysis.relations.calledBy.length)delete analysis.relations.calledBy;
-  if(!analysis.relations.calls.length)delete analysis.relations.calls;
-  if(!analysis.relations.relatedRegions.length)delete analysis.relations.relatedRegions;
-  if(!Object.keys(analysis.relations).length)delete analysis.relations;
-  if(!analysis.effects.readsRAM.length)delete analysis.effects.readsRAM;
-  if(!analysis.effects.writesRAM.length)delete analysis.effects.writesRAM;
-  if(!analysis.effects.writesVRAM.length)delete analysis.effects.writesVRAM;
-  if(!analysis.effects.writesCRAM.length)delete analysis.effects.writesCRAM;
-  if(!analysis.effects.bankSwitches.length)delete analysis.effects.bankSwitches;
-  if(!Object.keys(analysis.effects).length)delete analysis.effects;
-  if(!analysis.evidence.length)delete analysis.evidence;
+  });
 
   const extra=JSON.parse(JSON.stringify(_labAnalysisExtra||{}));
   if(extra.relations&&analysis.relations){
@@ -2415,6 +2484,49 @@ function labBuildAnalysisFromForm(){
   return merged;
 }
 
+function labSubtractList(full, inferred){
+  const inferredSet=new Set(labUniqueStrings(inferred));
+  return labUniqueStrings(full).filter(v=>!inferredSet.has(v));
+}
+
+function labBuildManualDelta(full, inferred){
+  if(!labHasMeaningfulAnalysis(inferred))return full;
+  const extra=labExtractAnalysisExtra(full);
+  const manual={...extra};
+
+  ['kind','summary','confidence'].forEach(key=>{
+    const v=typeof full[key]==='string' ? full[key] : '';
+    const iv=typeof inferred[key]==='string' ? inferred[key] : '';
+    if(v && v!==iv)manual[key]=v;
+  });
+
+  const tags=labSubtractList(full.tags, inferred.tags);
+  if(tags.length)manual.tags=tags;
+
+  const relationKeys=['calledBy','calls','relatedRegions'];
+  for(const key of relationKeys){
+    const values=labSubtractList(full.relations?.[key], inferred.relations?.[key]);
+    if(values.length){
+      manual.relations=manual.relations||{};
+      manual.relations[key]=values;
+    }
+  }
+
+  const effectKeys=['readsRAM','writesRAM','writesVRAM','writesCRAM','bankSwitches'];
+  for(const key of effectKeys){
+    const values=labSubtractList(full.effects?.[key], inferred.effects?.[key]);
+    if(values.length){
+      manual.effects=manual.effects||{};
+      manual.effects[key]=values;
+    }
+  }
+
+  const evidence=labSubtractList(full.evidence, inferred.evidence);
+  if(evidence.length)manual.evidence=evidence;
+
+  return manual;
+}
+
 function labHasMeaningfulAnalysis(analysis){
   if(!analysis||typeof analysis!=='object'||Array.isArray(analysis))return false;
   return Object.keys(analysis).length>0;
@@ -2423,7 +2535,26 @@ function labHasMeaningfulAnalysis(analysis){
 function labCollectAsmRamEffects(asmLines){
   const reads=new Set();
   const writes=new Set();
+  const ptrRegs={hl:null,de:null,bc:null,ix:null,iy:null};
+
+  function markIndirect(ref, mode){
+    if(!ref)return;
+    if(mode==='read'||mode==='readwrite')reads.add(ref);
+    if(mode==='write'||mode==='readwrite')writes.add(ref);
+  }
+
   for(const raw of asmLines||[]){
+    const line=raw.replace(/;.*/,'').trim();
+    if(!line)continue;
+
+    const ptrLoad=line.match(/\bld\s+(hl|de|bc|ix|iy)\s*,\s*(_RAM_[0-9A-Fa-f]+_)\b/i);
+    if(ptrLoad){
+      ptrRegs[ptrLoad[1].toLowerCase()]=ptrLoad[2];
+    }else{
+      const ptrReset=line.match(/\bld\s+(hl|de|bc|ix|iy)\s*,/i)||line.match(/\bpop\s+(hl|de|bc|ix|iy)\b/i);
+      if(ptrReset)ptrRegs[ptrReset[1].toLowerCase()]=null;
+    }
+
     const refs=raw.match(/_RAM_[0-9A-Fa-f]+_/g)||[];
     for(const ref of refs){
       const writePat=new RegExp(`\\b(?:ld\\s+\\(${ref}\\)\\s*,|inc\\s+\\(${ref}\\)|dec\\s+\\(${ref}\\)|set\\s+\\d+,\\s*\\(${ref}\\)|res\\s+\\d+,\\s*\\(${ref}\\))`,'i');
@@ -2431,6 +2562,26 @@ function labCollectAsmRamEffects(asmLines){
       const rmwPat=new RegExp(`\\b(?:inc|dec|set|res)\\s+\\(${ref}\\)`,'i');
       if(writePat.test(raw))writes.add(ref);
       if(readPat.test(raw)&&(!writePat.test(raw)||rmwPat.test(raw)))reads.add(ref);
+    }
+
+    if(/\bld\s+\(hl\)\s*,/i.test(line))markIndirect(ptrRegs.hl,'write');
+    if(/\b(?:inc|dec|set|res)\s+\(hl\)\b/i.test(line))markIndirect(ptrRegs.hl,'readwrite');
+    if(/\bld\s+[^,]+,\s*\(hl\)\b/i.test(line))markIndirect(ptrRegs.hl,'read');
+
+    if(/\bld\s+\(de\)\s*,/i.test(line))markIndirect(ptrRegs.de,'write');
+    if(/\b(?:inc|dec|set|res)\s+\(de\)\b/i.test(line))markIndirect(ptrRegs.de,'readwrite');
+    if(/\bld\s+[^,]+,\s*\(de\)\b/i.test(line))markIndirect(ptrRegs.de,'read');
+
+    const ixiyWrite=line.match(/\bld\s+\((ix|iy)(?:[+-]\d+)?\)\s*,/i);
+    if(ixiyWrite)markIndirect(ptrRegs[ixiyWrite[1].toLowerCase()],'write');
+    const ixiyRmw=line.match(/\b(?:inc|dec|set|res)\s+\((ix|iy)(?:[+-]\d+)?\)\b/i);
+    if(ixiyRmw)markIndirect(ptrRegs[ixiyRmw[1].toLowerCase()],'readwrite');
+    const ixiyRead=line.match(/\bld\s+[^,]+,\s*\((ix|iy)(?:[+-]\d+)?\)\b/i);
+    if(ixiyRead)markIndirect(ptrRegs[ixiyRead[1].toLowerCase()],'read');
+
+    if(/\bldir\b|\bldi\b|\blddr\b|\bldd\b/i.test(line)){
+      markIndirect(ptrRegs.hl,'read');
+      markIndirect(ptrRegs.de,'write');
     }
   }
   return {reads:[...reads].sort(),writes:[...writes].sort()};
@@ -2492,6 +2643,9 @@ function labInferAnalysisFromAsm(region){
     kind='palette_source';
     confidence='medium';
     tags.add('palette');
+  }else if(region.type==='raw_byte'){
+    kind='data_block';
+    confidence='medium';
   }else if(region.type!=='unknown'){
     kind='data_block';
     confidence='medium';
@@ -2524,6 +2678,8 @@ function labInferAnalysisFromAsm(region){
     summary='Name table / screen program data';
   }else if(kind==='palette_source'){
     summary='Palette bytes sourced from ROM';
+  }else if(region.type==='raw_byte'){
+    summary='Literal byte values / small constants';
   }
 
   return {
@@ -2545,6 +2701,54 @@ function labInferAnalysisFromAsm(region){
     },
     evidence:[...evidence],
   };
+}
+
+function labSuggestAutoType(region){
+  if(!region||region.type!=='unknown'||!romData)return null;
+  const meta=getAsmMetaForRegion(region);
+  if(meta?.asmLabel&&/^_LABEL_[0-9A-Fa-f]+_$/i.test(meta.asmLabel)){
+    return {type:'code', reason:`ASM label ${meta.asmLabel}`};
+  }
+  if(/^_LABEL_[0-9A-Fa-f]+_$/i.test(region.name||'')){
+    return {type:'code', reason:`Region name ${region.name}`};
+  }
+  const off=parseHex(region.offset)??0;
+  const bytes=romData.subarray(off,Math.min(off+(region.size??0),romData.length));
+  const candidates=labBuildDiscoveryCandidates(region, bytes, off);
+  const best=candidates[0];
+  if(best&&best.score>=80&&['pointer_table','screen_prog','vram_loader_8fb','vram_loader_998'].includes(best.type)){
+    return {type:best.type, reason:`${best.type} (${best.score})`};
+  }
+  return null;
+}
+
+function labAnalyzeAllRegions(){
+  if(!romData){showToast('Load a ROM first',true);return;}
+  let analyzed=0;
+  let typed=0;
+  for(const region of mapData.regions){
+    const layers=labGetAnalysisLayers(region);
+    const inferred=labInferAnalysisFromAsm(region);
+    const hasManual=labHasMeaningfulAnalysis(layers.manual);
+    const hasInferred=labHasMeaningfulAnalysis(inferred);
+    if(hasManual||hasInferred){
+      region.analysis={};
+      if(hasManual)region.analysis.manual=layers.manual;
+      if(hasInferred)region.analysis.inferred=inferred;
+      analyzed++;
+    }else{
+      delete region.analysis;
+    }
+    const autoType=labSuggestAutoType(region);
+    if(autoType){
+      region.type=autoType.type;
+      typed++;
+    }
+  }
+  refreshMapUI();
+  if(_labId&&mapData.regions.find(x=>x.id===_labId))openLaboratory(_labId);
+  labSetAnalysisStatus(`Auto-analyzed ${analyzed} region(s) · auto-typed ${typed}`, false);
+  showToast(`Auto-analyzed ${analyzed} region(s) · auto-typed ${typed}`);
 }
 
 function labMergeAnalysisValues(base, inferred){
@@ -2603,13 +2807,20 @@ document.getElementById('btn-lab-apply-pal').addEventListener('click',()=>{
 document.getElementById('btn-lab-save').addEventListener('click',()=>{
   const r=mapData.regions.find(x=>x.id===_labId);
   if(!r)return;
+  const layers=labGetAnalysisLayers(r);
   const analysisValue=labBuildAnalysisFromForm();
+  const manualValue=labBuildManualDelta(analysisValue, layers.inferred);
   const selType=document.querySelector('#lab-type-btns .lab-type-btn.selected')?.dataset.type;
   if(selType)r.type=selType;
   r.name=document.getElementById('lab-name').value.trim();
   r.notes=document.getElementById('lab-notes').value.trim();
-  if(labHasMeaningfulAnalysis(analysisValue))r.analysis=analysisValue;
-  else delete r.analysis;
+  if(labHasMeaningfulAnalysis(layers.inferred)||labHasMeaningfulAnalysis(manualValue)){
+    r.analysis={};
+    if(labHasMeaningfulAnalysis(manualValue))r.analysis.manual=manualValue;
+    if(labHasMeaningfulAnalysis(layers.inferred))r.analysis.inferred=layers.inferred;
+  }else{
+    delete r.analysis;
+  }
   refreshMapUI();
   document.getElementById('panel-lab').classList.add('hidden');
   showToast(`"${r.name||r.offset}" saved as ${TYPE_META[r.type]?.label||r.type}`);
@@ -2621,10 +2832,19 @@ document.getElementById('btn-lab-analysis-autofill').addEventListener('click',()
   if(!r)return;
   const current=labBuildAnalysisFromForm();
   const inferred=labInferAnalysisFromAsm(r);
+  const layers=labGetAnalysisLayers(r);
+  r.analysis={};
+  if(labHasMeaningfulAnalysis(layers.manual))r.analysis.manual=layers.manual;
+  if(labHasMeaningfulAnalysis(inferred))r.analysis.inferred=inferred;
+  if(!labHasMeaningfulAnalysis(r.analysis.manual)&&!labHasMeaningfulAnalysis(r.analysis.inferred))delete r.analysis;
   const merged=labMergeAnalysisValues(current, inferred);
   labApplyAnalysisToForm(merged);
-  labSetAnalysisStatus('Auto-filled from ASM heuristics', false);
+  labSetAnalysisStatus('Updated inferred analysis from ASM heuristics', false);
   showToast('ROM control metadata auto-filled from ASM');
+});
+
+document.getElementById('btn-lab-analysis-autofill-all').addEventListener('click',()=>{
+  labAnalyzeAllRegions();
 });
 
 document.getElementById('btn-lab-analysis-clear').addEventListener('click',()=>{
@@ -2642,7 +2862,7 @@ document.getElementById('btn-lab-analysis-clear').addEventListener('click',()=>{
   document.getElementById('lab-analysis-bank-switches').value='';
   document.getElementById('lab-analysis-evidence').value='';
   _labAnalysisExtra={};
-  labSetAnalysisStatus('Editor cleared — SAVE to remove region.analysis', false);
+  labSetAnalysisStatus('Editor cleared — SAVE to remove manual analysis fields', false);
 });
 
 document.getElementById('btn-close-lab').addEventListener('click',()=>{

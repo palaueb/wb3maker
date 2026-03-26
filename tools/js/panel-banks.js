@@ -10,7 +10,10 @@ function renderBanksGrid(){
   const curBank=bankOf(curOff);
   for(let b=0;b<BANK_COUNT;b++){
     const start=b*BANK_SIZE,end=start+BANK_SIZE-1;
-    const regCount=mapData.regions.filter(r=>{const o=parseHex(r.offset)??0;return bankOf(o)===b;}).length;
+    const bankRegions=mapData.regions.filter(r=>{const o=parseHex(r.offset)??0;return bankOf(o)===b;});
+    const regCount=bankRegions.length;
+    const knownCount=bankRegions.filter(r=>r.type!=='unknown').length;
+    const knownPct=regCount?Math.round(knownCount/regCount*100):0;
     const cov=Math.round(getBankCoverage(b)*100);
     const cell=document.createElement('div');
     cell.className='bank-cell'+(b===curBank?' bank-active':'');
@@ -18,7 +21,7 @@ function renderBanksGrid(){
     cell.innerHTML=`
       <div class="bank-num">BANK ${b}</div>
       <div class="bank-range">${hexStr(start,5)}–${hexStr(end,5)}</div>
-      <div class="bank-regions">${regCount?regCount+' region'+(regCount!==1?'s':''):''}</div>
+      <div class="bank-regions">${regCount?`${knownCount}/${regCount} known (${knownPct}%)`:'0/0 known (0%)'}</div>
       <div class="bank-coverage"><div class="bank-coverage-fill" style="width:${cov}%"></div></div>`;
     cell.addEventListener('click',()=>{
       document.getElementById('ctrl-offset').value=hexStr(start);
