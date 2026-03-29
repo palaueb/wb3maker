@@ -2837,9 +2837,11 @@ document.getElementById('btn-lab-save').addEventListener('click',()=>{
     delete r.analysis;
   }
   refreshMapUI();
-  document.getElementById('panel-lab').classList.add('hidden');
-  showToast(`"${r.name||r.offset}" saved as ${TYPE_META[r.type]?.label||r.type}`);
-  _labId=null;
+  triggerAutoSave();
+  const btn=document.getElementById('btn-lab-save');
+  btn.textContent='SAVE ✓';
+  btn.style.background='#1a7a3a';
+  setTimeout(()=>{ btn.textContent='SAVE'; btn.style.background=''; },1500);
 });
 
 document.getElementById('btn-lab-analysis-autofill').addEventListener('click',()=>{
