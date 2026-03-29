@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SMS Input Viewer</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #111;
+    color: #ccc;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px;
+    gap: 32px;
+    min-height: 100vh;
+  }
+  h1 { font-size: 14px; letter-spacing: 3px; color: #555; text-transform: uppercase; }
+
+  /* ── Inputs ── */
+  .inputs {
+    display: flex;
+    gap: 32px;
+    align-items: flex-end;
+  }
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .input-group label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #555;
+  }
+  .input-group input {
+    width: 70px;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    color: #0f0;
+    font-family: monospace;
+    font-size: 22px;
+    text-align: center;
+    padding: 6px 4px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    outline: none;
+    border-radius: 3px;
+  }
+  .input-group input:focus { border-color: #0f0; }
+  .input-group .bits {
+    font-size: 10px;
+    color: #444;
+    letter-spacing: 1px;
+  }
+
+  /* ── Controllers ── */
+  .controllers {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .controller-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .controller-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #555;
+  }
+  .controller {
+    background: #1c1c1c;
+    border: 2px solid #2a2a2a;
+    border-radius: 20px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    width: 280px;
+  }
+
+  /* ── D-pad ── */
+  .dpad {
+    display: grid;
+    grid-template-columns: repeat(3, 28px);
+    grid-template-rows: repeat(3, 28px);
+    gap: 3px;
+  }
+  .dpad-btn {
+    background: #2a2a2a;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #444;
+    transition: background .05s, color .05s;
+    user-select: none;
+  }
+  .dpad-btn.pressed {
+    background: #00cc44;
+    color: #000;
+    box-shadow: 0 0 8px #00cc44aa;
+  }
+  .dpad-center { background: #222; border-radius: 4px; }
+
+  /* ── Fire buttons ── */
+  .fire-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+    margin-left: auto;
+  }
+  .fire-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .fire-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: #555;
+    letter-spacing: 0;
+    transition: background .05s, color .05s, box-shadow .05s;
+    user-select: none;
+  }
+  .fire-btn.pressed {
+    background: #cc2244;
+    color: #fff;
+    box-shadow: 0 0 10px #cc224488;
+  }
+  .fire-btn.th.pressed {
+    background: #2244cc;
+    color: #fff;
+    box-shadow: 0 0 10px #2244cc88;
+  }
+  .btn-label {
+    font-size: 9px;
+    color: #444;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  /* ── Bit table ── */
+  .bit-table {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .bit-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .bit-row-title {
+    font-size: 10px;
+    color: #444;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .bit-entry {
+    font-size: 10px;
+    color: #444;
+    display: flex;
+    gap: 6px;
+  }
+  .bit-entry .bval { color: #333; min-width: 10px; }
+  .bit-entry.active .bval { color: #0f0; }
+  .bit-entry.active { color: #aaa; }
+</style>
+</head>
+<body>
+
+<h1>SMS Input Viewer</h1>
+
+<div class="inputs">
+  <div class="input-group">
+    <label>CF90 · &amp;DC</label>
+    <input type="text" id="in-dc" maxlength="2" value="FF" spellcheck="false">
+    <div class="bits" id="bits-dc">1111 1111</div>
+  </div>
+  <div class="input-group">
+    <label>CF91 · &amp;DD</label>
+    <input type="text" id="in-dd" maxlength="2" value="FF" spellcheck="false">
+    <div class="bits" id="bits-dd">1111 1111</div>
+  </div>
+</div>
+
+<div class="controllers">
+
+  <!-- PLAYER 1 -->
+  <div class="controller-wrap">
+    <div class="controller-label">PLAYER 1</div>
+    <div class="controller">
+      <div class="dpad">
+        <div></div>
+        <div class="dpad-btn" id="p1-up">▲</div>
+        <div></div>
+        <div class="dpad-btn" id="p1-left">◀</div>
+        <div class="dpad-center"></div>
+        <div class="dpad-btn" id="p1-right">▶</div>
+        <div></div>
+        <div class="dpad-btn" id="p1-down">▼</div>
+        <div></div>
+      </div>
+      <div class="fire-buttons">
+        <div class="fire-row">
+          <div>
+            <div class="fire-btn" id="p1-fire1">1</div>
+            <div class="btn-label">TL</div>
+          </div>
+          <div>
+            <div class="fire-btn" id="p1-fire2">2</div>
+            <div class="btn-label">TR</div>
+          </div>
+        </div>
+        <div class="fire-row">
+          <div>
+            <div class="fire-btn th" id="p1-th">TH</div>
+            <div class="btn-label">extra</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAYER 2 -->
+  <div class="controller-wrap">
+    <div class="controller-label">PLAYER 2</div>
+    <div class="controller">
+      <div class="dpad">
+        <div></div>
+        <div class="dpad-btn" id="p2-up">▲</div>
+        <div></div>
+        <div class="dpad-btn" id="p2-left">◀</div>
+        <div class="dpad-center"></div>
+        <div class="dpad-btn" id="p2-right">▶</div>
+        <div></div>
+        <div class="dpad-btn" id="p2-down">▼</div>
+        <div></div>
+      </div>
+      <div class="fire-buttons">
+        <div class="fire-row">
+          <div>
+            <div class="fire-btn" id="p2-fire1">1</div>
+            <div class="btn-label">TL</div>
+          </div>
+          <div>
+            <div class="fire-btn" id="p2-fire2">2</div>
+            <div class="btn-label">TR</div>
+          </div>
+        </div>
+        <div class="fire-row">
+          <div>
+            <div class="fire-btn th" id="p2-th">TH</div>
+            <div class="btn-label">extra</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Bit reference -->
+<div class="bit-table">
+  <div class="bit-row">
+    <div class="bit-row-title">CF90 · &amp;DC</div>
+    <div class="bit-entry" id="ref-dc-7"><span class="bval">bit7</span> P2 Down</div>
+    <div class="bit-entry" id="ref-dc-6"><span class="bval">bit6</span> P2 Up</div>
+    <div class="bit-entry" id="ref-dc-5"><span class="bval">bit5</span> P1 Fire 2 (TR)</div>
+    <div class="bit-entry" id="ref-dc-4"><span class="bval">bit4</span> P1 Fire 1 (TL)</div>
+    <div class="bit-entry" id="ref-dc-3"><span class="bval">bit3</span> P1 Right</div>
+    <div class="bit-entry" id="ref-dc-2"><span class="bval">bit2</span> P1 Left</div>
+    <div class="bit-entry" id="ref-dc-1"><span class="bval">bit1</span> P1 Down</div>
+    <div class="bit-entry" id="ref-dc-0"><span class="bval">bit0</span> P1 Up</div>
+  </div>
+  <div class="bit-row">
+    <div class="bit-row-title">CF91 · &amp;DD</div>
+    <div class="bit-entry" id="ref-dd-7"><span class="bval">bit7</span> P2 Extra (TH)</div>
+    <div class="bit-entry" id="ref-dd-6"><span class="bval">bit6</span> P1 Extra (TH)</div>
+    <div class="bit-entry" id="ref-dd-5"><span class="bval">bit5</span> Cartridge slot</div>
+    <div class="bit-entry" id="ref-dd-4"><span class="bval">bit4</span> Reset</div>
+    <div class="bit-entry" id="ref-dd-3"><span class="bval">bit3</span> P2 Fire 2 (TR)</div>
+    <div class="bit-entry" id="ref-dd-2"><span class="bval">bit2</span> P2 Fire 1 (TL)</div>
+    <div class="bit-entry" id="ref-dd-1"><span class="bval">bit1</span> P2 Right</div>
+    <div class="bit-entry" id="ref-dd-0"><span class="bval">bit0</span> P2 Left</div>
+  </div>
+</div>
+
+<script>
+// Bit 0 = pressed (active low): bit=0 means PRESSED
+function bit(val, n) { return (val >> n) & 1; }
+function pressed(val, n) { return bit(val, n) === 1; } // 1 = pressed (WB3 inverts the port)
+
+function parseByte(str) {
+  const v = parseInt(str, 16);
+  return isNaN(v) ? 0xFF : Math.max(0, Math.min(255, v));
+}
+
+function toBitStr(v) {
+  return ((v >> 4) & 0xF).toString(2).padStart(4,'0') + ' ' + (v & 0xF).toString(2).padStart(4,'0');
+}
+
+function update() {
+  const dc = parseByte(document.getElementById('in-dc').value);
+  const dd = parseByte(document.getElementById('in-dd').value);
+
+  document.getElementById('bits-dc').textContent = toBitStr(dc);
+  document.getElementById('bits-dd').textContent = toBitStr(dd);
+
+  // Player 1 — from &DC
+  setBtn('p1-up',    pressed(dc, 0));
+  setBtn('p1-down',  pressed(dc, 1));
+  setBtn('p1-left',  pressed(dc, 2));
+  setBtn('p1-right', pressed(dc, 3));
+  setBtn('p1-fire1', pressed(dc, 4));
+  setBtn('p1-fire2', pressed(dc, 5));
+  // P1 TH from &DD bit6
+  setBtn('p1-th',    pressed(dd, 6));
+
+  // Player 2 — split across both ports
+  setBtn('p2-up',    pressed(dc, 6));
+  setBtn('p2-down',  pressed(dc, 7));
+  setBtn('p2-left',  pressed(dd, 0));
+  setBtn('p2-right', pressed(dd, 1));
+  setBtn('p2-fire1', pressed(dd, 2));
+  setBtn('p2-fire2', pressed(dd, 3));
+  // P2 TH from &DD bit7
+  setBtn('p2-th',    pressed(dd, 7));
+
+  // Bit reference highlight
+  for (let i = 0; i < 8; i++) {
+    setRef('ref-dc-'+i, pressed(dc, i));
+    setRef('ref-dd-'+i, pressed(dd, i));
+  }
+}
+
+function setBtn(id, isPressed) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('pressed', isPressed);
+}
+
+function setRef(id, isPressed) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('active', isPressed);
+}
+
+document.getElementById('in-dc').addEventListener('input', update);
+document.getElementById('in-dd').addEventListener('input', update);
+
+update();
+</script>
+</body>
+</html>

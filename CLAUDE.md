@@ -124,6 +124,20 @@ function bankAddrStr(offset) {
   - `[8:0]` = índex de tile (0–511)
   - `[9]` = hflip, `[10]` = vflip, `[11]` = selector de paleta (0=BG, 1=SPR), `[12]` = prioritat
 
+### SMS Sprite Attribute Table (SAT)
+
+La SAT viu a VRAM a partir de `$3F00`:
+
+| Adreça VRAM | Contingut |
+|-------------|-----------|
+| `$3F00–$3F3F` | Y[0]..Y[63] — posició Y de cada sprite (1 byte, 64 sprites) |
+| `$3F40–$3F7F` | Unused (64 bytes) |
+| `$3F80–$3FFF` | Per cada sprite i: `X[i]` a `$3F80 + i×2`, `N[i]` (tile#) a `$3F81 + i×2` |
+
+- **Y**: posició vertical. Valor `$D0` (208) = sprite inactiu/fora de pantalla.
+- **X**: posició horitzontal.
+- **N**: índex de tile (0–255 en mode 8×8; en mode 8×16 bit0 s'ignora, s'usen tiles parells).
+
 ### Paletes en temps d'execució
 
 Algunes paletes **no estan guardades de forma contigua a la ROM** — es construeixen en temps d'execució via escriptures al port VDP (`$BF` control, `$BE` dades). Per a aquests casos s'usa el tipus `palette_manual`.

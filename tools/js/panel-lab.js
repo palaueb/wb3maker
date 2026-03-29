@@ -962,6 +962,14 @@ function labRenderTypePreview(type, bytes, baseOffset) {
     palSel.style.cssText='font-size:11px;padding:2px 4px;flex:1;min-width:100px;';
     palSel.innerHTML='<option value="">Viewer palette</option>';
 
+    const palSprLbl=document.createElement('span');
+    palSprLbl.style.cssText='font-size:10px;color:var(--dim);letter-spacing:1px;white-space:nowrap';
+    palSprLbl.textContent='PAL SPR:';
+    const palSprSel=document.createElement('select');
+    palSprSel.className='region-input';
+    palSprSel.style.cssText='font-size:11px;padding:2px 4px;flex:1;min-width:100px;';
+    palSprSel.innerHTML='<option value="">= BG palette</option>';
+
     let defaultTileId='', defaultPalId='';
     for(const r of mapData.regions){
       if(r.type==='gfx_tiles'||r.type==='gfx_sprites'){
@@ -974,6 +982,9 @@ function labRenderTypePreview(type, bytes, baseOffset) {
         const o=document.createElement('option');
         o.value=r.id; o.textContent=r.name||r.offset;
         palSel.appendChild(o);
+        const o2=document.createElement('option');
+        o2.value=r.id; o2.textContent=r.name||r.offset;
+        palSprSel.appendChild(o2);
         if(!defaultPalId) defaultPalId=r.id;
       }
     }
@@ -982,6 +993,7 @@ function labRenderTypePreview(type, bytes, baseOffset) {
 
     ctrlRow.appendChild(tileLbl); ctrlRow.appendChild(tileSel);
     ctrlRow.appendChild(palLbl); ctrlRow.appendChild(palSel);
+    ctrlRow.appendChild(palSprLbl); ctrlRow.appendChild(palSprSel);
     el.appendChild(ctrlRow);
 
     const info=document.createElement('div');
@@ -995,8 +1007,10 @@ function labRenderTypePreview(type, bytes, baseOffset) {
     function renderTileMapPreview(){
       const tileId=tileSel.value;
       const palId=palSel.value;
+      const palSprId=palSprSel.value;
       const tileReg=tileId?mapData.regions.find(r=>r.id===tileId):null;
       const palReg=palId?mapData.regions.find(r=>r.id===palId):null;
+      const palSprReg=palSprId?mapData.regions.find(r=>r.id===palSprId):null;
 
       if(!tileReg||!romData){
         canvas.style.display='none'; info.style.display='none'; warnBox.style.display='';
@@ -1018,9 +1032,9 @@ function labRenderTypePreview(type, bytes, baseOffset) {
       canvas.style.display='block'; info.style.display='block'; warnBox.style.display='none';
       const tOff=parseHex(tileReg.offset)??0;
       const tBytes=romData.subarray(tOff,tOff+(tileReg.size??0));
-      const palColors=palReg
-        ?(palReg.type==='palette_manual'?resolvePaletteManualColors(palReg):decodePaletteAt(romData,parseHex(palReg.offset)??0,16))
-        :viewerPalette;
+      const getPal=reg=>reg?(reg.type==='palette_manual'?resolvePaletteManualColors(reg):decodePaletteAt(romData,parseHex(reg.offset)??0,16)):viewerPalette;
+      const palColorsBG=getPal(palReg);
+      const palColorsSPR=getPal(palSprReg||palReg);
 
       const zoom=2;
       canvas.width=cols*8*zoom; canvas.height=rows*8*zoom;
@@ -1040,8 +1054,8 @@ function labRenderTypePreview(type, bytes, baseOffset) {
         const bx=(i%cols)*8*zoom, by=Math.floor(i/cols)*8*zoom;
         for(let py=0;py<8;py++) for(let px=0;px<8;px++){
           const sx=hflip?7-px:px, sy=vflip?7-py:py;
-          const ci=(pixels[sy*8+sx]+palOff*16)%16;
-          const hex=palColors[ci]||viewerPalette[ci]||'#000';
+          const ci=pixels[sy*8+sx];
+          const hex=(palOff?palColorsSPR:palColorsBG)[ci]||viewerPalette[ci]||'#000';
           const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b2=parseInt(hex.slice(5,7),16);
           for(let zy=0;zy<zoom;zy++) for(let zx=0;zx<zoom;zx++){
             const idx=((by+py*zoom+zy)*canvas.width+(bx+px*zoom+zx))*4;
@@ -1050,11 +1064,12 @@ function labRenderTypePreview(type, bytes, baseOffset) {
         }
       }
       ctx.putImageData(img,0,0);
-      info.textContent=`Tiles from ${tileReg.offset} (${tileReg.name||'gfx_tiles'})${palReg?' · palette '+palReg.offset:' · viewer palette'}`;
+      info.textContent=`Tiles from ${tileReg.offset} (${tileReg.name||'gfx_tiles'})${palReg?' · BG '+palReg.offset:' · viewer palette'}${palSprReg?' · SPR '+palSprReg.offset:''}`;
     }
 
     tileSel.addEventListener('change', renderTileMapPreview);
     palSel.addEventListener('change', renderTileMapPreview);
+    palSprSel.addEventListener('change', renderTileMapPreview);
     renderTileMapPreview();
     return;
   }

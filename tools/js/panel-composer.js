@@ -30,6 +30,15 @@ function compGetPalette() {
   return decodePaletteAt(romData, parseHex(r.offset) ?? 0, 16);
 }
 
+function compGetPaletteSpr() {
+  const selId = document.getElementById('comp-palette-spr').value;
+  if (!selId) return null;
+  const r = mapData.regions.find(x => x.id === selId);
+  if (!r || !romData) return null;
+  if (r.type === 'palette_manual') return resolvePaletteManualColors(r);
+  return decodePaletteAt(romData, parseHex(r.offset) ?? 0, 16);
+}
+
 function compDrawTileToCtx(ctx, tBytes, tileIdx, bx, by, zoom, pal) {
   const off = tileIdx * 32;
   if (off + 32 > tBytes.length) return;
@@ -146,11 +155,13 @@ function compResizeGrid() {
 function compUpdateRegionSelects() {
   const tileReg = document.getElementById('comp-tile-region');
   const palSel = document.getElementById('comp-palette');
+  const palSprSel = document.getElementById('comp-palette-spr');
   const tmSel = document.getElementById('comp-tilemap-region');
-  const prevTile = tileReg.value, prevPal = palSel.value, prevTm = tmSel.value;
+  const prevTile = tileReg.value, prevPal = palSel.value, prevPalSpr = palSprSel.value, prevTm = tmSel.value;
 
   tileReg.innerHTML = '<option value="">— none —</option>';
   palSel.innerHTML = '<option value="">Viewer palette</option>';
+  palSprSel.innerHTML = '<option value="">= BG palette</option>';
   tmSel.innerHTML = '<option value="">— none —</option>';
 
   for (const r of mapData.regions) {
@@ -159,6 +170,7 @@ function compUpdateRegionSelects() {
     }
     if (r.type === 'palette' || r.type === 'palette_manual') {
       palSel.innerHTML += `<option value="${r.id}"${r.id===prevPal?' selected':''}>${r.name||r.offset} (${r.type})</option>`;
+      palSprSel.innerHTML += `<option value="${r.id}"${r.id===prevPalSpr?' selected':''}>${r.name||r.offset} (${r.type})</option>`;
     }
     if (r.type === 'tile_map') {
       tmSel.innerHTML += `<option value="${r.id}"${r.id===prevTm?' selected':''}>${r.name||r.offset} (tile_map)</option>`;
@@ -229,6 +241,7 @@ function compRenderTileMap() {
 
   const tBytes = tileReg ? romData.subarray(parseHex(tileReg.offset)??0, (parseHex(tileReg.offset)??0)+(tileReg.size??0)) : null;
   const pal = compGetPalette();
+  const palSpr = compGetPaletteSpr() || pal;
 
   const tmOff = parseHex(tmReg.offset) ?? 0;
   const tmBytes = romData.subarray(tmOff, tmOff + (tmReg.size ?? 0));
@@ -261,8 +274,8 @@ function compRenderTileMap() {
       const bx = col * 8 * zoom, by = row * 8 * zoom;
       for (let py = 0; py < 8; py++) for (let px = 0; px < 8; px++) {
         const sx = hflip ? 7 - px : px, sy = vflip ? 7 - py : py;
-        const ci = (pixels[sy*8+sx] + palOff*16) % 16;
-        ctx.fillStyle = pal[ci] || '#000';
+        const ci = pixels[sy*8+sx];
+        ctx.fillStyle = (palOff ? palSpr : pal)[ci] || '#000';
         ctx.fillRect(bx + px*zoom, by + py*zoom, zoom, zoom);
       }
     }
