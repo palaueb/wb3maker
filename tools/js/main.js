@@ -301,9 +301,28 @@ async function loadAsmFile(text, fileName, {silent=false}={}) {
   asmFileName = fileName;
   _pendingAsmSplitPlan=null;
   document.getElementById('asm-split-review').classList.remove('open');
+
+  // Merge RAM definitions from ASM into mapData.ram
+  const ramDefs = parseRamDefsFromAsm(text);
+  let ramAdded = 0;
+  if (ramDefs.length) {
+    if (!mapData.ram) mapData.ram = [];
+    const existingAddrs = new Set(mapData.ram.map(e => e.address));
+    for (const def of ramDefs) {
+      if (!existingAddrs.has(def.address)) {
+        mapData.ram.push({
+          id: 'ram' + ((_ramIdCounter++).toString().padStart(4, '0')),
+          ...def,
+        });
+        ramAdded++;
+      }
+    }
+    if (ramAdded > 0) { ramRenderTable(); triggerAutoSave(); }
+  }
+
   if (silent) {
     updateBadges();
-    showToast(`ASM loaded (${fileName})`);
+    showToast(`ASM loaded (${fileName})${ramAdded ? ` · ${ramAdded} RAM defs imported` : ''}`);
     return;
   }
   showToast('Parsing disassembly…');
@@ -312,7 +331,7 @@ async function loadAsmFile(text, fileName, {silent=false}={}) {
   showImportPreview(regions);
   updateBadges();
   document.getElementById('panel-map').scrollIntoView({behavior:'smooth'});
-  showToast(`Found ${regions.length} regions — review import below`);
+  showToast(`Found ${regions.length} regions — review import below${ramAdded ? ` · ${ramAdded} RAM defs imported` : ''}`);
 }
 
 async function handleFile(file){

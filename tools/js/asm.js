@@ -525,3 +525,44 @@ document.getElementById('btn-cancel-asm-splits').addEventListener('click',()=>{
   _pendingAsmSplitPlan=null;
   document.getElementById('asm-split-review').classList.remove('open');
 });
+
+// ═══════════════════════════════════════════════════════
+//  RAM DEFINITIONS PARSER
+// ═══════════════════════════════════════════════════════
+function parseRamDefsFromAsm(text) {
+  const results = [];
+  const seen = new Set();
+  // Matches: _RAM_XXXX_[:]  db/dw/dsb/ds/dl/dsw  [optional size]
+  const re = /^\s*_RAM_([0-9A-Fa-f]+)_:?\s+(db|dw|dsb|dsw|ds|dl)(?:\s+(\$[0-9A-Fa-f]+|\d+))?/i;
+  for (const raw of text.split('\n')) {
+    const m = raw.match(re);
+    if (!m) continue;
+    const addr = '$' + m[1].toUpperCase().padStart(4, '0');
+    if (seen.has(addr)) continue;
+    seen.add(addr);
+    const dir = m[2].toLowerCase();
+    const sizeArg = m[3];
+    let size = 1, type = 'byte';
+    if (dir === 'dw' || dir === 'dsw') {
+      size = 2; type = 'word';
+    } else if (dir === 'dl') {
+      size = 3; type = 'other';
+    } else if (dir === 'dsb' || dir === 'ds') {
+      if (sizeArg) {
+        size = sizeArg.startsWith('$')
+          ? parseInt(sizeArg.slice(1), 16)
+          : parseInt(sizeArg, 10);
+        if (isNaN(size) || size < 1) size = 1;
+      }
+      type = size > 2 ? 'buffer' : 'byte';
+    }
+    results.push({
+      address: addr,
+      size,
+      type,
+      name: m[1].toUpperCase(),
+      notes: '',
+    });
+  }
+  return results;
+}
