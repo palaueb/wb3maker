@@ -371,7 +371,7 @@ function simRefreshStepTypeRegionFilter() {
   const type = document.getElementById('sim-step-type').value;
   const sel  = document.getElementById('sim-step-region');
   const palTypes    = ['palette','palette_manual'];
-  const loaderTypes = ['vram_loader','vram_loader_8fb','vram_loader_998','gfx_tiles','gfx_sprites'];
+  const loaderTypes = ['vram_loader_8fb','vram_loader_998','gfx_tiles','gfx_sprites'];
   const ntTypes     = ['screen_prog'];
   let allowed;
   if (type === 'cram_bg' || type === 'cram_spr') allowed = palTypes;
@@ -554,4 +554,245 @@ function initSimulatorPanel() {
   simRenderGallery();
 
   document.getElementById('btn-sim-save-scene').addEventListener('click', simSaveScene);
+
+  // Zone browser
+  document.getElementById('btn-zone-parse').addEventListener('click', zoneBrowserParse);
+  document.getElementById('btn-zone-render').addEventListener('click', zoneBrowserRender);
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  ZONE BROWSER
+// ═══════════════════════════════════════════════════════════════════════════
+
+let _zoneParsed = null; // parsed descriptor + sub-record data
+
+function zoneBrowserParse() {
+  if (!romData) { showToast('Load a ROM first', true); return; }
+
+  const descOff = parseHex(document.getElementById('zone-desc-off').value);
+  if (descOff == null || descOff < 0 || descOff + 6 > romData.length) {
+    showToast('Invalid descriptor offset', true); return;
+  }
+
+  // ── Parse 6-byte zone descriptor ───────────────────────────────────────
+  const scrollX = romData[descOff];
+  const scrollY = romData[descOff + 1];
+  const camX    = romData[descOff + 2];
+  const camY    = romData[descOff + 3];
+  const subZ80  = romData[descOff + 4] | (romData[descOff + 5] << 8);
+
+  // Sub-record is in bank 4: rom = z80 + $8000
+  const subRomOff = subZ80 + 0x8000;
+  if (subRomOff < 0 || subRomOff + 18 > romData.length) {
+    showToast(`Sub-record out of range: ROM $${subRomOff.toString(16).toUpperCase().padStart(5,'0')}`, true);
+    return;
+  }
+
+  // ── Parse 18-byte sub-record ────────────────────────────────────────────
+  const doorZ80      = romData[subRomOff]     | (romData[subRomOff + 1] << 8);
+  const p2Z80        = romData[subRomOff + 8] | (romData[subRomOff + 9] << 8);
+  const dc2Indices   = Array.from(romData.slice(subRomOff + 10, subRomOff + 16));
+  const flags        = romData[subRomOff + 16];
+  const paletteIdx   = romData[subRomOff + 17];
+
+  // Both door table and P2 are also in bank 4
+  const doorRomOff = doorZ80 + 0x8000;
+  const p2RomOff   = p2Z80  + 0x8000;
+
+  _zoneParsed = { descOff, scrollX, scrollY, camX, camY, subZ80, subRomOff,
+                  doorZ80, doorRomOff, p2Z80, p2RomOff, dc2Indices, flags, paletteIdx };
+
+  _zoneRenderParsedInfo();
+  _zoneRenderDoorTable();
+  _zoneDecompressDC2();
+  document.getElementById('zone-render-section').style.display = '';
+}
+
+function _fmt5(v) { return '$' + v.toString(16).toUpperCase().padStart(5,'0'); }
+function _fmt4(v) { return '$' + v.toString(16).toUpperCase().padStart(4,'0'); }
+function _fmt2(v) { return '$' + v.toString(16).toUpperCase().padStart(2,'0'); }
+
+function _zoneRenderParsedInfo() {
+  const z = _zoneParsed;
+  document.getElementById('zone-parsed').style.display = '';
+  document.getElementById('zone-parsed').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 20px;">
+      <div><span style="color:var(--dim)">Scroll X:</span> ${_fmt2(z.scrollX)}${z.scrollX===0xFF?' <span style="color:#555">(keep)</span>':''}</div>
+      <div><span style="color:var(--dim)">Camera X:</span> ${_fmt2(z.camX)}${z.camX===0x80?' <span style="color:#555">(keep)</span>':''}</div>
+      <div><span style="color:var(--dim)">Scroll Y:</span> ${_fmt2(z.scrollY)}${z.scrollY===0xFF?' <span style="color:#555">(keep)</span>':''}</div>
+      <div><span style="color:var(--dim)">Camera Y:</span> ${_fmt2(z.camY)}${z.camY===0x80?' <span style="color:#555">(keep)</span>':''}</div>
+      <div><span style="color:var(--dim)">Sub-record:</span> Z80 ${_fmt4(z.subZ80)} → ROM ${_fmt5(z.subRomOff)}</div>
+      <div><span style="color:var(--dim)">Door table:</span> Z80 ${_fmt4(z.doorZ80)} → ROM ${_fmt5(z.doorRomOff)}</div>
+      <div><span style="color:var(--dim)">8FB data (P2):</span> Z80 ${_fmt4(z.p2Z80)} → ROM ${_fmt5(z.p2RomOff)}</div>
+      <div><span style="color:var(--dim)">Flags:</span> ${_fmt2(z.flags)} &nbsp; <span style="color:var(--dim)">Palette idx:</span> ${z.paletteIdx}</div>
+      <div style="grid-column:1/-1"><span style="color:var(--dim)">DC2 indices:</span>
+        ${z.dc2Indices.map((v,i) => `<span style="color:#4ade80">[${i}]</span>${_fmt2(v)}`).join(' ')}
+      </div>
+    </div>`;
+}
+
+function _zoneRenderDoorTable() {
+  const z = _zoneParsed;
+  const sec = document.getElementById('zone-door-section');
+  const el  = document.getElementById('zone-door-table');
+  sec.style.display = '';
+
+  if (!romData || z.doorRomOff < 0 || z.doorRomOff >= romData.length) {
+    el.innerHTML = '<div style="font-size:11px;color:#f87171">Door table ROM offset out of range</div>';
+    return;
+  }
+
+  const doors = [];
+  let off = z.doorRomOff;
+  for (let i = 0; i < 32 && off + 6 < romData.length; i++) {
+    if (romData[off] === 0xFF) break;
+    const scrollPos = romData[off] * 8;
+    const param     = romData[off + 1];
+    const threshold = romData[off + 2] | (romData[off + 3] << 8);
+    const roomType  = romData[off + 4] & 0x1F;
+    const destZ80   = romData[off + 5] | (romData[off + 6] << 8);
+    const destRom   = destZ80 + 0x8000;
+    doors.push({ scrollPos, param, threshold, roomType, destZ80, destRom });
+    off += 7;
+  }
+
+  if (!doors.length) {
+    el.innerHTML = '<div style="font-size:11px;color:var(--dim);font-style:italic">No door entries ($FF terminator at start)</div>';
+    return;
+  }
+
+  el.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:10px;font-family:var(--mono)">
+    <thead><tr style="color:var(--dim);border-bottom:1px solid var(--border)">
+      <th style="text-align:left;padding:2px 6px">ScrollX</th>
+      <th style="text-align:left;padding:2px 6px">Type</th>
+      <th style="text-align:left;padding:2px 6px">Threshold</th>
+      <th style="text-align:left;padding:2px 6px">Dest Z80</th>
+      <th style="text-align:left;padding:2px 6px">Dest ROM</th>
+      <th style="text-align:left;padding:2px 6px"></th>
+    </tr></thead>
+    <tbody>${doors.map(d => `
+    <tr style="border-bottom:1px solid rgba(255,255,255,.04)">
+      <td style="padding:2px 6px;color:#4ade80">${d.scrollPos}px</td>
+      <td style="padding:2px 6px;color:#ffcc00">${d.roomType}</td>
+      <td style="padding:2px 6px">${_fmt4(d.threshold)}</td>
+      <td style="padding:2px 6px">${_fmt4(d.destZ80)}</td>
+      <td style="padding:2px 6px;color:#4a9eff">${_fmt5(d.destRom)}</td>
+      <td style="padding:2px 6px"><button class="btn small" onclick="document.getElementById('zone-desc-off').value='${_fmt5(d.destRom)}';zoneBrowserParse()">FOLLOW →</button></td>
+    </tr>`).join('')}</tbody>
+  </table>`;
+}
+
+function _zoneDecompressDC2() {
+  const z = _zoneParsed;
+  const DC2_TABLE = 0x14000; // _DATA_14000_, bank 5: rom = z80 + $C000
+  const DC2_BANK5 = 0xC000;
+
+  const streams = [];
+  for (let i = 0; i < 6; i++) {
+    const idx    = z.dc2Indices[i];
+    const ptrOff = DC2_TABLE + idx * 2;
+    if (ptrOff + 1 >= romData.length) { streams.push(null); continue; }
+    const z80Ptr = romData[ptrOff] | (romData[ptrOff + 1] << 8);
+    const romOff = z80Ptr + DC2_BANK5;
+    if (romOff < 0 || romOff >= romData.length) { streams.push(null); continue; }
+    const src = romData.slice(romOff, Math.min(romOff + 512, romData.length));
+    const data = decompressScrollMap(src);
+    streams.push({ idx, z80Ptr, romOff, data });
+  }
+  _zoneParsed.dc2Streams = streams;
+
+  // ── Render color-coded DC2 index grid ──────────────────────────────────
+  const sec    = document.getElementById('zone-dc2-section');
+  const infoEl = document.getElementById('zone-dc2-info');
+  const canvas = document.getElementById('zone-dc2-canvas');
+  sec.style.display = '';
+
+  const maxRows = Math.max(0, ...streams.filter(Boolean).map(s => s.data.length));
+  const ROWS = Math.min(maxRows, 64), COLS = 6, CELL = 14;
+  canvas.width  = COLS * CELL;
+  canvas.height = ROWS * CELL;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#111'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.font = '8px monospace';
+
+  streams.forEach((s, col) => {
+    if (!s) {
+      ctx.fillStyle = '#f87171';
+      ctx.fillRect(col * CELL, 0, CELL - 1, ROWS * CELL);
+      return;
+    }
+    for (let row = 0; row < Math.min(s.data.length, ROWS); row++) {
+      const val = s.data[row];
+      const hue = (val * 137) % 360;
+      ctx.fillStyle = `hsl(${hue},65%,38%)`;
+      ctx.fillRect(col * CELL, row * CELL, CELL - 1, CELL - 1);
+      ctx.fillStyle = '#fff';
+      ctx.fillText(val.toString(16).toUpperCase().padStart(2,'0'), col * CELL + 1, row * CELL + CELL - 3);
+    }
+  });
+
+  infoEl.innerHTML = streams.map((s, i) => s
+    ? `<span style="color:#4ade80">S${i}</span>&nbsp;idx=${_fmt2(s.idx)}&nbsp;${_fmt4(s.z80Ptr)}&nbsp;(${s.data.length}B)`
+    : `<span style="color:#f87171">S${i}:err</span>`
+  ).join(' &nbsp;·&nbsp; ');
+}
+
+function zoneBrowserRender() {
+  const z = _zoneParsed;
+  if (!z || !z.dc2Streams || !romData) { showToast('Parse a zone first', true); return; }
+
+  const LOOKUP_BASE = 0x18000; // _DATA_18000_, bank 6: rom = z80 + $10000
+  const NT_BASE = 0x3800;
+  const COLS = 12, ROWS = 22;
+
+  // Build state: INIT STEPS (CRAM + any VRAM loaders from steps) + zone 8FB
+  const state = simBuildBaseState();
+  const log8fb = simRunLoader8FB(romData, z.p2RomOff, state);
+
+  // Build name table from DC2 streams + _DATA_18000_ lookup
+  // Each DC2 stream (pair P = 0-5) → 11 tile indices
+  // Each tile index → 8 bytes in _DATA_18000_:
+  //   bytes 0-3 = 2 NT words for even screen column (pair*2)
+  //   bytes 4-7 = 2 NT words for odd screen column  (pair*2+1)
+  // The 2 NT words map to 2 consecutive screen rows (row*2, row*2+1)
+  z.dc2Streams.forEach((s, pair) => {
+    if (!s) return;
+    const evenCol = pair * 2;
+    const oddCol  = pair * 2 + 1;
+    const rowCount = Math.min(s.data.length, 11);
+    for (let row = 0; row < rowCount; row++) {
+      const tileIdx  = s.data[row];
+      const lookupOff = LOOKUP_BASE + tileIdx * 8;
+      if (lookupOff + 8 > romData.length) continue;
+
+      const ew0 = romData[lookupOff]     | (romData[lookupOff + 1] << 8);
+      const ew1 = romData[lookupOff + 2] | (romData[lookupOff + 3] << 8);
+      const ow0 = romData[lookupOff + 4] | (romData[lookupOff + 5] << 8);
+      const ow1 = romData[lookupOff + 6] | (romData[lookupOff + 7] << 8);
+
+      const ntRowA = row * 2, ntRowB = row * 2 + 1;
+      // even column
+      let addr = NT_BASE + ntRowA * 64 + evenCol * 2;
+      if (addr + 1 < state.vram.length) { state.vram[addr] = ew0 & 0xFF; state.vram[addr+1] = (ew0>>8)&0xFF; }
+      addr = NT_BASE + ntRowB * 64 + evenCol * 2;
+      if (addr + 1 < state.vram.length) { state.vram[addr] = ew1 & 0xFF; state.vram[addr+1] = (ew1>>8)&0xFF; }
+      // odd column
+      addr = NT_BASE + ntRowA * 64 + oddCol * 2;
+      if (addr + 1 < state.vram.length) { state.vram[addr] = ow0 & 0xFF; state.vram[addr+1] = (ow0>>8)&0xFF; }
+      addr = NT_BASE + ntRowB * 64 + oddCol * 2;
+      if (addr + 1 < state.vram.length) { state.vram[addr] = ow1 & 0xFF; state.vram[addr+1] = (ow1>>8)&0xFF; }
+    }
+  });
+
+  const canvas = document.getElementById('zone-render-canvas');
+  renderSMSState(state, canvas, 2, { cols: COLS, rows: ROWS, ntBase: NT_BASE });
+  canvas.style.display = 'block';
+
+  const usedSlots = new Set();
+  for (let i = 0; i < COLS * ROWS; i++) {
+    const lo = state.vram[NT_BASE + i*2], hi = state.vram[NT_BASE + i*2 + 1];
+    usedSlots.add(lo | ((hi & 1) << 8));
+  }
+  document.getElementById('zone-render-info').textContent =
+    `8FB: ${log8fb.length} entries loaded · VRAM tile slots used: ${usedSlots.size} unique · render ${COLS}×${ROWS}`;
 }

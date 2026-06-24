@@ -13,13 +13,71 @@ function updateMergeUI() {
   const n = _mergeList.length;
   const inList = _labId && _mergeList.includes(_labId);
   const addBtn = document.getElementById('btn-lab-add-merge');
-  addBtn.textContent = inList ? '✓ ADDED' : '+ ADD';
-  addBtn.className   = 'btn small' + (inList ? ' success' : '');
-  document.getElementById('btn-lab-do-merge').textContent = `MERGE (${n})`;
-  document.getElementById('btn-lab-do-merge').disabled = n < 2;
+  if(addBtn){
+    addBtn.textContent = inList ? '✓ ADDED' : '+ ADD';
+    addBtn.className   = 'btn small' + (inList ? ' success' : '');
+  }
+  const labMergeBtn=document.getElementById('btn-lab-do-merge');
+  if(labMergeBtn){
+    labMergeBtn.textContent = `MERGE (${n})`;
+    labMergeBtn.disabled = n < 2;
+  }
+  const mapMergeBtn=document.getElementById('btn-map-do-merge');
+  if(mapMergeBtn){
+    mapMergeBtn.textContent = `MERGE (${n})`;
+    mapMergeBtn.disabled = n < 2;
+  }
   document.querySelectorAll('#regions-tbody tr').forEach(tr => {
     tr.classList.toggle('row-queued', _mergeList.includes(tr.dataset.id));
   });
+  document.querySelectorAll('#regions-tbody .merge-check').forEach(chk => {
+    chk.checked = _mergeList.includes(chk.dataset.id);
+  });
+}
+
+function toggleMergeRegion(id, force){
+  if(!id)return;
+  const idx=_mergeList.indexOf(id);
+  const shouldAdd=typeof force==='boolean' ? force : idx===-1;
+  if(shouldAdd){
+    if(idx===-1)_mergeList.push(id);
+  } else if(idx!==-1){
+    _mergeList.splice(idx,1);
+  }
+  updateMergeUI();
+}
+
+function clearMergeList(){
+  _mergeList=[];
+  updateMergeUI();
+}
+
+function performMergeQueuedRegions(){
+  if(_mergeList.length<2){showToast('Add at least 2 regions to merge',true);return;}
+  const regions=_mergeList.map(id=>mapData.regions.find(r=>r.id===id)).filter(Boolean);
+  if(regions.length<2){showToast('Some queued regions were not found',true);return;}
+
+  const minOffset=Math.min(...regions.map(r=>parseHex(r.offset)??0));
+  const maxEnd   =Math.max(...regions.map(r=>(parseHex(r.offset)??0)+(r.size??0)));
+  const mergeIds =new Set(_mergeList);
+
+  mapData.regions=mapData.regions.filter(r=>!mergeIds.has(r.id));
+
+  const merged={
+    id:genId(),
+    offset:hexStr(minOffset),
+    size:maxEnd-minOffset,
+    type:'unknown',
+    name:'',
+    notes:`Merged: ${regions.map(r=>r.name||r.offset).join(', ')}`,
+  };
+  mapData.regions.push(merged);
+  mapData.regions.sort((a,b)=>(parseHex(a.offset)??0)-(parseHex(b.offset)??0));
+
+  _mergeList=[];
+  refreshMapUI();
+  openLaboratory(merged.id);
+  showToast(`${regions.length} regions merged → ${merged.size.toLocaleString()} bytes`);
 }
 
 function openLaboratory(id){
@@ -778,7 +836,7 @@ function labApplyDiscoveryCandidate(candidate) {
       ...(region.params.screenProg || {}),
       ...(candidate.config || {}),
     };
-  } else if (candidate.type === 'vram_loader' || candidate.type === 'vram_loader_8fb' || candidate.type === 'vram_loader_998') {
+  } else if (candidate.type === 'vram_loader_8fb' || candidate.type === 'vram_loader_998') {
     region.params = region.params || {};
     region.params = {
       ...region.params,
@@ -1077,7 +1135,7 @@ function labRenderTypePreview(type, bytes, baseOffset) {
   if (type === 'screen_prog') {
     const title = document.createElement('div');
     title.className = 'lab-section-title';
-    title.textContent = `SCREEN BYTECODE — ${bytes.length} bytes @ ${hexStr(baseOffset)}`;
+    title.textContent = `SINGLE SCREEN MAP — ${bytes.length} bytes @ ${hexStr(baseOffset)}`;
     el.appendChild(title);
 
     const ctrlRow = document.createElement('div');
@@ -1473,6 +1531,46 @@ function labRenderTypePreview(type, bytes, baseOffset) {
       }</div>`;
     el.appendChild(metaBox);
 
+    // — CLASSIFY ALL TARGETS —
+    const classifyRow = document.createElement('div');
+    classifyRow.style.cssText = 'display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap;';
+    const classifyLbl = document.createElement('span');
+    classifyLbl.style.cssText = 'font-size:10px;color:var(--dim);letter-spacing:1px;white-space:nowrap';
+    classifyLbl.textContent = 'CLASSIFY ALL TARGETS AS:';
+    const classifySel = document.createElement('select');
+    classifySel.className = 'region-input';
+    classifySel.style.cssText = 'font-size:11px;padding:2px 4px;flex:1;min-width:130px;';
+    classifySel.innerHTML = '<option value="">— pick type —</option>';
+    for (const [typeKey, meta] of Object.entries(TYPE_META)) {
+      const o = document.createElement('option');
+      o.value = typeKey;
+      o.textContent = meta.label;
+      o.style.color = meta.color;
+      classifySel.appendChild(o);
+    }
+    const classifyBtn = document.createElement('button');
+    classifyBtn.className = 'btn small';
+    classifyBtn.textContent = 'CLASSIFY ALL';
+    classifyBtn.style.cssText = 'white-space:nowrap';
+    classifyBtn.addEventListener('click', () => {
+      const chosenType = classifySel.value;
+      if (!chosenType) { showToast('Pick a type first', true); return; }
+      const validTargets = decoded.entries.filter(e => e.romTarget >= 0);
+      let hit = 0, miss = 0;
+      validTargets.forEach(entry => {
+        const r = findRegionContainingOffset(entry.romTarget);
+        if (r) { r.type = chosenType; hit++; }
+        else miss++;
+      });
+      if (hit) { refreshMapUI(); triggerAutoSave(); }
+      const meta = TYPE_META[chosenType];
+      showToast(`Classified ${hit} region${hit !== 1 ? 's' : ''} as ${meta?.label || chosenType}${miss ? ` · ${miss} target${miss !== 1 ? 's' : ''} had no region` : ''}`);
+    });
+    classifyRow.appendChild(classifyLbl);
+    classifyRow.appendChild(classifySel);
+    classifyRow.appendChild(classifyBtn);
+    el.appendChild(classifyRow);
+
     const wrap = document.createElement('div');
     wrap.className = 'type-preview-box';
     let html = `<table style="width:100%;border-collapse:collapse;font-size:10px">
@@ -1511,7 +1609,112 @@ function labRenderTypePreview(type, bytes, baseOffset) {
     return;
   }
 
-  if (type === 'vram_loader' || type === 'vram_loader_8fb' || type === 'vram_loader_998') {
+  if (type === 'scroll_map') {
+    const title = document.createElement('div');
+    title.className = 'lab-section-title';
+    title.textContent = `SCROLL MAP — ${bytes.length} bytes @ ${hexStr(baseOffset)}`;
+    el.appendChild(title);
+
+    // Decompress using _LABEL_DC2_ format
+    function decompressScrollMap(src) {
+      const out = [];
+      let i = 0;
+      while (i < src.length) {
+        const b = src[i++];
+        if (b === 0xFF) {
+          if (i >= src.length || src[i] === 0xFF) { i++; break; } // FF FF = end
+          const count = src[i++];
+          const val   = src[i++];
+          for (let k = 0; k < count; k++) out.push(val);
+        } else if (b >= 0xE3) {
+          const count = b - 0xE0;
+          const val   = src[i++];
+          for (let k = 0; k < count; k++) out.push(val);
+        } else {
+          out.push(b);
+        }
+      }
+      return new Uint8Array(out);
+    }
+
+    const decompressed = decompressScrollMap(bytes);
+    const COLS = 12, ROWS = 11, STRIDE = 0x60;
+    const expectedBytes = ROWS * STRIDE; // 11 * 96 = 1056
+
+    const info = document.createElement('div');
+    info.className = 'preview-info';
+    info.innerHTML =
+      `Compressed: <b>${bytes.length}</b> bytes · ` +
+      `Decompressed: <b>${decompressed.length}</b> bytes · ` +
+      `Ratio: <b>${(bytes.length / Math.max(1,decompressed.length) * 100).toFixed(1)}%</b> · ` +
+      `Expected: <b>${expectedBytes}</b> B (${COLS}col × ${ROWS}row × $60 stride)`;
+    el.appendChild(info);
+
+    if (decompressed.length === 0) {
+      const err = document.createElement('div');
+      err.style.cssText = 'color:var(--red);padding:8px;font-size:11px';
+      err.textContent = 'Decompression produced no output — check region boundaries.';
+      el.appendChild(err);
+      return;
+    }
+
+    // Build a visual grid: layout the buffer as ROWS × COLS
+    // Buffer layout: col 0 at offset 0, col 1 at offset $10, ..., col 11 at offset $B0
+    // Row stride = $60. Each column has 11 tiles at [colBase + row*$60]
+    const wrap = document.createElement('div');
+    wrap.className = 'type-preview-box';
+    wrap.style.overflowX = 'auto';
+
+    const canvas = document.createElement('canvas');
+    const CELL = 14, PAD = 1;
+    canvas.width  = COLS * (CELL + PAD) + PAD;
+    canvas.height = ROWS * (CELL + PAD) + PAD;
+    canvas.style.cssText = 'display:block;image-rendering:pixelated;margin-bottom:6px';
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#111';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    for (let row = 0; row < ROWS; row++) {
+      for (let col = 0; col < COLS; col++) {
+        const bufOff = col * 0x10 + row * 0x60;
+        const tileIdx = bufOff < decompressed.length ? decompressed[bufOff] : 0;
+        // Color: hue derived from tile index for visual differentiation
+        const hue = (tileIdx * 137) % 360;
+        const sat = tileIdx === 0 ? 0 : 70;
+        const lit  = tileIdx === 0 ? 15 : 45;
+        ctx.fillStyle = `hsl(${hue},${sat}%,${lit}%)`;
+        const x = PAD + col * (CELL + PAD);
+        const y = PAD + row * (CELL + PAD);
+        ctx.fillRect(x, y, CELL, CELL);
+        // Draw tile index number if cell is large enough
+        ctx.fillStyle = '#fff';
+        ctx.font = '7px monospace';
+        ctx.fillText(tileIdx.toString(16).toUpperCase().padStart(2,'0'), x+1, y+9);
+      }
+    }
+    wrap.appendChild(canvas);
+
+    // Raw hex dump of decompressed buffer
+    const dumpPre = document.createElement('pre');
+    dumpPre.style.cssText = 'font-size:9px;color:var(--dim);margin:0;max-height:120px;overflow-y:auto;';
+    const lines = [];
+    for (let row = 0; row < ROWS; row++) {
+      const cells = [];
+      for (let col = 0; col < COLS; col++) {
+        const bufOff = col * 0x10 + row * 0x60;
+        cells.push(bufOff < decompressed.length
+          ? decompressed[bufOff].toString(16).toUpperCase().padStart(2,'0')
+          : '--');
+      }
+      lines.push(`Row ${row.toString().padStart(2)}: ${cells.join(' ')}`);
+    }
+    dumpPre.textContent = lines.join('\n');
+    wrap.appendChild(dumpPre);
+    el.appendChild(wrap);
+    return;
+  }
+
+  if (type === 'vram_loader_8fb' || type === 'vram_loader_998') {
     const title = document.createElement('div');
     title.className = 'lab-section-title';
     title.textContent = `VRAM LOADER — ${bytes.length} bytes @ ${hexStr(baseOffset)}`;
@@ -2285,6 +2488,370 @@ function labRenderTypePreview(type, bytes, baseOffset) {
     renderMs();
     return;
   }
+
+  if (type === 'music') {
+    labRenderMusicPreview(bytes, baseOffset);
+    return;
+  }
+}
+
+// ─── MUSIC / SFX PLAYER ───────────────────────────────────────────────────────
+// ROM constants (bank 3, z80 → ROM: z80_addr + 0x4000)
+const MUSIC_SONG_TABLE_OFF = 0xD139;
+const MUSIC_SONG_COUNT     = 62;
+
+let _musicPlayerInstance = null;
+
+// Opcode arg counts (best-effort static analysis)
+const MUSIC_OPCODE_ARGS = {
+  0xF0:1, 0xF1:2, 0xF2:2, 0xF3:1, 0xF4:1,
+  0xF5:1, 0xF6:1, 0xF7:0, 0xF8:1, 0xF9:0,
+  0xFA:2, 0xFB:0, 0xFC:0, 0xFD:0, 0xFE:0, 0xFF:0
+};
+
+const NOTE_NAMES = ['C','C#','D','Eb','E','F','F#','G','Ab','A','Bb','B'];
+
+// Encode: upper nibble = octave (0-3), lower nibble = note (0-B=pitch, C=rest, D-F=special)
+// MIDI = octave*12 + note + 48  (so oct0 note0 = C3, oct2 note0 = C5)
+function musicNoteHz(encoded) {
+  const oct  = (encoded >> 4) & 0x3;
+  const note = encoded & 0x0F;
+  if (note >= 0xC) return 0; // rest or special
+  const midi = oct * 12 + note + 48;
+  return 440 * Math.pow(2, (midi - 69) / 12);
+}
+
+function musicNoteLabel(encoded) {
+  const oct  = (encoded >> 4) & 0x3;
+  const note = encoded & 0x0F;
+  if (note >= 0xC) return '—';
+  return NOTE_NAMES[note] + (oct + 3);
+}
+
+// Is z80 address pointing to ROM via bank 3 slot2 mapping?
+function musicIsRomPtr(z80) { return z80 >= 0x8000 && z80 < 0xC000; }
+function musicZ80toRom(z80) { return z80 + 0x4000; }
+
+function musicParseSongTable(rom) {
+  const songs = [];
+  for (let i = 0; i < MUSIC_SONG_COUNT; i++) {
+    const off = MUSIC_SONG_TABLE_OFF + i * 2;
+    if (off + 1 >= rom.length) break;
+    const z80 = rom[off] | (rom[off+1] << 8);
+    const romOff = musicIsRomPtr(z80) ? musicZ80toRom(z80) : null;
+    songs.push({ id: i, z80, romOff });
+  }
+  return songs;
+}
+
+// Parse 4-byte-per-channel header: [ch_id][priority][ptr_lo][ptr_hi] until byte >= $F0
+function musicParseHeader(rom, songRomOff) {
+  const channels = [];
+  let pos = songRomOff;
+  while (pos + 3 < rom.length && pos < songRomOff + 64) {
+    const b = rom[pos];
+    if (b >= 0xF0) { pos++; break; } // $FF or any opcode = end of header
+    const chId   = b;
+    const z80ptr = rom[pos+2] | (rom[pos+3] << 8);
+    const romPtr = musicIsRomPtr(z80ptr) ? musicZ80toRom(z80ptr) : null;
+    channels.push({ id: chId, z80ptr, romPtr });
+    pos += 4;
+  }
+  return { channels, afterHeader: pos };
+}
+
+function labRenderMusicPreview(_bytes, baseOffset) {
+  const el = document.getElementById('lab-type-preview');
+
+  // Title
+  const title = document.createElement('div');
+  title.className = 'lab-section-title';
+  title.textContent = 'MUSIC / SFX PLAYER';
+  el.appendChild(title);
+
+  if (!romData) {
+    const warn = document.createElement('div');
+    warn.className = 'type-preview-box';
+    warn.innerHTML = '<div class="preview-warn">⚠ No ROM loaded</div>';
+    el.appendChild(warn);
+    return;
+  }
+
+  const box = document.createElement('div');
+  box.className = 'type-preview-box';
+  box.style.cssText = 'padding:10px;display:flex;flex-direction:column;gap:8px;';
+
+  // ── Song selector ──
+  const songs = musicParseSongTable(romData);
+  let defaultSong = 0;
+  for (const s of songs) {
+    if (s.romOff !== null && Math.abs(s.romOff - baseOffset) < 16) { defaultSong = s.id; break; }
+  }
+
+  const topRow = document.createElement('div');
+  topRow.style.cssText = 'display:flex;gap:8px;align-items:center;flex-wrap:wrap;';
+
+  const songLbl = document.createElement('label');
+  songLbl.style.cssText = 'font-size:9px;color:var(--dim);letter-spacing:2px;';
+  songLbl.textContent = 'SONG';
+
+  const songSel = document.createElement('select');
+  songSel.style.cssText = 'font-family:var(--mono);font-size:11px;background:var(--bg2);border:1px solid var(--border2);color:var(--text);padding:2px 4px;max-width:200px;';
+  songs.forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s.id;
+    const romStr = s.romOff != null ? `$${s.romOff.toString(16).toUpperCase().padStart(5,'0')}` : 'RAM';
+    opt.textContent = `#${String(s.id).padStart(2,'0')}  ${romStr}`;
+    songSel.appendChild(opt);
+  });
+  songSel.value = defaultSong;
+
+  const playBtn = document.createElement('button');
+  playBtn.textContent = '▶ PLAY';
+  playBtn.style.cssText = 'font-family:var(--mono);font-size:11px;padding:3px 10px;background:transparent;border:1px solid #00cc44;color:#00cc44;cursor:pointer;letter-spacing:1px;';
+
+  const stopBtn = document.createElement('button');
+  stopBtn.textContent = '■ STOP';
+  stopBtn.style.cssText = 'font-family:var(--mono);font-size:11px;padding:3px 10px;background:transparent;border:1px solid var(--border2);color:var(--dim);cursor:pointer;letter-spacing:1px;';
+
+  const statusEl = document.createElement('span');
+  statusEl.style.cssText = 'font-size:10px;color:var(--dim);letter-spacing:1px;min-width:80px;';
+  statusEl.textContent = 'STOPPED';
+
+  topRow.appendChild(songLbl);
+  topRow.appendChild(songSel);
+  topRow.appendChild(playBtn);
+  topRow.appendChild(stopBtn);
+  topRow.appendChild(statusEl);
+  box.appendChild(topRow);
+
+  // ── Channel display (4 boxes) ──
+  const chanRow = document.createElement('div');
+  chanRow.style.cssText = 'display:flex;gap:6px;';
+  const CHAN_COLORS = ['#4aff88','#4a88ff','#ff884a','#ff4a88'];
+  const chanEls = [0,1,2,3].map(i => {
+    const d = document.createElement('div');
+    d.style.cssText = `flex:1;background:var(--bg2);border:1px solid var(--border2);padding:3px;font-size:9px;font-family:var(--mono);text-align:center;`;
+    d.innerHTML = `<div style="color:var(--dim);letter-spacing:1px;font-size:8px">CH${i}</div>`
+                + `<div class="ch-note" style="color:#444;font-size:12px;margin-top:1px;">—</div>`;
+    chanRow.appendChild(d);
+    return d;
+  });
+  box.appendChild(chanRow);
+
+  // ── Stream preview (color-coded hex) ──
+  const streamLbl = document.createElement('div');
+  streamLbl.style.cssText = 'font-size:9px;color:var(--dim);letter-spacing:2px;';
+  streamLbl.textContent = 'STREAM';
+  box.appendChild(streamLbl);
+
+  const streamBox = document.createElement('div');
+  streamBox.style.cssText = 'font-family:var(--mono);font-size:10px;line-height:1.7;word-break:break-all;max-height:110px;overflow-y:auto;background:#080810;padding:5px 6px;border:1px solid var(--border2);';
+  box.appendChild(streamBox);
+
+  const legendEl = document.createElement('div');
+  legendEl.style.cssText = 'font-size:9px;color:var(--dim);display:flex;gap:10px;flex-wrap:wrap;';
+  legendEl.innerHTML = '<span><b style="color:#4aff88">■</b> note</span>'
+    + '<span><b style="color:#ff884a">■</b> note+high</span>'
+    + '<span><b style="color:#ffcc44">■</b> opcode</span>'
+    + '<span><b style="color:#555">■</b> end</span>';
+  box.appendChild(legendEl);
+
+  el.appendChild(box);
+
+  // ── Stream renderer ──
+  function renderStream(songObj) {
+    streamBox.innerHTML = '';
+    if (!songObj || songObj.romOff == null) {
+      streamBox.textContent = '— RAM-based song, no ROM stream —';
+      return;
+    }
+    const { channels, afterHeader } = musicParseHeader(romData, songObj.romOff);
+    let html = '';
+
+    if (channels.length) {
+      // show each channel's ptr
+      channels.forEach(ch => {
+        const ptr = ch.romPtr != null ? `$${ch.romPtr.toString(16).toUpperCase().padStart(5,'0')}` : `z80:$${ch.z80ptr.toString(16).toUpperCase().padStart(4,'0')}`;
+        html += `<span style="color:#666;font-size:9px">CH${ch.id}→${ptr} </span>`;
+      });
+      html += '<br>';
+    }
+
+    // Dump first channel's stream (or afterHeader bytes)
+    const startOff = (channels.length && channels[0].romPtr != null) ? channels[0].romPtr : afterHeader;
+    const maxBytes = 300;
+    for (let i = 0; i < maxBytes && startOff + i < romData.length; i++) {
+      const b = romData[startOff + i];
+      let color;
+      if (b === 0xFF) { color = '#555'; }
+      else if (b >= 0xF0) { color = '#ffcc44'; }
+      else if (b >= 0x80) { color = '#ff884a'; }
+      else { color = '#4aff88'; }
+      const enc = (b >= 0x80 && b < 0xF0) ? (b & 0x3F) : b;
+      const lbl = musicNoteLabel(enc);
+      html += `<span style="color:${color}" title="${lbl} ($${b.toString(16).toUpperCase()})">${b.toString(16).toUpperCase().padStart(2,'0')} </span>`;
+      if (b === 0xFF) { html += '<br>'; if (i > 20) break; }
+    }
+    streamBox.innerHTML = html;
+  }
+
+  renderStream(songs[defaultSong]);
+  songSel.addEventListener('change', () => renderStream(songs[parseInt(songSel.value)]));
+
+  // ── Play / Stop ──
+  function stopPlayer() {
+    if (_musicPlayerInstance) { _musicPlayerInstance.stop(); _musicPlayerInstance = null; }
+    statusEl.textContent = 'STOPPED';
+    chanEls.forEach(ce => {
+      ce.querySelector('.ch-note').textContent = '—';
+      ce.querySelector('.ch-note').style.color = '#444';
+    });
+    playBtn.style.color = '#00cc44';
+  }
+
+  playBtn.addEventListener('click', () => {
+    stopPlayer();
+    const s = songs[parseInt(songSel.value)];
+    if (!s || s.romOff == null) { statusEl.textContent = 'NO ROM DATA'; return; }
+    _musicPlayerInstance = musicCreatePlayer(romData, s, chanEls, CHAN_COLORS, statusEl);
+    _musicPlayerInstance.play();
+  });
+
+  stopBtn.addEventListener('click', stopPlayer);
+}
+
+function musicCreatePlayer(rom, song, chanEls, chanColors, statusEl) {
+  const AudioCtx = window.AudioContext || /** @type {any} */(window).webkitAudioContext;
+  if (!AudioCtx) { statusEl.textContent = 'NO AUDIO'; return { play(){}, stop(){} }; }
+  const ctx = new AudioCtx();
+
+  // Parse channels
+  const { channels } = musicParseHeader(rom, song.romOff);
+  const MAX_CH = 4;
+
+  // Build channel state
+  const chState = [];
+  if (channels.length) {
+    channels.slice(0, MAX_CH).forEach(ch => {
+      if (ch.romPtr != null) {
+        chState.push({ ptr: ch.romPtr, pos: ch.romPtr, dur: 0, loopPos: null, active: true });
+      }
+    });
+  }
+  // Fallback: single channel starting after header
+  if (!chState.length) {
+    const { afterHeader } = musicParseHeader(rom, song.romOff);
+    chState.push({ ptr: afterHeader, pos: afterHeader, dur: 0, loopPos: null, active: true });
+  }
+
+  // Set up oscillators (square wave = PSG-style)
+  const oscs = chState.map((_) => {
+    const osc  = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'square';
+    osc.frequency.value = 1;
+    gain.gain.value = 0;
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    return { osc, gain };
+  });
+
+  const TICK_MS   = 1000 / 60;  // 60fps
+  const VOL       = 0.10;
+  let   tickTimer = null;
+  let   ticks     = 0;
+
+  function readNextNote(ch) {
+    // Returns { hz, label } or null for rest, advances ch.pos
+    const maxIter = 256;
+    for (let iter = 0; iter < maxIter; iter++) {
+      if (ch.pos >= rom.length) { ch.active = false; return null; }
+      const b = rom[ch.pos];
+
+      // End / loop
+      if (b === 0xFF) { ch.pos = ch.ptr; continue; }
+
+      // Control opcodes $F0-$FE
+      if (b >= 0xF0) {
+        const nArgs = MUSIC_OPCODE_ARGS[b] ?? 0;
+        if (b === 0xF0 && nArgs >= 1) {
+          const arg = rom[ch.pos + 1] ?? 6;
+          ch.dur = Math.max(1, arg);
+        }
+        if (b === 0xF6) ch.loopPos = ch.pos; // mark loop start
+        if (b === 0xF9 && ch.loopPos != null) { ch.pos = ch.loopPos; continue; }
+        if (b === 0xFA && nArgs >= 2) {
+          const z80jmp = rom[ch.pos+1] | (rom[ch.pos+2] << 8);
+          if (musicIsRomPtr(z80jmp)) { ch.pos = musicZ80toRom(z80jmp); continue; }
+        }
+        ch.pos += 1 + nArgs;
+        continue;
+      }
+
+      // Note byte
+      ch.pos++;
+      const encoded = (b >= 0x80) ? (b & 0x3F) : b;
+      const hz      = musicNoteHz(encoded);
+      const label   = musicNoteLabel(encoded);
+      return { hz, label };
+    }
+    return null;
+  }
+
+  function tick() {
+    ticks++;
+    chState.forEach((ch, ci) => {
+      if (!ch.active) return;
+      if (ch.dur > 0) { ch.dur--; return; }
+
+      const note = readNextNote(ch);
+      const noteDur = ch.dur > 0 ? ch.dur : 6; // current duration (set by $F0)
+
+      const oscNode  = oscs[ci];
+      const gainNode = oscNode?.gain;
+      if (!gainNode) return;
+
+      if (note && note.hz > 0) {
+        oscNode.osc.frequency.setValueAtTime(note.hz, ctx.currentTime);
+        gainNode.gain.cancelScheduledValues(ctx.currentTime);
+        gainNode.gain.setValueAtTime(VOL, ctx.currentTime);
+        gainNode.gain.setValueAtTime(VOL * 0.6, ctx.currentTime + (noteDur * TICK_MS * 0.7) / 1000);
+        gainNode.gain.setValueAtTime(0, ctx.currentTime + (noteDur * TICK_MS * 0.95) / 1000);
+        if (ci < chanEls.length) {
+          const el = chanEls[ci].querySelector('.ch-note');
+          if (el) { el.textContent = note.label; el.style.color = chanColors[ci]; }
+        }
+      } else {
+        gainNode.gain.cancelScheduledValues(ctx.currentTime);
+        gainNode.gain.setValueAtTime(0, ctx.currentTime);
+        if (ci < chanEls.length) {
+          const el = chanEls[ci].querySelector('.ch-note');
+          if (el) { el.textContent = '·'; el.style.color = '#444'; }
+        }
+      }
+
+      ch.dur = noteDur;
+    });
+    statusEl.textContent = `♪ TICK ${ticks}`;
+  }
+
+  return {
+    play() {
+      statusEl.textContent = '♪ PLAYING';
+      tickTimer = setInterval(tick, TICK_MS);
+    },
+    stop() {
+      if (tickTimer) clearInterval(tickTimer);
+      tickTimer = null;
+      oscs.forEach(o => {
+        o.gain.gain.cancelScheduledValues(ctx.currentTime);
+        o.gain.gain.setValueAtTime(0, ctx.currentTime);
+      });
+      ctx.close().catch(()=>{});
+    }
+  };
 }
 
 function labShowSidePanels(type){
@@ -2731,7 +3298,7 @@ function labSuggestAutoType(region){
   const bytes=romData.subarray(off,Math.min(off+(region.size??0),romData.length));
   const candidates=labBuildDiscoveryCandidates(region, bytes, off);
   const best=candidates[0];
-  if(best&&best.score>=80&&['pointer_table','screen_prog','vram_loader_8fb','vram_loader_998'].includes(best.type)){
+  if(best&&best.score>=80&&['pointer_table','screen_prog','scroll_map','vram_loader_8fb','vram_loader_998'].includes(best.type)){
     return {type:best.type, reason:`${best.type} (${best.score})`};
   }
   return null;
@@ -2905,44 +3472,15 @@ document.getElementById('btn-lab-to-table').addEventListener('click',()=>{
 });
 
 document.getElementById('btn-lab-add-merge').addEventListener('click',()=>{
-  if(!_labId)return;
-  const idx=_mergeList.indexOf(_labId);
-  if(idx===-1) _mergeList.push(_labId);
-  else         _mergeList.splice(idx,1);
-  updateMergeUI();
+  toggleMergeRegion(_labId);
 });
 
 document.getElementById('btn-lab-empty-merge').addEventListener('click',()=>{
-  _mergeList=[];
-  updateMergeUI();
+  clearMergeList();
 });
 
 document.getElementById('btn-lab-do-merge').addEventListener('click',()=>{
-  if(_mergeList.length<2){showToast('Add at least 2 regions to merge',true);return;}
-  const regions=_mergeList.map(id=>mapData.regions.find(r=>r.id===id)).filter(Boolean);
-  if(regions.length<2){showToast('Some queued regions were not found',true);return;}
-
-  const minOffset=Math.min(...regions.map(r=>parseHex(r.offset)??0));
-  const maxEnd   =Math.max(...regions.map(r=>(parseHex(r.offset)??0)+(r.size??0)));
-  const mergeIds =new Set(_mergeList);
-
-  mapData.regions=mapData.regions.filter(r=>!mergeIds.has(r.id));
-
-  const merged={
-    id:genId(),
-    offset:hexStr(minOffset),
-    size:maxEnd-minOffset,
-    type:'unknown',
-    name:'',
-    notes:`Merged: ${regions.map(r=>r.name||r.offset).join(', ')}`,
-  };
-  mapData.regions.push(merged);
-  mapData.regions.sort((a,b)=>(parseHex(a.offset)??0)-(parseHex(b.offset)??0));
-
-  _mergeList=[];
-  refreshMapUI();
-  openLaboratory(merged.id);
-  showToast(`${regions.length} regions merged → ${merged.size.toLocaleString()} bytes`);
+  performMergeQueuedRegions();
 });
 
 document.getElementById('btn-lab-delete').addEventListener('click',()=>{

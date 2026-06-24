@@ -148,6 +148,8 @@
       <div style="margin-bottom:6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
         <button class="btn primary small" id="btn-toggle-add">+ ADD REGION</button>
         <button class="btn small" id="btn-fill-gaps" style="display:none">⬛ FILL GAPS</button>
+        <button class="btn small" id="btn-map-empty-merge">EMPTY MERGE</button>
+        <button class="btn small primary" id="btn-map-do-merge" disabled>MERGE (0)</button>
         <span style="font-size:10px;color:var(--dim)" id="region-count-label"></span>
       </div>
       <div style="margin-bottom:6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
@@ -192,6 +194,8 @@
               <option value="tile_map">Tile Map (BG)</option>
               <option value="palette">Palette</option>
               <option value="map_screens">Map / Screens</option>
+              <option value="screen_prog">Single Screen Map</option>
+              <option value="scroll_map">Scroll Map</option>
               <option value="pointer_table">Pointer Table</option>
               <option value="code">Code</option>
               <option value="music">Music / SFX</option>
@@ -231,7 +235,7 @@
       <div id="map-table-wrap" style="overflow:auto;max-height:600px;border:1px solid var(--border);border-radius:4px">
         <table class="region-table">
           <thead style="position:sticky;top:0;z-index:2;background:var(--panel)">
-            <tr><th>Offset (abs)</th><th>Z80 Addr</th><th>Size</th><th>Type</th><th>Name</th><th>Notes</th><th>Actions</th></tr>
+            <tr><th style="width:34px;text-align:center">✓</th><th>Offset (abs)</th><th>Z80 Addr</th><th>Size</th><th>Type</th><th>Name</th><th>Notes</th><th>Actions</th></tr>
           </thead>
           <tbody id="regions-tbody"></tbody>
         </table>
@@ -525,6 +529,17 @@
           </select>
         </div>
         <div class="ctrl-group">
+          <label>Category</label>
+          <select id="comp-category" style="width:140px">
+            <option value="">— none —</option>
+            <option value="background_tile">Background tile</option>
+            <option value="sprite">Sprite</option>
+            <option value="enemy">Enemy</option>
+            <option value="ui">UI / HUD</option>
+            <option value="fx">FX</option>
+          </select>
+        </div>
+        <div class="ctrl-group">
           <label>Zoom preview</label>
           <select id="comp-zoom" style="width:80px">
             <option value="2">2×</option>
@@ -675,6 +690,49 @@
           <button class="btn small" id="btn-sim-add-nt-step" style="display:none" title="Add selected room as NAME TABLE step">+ TO STEPS</button>
         </div>
         <div id="sim-room-info" style="font-size:10px;color:var(--dim);margin-top:5px;min-height:14px;"></div>
+      </div>
+
+      <!-- ── ZONE BROWSER ──────────────────────────── -->
+      <div style="border:1px solid #2a4a2a;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(74,222,128,.02)">
+        <div style="font-size:11px;color:#4ade80;font-weight:bold;letter-spacing:1px;margin-bottom:6px">ZONE BROWSER
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">26 scroll zones · DC2 decompression · door navigation</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Descriptor (6 bytes) → Sub-record (18 bytes): 8FB ptr + 6 DC2 indices + door table.
+          Default zone 0 start: <code style="color:#4ade80">$10C96</code> (bank 4, WB3 World new game).
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
+          <span style="font-size:10px;color:var(--dim)">Descriptor offset:</span>
+          <input type="text" id="zone-desc-off" value="0x10C96" class="region-input" style="width:90px;font-size:11px">
+          <button class="btn small primary" id="btn-zone-parse">PARSE ZONE</button>
+        </div>
+        <!-- Parsed descriptor + sub-record info -->
+        <div id="zone-parsed" style="display:none;background:rgba(0,0,0,.3);border:1px solid #2a4a2a;border-radius:3px;padding:8px;margin-bottom:8px;font-family:var(--mono);font-size:11px;"></div>
+        <!-- Door table -->
+        <div id="zone-door-section" style="display:none;margin-bottom:8px;">
+          <div style="font-size:10px;color:#4ade80;font-weight:bold;letter-spacing:1px;margin-bottom:4px">DOOR TABLE</div>
+          <div id="zone-door-table"></div>
+        </div>
+        <!-- DC2 index grid -->
+        <div id="zone-dc2-section" style="display:none;margin-bottom:8px;">
+          <div style="font-size:10px;color:#4ade80;font-weight:bold;letter-spacing:1px;margin-bottom:4px">DC2 STREAMS
+            <span style="font-size:9px;font-weight:normal;color:var(--dim);margin-left:6px">6 compressed column groups → 12 screen columns</span>
+          </div>
+          <div id="zone-dc2-info" style="font-size:10px;color:var(--dim);margin-bottom:4px;font-family:var(--mono);"></div>
+          <canvas id="zone-dc2-canvas" style="image-rendering:pixelated;display:block;border:1px solid var(--border);"></canvas>
+        </div>
+        <!-- Tile render -->
+        <div id="zone-render-section" style="display:none;">
+          <div style="display:flex;gap:6px;align-items:center;margin-bottom:6px;">
+            <div style="font-size:10px;color:#4ade80;font-weight:bold;letter-spacing:1px">TILE RENDER</div>
+            <span style="font-size:9px;color:var(--dim)">(uses INIT STEPS for VRAM base + zone 8FB loader)</span>
+            <button class="btn small success" id="btn-zone-render">▶ RENDER</button>
+          </div>
+          <div style="overflow:auto;max-height:400px;background:#000;border:1px solid var(--border)">
+            <canvas id="zone-render-canvas" style="display:none;image-rendering:pixelated;display:block;"></canvas>
+          </div>
+          <div id="zone-render-info" style="font-size:10px;color:var(--dim);margin-top:4px;font-family:var(--mono);"></div>
+        </div>
       </div>
 
       <!-- ── INIT STEPS ──────────────────────────── -->

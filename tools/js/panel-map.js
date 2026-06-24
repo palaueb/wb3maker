@@ -58,12 +58,14 @@ function renderRegionsTable(){
     const meta=TYPE_META[r.type]??TYPE_META.unknown;
     const rOff=parseHex(r.offset)??0;
     const isUnknown=r.type==='unknown';
+    const isQueued=_mergeList.includes(r.id);
     const tr=document.createElement('tr');
     tr.dataset.id=r.id;
     tr.dataset.bank=bankOf(rOff);
     if(r.id===_labId)tr.classList.add('row-active');
-    if(_mergeList.includes(r.id))tr.classList.add('row-queued');
+    if(isQueued)tr.classList.add('row-queued');
     tr.innerHTML=`
+      <td class="merge-cell"><input class="merge-check" type="checkbox" data-id="${r.id}"${isQueued?' checked':''} title="Queue region for merge"></td>
       <td style="color:var(--accent);white-space:nowrap">${r.offset}</td>
       <td style="color:var(--yellow);white-space:nowrap;font-size:11px">${bankAddrStr(rOff)}</td>
       <td style="color:var(--dim);white-space:nowrap">${(r.size??0).toLocaleString()}b</td>
@@ -91,6 +93,10 @@ function renderRegionsTable(){
     sel.style.borderColor=meta.color;sel.style.color=meta.color;
     refreshMapUI();
     showToast(`Type changed to "${meta.label}"`);
+  }));
+
+  tbody.querySelectorAll('.merge-check').forEach(chk=>chk.addEventListener('change',()=>{
+    toggleMergeRegion(chk.dataset.id, chk.checked);
   }));
 
   // VIEW/LAB button
@@ -191,6 +197,8 @@ document.getElementById('map-filter').addEventListener('input',renderRegionsTabl
 document.getElementById('map-type-filter').addEventListener('change',renderRegionsTable);
 document.getElementById('chk-unknown-only').addEventListener('change',renderRegionsTable);
 populateMapTypeFilter();
+document.getElementById('btn-map-empty-merge').addEventListener('click',()=>clearMergeList());
+document.getElementById('btn-map-do-merge').addEventListener('click',()=>performMergeQueuedRegions());
 
 document.getElementById('btn-toggle-add').addEventListener('click',()=>{
   const f=document.getElementById('add-region-form');

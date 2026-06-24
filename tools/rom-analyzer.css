@@ -97,6 +97,8 @@ select{cursor:pointer;}select option{background:var(--bg3);}
 .lab-merge-sep{width:1px;height:16px;background:var(--border2);margin:0 4px;flex-shrink:0;}
 .region-table tr.row-queued td{background:rgba(255,107,53,.08);border-left:2px solid var(--accent2);}
 .region-table tr.row-active.row-queued td{background:rgba(255,107,53,.14);border-left:2px solid var(--accent2);}
+.merge-cell{width:34px;text-align:center;}
+.merge-check{accent-color:var(--accent2);cursor:pointer;transform:translateY(1px);}
 .type-badge{padding:1px 7px;font-size:10px;letter-spacing:1px;border:1px solid;display:inline-block;}
 .src-badge{font-size:9px;color:var(--purple);border:1px solid var(--purple);padding:0 4px;margin-left:4px;}
 

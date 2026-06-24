@@ -229,7 +229,9 @@ function ramRenderTable() {
     const meta = RAM_TYPES[e.type] || RAM_TYPES.other;
     return `<tr data-id="${e.id}">
       <td class="ram-addr">${ramEsc(e.address)}</td>
-      <td style="color:var(--dim);text-align:right;padding-right:16px">${e.size}</td>
+      <td contenteditable="true" class="ram-editable ram-size-cell"
+          data-id="${e.id}" data-field="size"
+          style="color:var(--dim);text-align:right;padding-right:16px;min-width:36px">${e.size}</td>
       <td>
         <select class="type-select ram-type-sel" data-id="${e.id}"
           style="border-color:${meta.color};color:${meta.color}">
@@ -267,8 +269,38 @@ function ramRenderTable() {
     });
   });
 
+  // Inline edit size — with overlap eviction
+  tbody.querySelectorAll('.ram-size-cell').forEach(cell => {
+    cell.addEventListener('blur', () => {
+      const entry = mapData.ram.find(e => e.id === cell.dataset.id);
+      if (!entry) return;
+      const newSize = parseInt(cell.textContent.trim(), 10);
+      if (!newSize || newSize < 1) { cell.textContent = entry.size; return; }
+      if (newSize === entry.size) return;
+      const base = parseInt(entry.address.replace('$',''), 16);
+      const end  = base + newSize; // exclusive
+      // Remove any other entry whose start address falls within [base+1, end-1]
+      const evicted = mapData.ram.filter(e => {
+        if (e.id === entry.id) return false;
+        const a = parseInt(e.address.replace('$',''), 16);
+        return a > base && a < end;
+      });
+      entry.size = newSize;
+      if (evicted.length) {
+        const ids = new Set(evicted.map(e => e.id));
+        mapData.ram = mapData.ram.filter(e => !ids.has(e.id));
+        showToast(`Size → ${newSize} · removed ${evicted.length} overlapping entr${evicted.length===1?'y':'ies'}`);
+      }
+      triggerAutoSave();
+      ramRenderTable();
+    });
+    cell.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); cell.blur(); }
+    });
+  });
+
   // Inline edit name / notes
-  tbody.querySelectorAll('.ram-editable').forEach(cell => {
+  tbody.querySelectorAll('.ram-editable:not(.ram-size-cell)').forEach(cell => {
     cell.addEventListener('blur', () => {
       const entry = mapData.ram.find(e => e.id === cell.dataset.id);
       if (entry) {

@@ -188,8 +188,10 @@ function compRenderSavedList() {
     div.className = 'comp-saved-item';
     const dims = c.mode === 'manual' ? `${c.width}×${c.height} tiles` :
       `${c.cropW}×${c.cropH} tiles (crop)`;
+    const catColors = {background_tile:'#00d4ff',sprite:'#ff6b35',enemy:'#f87171',ui:'#ffcc00',fx:'#a855f7'};
+    const catLabel = c.category ? `<span style="color:${catColors[c.category]||'#aaa'};font-size:9px;border:1px solid currentColor;border-radius:2px;padding:0 3px;margin-left:4px">${c.category.replace('_',' ').toUpperCase()}</span>` : '';
     div.innerHTML = `
-      <div class="comp-saved-name">${c.name||'Unnamed'}</div>
+      <div class="comp-saved-name">${c.name||'Unnamed'}${catLabel}</div>
       <div class="comp-saved-dims">${dims} · ${c.mode.toUpperCase()}</div>
       <button class="btn small" data-load="${c.id}">LOAD</button>
       <button class="btn small danger" data-del="${c.id}">×</button>`;
@@ -199,6 +201,7 @@ function compRenderSavedList() {
     const c = (mapData.compositions||[]).find(x => x.id === btn.dataset.load);
     if (!c) return;
     document.getElementById('comp-name').value = c.name || '';
+    document.getElementById('comp-category').value = c.category || '';
     if (c.mode === 'manual') {
       document.getElementById('comp-w').value = c.width;
       document.getElementById('comp-h').value = c.height;
@@ -378,10 +381,11 @@ function compBuildPayload(id){
   const name=document.getElementById('comp-name').value.trim()||'Unnamed';
   const tileRegionId=document.getElementById('comp-tile-region').value;
   const palRegionId=document.getElementById('comp-palette').value;
+  const category=document.getElementById('comp-category').value;
   if(activeTab==='manual'){
-    return{id,name,mode:'manual',tileRegionId,palRegionId,width:_compW,height:_compH,cells:[..._compCells]};
+    return{id,name,category,mode:'manual',tileRegionId,palRegionId,width:_compW,height:_compH,cells:[..._compCells]};
   } else {
-    return{id,name,mode:'tilemap',tileRegionId,palRegionId,
+    return{id,name,category,mode:'tilemap',tileRegionId,palRegionId,
       tileMapRegionId:document.getElementById('comp-tilemap-region').value,
       cropX:parseInt(document.getElementById('comp-crop-x').value)||0,
       cropY:parseInt(document.getElementById('comp-crop-y').value)||0,
