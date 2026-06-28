@@ -1,3 +1,7 @@
 Emulicious/
 dissasembly/
 projects/
+node_modules/
+output/playwright/
+gearsystem/
+tmp/

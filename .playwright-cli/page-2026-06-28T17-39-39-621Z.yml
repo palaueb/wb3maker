@@ -1,0 +1,38 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - heading "Asset & Data Browsers" [level=1] [ref=e4]
+      - generic [ref=e5]: Phase 2 · structured ROM-derived data families
+    - generic [ref=e6]:
+      - link "HOME" [ref=e7] [cursor=pointer]:
+        - /url: ../index.html
+      - link "DATA MODEL" [ref=e8] [cursor=pointer]:
+        - /url: game-data-model.html
+      - link "RUNTIME" [ref=e9] [cursor=pointer]:
+        - /url: runtime-reconstruction.html
+      - link "ANALYZER" [ref=e10] [cursor=pointer]:
+        - /url: rom-analyzer.html
+      - generic [ref=e11] [cursor=pointer]: LOCAL ROM
+      - button "LOAD BROWSERS" [ref=e12] [cursor=pointer]
+  - main [ref=e13]:
+    - generic [ref=e14]:
+      - text: This area turns the Game Data Model into read-only browsers for each game data family. It shows metadata, offsets, region/RAM/catalog links and readiness status only; visual/audio previews stay ROM-local and must be computed from the user's ROM.
+      - generic [ref=e15]: No local ROM loaded for previews.
+    - generic [ref=e16]: Load the WORLD decoder registry.
+    - generic [ref=e17]: Load the WORLD region label queue.
+    - generic [ref=e18]: Load the WORLD validation workbench.
+    - generic [ref=e19]:
+      - combobox [disabled] [ref=e20]:
+        - option "ALL BROWSERS" [selected]
+      - combobox [disabled] [ref=e21]:
+        - option "ALL ASSET KINDS" [selected]
+      - combobox [disabled] [ref=e22]:
+        - option "ALL SOURCES" [selected]
+      - combobox [disabled] [ref=e23]:
+        - option "ALL DECODERS" [selected]
+      - searchbox "filter asset / region / catalog / notes" [disabled] [ref=e24]
+    - generic [ref=e25]:
+      - generic [ref=e26]: Loading WORLD asset and decoder state...
+      - complementary [ref=e27]:
+        - generic [ref=e28]: ROM-Local Preview
+        - generic [ref=e29]: Load browsers, then select an asset preview. Visual/audio decoding is temporary and stays in the browser.

@@ -1,13 +1,13 @@
 # ROM Control Findings
 
-Document viu de troballes de reverse engineering orientades exclusivament a controlar la ROM de Wonder Boy III (SMS).
+Living reverse-engineering findings document focused exclusively on controlling the Wonder Boy III (SMS) ROM.
 
-Principis:
-- només troballes útils per mapar i entendre la ROM
-- res d'editor/player/fases futures si no ajuda directament al control del binari
-- cada troballa ha d'ajudar a millorar `projects/WORLD/map.json`
+Principles:
+- only findings that help map and understand the ROM
+- no editor/player/future-phase material unless it directly helps control the binary
+- every finding must help improve `projects/WORLD/map.json`
 
-Format recomanat per a cada troballa:
+Recommended format for each finding:
 - `Finding`
 - `Why it matters`
 - `ROM regions`
@@ -18,28 +18,29 @@ Format recomanat per a cada troballa:
 
 ## 2026-03-24
 
-### `_LABEL_8FB_` és un loader base de tile patterns cap a VRAM
+### `_LABEL_8FB_` is a base tile-pattern loader into VRAM
 
 Why it matters:
-Converteix scripts compactes de dades en escriptures concretes de VRAM. Això fa que una regió `vram_loader_8fb` sigui controlable i no només “bytes opacs”.
+It converts compact data scripts into concrete VRAM writes. This makes a `vram_loader_8fb` region controllable instead of just "opaque bytes".
 
 ROM regions:
-- rutina `0x008FB` (`_LABEL_8FB_`)
-- bucle intern `0x00919`
-- helper de VDP `0x0098F`
-- scripts com `_DATA_2A55_` i `_DATA_28D6_`
+- routine `0x008FB` (`_LABEL_8FB_`)
+- inner loop `0x00919`
+- VDP helper `0x0098F`
+- scripts such as `_DATA_2A55_` and `_DATA_28D6_`
 
 Evidence:
 - [projects/WORLD/Wonder Boy III - The Dragon's Trap (World) (Digital).asm](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/Wonder%20Boy%20III%20-%20The%20Dragon's%20Trap%20(World)%20(Digital).asm#L2200)
 - [tools/js/panel-simulator.js](/media/marc/4T_EXFAT/z80/wb3/tools/js/panel-simulator.js#L12)
 
 Execution effect:
-- escriu `Port_VDPAddress` i `Port_VDPData`
-- usa `_RAM_CF82_`, `_RAM_CFF7_`, `_RAM_D0F0_`, `_RAM_D0F2_`, `_RAM_D0F3_`, `_RAM_D0EE_`
-- canvia banc temporalment via `_LABEL_1023_` / `_LABEL_1036_`
+- writes `Port_VDPAddress` and `Port_VDPData`
+- uses `_RAM_CF82_`, `_RAM_CFF7_`, `_RAM_D0F0_`, `_RAM_D0F2_`, `_RAM_D0F3_`, `_RAM_D0EE_`
+- temporarily switches banks through `_LABEL_1023_` / `_LABEL_1036_`
 
 Map impact:
-Convindria suportar a `region.analysis`:
+`region.analysis` should support:
+
 ```json
 {
   "kind": "vram_loader_script",
@@ -61,13 +62,13 @@ Convindria suportar a `region.analysis`:
 }
 ```
 
-### `_LABEL_998_` és un segon loader de tile patterns, no un `screen_prog`
+### `_LABEL_998_` is a second tile-pattern loader, not a `screen_prog`
 
 Why it matters:
-Ara mateix és fàcil confondre dades de patterns VRAM amb dades de name table. Separar aquests dos fluxos és clau per tenir cobertura estructural correcta.
+It is currently easy to confuse VRAM pattern data with name table data. Separating these two flows is critical for correct structural coverage.
 
 ROM regions:
-- rutina `0x00998`
+- routine `0x00998`
 - sublabels `0x0099B`, `0x009C3`, `0x00A14`
 - script `_DATA_2AE2_`
 
@@ -76,68 +77,68 @@ Evidence:
 - [tools/js/panel-simulator.js](/media/marc/4T_EXFAT/z80/wb3/tools/js/panel-simulator.js#L41)
 
 Execution effect:
-- escriu patterns a VRAM
-- suporta `zero-fill`
-- suporta reposicionament de VRAM sense llegir una font nova
-- no escriu CRAM
+- writes patterns to VRAM
+- supports `zero-fill`
+- supports VRAM repositioning without reading a new source
+- does not write CRAM
 
 Map impact:
-`_DATA_2AE2_` hauria d'estar etiquetat com a `vram_loader_998` o equivalent, i `region.analysis` hauria de poder guardar `supportsZeroFill` i `supportsSetVramPos`.
+`_DATA_2AE2_` should be tagged as `vram_loader_998` or equivalent, and `region.analysis` should be able to store `supportsZeroFill` and `supportsSetVramPos`.
 
-### `_LABEL_8B2_` carrega paletes a RAM shadow
+### `_LABEL_8B2_` loads palettes into shadow RAM
 
 Why it matters:
-Els canvis visuals no venen sempre d'una escriptura directa a CRAM. Hi ha una capa intermèdia de RAM que cal representar.
+Visual changes do not always come from direct CRAM writes. There is an intermediate RAM layer that must be represented.
 
 ROM regions:
-- rutina `0x008B2`
-- taula de paletes al voltant de `0x1C5B0`
+- routine `0x008B2`
+- palette table around `0x1C5B0`
 
 Evidence:
 - [projects/WORLD/Wonder Boy III - The Dragon's Trap (World) (Digital).asm](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/Wonder%20Boy%20III%20-%20The%20Dragon's%20Trap%20(World)%20(Digital).asm#L2154)
 
 Execution effect:
-- copia paletes de 16 bytes a `_RAM_CF9B_` i `_RAM_CFAB_`
-- no toca directament els ports VDP en aquesta rutina
+- copies 16-byte palettes to `_RAM_CF9B_` and `_RAM_CFAB_`
+- does not touch the VDP ports directly in this routine
 
 Map impact:
-Cal poder reflectir relacions `palette ROM -> shadow RAM -> commit visual` i mides reals de buffers RAM.
+The map must be able to reflect `palette ROM -> shadow RAM -> visual commit` relationships and the real sizes of RAM buffers.
 
-### `_LABEL_508_` i `_LABEL_4BD_` formen el nucli bootstrap + loop persistent
+### `_LABEL_508_` and `_LABEL_4BD_` form the bootstrap + persistent loop core
 
 Why it matters:
-Marquen l'eix principal `setup -> càrrega de recursos -> bucle per-frame`. És una peça clau per donar estructura al mapa.
+They mark the main axis: `setup -> resource loading -> per-frame loop`. This is a key piece for structuring the map.
 
 ROM regions:
-- `_LABEL_508_` a `0x00508`
-- `_LABEL_4BD_` a `0x004BD`
+- `_LABEL_508_` at `0x00508`
+- `_LABEL_4BD_` at `0x004BD`
 
 Evidence:
 - [projects/WORLD/Wonder Boy III - The Dragon's Trap (World) (Digital).asm](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/Wonder%20Boy%20III%20-%20The%20Dragon's%20Trap%20(World)%20(Digital).asm#L1554)
 - [projects/WORLD/Wonder Boy III - The Dragon's Trap (World) (Digital).asm](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/Wonder%20Boy%20III%20-%20The%20Dragon's%20Trap%20(World)%20(Digital).asm#L1583)
 
 Execution effect:
-- `_LABEL_508_` prepara estat i carrega scripts VRAM
-- `_LABEL_4BD_` entra en bucle persistent i consumeix estat de runtime
+- `_LABEL_508_` prepares state and loads VRAM scripts
+- `_LABEL_4BD_` enters the persistent loop and consumes runtime state
 
 Map impact:
-Aquestes regions necessiten etiquetatge funcional més fort i relacions explícites amb les dades que consumeixen.
+These regions need stronger functional tagging and explicit relationships to the data they consume.
 
 ## 2026-03-25
 
-### Cadena de càrrega de room/mapa: `room_record` → `sub-record` → loaders VRAM → `screen_prog`
+### Room/map loading chain: `room_record` -> `sub-record` -> VRAM loaders -> `screen_prog`
 
 Why it matters:
-Aquest és el punt correcte per començar abans d'analitzar l'scroll. Si s'entén bé la càrrega de room, després l'scroll només és la lògica que decideix quan saltar a un altre record i activar la mateixa maquinària.
+This is the right place to start before analyzing scrolling. If room loading is understood well, scrolling becomes the logic that decides when to jump to another record and activate the same machinery.
 
 ROM regions:
-- `_LABEL_2620_` a `0x02620`
-- `_LABEL_26F4_` a `0x026F4`
-- `_LABEL_48A9_` a `0x048A9`
-- `_LABEL_5EB_` a `0x005EB`
-- `_DATA_10C96_` a `0x10C96`
-- `_DATA_10000_` a `0x10000`
-- `_DATA_1CCC0_` a `0x1CCC0`
+- `_LABEL_2620_` at `0x02620`
+- `_LABEL_26F4_` at `0x026F4`
+- `_LABEL_48A9_` at `0x048A9`
+- `_LABEL_5EB_` at `0x005EB`
+- `_DATA_10C96_` at `0x10C96`
+- `_DATA_10000_` at `0x10000`
+- `_DATA_1CCC0_` at `0x1CCC0`
 
 Evidence:
 - [projects/WORLD/Wonder Boy III - The Dragon's Trap (World) (Digital).asm](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/Wonder%20Boy%20III%20-%20The%20Dragon's%20Trap%20(World)%20(Digital).asm#L6363)
@@ -146,32 +147,32 @@ Evidence:
 - [CLAUDE.md](/media/marc/4T_EXFAT/z80/wb3/CLAUDE.md#L414)
 
 Execution effect:
-- `_LABEL_2620_` entra amb `HL -> room_record`, inicialitza diversos paràmetres de room en RAM, llegeix el punter al sub-record via `rst $18`, crida `_LABEL_26F4_`, després crida rutines de setup addicionals i retorna.
-- `_LABEL_26F4_` consumeix el sub-record: copia 8 bytes a `_RAM_CF5E_`, llegeix el punter següent i el passa a `_LABEL_8FB_`, després processa dades addicionals amb `_LABEL_DC2_`, pot cridar `_LABEL_998_`, i acaba seleccionant paletes via `_LABEL_8B2_`.
-- `_LABEL_48A9_` és el dispatcher runtime: llegeix una entrada activa, desa punters a `_RAM_CFFA_` i `_RAM_D0DE_`, i segons `room_type` decideix si la càrrega de room va directa a `_LABEL_2620_` o queda diferida via `_RAM_C26C_`.
-- `_LABEL_5EB_` no carrega tiles: selecciona el banc 7, indexa `_DATA_1CCC0_` amb `room_id`, obté el punter al `screen_prog` i crida `_LABEL_604_`, que és qui escriu la name table.
+- `_LABEL_2620_` enters with `HL -> room_record`, initializes several room parameters in RAM, reads the sub-record pointer through `rst $18`, calls `_LABEL_26F4_`, then calls additional setup routines and returns.
+- `_LABEL_26F4_` consumes the sub-record: copies 8 bytes to `_RAM_CF5E_`, reads the next pointer and passes it to `_LABEL_8FB_`, then processes additional data with `_LABEL_DC2_`, may call `_LABEL_998_`, and finishes by selecting palettes through `_LABEL_8B2_`.
+- `_LABEL_48A9_` is the runtime dispatcher: it reads an active entry, stores pointers to `_RAM_CFFA_` and `_RAM_D0DE_`, and decides from `room_type` whether room loading goes directly to `_LABEL_2620_` or is deferred through `_RAM_C26C_`.
+- `_LABEL_5EB_` does not load tiles. It selects bank 7, indexes `_DATA_1CCC0_` with `room_id`, obtains the `screen_prog` pointer, and calls `_LABEL_604_`, which writes the name table.
 
 Map impact:
-Per a `map.json`, aquesta cadena s'hauria de poder representar explícitament així:
-- `room_record` consumeix `sub-record`
-- `sub-record` consumeix `room_seq_table`
-- `sub-record` també consumeix dades per a `_LABEL_8FB_`
-- `room_id` consumeix `_DATA_1CCC0_` via `_LABEL_5EB_`
-- `room_seq_table entry` fa dispatch via `_LABEL_48A9_`
-- `room_seq_table entry` pot carregar un sub-record nou immediatament o diferir-lo
-- `_LABEL_604_` és només la capa de name table, no el loader principal de room
+For `map.json`, this chain should be represented explicitly:
+- `room_record` consumes `sub-record`
+- `sub-record` consumes `room_seq_table`
+- `sub-record` also consumes data for `_LABEL_8FB_`
+- `room_id` consumes `_DATA_1CCC0_` through `_LABEL_5EB_`
+- `room_seq_table entry` dispatches through `_LABEL_48A9_`
+- `room_seq_table entry` may load a new sub-record immediately or defer it
+- `_LABEL_604_` is only the name table layer, not the main room loader
 
 Confidence:
 high
 
-### Plantilla pràctica per Emulicious
+### Practical Emulicious Template
 
 Why it matters:
-La idea és tenir una configuració mínima que et deixi veure, en viu, quan el joc ha decidit una room nova, quan la comença a carregar i quan només està fent fade o refresh de pantalla.
+The goal is to have a minimal setup that shows, live, when the game has selected a new room, when it starts loading it, and when it is only doing a fade or screen refresh.
 
-#### Watches recomanats
+#### Recommended Watches
 
-Mira aquests com a bytes:
+Watch these as bytes:
 
 - `$CF81` `V-BLANK FLAG`
 - `$CF82` `TILE LOADING FLAG`
@@ -181,7 +182,7 @@ Mira aquests com a bytes:
 - `$C26E` `ROOM TYPE / TRANSITION MODE`
 - `$D0E0` `ROOM PARAM BYTE`
 
-Mira aquests com a words little-endian:
+Watch these as little-endian words:
 
 - `$C26C` `DEFERRED ROOM PTR`
 - `$CFFA` `CURRENT ROOM TILE PTR`
@@ -189,135 +190,135 @@ Mira aquests com a words little-endian:
 - `$D0FE` `ROOM WORK PTR`
 - `$CF5E` `ROOM PARAMS[0:1] -> room_seq_table ptr`
 
-Si vols més context visual:
+For more visual context:
 
 - `$CF8C` `X-Scroll`
 - `$CF8D` `Y-Scroll`
-- `$CF9B` `Shadow paleta 0`
-- `$CFAB` `Shadow paleta 1`
+- `$CF9B` `Shadow palette 0`
+- `$CFAB` `Shadow palette 1`
 
-#### Breakpoints recomanats
+#### Recommended Breakpoints
 
-Per entendre qui decideix la room:
+To understand who decides the room:
 
-- execute a `_LABEL_48A9_`
-- write a `$C26C`
-- write a `$C26E`
-- write a `$CFFA`
+- execute at `_LABEL_48A9_`
+- write to `$C26C`
+- write to `$C26E`
+- write to `$CFFA`
 
-Per entendre la càrrega efectiva:
+To understand the effective load:
 
-- execute a `_LABEL_2620_`
-- execute a `_LABEL_26F4_`
-- execute a `_LABEL_5EB_`
+- execute at `_LABEL_2620_`
+- execute at `_LABEL_26F4_`
+- execute at `_LABEL_5EB_`
 
-Per entendre què s'escriu al VDP:
+To understand what writes to VDP:
 
-- execute a `_LABEL_8FB_`
-- execute a `_LABEL_998_`
-- execute a `_LABEL_604_`
+- execute at `_LABEL_8FB_`
+- execute at `_LABEL_998_`
+- execute at `_LABEL_604_`
 
-#### Seqüència curta de debugging
+#### Short Debugging Sequence
 
-Per seguir una porta:
+To follow a door:
 
-1. Mou el personatge fins a la porta.
-2. Vigila si canvien `$C26C` i `$C26E`.
-3. Si canvien, el target de room ja està resolt.
-4. Quan entri a `_LABEL_4C32_`, mira quina branca de `_DATA_4CAD_` executa.
-5. Quan entri a `_LABEL_2620_`, la càrrega real de la room ja ha començat.
-6. Si entra a `_LABEL_5EB_`, està resolent el `screen_prog` visible.
-7. Si entra a `_LABEL_8FB_` o `_LABEL_998_`, està carregant patterns a VRAM.
-8. Si `$CF82=1`, encara hi ha càrrega VDP activa.
-9. Si `$CFDB` varia i `$CFE2=1`, estàs en fase de fade/paleta.
-10. Espera que `$CF81=1` per validar que el frame carregat ja ha arribat a VDP.
+1. Move the character to the door.
+2. Watch whether `$C26C` and `$C26E` change.
+3. If they change, the room target is already resolved.
+4. When execution enters `_LABEL_4C32_`, check which `_DATA_4CAD_` branch it takes.
+5. When execution enters `_LABEL_2620_`, the real room load has started.
+6. If it enters `_LABEL_5EB_`, it is resolving the visible `screen_prog`.
+7. If it enters `_LABEL_8FB_` or `_LABEL_998_`, it is loading patterns into VRAM.
+8. If `$CF82=1`, active VDP loading is still in progress.
+9. If `$CFDB` changes and `$CFE2=1`, the game is in a fade/palette phase.
+10. Wait for `$CF81=1` to validate that the loaded frame has reached VDP.
 
-#### Lectura ràpida de símptomes
+#### Quick Symptom Reading
 
-- Canvia `$C26C`, però no `$CFFA`: encara estàs en fase de transició diferida.
-- Canvia `$CFFA`: ja hi ha un nou `tile data record` actiu.
-- Entra a `_LABEL_5EB_`, però no a `_LABEL_8FB_`: probablement només canvia la name table visible.
-- Entra a `_LABEL_8FB_` o `_LABEL_998_`: hi ha càrrega nova de tiles/patterns.
-- `$CFE1=1` sense gaire moviment a la resta: probablement només hi ha refresh de scroll/pantalla.
-- `$CFE2=1` i `$CFDB` variant: tens una transició visual més que no una nova room completa.
+- `$C26C` changes but `$CFFA` does not: the game is still in a deferred transition phase.
+- `$CFFA` changes: there is now a new active `tile data record`.
+- Execution enters `_LABEL_5EB_` but not `_LABEL_8FB_`: probably only the visible name table changes.
+- Execution enters `_LABEL_8FB_` or `_LABEL_998_`: new tile/pattern loading is happening.
+- `$CFE1=1` without much movement elsewhere: probably only screen/scroll refresh is pending.
+- `$CFE2=1` and `$CFDB` changes: this is more likely a visual transition than a full new room.
 
 Confidence:
 high
 
-### Watch list de RAM per debugar càrrega de pantalles a l'emulador
+### RAM Watch List for Debugging Screen Loads in the Emulator
 
 Why it matters:
-Quan estàs dins l'emulador no vols rellegir tota la cadena de codi. Vols 4 o 5 adreces que et diguin ràpidament:
-- si hi ha una transició en curs
-- quina room s'ha seleccionat
-- quin record de room s'està consumint
-- si s'està escrivint VRAM o paleta
+Inside the emulator, you do not want to reread the entire code chain. You want 4 or 5 addresses that quickly tell you:
+- whether a transition is in progress
+- which room has been selected
+- which room record is being consumed
+- whether VRAM or palette is being written
 
-Watch list recomanada:
+Recommended watch list:
 
-| Adreça | Nom | Què et diu |
+| Address | Name | What it tells you |
 |--------|-----|------------|
-| `$C26C-$C26D` | `DEFERRED ROOM PTR` | Quin record de room/transició queda pendent de consumir. Si canvia abans d'una porta o transició, tens el target ja resolt. |
-| `$C26E` | `ROOM TYPE / TRANSITION MODE` | Quin tipus de loader/transició s'executarà. És la clau per saber quina branca de `_DATA_4CAD_` entrarà. |
-| `$CFFA-$CFFB` | `CURRENT ROOM TILE PTR` | Punter al tile-data record de la room actual. Si canvia, normalment estàs entrant a una càrrega real de room. |
-| `$CF5E-$CF65` | `ROOM PARAMS` | Bloc de 8 bytes del sub-record actual. Sobretot els bytes `0-1`, que apunten a la `room_seq_table`. |
-| `$D0E0` | `ROOM PARAM BYTE` | Paràmetre de room carregat des de `room_seq_table`. Útil per veure canvis de tipus/context entre rooms. |
-| `$D0E1-$D0E2` | `ROOM SCROLL THRESHOLD` | Llindar de scroll de l'entrada activa. Quan canvïa entre rooms, tens una pista molt bona de canvi de seqüència. |
-| `$D0FE-$D0FF` | `ROOM WORK PTR` | Cursor de treball del loader. Durant `_LABEL_26F4_` et deixa veure per quin camp del sub-record va passant. |
-| `$CF82` | `TILE LOADING FLAG` | Si és `1`, hi ha escriptura crítica a VRAM en marxa (`_LABEL_604_`, `_LABEL_8FB_`, `_LABEL_998_`, etc.). |
-| `$CFE1` | `SCROLL FLAG` | Es posa a `1` quan hi ha refresc de pantalla/scroll pendent després d'una càrrega o transició. |
-| `$CFE2` | `PAL DIRTY` | Si és `1`, la paleta reconstruïda encara s'ha de flushar al VDP. |
-| `$CFDB` | `FADE_FACTOR` | Et diu si la pantalla està en fade-in/fade-out durant la transició. |
-| `$CF81` | `V-BLANK FLAG` | Molt útil per saber si el frame ja ha tancat i si el que veus a RAM ja s'ha pogut reflectir a VDP. |
+| `$C26C-$C26D` | `DEFERRED ROOM PTR` | Which room/transition record is still pending consumption. If it changes before a door or transition, the target is already resolved. |
+| `$C26E` | `ROOM TYPE / TRANSITION MODE` | Which loader/transition type will run. This is the key for knowing which `_DATA_4CAD_` branch will be entered. |
+| `$CFFA-$CFFB` | `CURRENT ROOM TILE PTR` | Pointer to the tile-data record for the current room. If it changes, you are usually entering a real room load. |
+| `$CF5E-$CF65` | `ROOM PARAMS` | 8-byte block from the current sub-record, especially bytes `0-1`, which point to the `room_seq_table`. |
+| `$D0E0` | `ROOM PARAM BYTE` | Room parameter loaded from `room_seq_table`. Useful for seeing type/context changes between rooms. |
+| `$D0E1-$D0E2` | `ROOM SCROLL THRESHOLD` | Scroll threshold for the active entry. When it changes between rooms, it is a strong clue that the sequence changed. |
+| `$D0FE-$D0FF` | `ROOM WORK PTR` | Loader work cursor. During `_LABEL_26F4_`, it shows which sub-record field is being consumed. |
+| `$CF82` | `TILE LOADING FLAG` | If `1`, a critical VRAM write section is active (`_LABEL_604_`, `_LABEL_8FB_`, `_LABEL_998_`, etc.). |
+| `$CFE1` | `SCROLL FLAG` | Set to `1` when screen/scroll refresh is pending after a load or transition. |
+| `$CFE2` | `PAL DIRTY` | If `1`, the rebuilt palette still needs to be flushed to VDP. |
+| `$CFDB` | `FADE_FACTOR` | Tells whether the screen is in fade-in/fade-out during the transition. |
+| `$CF81` | `V-BLANK FLAG` | Useful for knowing whether the frame has closed and whether RAM state may already have reached VDP. |
 
-Breakpoints útils:
+Useful breakpoints:
 
-- `_LABEL_48A9_`: quan vols saber qui ha decidit la room/seqüència entrant.
-- `_LABEL_4C32_`: quan vols veure quin mode de transició consumirà `_RAM_C26E_`.
-- `_LABEL_2620_`: quan comença la càrrega efectiva del `room_record`.
-- `_LABEL_26F4_`: quan comença la càrrega del `sub-record`.
-- `_LABEL_5EB_`: quan es resol el `screen_prog` visible.
-- `_LABEL_8FB_` i `_LABEL_998_`: quan vols veure càrrega de patterns a VRAM.
-- `_LABEL_604_`: quan vols veure escriptura de name table.
+- `_LABEL_48A9_`: when you want to know who decided the incoming room/sequence.
+- `_LABEL_4C32_`: when you want to see which transition mode consumes `_RAM_C26E_`.
+- `_LABEL_2620_`: when effective `room_record` loading begins.
+- `_LABEL_26F4_`: when `sub-record` loading begins.
+- `_LABEL_5EB_`: when the visible `screen_prog` is resolved.
+- `_LABEL_8FB_` and `_LABEL_998_`: when you want to observe pattern loading into VRAM.
+- `_LABEL_604_`: when you want to observe name table writes.
 
 Practical debugging flow:
 
-1. Vigila `$C26C`, `$C26E` i `$CFFA`.
-2. Quan canviïn, para a `_LABEL_4C32_` o `_LABEL_2620_`.
-3. Si `$CF82=1`, segueix `_LABEL_8FB_`, `_LABEL_998_` o `_LABEL_604_` segons el cas.
-4. Si `$CFE2=1`, mira el cicle de paleta; si `$CFE1=1`, mira el refresc de pantalla.
-5. Si tens dubte de si la pantalla ja és “real”, espera que `$CF81` marque frame complet.
+1. Watch `$C26C`, `$C26E`, and `$CFFA`.
+2. When they change, break at `_LABEL_4C32_` or `_LABEL_2620_`.
+3. If `$CF82=1`, follow `_LABEL_8FB_`, `_LABEL_998_`, or `_LABEL_604_` depending on the case.
+4. If `$CFE2=1`, inspect the palette cycle; if `$CFE1=1`, inspect the screen refresh.
+5. If you are unsure whether the screen is already "real", wait for `$CF81` to mark a complete frame.
 
 Confidence:
 high
 
-### `_LABEL_26F4_` és el loader central de recursos per-room
+### `_LABEL_26F4_` is the central per-room resource loader
 
 Why it matters:
-És la rutina que realment converteix un sub-record en estat visual i paràmetres de room. Si s'ha de descobrir com el joc carrega nous tiles i colors quan entres a una room, aquest és el primer focus.
+This routine actually converts a sub-record into visual state and room parameters. If you need to discover how the game loads new tiles and colors when entering a room, this is the first focus.
 
 ROM regions:
-- `_LABEL_26F4_` a `0x026F4`
-- `_LABEL_8FB_` a `0x008FB`
-- `_LABEL_998_` a `0x00998`
-- `_LABEL_8B2_` a `0x008B2`
-- `_DATA_275D_` i `_DATA_2762_`
+- `_LABEL_26F4_` at `0x026F4`
+- `_LABEL_8FB_` at `0x008FB`
+- `_LABEL_998_` at `0x00998`
+- `_LABEL_8B2_` at `0x008B2`
+- `_DATA_275D_` and `_DATA_2762_`
 
 Evidence:
 - [projects/WORLD/Wonder Boy III - The Dragon's Trap (World) (Digital).asm](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/Wonder%20Boy%20III%20-%20The%20Dragon's%20Trap%20(World)%20(Digital).asm#L6472)
 - [projects/WORLD/Wonder Boy III - The Dragon's Trap (World) (Digital).asm](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/Wonder%20Boy%20III%20-%20The%20Dragon's%20Trap%20(World)%20(Digital).asm#L6515)
 
 Execution effect:
-- copia 8 bytes del sub-record a `_RAM_CF5E_`
-- desa un punter de treball a `_RAM_D0FE_`
-- carrega patterns VRAM via `_LABEL_8FB_`
-- processa un bloc addicional via `_LABEL_DC2_`
-- segons flags del sub-record, selecciona `_DATA_275D_` o `_DATA_2762_` i passa per `_LABEL_998_`
-- finalment llegeix un selector de paleta i el passa a `_LABEL_8B2_`
-- la branca de `patterns/paleta` queda clarament separada de la branca de `screen_prog`
+- copies 8 bytes from the sub-record to `_RAM_CF5E_`
+- stores a work pointer in `_RAM_D0FE_`
+- loads VRAM patterns through `_LABEL_8FB_`
+- processes an additional block through `_LABEL_DC2_`
+- depending on sub-record flags, selects `_DATA_275D_` or `_DATA_2762_` and goes through `_LABEL_998_`
+- finally reads a palette selector and passes it to `_LABEL_8B2_`
+- the `patterns/palette` branch is clearly separate from the `screen_prog` branch
 
 Map impact:
-El sub-record no s'ha de modelar com un blob genèric. Té almenys aquestes fases:
+The sub-record should not be modeled as a generic blob. It has at least these phases:
 - `header/copied params`
 - `8fb tile-data pointer`
 - `extra data for _LABEL_DC2_`
@@ -327,13 +328,13 @@ El sub-record no s'ha de modelar com un blob genèric. Té almenys aquestes fase
 Confidence:
 high
 
-### `_LABEL_48A9_` és el pont entre la seqüència de room i la càrrega efectiva
+### `_LABEL_48A9_` is the bridge between room sequence and effective room loading
 
 Why it matters:
-Aquesta rutina fa la transició entre l'entrada activa de `room_seq_table` i el loader de room. És una peça clau per al futur anàlisi de l'scroll, perquè probablement l'scroll acabarà fent avançar aquesta seqüència.
+This routine transitions from the active `room_seq_table` entry to the room loader. It is a key piece for future scroll analysis because scrolling will probably advance this sequence.
 
 ROM regions:
-- `_LABEL_48A9_` a `0x048A9`
+- `_LABEL_48A9_` at `0x048A9`
 - `_DATA_48C5_` jump table
 - `_RAM_CFFA_`
 - `_RAM_D0DE_`
@@ -342,15 +343,15 @@ Evidence:
 - [projects/WORLD/Wonder Boy III - The Dragon's Trap (World) (Digital).asm](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/Wonder%20Boy%20III%20-%20The%20Dragon's%20Trap%20(World)%20(Digital).asm#L11076)
 
 Execution effect:
-- llegeix una entrada apuntada per `HL`
-- guarda `DE` a `_RAM_CFFA_` com a punter al tile data record actual
-- guarda `HL` a `_RAM_D0DE_`
-- fa dispatch via `_DATA_48C5_`
-- la primera branca (`_LABEL_4903_`) acaba fent `ld hl, (_RAM_CFFA_)` i `call _LABEL_2620_`
-- altres branques no carreguen la room immediatament: desen el punter a `_RAM_C26C_` i el loader real s'executa més tard des d'una màquina d'estats de runtime
+- reads an entry pointed to by `HL`
+- stores `DE` in `_RAM_CFFA_` as the pointer to the current tile data record
+- stores `HL` in `_RAM_D0DE_`
+- dispatches through `_DATA_48C5_`
+- the first branch (`_LABEL_4903_`) eventually does `ld hl, (_RAM_CFFA_)` and `call _LABEL_2620_`
+- other branches do not load the room immediately: they store the pointer in `_RAM_C26C_` and the real loader runs later from a runtime state machine
 
 Map impact:
-Aquí convé modelar:
+This should be modeled as:
 - `room_seq_table entry -> room_type`
 - `room_seq_table entry -> tile data pointer`
 - `room_type -> dispatch target`
@@ -359,15 +360,15 @@ Aquí convé modelar:
 Confidence:
 high
 
-### `_LABEL_5EB_` i `_DATA_1CCC0_` només resolen el background script visible
+### `_LABEL_5EB_` and `_DATA_1CCC0_` only resolve the visible background script
 
 Why it matters:
-Això delimita el paper de `screen_prog`: és important, però no és “el mapa” complet. Si es confon `_DATA_1CCC0_` amb el sistema sencer de room, es perden els loaders de patterns i la seqüència real del món.
+This defines the role of `screen_prog`: it is important, but it is not the whole "map". If `_DATA_1CCC0_` is confused with the entire room system, pattern loaders and the real world sequence are lost.
 
 ROM regions:
-- `_LABEL_5EB_` a `0x005EB`
-- `_DATA_1CCC0_` a `0x1CCC0`
-- `_LABEL_604_` a `0x00604`
+- `_LABEL_5EB_` at `0x005EB`
+- `_DATA_1CCC0_` at `0x1CCC0`
+- `_LABEL_604_` at `0x00604`
 - `_RAM_CF81_`
 
 Evidence:
@@ -375,32 +376,32 @@ Evidence:
 - [CLAUDE.md](/media/marc/4T_EXFAT/z80/wb3/CLAUDE.md#L376)
 
 Execution effect:
-- canvia a banc 7
-- indexa `_DATA_1CCC0_` amb `room_id * 2`
-- resol un punter a `screen_prog`
-- crida `_LABEL_604_`, que escriu la name table
-- funcionalment és una taula `room_id -> screen_prog ptr`; no és el sub-record principal de room
+- switches to bank 7
+- indexes `_DATA_1CCC0_` with `room_id * 2`
+- resolves a `screen_prog` pointer
+- calls `_LABEL_604_`, which writes the name table
+- functionally it is a `room_id -> screen_prog ptr` table; it is not the main room sub-record
 
 Map impact:
-`_DATA_1CCC0_` s'ha de tractar com:
+`_DATA_1CCC0_` should be treated as:
 - `room_id -> screen_prog ptr`
 
-No com:
-- definició completa de room
-- taula única del sistema de scroll
-- font dels tiles VRAM
+Not as:
+- complete room definition
+- single table for the scroll system
+- source of VRAM tiles
 
 Confidence:
 high
 
-### `_DATA_10000_` és més aviat una taula upstream de seqüència/índex que no el sub-record final
+### `_DATA_10000_` is more likely an upstream sequence/index table than the final sub-record
 
 Why it matters:
-Ajuda a no confondre capes de dades. Si `_DATA_10000_` es tracta com “la definició final de room”, es barreja amb `_DATA_10C96_` i amb els sub-records que realment acaben a `_LABEL_2620_`/`_LABEL_26F4_`.
+This helps avoid mixing data layers. If `_DATA_10000_` is treated as "the final room definition", it gets conflated with `_DATA_10C96_` and the sub-records actually consumed by `_LABEL_2620_` / `_LABEL_26F4_`.
 
 ROM regions:
-- `_DATA_10000_` a `0x10000`
-- `_LABEL_48A9_` a `0x048A9`
+- `_DATA_10000_` at `0x10000`
+- `_LABEL_48A9_` at `0x048A9`
 - `_RAM_D0DE_`
 
 Evidence:
@@ -408,22 +409,22 @@ Evidence:
 - [CLAUDE.md](/media/marc/4T_EXFAT/z80/wb3/CLAUDE.md#L486)
 
 Execution effect:
-- alimenta l'escaneig/seqüència que construeix punters de treball i pot acabar a `_LABEL_48A9_`
-- actua com a capa upstream o coarse map index
-- no substitueix el sub-record final consumit per `_LABEL_2620_`
+- feeds the scan/sequence that builds work pointers and may end at `_LABEL_48A9_`
+- acts as an upstream layer or coarse map index
+- does not replace the final sub-record consumed by `_LABEL_2620_`
 
 Map impact:
-Convé separar conceptualment:
-- `_DATA_10000_` = seqüència / taula upstream
-- `_DATA_10C96_` i sub-records derivats = payload real de càrrega de room
+Conceptually separate:
+- `_DATA_10000_` = sequence / upstream table
+- `_DATA_10C96_` and derived sub-records = real room-load payload
 
 Confidence:
 medium
 
-### Posicions de RAM ja ubicades: funció actual i conflictes pendents
+### Located RAM Positions: Current Function and Pending Conflicts
 
 Why it matters:
-Per controlar la ROM no n'hi ha prou amb saber on són els blocs de dades. Cal saber quin estat de RAM governa la càrrega de rooms, la còpia a VRAM, les paletes, el scroll i alguns flags globals de runtime.
+Controlling the ROM requires more than knowing where data blocks live. It also requires knowing which RAM state governs room loading, VRAM copies, palettes, scrolling, and key global runtime flags.
 
 Evidence:
 - [projects/WORLD/map.json](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/map.json#L18065)
@@ -435,84 +436,84 @@ Evidence:
 - [projects/WORLD/Wonder Boy III - The Dragon's Trap (World) (Digital).asm](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/Wonder%20Boy%20III%20-%20The%20Dragon's%20Trap%20(World)%20(Digital).asm#L6472)
 - [projects/WORLD/Wonder Boy III - The Dragon's Trap (World) (Digital).asm](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/Wonder%20Boy%20III%20-%20The%20Dragon's%20Trap%20(World)%20(Digital).asm#L11076)
 
-#### Alta confiança
+#### High Confidence
 
-| Adreça | Nom actual al mapa | Funció actual | Notes |
-|--------|---------------------|---------------|-------|
-| `$CF5E-$CF65` | `_RAM_CF5E_` + `CURRENT ZONE` a `$CF65` | Bloc de 8 bytes copiat del `sub-record` de room | bytes `0-1` = ptr a `room_seq_table`; bytes `2-7` = paràmetres de room/scroll. El byte `$CF65` queda integrat dins aquest bloc i avui el mapa el tracta com a “CURRENT ZONE”. |
-| `$CF81` | `V-BLANK FLAG` | Flag de frame acabat / V-blank | Confirmat a `CLAUDE.md`: no és l'índex de `_DATA_1CCC0_`. |
-| `$CF82` | `TILE LOADING FLAG` | Flag de secció crítica mentre s'escriu VRAM | Es posa a `1` a `_LABEL_604_`, `_LABEL_8FB_`, `_LABEL_998_`, `_LABEL_A14_` i torna a `0` en acabar. És més aviat “VDP busy / tile upload active” que no un flag exclusiu d'un sol loader. |
-| `$CF97` | `TILE PROPERTIES` / `CURRENT_ATTR` | Byte d'atributs de tile actual | `_LABEL_604_` el llegeix i l'escriu com a atribut corrent del `screen_prog`. Les dues etiquetes del mapa semblen ser la mateixa variable vista des de dos angles. |
-| `$CF9B-$CFAA` | `Shadow paleta 0` | Buffer shadow de paleta de fons | `_LABEL_8B2_` copia aquí la paleta ROM. |
-| `$CFAB-$CFBA` | `Shadow paleta 1` | Buffer shadow de paleta de sprites | `_LABEL_8B2_` també l'omple. |
-| `$CFBB-$CFCA` | `Paleta activa fons` | Paleta de fons ja processada per fade i llesta per flush | `_LABEL_7EC_` escriu els 32 bytes processats a partir de `$CF9B`, i els primers 16 acaben aquí. |
-| `$CFCB-$CFDA` | `Paleta activa sprites` | Paleta de sprites ja processada per fade i llesta per flush | Segona meitat de la sortida de `_LABEL_7EC_`. |
-| `$CFDB` | `BRIGHTNESS LEVEL` / `FADE_FACTOR` | Nivell de fade global de paleta | `_LABEL_822_` i `_LABEL_849_` el mouen entre `0..3`; `_LABEL_7EC_` l'aplica sobre els 32 bytes de paleta. Les dues etiquetes del mapa semblen ser la mateixa variable. |
-| `$CFE0` | `SAT FLAG` | Flag de refresc de sprites | El mapa el descriu com a “cal actualitzar sprites”; és coherent amb el nom i amb el patró d'ús global del motor. |
-| `$CFE1` | `SCROLL FLAG` | Flag de refresc de pantalla/scroll després de càrregues i transicions | Es posa a `1` després de molts loaders i transicions de room. El nom actual és bo, però probablement representa “screen update requested” més que només scroll pur. |
-| `$CFE2` | `PAL DIRTY` | Flag de flush de paleta al VDP | `_LABEL_822_`, `_LABEL_849_` i altres rutines de paleta el posen a `1` després de reconstruir la paleta activa. |
-| `$CFFA-$CFFB` | `_RAM_CFFA_` | Punter Z80 al tile-data record de la room actual | El fixa `_LABEL_48A9_` i el consumeix `_LABEL_2620_`. És clau per rastrejar transicions de room. |
-| `$D0E0` | `_RAM_D0E0_` | Paràmetre de room procedent de `room_seq_table` | Confirmat per `CLAUDE.md`. Fora d'aquest context també es reutilitza com a comptador o índex temporal, així que el significat depèn de la rutina. |
-| `$D0E1-$D0E2` | `_RAM_D0E1_` | `scroll threshold word` procedent de `room_seq_table` | Confirmat per `CLAUDE.md`. Igual que `$D0E0`, en altres rutines també actua com a scratch/punter temporal. |
-| `$D0EC` | `índex paleta per remapejat` | Índex de paleta per a remapeig/transformació de tiles | Es calcula a partir d'un byte de configuració i alimenta el processament de tiles. |
-| `$D0ED` | `comptador tiles processats` | Comptador intern del loader `_LABEL_998_` | S'incrementa cada cop que `_LABEL_998_` processa un bloc o un `zero-fill`. |
-| `$D0EE-$D0EF` | `punter font dades ROM` | Punter de font actual per al loader de patterns | `_LABEL_8FB_` i `_LABEL_998_` el fan servir com a cursor de lectura sobre dades ROM. |
-| `$D0F0-$D0F1` | `punter destí VRAM` | Punter/offset de destí actual dins VRAM | `_LABEL_8FB_` i `_LABEL_998_` l'avancen en salts de `$20` bytes per tile row. |
-| `$D0F2` | sense entrada pròpia al mapa | Comptador de tiles del comandament actual de `_LABEL_8FB_` | Byte temporal per al bloc que s'està copiant ara mateix. |
-| `$D0F3` | `nombre total de tiles a carregar ($08 per defecte)` | Comptador de “tile rows” per iteració de loader | A `_LABEL_8FB_` arrenca a `$08`; es pot sobreescriure des de l'script. |
-| `$D0FE-$D0FF` | sense entrada pròpia al mapa | Scratch pointer / cursor de treball | A `_LABEL_26F4_` apunta dins el `sub-record` mentre es van consumint camps; en altres rutines es reutilitza com a comptador o punter temporal. |
-| `$C26C-$C26D` | `_RAM_C26C_` | Punter diferit a record de room o transició | `_LABEL_48A9_` el desa per a branques diferides; més tard diversos estats l'avancen i el passen a `_LABEL_2620_`. |
-| `$C26E` | `_RAM_C26E_` | `room_type` / mode de transició actual | S'omple des del byte de dispatch de `_LABEL_48A9_` i després indexa la màquina d'estats de transició. |
+| Address | Current map name | Current function | Notes |
+|--------|-------------------|------------------|-------|
+| `$CF5E-$CF65` | `_RAM_CF5E_` + `CURRENT ZONE` at `$CF65` | 8-byte block copied from the room `sub-record` | bytes `0-1` = ptr to `room_seq_table`; bytes `2-7` = room/scroll parameters. Byte `$CF65` is integrated in this block, and the map currently treats it as "CURRENT ZONE". |
+| `$CF81` | `V-BLANK FLAG` | Frame-complete / V-blank flag | Confirmed in `CLAUDE.md`: it is not the `_DATA_1CCC0_` index. |
+| `$CF82` | `TILE LOADING FLAG` | Critical-section flag while writing VRAM | Set to `1` in `_LABEL_604_`, `_LABEL_8FB_`, `_LABEL_998_`, `_LABEL_A14_`, then reset to `0` when done. This is more of a "VDP busy / tile upload active" flag than a flag for one specific loader. |
+| `$CF97` | `TILE PROPERTIES` / `CURRENT_ATTR` | Current tile attribute byte | `_LABEL_604_` reads and writes it as the current `screen_prog` attribute. The two map labels appear to be the same variable viewed from two angles. |
+| `$CF9B-$CFAA` | `Shadow palette 0` | Background palette shadow buffer | `_LABEL_8B2_` copies the ROM palette here. |
+| `$CFAB-$CFBA` | `Shadow palette 1` | Sprite palette shadow buffer | `_LABEL_8B2_` also fills this. |
+| `$CFBB-$CFCA` | `Active background palette` | Background palette already processed for fade and ready to flush | `_LABEL_7EC_` writes the 32 processed palette bytes from `$CF9B`; the first 16 end up here. |
+| `$CFCB-$CFDA` | `Active sprite palette` | Sprite palette already processed for fade and ready to flush | Second half of `_LABEL_7EC_` output. |
+| `$CFDB` | `BRIGHTNESS LEVEL` / `FADE_FACTOR` | Global palette fade level | `_LABEL_822_` and `_LABEL_849_` move it through `0..3`; `_LABEL_7EC_` applies it to the 32 palette bytes. The two map labels appear to be the same variable. |
+| `$CFE0` | `SAT FLAG` | Sprite refresh flag | The map describes it as "sprites need update"; that matches the name and global engine usage pattern. |
+| `$CFE1` | `SCROLL FLAG` | Screen/scroll refresh flag after loads and transitions | Set to `1` after many loaders and room transitions. The current name is useful, but it probably represents "screen update requested" more than only pure scroll. |
+| `$CFE2` | `PAL DIRTY` | Palette flush-to-VDP flag | `_LABEL_822_`, `_LABEL_849_`, and other palette routines set it to `1` after rebuilding the active palette. |
+| `$CFFA-$CFFB` | `_RAM_CFFA_` | Z80 pointer to the tile-data record of the current room | Set by `_LABEL_48A9_` and consumed by `_LABEL_2620_`. Critical for tracing room transitions. |
+| `$D0E0` | `_RAM_D0E0_` | Room parameter from `room_seq_table` | Confirmed by `CLAUDE.md`. Outside this context it is also reused as a counter or temporary index, so meaning depends on routine. |
+| `$D0E1-$D0E2` | `_RAM_D0E1_` | `scroll threshold word` from `room_seq_table` | Confirmed by `CLAUDE.md`. Like `$D0E0`, it also acts as scratch/temp pointer in other routines. |
+| `$D0EC` | `palette index for remap` | Palette index for tile remap/transform | Calculated from a config byte and feeds tile processing. |
+| `$D0ED` | `processed tile counter` | Internal counter for loader `_LABEL_998_` | Incremented each time `_LABEL_998_` processes a block or `zero-fill`. |
+| `$D0EE-$D0EF` | `ROM data source pointer` | Current source pointer for pattern loader | `_LABEL_8FB_` and `_LABEL_998_` use it as a read cursor over ROM data. |
+| `$D0F0-$D0F1` | `VRAM destination pointer` | Current destination pointer/offset inside VRAM | `_LABEL_8FB_` and `_LABEL_998_` advance it in `$20` byte steps per tile row. |
+| `$D0F2` | no dedicated map entry | Tile counter for current `_LABEL_8FB_` command | Temporary byte for the block currently being copied. |
+| `$D0F3` | `total number of tiles to load ($08 default)` | Loader iteration "tile rows" counter | In `_LABEL_8FB_` it starts at `$08`; it can be overwritten by the script. |
+| `$D0FE-$D0FF` | no dedicated map entry | Scratch pointer / work cursor | In `_LABEL_26F4_`, points inside the `sub-record` while fields are consumed. In other routines it is reused as a temporary counter or pointer. |
+| `$C26C-$C26D` | `_RAM_C26C_` | Deferred pointer to room or transition record | `_LABEL_48A9_` stores it for deferred branches; later several states advance it and pass it to `_LABEL_2620_`. |
+| `$C26E` | `_RAM_C26E_` | Current `room_type` / transition mode | Filled from the dispatch byte in `_LABEL_48A9_`, then indexes the transition state machine. |
 
-#### Mitjana o provisional
+#### Medium or Provisional Confidence
 
-| Adreça | Nom actual al mapa | Lectura actual | Notes |
-|--------|---------------------|----------------|-------|
-| `$CF8C` | `X-Scroll` | Scroll horitzontal actual | Encara no està lligat a una rutina concreta dins del document, però la interpretació és coherent. |
-| `$CF8D` | `Y-Scroll` | Scroll vertical actual | Mateix cas que `$CF8C`. |
-| `$D005` | `EARTHQUAKE` | Flag/contador d'efecte de terratrèmol | El nom del mapa té bona pinta; encara falta creuar-lo amb la rutina exacta que sacseja càmera o scroll. |
-| `$CF98` | `PAUSE FLAG` | Estat de pausa/NMI | Encara no s'ha documentat la cadena completa de consum. |
-| `$D278` | `LEVEL LOADER FLAG` | Flag global relacionat amb càrrega de nivell/room | Bona hipòtesi, pendent de rastreig complet. |
-| `$C23C` | `PAL_CYCLE_OFFSET` | Offset per cicles de paleta | `_LABEL_849_` el posa a `0` en acabar un fade, així que probablement participa tant en fades com en palette cycling. |
-| `$D121-$D122` | `CURRENT BANK REFERENCE` | Punter o còpia estable del banc actual | El mapa el descriu com a punter cap a `$D123`; cal confirmar si és una simple referència o una abstracció del sistema de bancs. |
-| `$D123` | `CURRENT BANK` | Banc actual actiu | Molt plausible, però encara sense secció pròpia documentada. |
-| `$D116` | `TILE PIXEL COUNTER` | Comptador per processar 8 píxels per fila | La nota del mapa és coherent amb el tipus de rutines de tiles; falta fixar exactament quina rutina el consumeix. |
-| `$CF88` | `NEW GAME OPTION` | Opció `Continue/New Game` | Valor d'estat d'UI/menú, no de motor de mapa. |
-| `$C24F` | `PLAYER TRANSFORMATION` | Forma actual del jugador | Estat de jugador útil, però encara no integrat al flux de room/scroll. |
-| `$C251` | `PLAYER DIRECTION` | Direcció actual del jugador | També útil per runtime, pendent de documentar-se dins del loop de gameplay. |
+| Address | Current map name | Current reading | Notes |
+|--------|-------------------|-----------------|-------|
+| `$CF8C` | `X-Scroll` | Current horizontal scroll | Not yet tied to a specific routine in this document, but interpretation is coherent. |
+| `$CF8D` | `Y-Scroll` | Current vertical scroll | Same case as `$CF8C`. |
+| `$D005` | `EARTHQUAKE` | Earthquake effect flag/counter | The map name looks plausible; still needs cross-reference to the exact routine that shakes camera or scroll. |
+| `$CF98` | `PAUSE FLAG` | Pause/NMI state | Full consumption chain not documented yet. |
+| `$D278` | `LEVEL LOADER FLAG` | Global flag related to level/room loading | Good hypothesis, pending full trace. |
+| `$C23C` | `PAL_CYCLE_OFFSET` | Offset for palette cycles | `_LABEL_849_` sets it to `0` when a fade ends, so it probably participates in both fades and palette cycling. |
+| `$D121-$D122` | `CURRENT BANK REFERENCE` | Pointer or stable copy of current bank | The map describes it as a pointer to `$D123`; needs confirmation whether this is a simple reference or an abstraction of the bank system. |
+| `$D123` | `CURRENT BANK` | Current active bank | Very plausible, but no dedicated section yet. |
+| `$D116` | `TILE PIXEL COUNTER` | Counter for processing 8 pixels per row | The map note fits tile routines; the exact consuming routine still needs to be fixed. |
+| `$CF88` | `NEW GAME OPTION` | `Continue/New Game` option | UI/menu state value, not map engine state. |
+| `$C24F` | `PLAYER TRANSFORMATION` | Current player form | Useful player state, but not yet integrated into the room/scroll flow. |
+| `$C251` | `PLAYER DIRECTION` | Current player direction | Also useful for runtime work, pending documentation inside the gameplay loop. |
 
-#### Conflictes i neteja pendent al mapa
+#### Pending Map Conflicts and Cleanup
 
-- `$CF97` està duplicat com `TILE PROPERTIES` i `CURRENT_ATTR`. Tot apunta que és la mateixa variable.
-- `$CFDB` està duplicat com `BRIGHTNESS LEVEL` i `FADE_FACTOR`. Tot apunta que és la mateixa variable.
-- Les regions de paleta `Shadow paleta 0`, `Shadow paleta 1`, `Paleta activa fons` i `Paleta activa sprites` avui estan modelades amb `size: 1`, però semànticament són buffers de `16` bytes.
-- Les regions `punter font dades ROM` i `punter destí VRAM` també haurien de tractar-se com a paraules de 16 bits, no com a bytes solts.
-- Variables com `$D0E0`, `$D0E1` i `$D0FE` tenen semàntica de context: en el flux de room tenen un significat fort, però en altres rutines es reutilitzen com a scratch. Al mapa això convé reflectir-ho com a “rol principal + reuse”.
+- `$CF97` is duplicated as `TILE PROPERTIES` and `CURRENT_ATTR`. It appears to be the same variable.
+- `$CFDB` is duplicated as `BRIGHTNESS LEVEL` and `FADE_FACTOR`. It appears to be the same variable.
+- Palette regions `Shadow palette 0`, `Shadow palette 1`, `Active background palette`, and `Active sprite palette` are currently modeled as `size: 1`, but semantically they are 16-byte buffers.
+- `ROM data source pointer` and `VRAM destination pointer` should also be treated as 16-bit words, not isolated bytes.
+- Variables such as `$D0E0`, `$D0E1`, and `$D0FE` have context-sensitive semantics: in the room flow they have strong meanings, but in other routines they are reused as scratch. The map should reflect this as "primary role + reuse".
 
 Map impact:
-Per a `map.json`, aquesta secció apunta a tres millores concretes:
-- permetre intervals RAM reals (`$CF9B-$CFAA`, `$CFAB-$CFBA`, etc.) en lloc d'entrades de 1 byte quan el buffer és estructural
-- admetre “alias semàntics” per a la mateixa adreça (`$CF97`, `$CFDB`)
-- distingir variables de significat estable d'scratch registers reutilitzats (`$D0E0`, `$D0E1`, `$D0FE`)
+For `map.json`, this section points to three concrete improvements:
+- allow real RAM intervals (`$CF9B-$CFAA`, `$CFAB-$CFBA`, etc.) instead of 1-byte entries when the buffer is structural
+- support semantic aliases for the same address (`$CF97`, `$CFDB`)
+- distinguish stable-meaning variables from reused scratch registers (`$D0E0`, `$D0E1`, `$D0FE`)
 
 Confidence:
 mixed
 
-### Entrada per porta: animació de transició i càrrega real de la room estan separades
+### Door Entry: Transition Animation and Effective Room Loading Are Separate
 
 Why it matters:
-Per trobar les taules de sales interiors no n'hi ha prou amb mirar `_DATA_1CCC0_`. La porta no resol sola el contingut visible; el codi separa clarament:
-- la detecció/animació d'entrada
-- la resolució del target de room
-- la càrrega efectiva de la room nova
+Finding interior-room tables requires more than inspecting `_DATA_1CCC0_`. A door does not resolve visible content on its own. The code clearly separates:
+- entry detection/animation
+- room target resolution
+- effective loading of the new room
 
 ROM regions:
-- `_LABEL_107_` a `0x00107`
-- `_LABEL_3F8_` a `0x003F8`
-- `_LABEL_4B31_` a `0x04B31`
-- `_LABEL_4C32_` a `0x04C32`
-- `_DATA_4CAD_` a `0x04CAD`
-- `_LABEL_48A9_` a `0x048A9`
+- `_LABEL_107_` at `0x00107`
+- `_LABEL_3F8_` at `0x003F8`
+- `_LABEL_4B31_` at `0x04B31`
+- `_LABEL_4C32_` at `0x04C32`
+- `_DATA_4CAD_` at `0x04CAD`
+- `_LABEL_48A9_` at `0x048A9`
 - `_DATA_10C96_` / `_DATA_10C90_`
 
 Evidence:
@@ -522,25 +523,25 @@ Evidence:
 - [projects/WORLD/Wonder Boy III - The Dragon's Trap (World) (Digital).asm](/media/marc/4T_EXFAT/z80/wb3/projects/WORLD/Wonder%20Boy%20III%20-%20The%20Dragon's%20Trap%20(World)%20(Digital).asm#L11398)
 
 Execution effect:
-- `_LABEL_107_` és un bucle especial de càrrega. En comptes del loop normal de gameplay, crida repetidament `_LABEL_2B14_`, `_LABEL_3E1_`, `_LABEL_3F8_` i `_LABEL_4BD_`.
-- `_LABEL_3F8_` és la rutina central de `start level / load screen`: carrega paleta i VRAM base (`_LABEL_8B2_`, `_LABEL_8FB_`, `_LABEL_998_`) i després entra a `_LABEL_2620_` amb un `room_record` principal (`_DATA_10C96_` per al camí normal, `_DATA_10C90_` per a un cas especial de new game/menu).
-- La transició de porta del jugador passa per la màquina d'estats indexada per `_RAM_C260_`. En aquest flux, `_LABEL_4B31_` prepara l'animació i el desplaçament d'entrada, mentre `_LABEL_4C32_` és el punt on es consumeix el target de room ja preparat.
-- `_LABEL_4C32_` no busca la room: agafa `_RAM_C26E_` i `_RAM_C26C_`, i fa dispatch via `_DATA_4CAD_` cap a diverses branques de càrrega (`_LABEL_4CED_`, `_LABEL_4D08_`, `_LABEL_4D72_`, `_LABEL_4D3A_`, `_LABEL_4E05_`, `_LABEL_4E25_`, `_LABEL_4E49_`).
-- `_LABEL_48A9_` és la rutina upstream que resol l'entrada activa de seqüència i omple `_RAM_C26C_` / `_RAM_C26E_`. Això vol dir que la porta consumeix un target de room ja decidit abans.
+- `_LABEL_107_` is a special loading loop. Instead of the normal gameplay loop, it repeatedly calls `_LABEL_2B14_`, `_LABEL_3E1_`, `_LABEL_3F8_`, and `_LABEL_4BD_`.
+- `_LABEL_3F8_` is the central `start level / load screen` routine: it loads palette and base VRAM (`_LABEL_8B2_`, `_LABEL_8FB_`, `_LABEL_998_`), then enters `_LABEL_2620_` with a main `room_record` (`_DATA_10C96_` for the normal path, `_DATA_10C90_` for a special new game/menu case).
+- The player's door transition goes through the state machine indexed by `_RAM_C260_`. In this flow, `_LABEL_4B31_` prepares entry animation and movement, while `_LABEL_4C32_` is where the already-prepared room target is consumed.
+- `_LABEL_4C32_` does not look up the room. It takes `_RAM_C26E_` and `_RAM_C26C_`, then dispatches through `_DATA_4CAD_` to several loading branches (`_LABEL_4CED_`, `_LABEL_4D08_`, `_LABEL_4D72_`, `_LABEL_4D3A_`, `_LABEL_4E05_`, `_LABEL_4E25_`, `_LABEL_4E49_`).
+- `_LABEL_48A9_` is the upstream routine that resolves the active sequence entry and fills `_RAM_C26C_` / `_RAM_C26E_`. This means the door consumes a room target that was already decided earlier.
 
 Map impact:
-Per al mapa conceptual del joc, la cadena correcta és:
+The correct conceptual chain is:
 - `door trigger / player transition`
 - `state machine _RAM_C260_`
-- `_LABEL_4B31_` (animació d'entrada)
-- `_LABEL_4C32_` (consum del target de room)
-- `_DATA_4CAD_` (tipus de transició / loader concret)
-- `_LABEL_2620_` / `_LABEL_26F4_` / `_LABEL_5EB_` (càrrega efectiva)
+- `_LABEL_4B31_` (entry animation)
+- `_LABEL_4C32_` (room target consumption)
+- `_DATA_4CAD_` (transition type / concrete loader)
+- `_LABEL_2620_` / `_LABEL_26F4_` / `_LABEL_5EB_` (effective loading)
 
-No és correcte modelar-ho com:
+It is not correct to model this as:
 - `door -> _DATA_1CCC0_`
 
-`_DATA_1CCC0_` només aporta el `screen_prog` visible d'algunes rooms; la transició de porta real passa abans per la maquinària de room records i dispatch de tipus.
+`_DATA_1CCC0_` only provides the visible `screen_prog` for some rooms. The real door transition first goes through room records and type dispatch machinery.
 
 Confidence:
 high

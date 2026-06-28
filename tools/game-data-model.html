@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Data Model — Wonder Boy III</title>
+  <style>
+    :root {
+      --bg: #080810;
+      --panel: #10101d;
+      --panel2: #161625;
+      --border: #292947;
+      --accent: #00d4ff;
+      --accent2: #ff6b35;
+      --green: #00ff88;
+      --amber: #ffcc00;
+      --warn: #ff5577;
+      --dim: #70709a;
+      --text: #d6d6ee;
+      --mono: 'Courier New', Courier, monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      min-height: 100vh;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      background: #0b0b15;
+    }
+    h1 {
+      margin: 0;
+      color: var(--accent);
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .sub {
+      color: var(--dim);
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+    .actions {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    a, button {
+      font-family: var(--mono);
+    }
+    .btn {
+      border: 1px solid var(--border);
+      background: var(--panel2);
+      color: var(--text);
+      text-decoration: none;
+      padding: 8px 11px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+    .btn:hover { border-color: var(--accent); color: var(--accent); }
+    .btn.primary { border-color: var(--accent); color: var(--accent); }
+    main {
+      padding: 20px;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+    .notice {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 12px 14px;
+      color: var(--dim);
+      font-size: 12px;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .stat {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 12px;
+      min-height: 72px;
+    }
+    .stat-label {
+      color: var(--dim);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .stat-value {
+      margin-top: 8px;
+      color: var(--green);
+      font-size: 18px;
+    }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+    select, input {
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 7px 9px;
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+    input { min-width: 260px; }
+    .asset-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 10px;
+    }
+    .domain-list {
+      display: grid;
+      gap: 14px;
+    }
+    .domain {
+      border: 1px solid var(--border);
+      background: #0d0d18;
+      padding: 12px;
+    }
+    .domain-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: start;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+    .domain-title {
+      color: var(--accent);
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .domain-purpose {
+      color: var(--dim);
+      font-size: 11px;
+      line-height: 1.5;
+      margin-top: 5px;
+    }
+    .domain-counts {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .domain-assets {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 10px;
+    }
+    .asset {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 12px;
+      min-height: 210px;
+    }
+    .asset-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      justify-content: space-between;
+      margin-bottom: 9px;
+    }
+    .asset-kind {
+      color: var(--accent2);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .asset-name {
+      color: var(--accent);
+      font-size: 13px;
+      line-height: 1.35;
+      margin-top: 4px;
+    }
+    .pill {
+      border: 1px solid var(--border);
+      color: var(--dim);
+      font-size: 10px;
+      padding: 2px 6px;
+      white-space: nowrap;
+    }
+    .pill.ok { color: var(--green); border-color: var(--green); }
+    .pill.warn { color: var(--warn); border-color: var(--warn); }
+    .notes {
+      color: var(--text);
+      font-size: 11px;
+      line-height: 1.55;
+      margin: 8px 0 10px;
+    }
+    .refs {
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+      display: grid;
+      gap: 4px;
+      color: var(--dim);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+    code { color: var(--amber); }
+    .ok { color: var(--green); }
+    .warn { color: var(--warn); }
+    .trace-summary {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 10px 12px;
+      margin: 10px 0;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+    .region-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 840px;
+    }
+    .region-table th {
+      color: var(--dim);
+      text-align: left;
+      font-weight: normal;
+      border-bottom: 1px solid var(--border);
+      padding: 5px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .region-table td {
+      border-bottom: 1px solid rgba(41,41,71,.55);
+      padding: 5px;
+      vertical-align: top;
+      line-height: 1.45;
+      font-size: 10px;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .info-item {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 12px;
+      min-height: 72px;
+    }
+    .info-label {
+      color: var(--dim);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .info-value {
+      margin-top: 8px;
+      color: var(--green);
+      font-size: 18px;
+      word-break: break-word;
+    }
+    .gdm-decoder-control {
+      border: 1px solid var(--border);
+      background: #0d0d18;
+      padding: 12px;
+      margin: 14px 0;
+    }
+    .gdm-decoder-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: start;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+    .gdm-decoder-title {
+      color: var(--accent);
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .gdm-decoder-note {
+      color: var(--dim);
+      font-size: 11px;
+      line-height: 1.5;
+      margin-top: 5px;
+    }
+    .gdm-decoder-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      max-width: 460px;
+    }
+    .gdm-decoder-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, .75fr) minmax(520px, 1.35fr);
+      gap: 12px;
+      align-items: start;
+    }
+    .gdm-subtitle {
+      color: var(--accent2);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .gdm-table-wrap {
+      overflow: auto;
+      border: 1px solid var(--border);
+      background: var(--panel);
+    }
+    .gdm-table-wrap.compact { max-height: 390px; }
+    .gdm-pill {
+      border: 1px solid var(--border);
+      color: var(--dim);
+      font-size: 10px;
+      padding: 2px 6px;
+      white-space: nowrap;
+      display: inline-block;
+      margin: 1px 2px 1px 0;
+    }
+    .gdm-pill.ok { color: var(--green); border-color: var(--green); }
+    .gdm-pill.warn { color: var(--warn); border-color: var(--warn); }
+    .gdm-pill.progress { color: var(--amber); border-color: var(--amber); }
+    .gdm-pct {
+      position: relative;
+      min-width: 82px;
+      height: 18px;
+      border: 1px solid var(--border);
+      background: #080810;
+      overflow: hidden;
+    }
+    .gdm-pct-fill {
+      height: 100%;
+      background: linear-gradient(90deg, rgba(0,212,255,.65), rgba(0,255,136,.65));
+    }
+    .gdm-pct span {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      font-size: 10px;
+    }
+    .gdm-link {
+      display: inline-block;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      text-decoration: none;
+      padding: 3px 6px;
+      font-size: 10px;
+      margin: 0 4px 4px 0;
+    }
+    .gdm-link:hover { border-color: var(--accent); }
+    .gdm-link.audio { color: var(--amber); }
+    .empty {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--dim);
+      padding: 28px;
+      text-align: center;
+      font-size: 12px;
+    }
+    .error { color: var(--warn); }
+    @media (max-width: 720px) {
+      header { align-items: flex-start; }
+      .actions { margin-left: 0; width: 100%; }
+      .btn { flex: 1; text-align: center; }
+      input { min-width: 100%; width: 100%; }
+      .asset-grid { grid-template-columns: 1fr; }
+      .domain-head { grid-template-columns: 1fr; }
+      .domain-counts { justify-content: flex-start; }
+      .domain-assets { grid-template-columns: 1fr; }
+      .gdm-decoder-head,
+      .gdm-decoder-grid { grid-template-columns: 1fr; }
+      .gdm-decoder-pills { justify-content: flex-start; max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Game Data Model</h1>
+      <div class="sub">Wonder Boy III WORLD metadata assets</div>
+    </div>
+    <div class="actions">
+      <a class="btn" href="../index.html">HOME</a>
+      <a class="btn" href="rom-analyzer.html#game-data-model">OPEN IN ANALYZER</a>
+      <a class="btn" href="asset-data-browsers.html">ASSET BROWSERS</a>
+      <button class="btn primary" id="btn-load-gdm">LOAD WORLD MODEL</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="notice">
+      This page is the Phase 1 asset inventory. It derives assets from the WORLD map, RAM symbols, scene recipes and evidence catalogs, then groups them by reconstruction domain. It stores and renders metadata only: ids, kinds, labels, references, confidence and evidence notes.
+    </div>
+
+    <section class="stats" id="gdm-stats"></section>
+
+    <section id="gdm-decoder-control" class="empty">
+      Load the WORLD decoder implementation matrix.
+    </section>
+
+    <div class="toolbar">
+      <select id="kind-filter" disabled>
+        <option value="">ALL ASSET TYPES</option>
+      </select>
+      <input id="asset-search" type="search" placeholder="filter assets / refs / notes" disabled>
+    </div>
+
+    <section id="gdm-assets" class="empty">
+      Load the WORLD Game Data Model to inspect the asset inventory.
+    </section>
+  </main>
+
+  <script src="js/game-data-model.js"></script>
+  <script src="js/asset-decoders.js"></script>
+  <script src="js/game-data-model-page.js"></script>
+</body>
+</html>

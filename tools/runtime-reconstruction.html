@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Runtime Reconstruction — Wonder Boy III</title>
+  <style>
+    :root {
+      --bg: #080810;
+      --panel: #10101d;
+      --panel2: #161625;
+      --border: #292947;
+      --accent: #00d4ff;
+      --accent2: #ff6b35;
+      --green: #00ff88;
+      --amber: #ffcc00;
+      --warn: #ff5577;
+      --dim: #70709a;
+      --text: #d6d6ee;
+      --mono: 'Courier New', Courier, monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      min-height: 100vh;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      background: #0b0b15;
+    }
+    h1 {
+      margin: 0;
+      color: var(--accent);
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .sub {
+      color: var(--dim);
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+    .actions {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    a, button, select, input { font-family: var(--mono); }
+    .btn {
+      border: 1px solid var(--border);
+      background: var(--panel2);
+      color: var(--text);
+      text-decoration: none;
+      padding: 8px 11px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+    .btn:hover { border-color: var(--accent); color: var(--accent); }
+    .btn.primary { border-color: var(--accent); color: var(--accent); }
+    main {
+      padding: 20px;
+      max-width: 1380px;
+      margin: 0 auto;
+    }
+    .notice {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 12px 14px;
+      color: var(--dim);
+      font-size: 12px;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .stat {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 12px;
+      min-height: 72px;
+    }
+    .stat-label {
+      color: var(--dim);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .stat-value {
+      margin-top: 8px;
+      color: var(--green);
+      font-size: 18px;
+    }
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+    select, input {
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 7px 9px;
+      font-size: 11px;
+    }
+    input { min-width: 280px; }
+    .area-list {
+      display: grid;
+      gap: 14px;
+    }
+    .area {
+      border: 1px solid var(--border);
+      background: #0d0d18;
+      padding: 12px;
+    }
+    .area-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: start;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+    .area-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: var(--accent);
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .area-purpose {
+      color: var(--dim);
+      font-size: 11px;
+      line-height: 1.5;
+      margin-top: 5px;
+    }
+    .area-counts {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .pill {
+      border: 1px solid var(--border);
+      color: var(--dim);
+      font-size: 10px;
+      padding: 2px 6px;
+      white-space: nowrap;
+    }
+    .pill.ok { color: var(--green); border-color: var(--green); }
+    .pill.warn { color: var(--warn); border-color: var(--warn); }
+    .pill.progress { color: var(--amber); border-color: var(--amber); }
+    .area-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+    }
+    .box {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 10px;
+      min-height: 126px;
+    }
+    .box-title {
+      color: var(--accent2);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .line {
+      color: var(--text);
+      font-size: 10px;
+      line-height: 1.5;
+      margin: 4px 0;
+      word-break: break-word;
+    }
+    .dim { color: var(--dim); }
+    code { color: var(--amber); }
+    .empty {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--dim);
+      padding: 28px;
+      text-align: center;
+      font-size: 12px;
+    }
+    .error { color: var(--warn); }
+    @media (max-width: 760px) {
+      header { align-items: flex-start; }
+      .actions { margin-left: 0; width: 100%; }
+      .btn { flex: 1; text-align: center; }
+      input { min-width: 100%; width: 100%; }
+      .area-head { grid-template-columns: 1fr; }
+      .area-counts { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Runtime Reconstruction</h1>
+      <div class="sub">Phase 3 · clean JavaScript engine area</div>
+    </div>
+    <div class="actions">
+      <a class="btn" href="../index.html">HOME</a>
+      <a class="btn" href="game-data-model.html">DATA MODEL</a>
+      <a class="btn" href="rom-analyzer.html#game-data-model">ANALYZER</a>
+      <button class="btn primary" id="btn-load-runtime">LOAD RUNTIME STATE</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="notice">
+      This area tracks the clean JavaScript runtime reconstruction. It groups ROM-derived evidence, mapped assets and existing shared modules into engine subsystems. It does not emulate the full console and does not persist ROM bytes, decoded assets, pixels, audio samples, port values or instruction bytes.
+    </div>
+
+    <section class="stats" id="runtime-stats"></section>
+
+    <div class="toolbar">
+      <select id="area-filter" disabled>
+        <option value="">ALL RUNTIME AREAS</option>
+      </select>
+      <input id="runtime-search" type="search" placeholder="filter modules / evidence / next actions" disabled>
+    </div>
+
+    <section id="runtime-areas" class="empty">
+      Load the WORLD runtime reconstruction state.
+    </section>
+  </main>
+
+  <script src="js/game-data-model.js"></script>
+  <script src="js/runtime-reconstruction-page.js"></script>
+</body>
+</html>

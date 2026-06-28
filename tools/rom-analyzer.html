@@ -87,6 +87,14 @@
     </div>
   </div>
 
+  <!-- GAME DATA MODEL ───────────────────────────── -->
+  <div class="panel hidden" id="panel-game-data">
+    <div class="ph"><span class="dot"></span> GAME DATA MODEL <span style="margin-left:8px;color:var(--dim)">metadata-only asset registry</span></div>
+    <div class="pb" id="gdm-panel-body">
+      <div style="color:var(--dim);font-size:11px">Load a project map to build the Game Data Model.</div>
+    </div>
+  </div>
+
   <!-- BANKS ─────────────────────────────────────── -->
   <div class="panel hidden" id="panel-banks">
     <div class="ph"><span class="dot"></span> MEMORY BANKS <span style="margin-left:8px;color:var(--dim)">16 × 16KB (0x4000) — SMS Sega mapper</span></div>
@@ -114,6 +122,7 @@
         <canvas id="rommap-canvas" height="28"></canvas>
       </div>
       <div class="rommap-legend" id="rommap-legend"></div>
+      <div class="trace-summary" id="residual-trace-summary" style="display:none"></div>
 
       <!-- Import preview -->
       <div id="import-preview">
@@ -159,6 +168,18 @@
         </select>
         <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11px;color:var(--dim);white-space:nowrap;user-select:none">
           <input type="checkbox" id="chk-unknown-only"> UNKNOWN ONLY
+        </label>
+        <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11px;color:var(--dim);white-space:nowrap;user-select:none">
+          <input type="checkbox" id="chk-consumer-unresolved"> CONSUMER?
+        </label>
+        <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11px;color:var(--dim);white-space:nowrap;user-select:none">
+          <input type="checkbox" id="chk-split-guard"> SPLIT GUARD
+        </label>
+        <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11px;color:var(--dim);white-space:nowrap;user-select:none">
+          <input type="checkbox" id="chk-pointer-guard"> TABLE KEEP
+        </label>
+        <label style="display:flex;align-items:center;gap:5px;cursor:pointer;font-size:11px;color:var(--dim);white-space:nowrap;user-select:none">
+          <input type="checkbox" id="chk-residual-proof"> RESIDUAL?
         </label>
         <span style="font-size:10px;color:var(--dim);white-space:nowrap;margin-left:4px">↓ BANK:</span>
         <div id="map-bank-jumps" style="display:flex;gap:3px;flex-wrap:wrap"></div>
@@ -267,6 +288,7 @@
       </div>
     </div>
     <div class="pb">
+      <div id="lab-guard-panel" class="lab-guard-panel" style="display:none"></div>
       <div class="lab-grid">
         <!-- Left: hex dump + optional ASM context -->
         <div>
@@ -701,10 +723,45 @@
           Descriptor (6 bytes) → Sub-record (18 bytes): 8FB ptr + 6 DC2 indices + door table.
           Default zone 0 start: <code style="color:#4ade80">$10C96</code> (bank 4, WB3 World new game).
         </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <span style="font-size:10px;color:var(--dim)">Zone recipe:</span>
+          <select id="zone-recipe-sel" class="region-input" style="font-size:11px;padding:2px 4px;min-width:260px;max-width:420px;">
+            <option value="">— descriptor offset —</option>
+          </select>
+          <button class="btn small" id="btn-zone-load-recipe">LOAD RECIPE</button>
+          <span id="zone-recipe-count" style="font-size:10px;color:var(--dim)"></span>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <span style="font-size:10px;color:var(--dim)">Entry seed:</span>
+          <select id="zone-entry-seed-sel" class="region-input" style="font-size:11px;padding:2px 4px;min-width:260px;max-width:420px;">
+            <option value="">— none —</option>
+          </select>
+          <span id="zone-entry-seed-count" style="font-size:10px;color:var(--dim)"></span>
+        </div>
         <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px;">
           <span style="font-size:10px;color:var(--dim)">Descriptor offset:</span>
           <input type="text" id="zone-desc-off" value="0x10C96" class="region-input" style="width:90px;font-size:11px">
           <button class="btn small primary" id="btn-zone-parse">PARSE ZONE</button>
+        </div>
+        <div id="zone-recipe-info" style="font-size:10px;color:var(--dim);margin-bottom:6px;min-height:13px;font-family:var(--mono);"></div>
+        <!-- Audio stream graph preview -->
+        <div id="zone-audio-section" style="display:none;margin-bottom:8px;background:rgba(74,158,255,.03);border:1px solid #2a3a4a;border-radius:3px;padding:8px;">
+          <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:5px;">
+            <div style="font-size:10px;color:#4a9eff;font-weight:bold;letter-spacing:1px">AUDIO STREAM PREVIEW</div>
+            <span id="zone-audio-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+            <label style="display:flex;gap:4px;align-items:center;font-size:10px;color:var(--dim);font-family:var(--mono);">
+              $C232:
+              <select id="zone-audio-output-mode-sel" class="region-input" style="width:130px;font-size:10px;height:22px">
+                <option value="all">all/unresolved</option>
+                <option value="psg">PSG bit0=0</option>
+                <option value="fm">FM bit0=1</option>
+              </select>
+            </label>
+            <button class="btn small" id="btn-zone-audio-preview">PREVIEW EVENTS</button>
+            <button class="btn small" id="btn-zone-audio-export-observations" disabled title="Export the current metadata-only audio observation bundle after preview validation">EXPORT OBSERVATIONS</button>
+            <span id="zone-audio-export-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+          </div>
+          <div id="zone-audio-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:240px;overflow:auto;"></div>
         </div>
         <!-- Parsed descriptor + sub-record info -->
         <div id="zone-parsed" style="display:none;background:rgba(0,0,0,.3);border:1px solid #2a4a2a;border-radius:3px;padding:8px;margin-bottom:8px;font-family:var(--mono);font-size:11px;"></div>
@@ -733,6 +790,231 @@
           </div>
           <div id="zone-render-info" style="font-size:10px;color:var(--dim);margin-top:4px;font-family:var(--mono);"></div>
         </div>
+      </div>
+
+      <!-- -- AUDIO REQUEST GRAPH -------------------------- -->
+      <div style="border:1px solid #2a4655;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(56,189,248,.025)">
+        <div style="font-size:11px;color:#7dd3fc;font-weight:bold;letter-spacing:1px;margin-bottom:6px">AUDIO REQUEST GRAPH
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">request table -> stream graph -> trace readiness</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Previews the metadata-only audio request catalog, stream graph coverage, request usage, output phases, and frame-step readiness. No stream bytes, register traces, samples, or decoded music are stored.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <button class="btn small primary" id="btn-audio-request-graph-preview">PREVIEW REQUESTS</button>
+          <span id="audio-request-graph-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+        </div>
+        <div id="audio-request-graph-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:320px;overflow:auto;background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:3px;padding:8px;"></div>
+      </div>
+
+      <!-- -- AUDIO RUNTIME OUTPUT FIXTURES ----------------- -->
+      <div style="border:1px solid #4a3a55;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(168,85,247,.025)">
+        <div style="font-size:11px;color:#c084fc;font-weight:bold;letter-spacing:1px;margin-bottom:6px">AUDIO RUNTIME OUTPUT FIXTURES
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">PSG/FM phases -> callback contract</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Validates the metadata-only callback contract for PSG/FM output phases. It shows output phases, port write sites, event links, branch candidates, global RAM inputs, and field names only; stream bytes, register values, register traces, samples, generated audio, and ROM bytes are not stored.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <button class="btn small primary" id="btn-audio-runtime-output-fixture-preview">PREVIEW FIXTURES</button>
+          <span id="audio-runtime-output-fixture-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+        </div>
+        <div id="audio-runtime-output-fixture-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:320px;overflow:auto;background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:3px;padding:8px;"></div>
+      </div>
+
+      <!-- -- BANK 7 ENTITY SEQUENCE ------------------------ -->
+      <div style="border:1px solid #3a3a55;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(168,85,247,.025)">
+        <div style="font-size:11px;color:#c084fc;font-weight:bold;letter-spacing:1px;margin-bottom:6px">BANK 7 ENTITY SEQUENCE
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">local ROM stream decoder · metadata-backed</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Decodes <code>_DATA_1E360_</code> waypoint triplets and <code>_DATA_1E379_</code> timing pairs from the loaded ROM at runtime. Values are not saved to the project map.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <button class="btn small primary" id="btn-bank7-seq-preview">PREVIEW STREAMS</button>
+          <span id="bank7-seq-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+        </div>
+      <div id="bank7-seq-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:260px;overflow:auto;background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:3px;padding:8px;"></div>
+      </div>
+
+      <!-- -- ROOM ENTITY ORPHAN LISTS ---------------------- -->
+      <div style="border:1px solid #4a3a2a;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(251,191,36,.025)">
+        <div style="font-size:11px;color:#fbbf24;font-weight:bold;letter-spacing:1px;margin-bottom:6px">ROOM ENTITY ORPHAN LISTS
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">metadata preview · no coordinates</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Previews the structurally decoded <code>0x12D91-0x134B8</code> orphan entity-list span from map metadata. It shows list/type summaries only, not entity coordinate bytes.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <button class="btn small primary" id="btn-room-entity-orphan-preview">PREVIEW LISTS</button>
+          <span id="room-entity-orphan-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+        </div>
+      <div id="room-entity-orphan-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:260px;overflow:auto;background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:3px;padding:8px;"></div>
+      </div>
+
+      <!-- -- ROOM ENTITY ASSET LINKS ------------------------ -->
+      <div style="border:1px solid #2f4a42;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(45,212,191,.025)">
+        <div style="font-size:11px;color:#5eead4;font-weight:bold;letter-spacing:1px;margin-bottom:6px">ROOM ENTITY ASSET LINKS
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">type -> behavior -> dynamic tiles -> frames</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Previews the metadata bridge from room entity type ids to behavior selectors, dynamic tile stream metadata, and high-confidence metasprite frame subrecords. No ROM bytes, coordinates, or decoded sprites are shown.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <button class="btn small primary" id="btn-room-entity-asset-preview">PREVIEW LINKS</button>
+          <span id="room-entity-asset-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+        </div>
+      <div id="room-entity-asset-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:300px;overflow:auto;background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:3px;padding:8px;"></div>
+      </div>
+
+      <!-- -- ROOM ENTITY DYNAMIC TILES --------------------- -->
+      <div style="border:1px solid #3f4a2f;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(163,230,53,.025)">
+        <div style="font-size:11px;color:#bef264;font-weight:bold;letter-spacing:1px;margin-bottom:6px">ROOM ENTITY DYNAMIC TILES
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">entity type -> _LABEL_A97_ -> VRAM slots</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Replays the metadata-backed room entity dynamic tile uploads through the local ROM and records synthetic VRAM provenance only. No ROM bytes, decoded pixels, sprites, or coordinates are saved.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <button class="btn small primary" id="btn-room-entity-dynamic-preview">PREVIEW UPLOADS</button>
+          <span id="room-entity-dynamic-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+        </div>
+      <div id="room-entity-dynamic-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:320px;overflow:auto;background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:3px;padding:8px;"></div>
+      </div>
+
+      <!-- -- DYNAMIC GRAPHICS ROUTE PRIORITY -------------- -->
+      <div style="border:1px solid #46552a;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(132,204,22,.025)">
+        <div style="font-size:11px;color:#a3e635;font-weight:bold;letter-spacing:1px;margin-bottom:6px">DYNAMIC GRAPHICS ROUTE PRIORITY
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">verified source seeds -> trace route queue</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Previews the metadata-only priority queue for locally verified dynamic graphics seeds. It shows route ids, labels, RAM prerequisites, counts, and promotion blockers only; ROM bytes, decoded pixels, screenshots, and hashes stay local and unsaved.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <button class="btn small primary" id="btn-dynamic-route-priority-preview">PREVIEW QUEUE</button>
+          <span id="dynamic-route-priority-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+        </div>
+      <div id="dynamic-route-priority-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:340px;overflow:auto;background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:3px;padding:8px;"></div>
+      </div>
+
+      <!-- -- DYNAMIC GRAPHICS RUNTIME HOOK INDEX ------------- -->
+      <div style="border:1px solid #2f5a3d;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(74,222,128,.025)">
+        <div style="font-size:11px;color:#86efac;font-weight:bold;letter-spacing:1px;margin-bottom:6px">DYNAMIC GRAPHICS RUNTIME HOOK INDEX
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">all dynamic graphics hooks -> one proof registry</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Previews the unified metadata-only hook registry for all dynamic graphics uploads. It merges A48 and 998/A97 trace plans into one list of hook ids, RAM captures, source spans, and promotion gates; no ROM bytes, decoded pixels, screenshots, hashes, audio, instruction bytes, or register traces are stored.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <button class="btn small primary" id="btn-dynamic-graphics-runtime-hook-preview">PREVIEW HOOKS</button>
+          <span id="dynamic-graphics-runtime-hook-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+        </div>
+        <div id="dynamic-graphics-runtime-hook-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:340px;overflow:auto;background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:3px;padding:8px;"></div>
+      </div>
+
+      <!-- -- DYNAMIC GRAPHICS RUNTIME FIXTURES --------------- -->
+      <div style="border:1px solid #315f54;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(45,212,191,.025)">
+        <div style="font-size:11px;color:#5eead4;font-weight:bold;letter-spacing:1px;margin-bottom:6px">DYNAMIC GRAPHICS RUNTIME FIXTURES
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">hook registry -> emulator callback contract</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Validates the metadata-only callback contract for proving dynamic graphics spans. It shows addressable hook fixtures, plan-to-hook edges, promotion gates, and capture field names only; runtime values, register traces, ROM bytes, decoded pixels, screenshots, hashes, audio, and instruction bytes are not stored.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <button class="btn small primary" id="btn-dynamic-graphics-runtime-fixture-preview">PREVIEW FIXTURES</button>
+          <span id="dynamic-graphics-runtime-fixture-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+        </div>
+        <div id="dynamic-graphics-runtime-fixture-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:340px;overflow:auto;background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:3px;padding:8px;"></div>
+      </div>
+
+      <!-- -- 998/A97 FRAME TRACE SCAFFOLD -------------------- -->
+      <div style="border:1px solid #285062;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(45,212,191,.025)">
+        <div style="font-size:11px;color:#5eead4;font-weight:bold;letter-spacing:1px;margin-bottom:6px">998/A97 FRAME TRACE SCAFFOLD
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">dynamic records -> parser/bank/VDP proof gates</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Previews the metadata-only event hook plan for non-A48 dynamic graphics uploads. It shows item/entity consumer context, _LABEL_9C3_ source records, _RAM_D0F3_ bank latch, raw/decoded transfer routines, VDP destination requirements, and promotion gates only; no ROM bytes, decoded pixels, screenshots, hashes, audio, or instruction bytes are stored.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <button class="btn small primary" id="btn-998-a97-frame-trace-preview">PREVIEW SCAFFOLD</button>
+          <span id="998-a97-frame-trace-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+        </div>
+        <div id="998-a97-frame-trace-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:340px;overflow:auto;background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:3px;padding:8px;"></div>
+      </div>
+
+      <!-- -- A48 SELECTOR TRACE QUEUE --------------------- -->
+      <div style="border:1px solid #4a3a5f;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(168,85,247,.025)">
+        <div style="font-size:11px;color:#c084fc;font-weight:bold;letter-spacing:1px;margin-bottom:6px">A48 SELECTOR TRACE QUEUE
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">player command streams -> _LABEL_A48_ proof queue</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Previews the metadata-only A48 selector queue for A48-primary dynamic graphics seeds. It shows command stream offsets, accepted gap candidates, form selectors, RAM prerequisites, and promotion blockers only; no ROM bytes, decoded pixels, screenshots, hashes, audio, or instruction bytes are stored.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <button class="btn small primary" id="btn-a48-selector-trace-preview">PREVIEW QUEUE</button>
+          <span id="a48-selector-trace-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+        </div>
+      <div id="a48-selector-trace-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:340px;overflow:auto;background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:3px;padding:8px;"></div>
+      </div>
+
+      <!-- -- A48 FRAME TRACE SCAFFOLD ------------------------ -->
+      <div style="border:1px solid #3f4d69;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(96,165,250,.025)">
+        <div style="font-size:11px;color:#93c5fd;font-weight:bold;letter-spacing:1px;margin-bottom:6px">A48 FRAME TRACE SCAFFOLD
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">event hooks -> same-frame promotion gates</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Previews the metadata-only event hook plan for proving A48 player-animation graphics uploads. It shows trace points, RAM captures, command/stream offsets, VDP destination requirements, and promotion gates only; no ROM bytes, decoded pixels, screenshots, hashes, audio, or instruction bytes are stored.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <button class="btn small primary" id="btn-a48-frame-trace-preview">PREVIEW SCAFFOLD</button>
+          <span id="a48-frame-trace-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+        </div>
+        <div id="a48-frame-trace-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:340px;overflow:auto;background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:3px;padding:8px;"></div>
+      </div>
+
+      <!-- -- PLAYER A97 TRACE SEEDS ----------------------- -->
+      <div style="border:1px solid #4a3f5c;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(192,132,252,.025)">
+        <div style="font-size:11px;color:#c084fc;font-weight:bold;letter-spacing:1px;margin-bottom:6px">PLAYER A97 TRACE SEEDS
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">guarded gaps -> _LABEL_9C3_/_LABEL_A97_ proof queue</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Verifies the metadata-only trace seeds against the locally loaded ROM: source-word formulas, source ranges, bank expectations, and A97 decode readiness. It does not save ROM bytes, decoded pixels, screenshots, or hashes.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <button class="btn small primary" id="btn-player-a97-trace-preview">PREVIEW SEEDS</button>
+          <span id="player-a97-trace-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+        </div>
+        <div id="player-a97-trace-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:320px;overflow:auto;background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:3px;padding:8px;"></div>
+      </div>
+
+      <!-- -- ROOM ENTITY FRAME COVERAGE -------------------- -->
+      <div style="border:1px solid #4a3f2f;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(251,146,60,.025)">
+        <div style="font-size:11px;color:#fdba74;font-weight:bold;letter-spacing:1px;margin-bottom:6px">ROOM ENTITY FRAME COVERAGE
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">dynamic VRAM range -> frame tile ids</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Previews the conservative metadata bridge between first-seen dynamic tile uploads and high-confidence metasprite frame tile ranges. It stores coverage statuses only, not ROM bytes, pixels, sprites, or coordinates.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <button class="btn small primary" id="btn-room-entity-frame-coverage-preview">PREVIEW COVERAGE</button>
+          <span id="room-entity-frame-coverage-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+        </div>
+        <div id="room-entity-frame-coverage-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:320px;overflow:auto;background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:3px;padding:8px;"></div>
+      </div>
+
+      <!-- -- PLAYER STATE GRAPH ---------------------------- -->
+      <div style="border:1px solid #39445c;border-radius:4px;padding:8px;margin-bottom:12px;background:rgba(96,165,250,.025)">
+        <div style="font-size:11px;color:#93c5fd;font-weight:bold;letter-spacing:1px;margin-bottom:6px">PLAYER STATE GRAPH
+          <span style="font-size:10px;font-weight:normal;color:var(--dim);margin-left:6px">state -> transitions -> physics categories</span>
+        </div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:6px;line-height:1.5">
+          Previews the metadata-only player engine state graph built from ASM labels, RAM writes, transition constants, and physics categories. No ROM bytes, gameplay tables, or decoded assets are shown.
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          <button class="btn small primary" id="btn-player-state-graph-preview">PREVIEW GRAPH</button>
+          <span id="player-state-graph-info" style="font-size:10px;color:var(--dim);font-family:var(--mono);"></span>
+        </div>
+        <div id="player-state-graph-preview" style="font-size:10px;color:var(--dim);font-family:var(--mono);line-height:1.45;max-height:320px;overflow:auto;background:rgba(0,0,0,.25);border:1px solid var(--border);border-radius:3px;padding:8px;"></div>
       </div>
 
       <!-- ── INIT STEPS ──────────────────────────── -->
@@ -852,6 +1134,8 @@
 
 <script src="js/state.js"></script>
 <script src="js/utils.js"></script>
+<script src="js/game-data-model.js"></script>
+<script src="js/asset-decoders.js"></script>
 <script src="js/asm.js"></script>
 <script src="js/panel-banks.js"></script>
 <script src="js/panel-map.js"></script>

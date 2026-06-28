@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Wonder Boy III — The Dragon's Trap · Editor & Player</title>
+  <title>Wonder Boy III — The Dragon's Trap · WB3 Maker Toolkit</title>
   <style>
     :root {
       --bg:     #080810;
@@ -12,6 +12,7 @@
       --accent: #00d4ff;
       --accent2:#ff6b35;
       --green:  #00ff88;
+      --amber:  #ffcc00;
       --dim:    #60608a;
       --text:   #c0c0d8;
       --mono:   'Courier New', Courier, monospace;
@@ -25,7 +26,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       padding: 40px 20px;
     }
     h1 {
@@ -46,7 +47,7 @@
       flex-direction: column;
       gap: 12px;
       width: 100%;
-      max-width: 580px;
+      max-width: 760px;
     }
     .phase {
       background: var(--bg2);
@@ -60,7 +61,7 @@
       transition: border-color 0.15s;
     }
     .phase:hover { border-color: var(--accent); }
-    .phase.disabled { opacity: 0.35; pointer-events: none; }
+    .phase.disabled { opacity: 0.55; }
     .phase-num {
       font-size: 11px;
       color: var(--dim);
@@ -85,7 +86,18 @@
       letter-spacing: 1px;
     }
     .status-active  { border-color: var(--green);  color: var(--green); }
+    .status-progress{ border-color: var(--amber);  color: var(--amber); }
     .status-pending { border-color: var(--dim);    color: var(--dim);   }
+    .roadmap-link {
+      margin-top: 18px;
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 3px;
+    }
+    .roadmap-link:hover { border-color: var(--accent); }
     .legal {
       margin-top: 48px;
       font-size: 10px;
@@ -98,69 +110,89 @@
 </head>
 <body>
   <h1>Wonder Boy III</h1>
-  <div class="sub">The Dragon's Trap — Screen Editor & Player</div>
+  <div class="sub">The Dragon's Trap — ROM Intelligence to WB3 Maker</div>
 
   <div class="phase-list">
 
     <a class="phase" href="tools/rom-analyzer.html">
       <div class="phase-num">PHASE 0</div>
       <div>
-        <div class="phase-name">ROM Analyzer</div>
-        <div class="phase-desc">Fingerprint ROM · MD5 checksum · Raw tile viewer</div>
+        <div class="phase-name">ROM Intelligence</div>
+        <div class="phase-desc">Analyzer · memory map · RAM map · catalog evidence · coverage</div>
       </div>
       <span class="phase-status status-active">ACTIVE</span>
     </a>
 
-    <div class="phase disabled">
-      <div class="phase-num">PHASE 1a</div>
+    <a class="phase" href="tools/game-data-model.html">
+      <div class="phase-num">PHASE 1</div>
       <div>
-        <div class="phase-name">Tile Extractor</div>
-        <div class="phase-desc">Extract tiles from ROM at known offsets</div>
+        <div class="phase-name">Data Model</div>
+        <div class="phase-desc">Asset inventory · code · sprites · scenes · audio · RAM · gameplay evidence</div>
       </div>
-      <span class="phase-status status-pending">PENDING</span>
-    </div>
+      <span class="phase-status status-progress">LIVE</span>
+    </a>
 
-    <div class="phase disabled">
-      <div class="phase-num">PHASE 1b</div>
-      <div>
-        <div class="phase-name">Map Extractor</div>
-        <div class="phase-desc">Extract screen tile maps from ROM</div>
-      </div>
-      <span class="phase-status status-pending">PENDING</span>
-    </div>
-
-    <div class="phase disabled">
-      <div class="phase-num">PHASE 1c</div>
-      <div>
-        <div class="phase-name">Sprite Extractor</div>
-        <div class="phase-desc">Extract enemy and item sprites from ROM</div>
-      </div>
-      <span class="phase-status status-pending">PENDING</span>
-    </div>
-
-    <div class="phase disabled">
+    <a class="phase" href="tools/asset-data-browsers.html">
       <div class="phase-num">PHASE 2</div>
       <div>
-        <div class="phase-name">Screen Editor</div>
-        <div class="phase-desc">Create adventure screens with original assets</div>
+        <div class="phase-name">Asset & Data Browsers</div>
+        <div class="phase-desc">Decoder percentages · tiles · maps · collisions · sprites · animations · music probes · SFX · UI data</div>
       </div>
-      <span class="phase-status status-pending">PENDING</span>
-    </div>
+      <span class="phase-status status-progress">LIVE</span>
+    </a>
+
+    <a class="phase" href="tools/runtime-reconstruction.html">
+      <div class="phase-num">PHASE 3</div>
+      <div>
+        <div class="phase-name">Runtime Reconstruction</div>
+        <div class="phase-desc">SMS-like renderer · loaders · camera · collision · player · entities · audio</div>
+      </div>
+      <span class="phase-status status-progress">LIVE</span>
+    </a>
 
     <div class="phase disabled">
       <div class="phase-num">PHASE 4</div>
       <div>
-        <div class="phase-name">Player</div>
-        <div class="phase-desc">Play created screens in the browser</div>
+        <div class="phase-name">Editors & Tuning Tools</div>
+        <div class="phase-desc">Rooms · zones · doors · collisions · entities · palettes · audio assignments</div>
+      </div>
+      <span class="phase-status status-pending">PENDING</span>
+    </div>
+
+    <div class="phase disabled">
+      <div class="phase-num">PHASE 5</div>
+      <div>
+        <div class="phase-name">Playable JS Recreation</div>
+        <div class="phase-desc">Load local ROM · run rooms in browser · player · entities · transitions · audio</div>
+      </div>
+      <span class="phase-status status-pending">PENDING</span>
+    </div>
+
+    <div class="phase disabled">
+      <div class="phase-num">PHASE 6</div>
+      <div>
+        <div class="phase-name">WB3 Maker Mode</div>
+        <div class="phase-desc">New assets · more sprites · new music · SMS color and screen rules preserved</div>
+      </div>
+      <span class="phase-status status-pending">PENDING</span>
+    </div>
+
+    <div class="phase disabled">
+      <div class="phase-num">PHASE 7</div>
+      <div>
+        <div class="phase-name">QA & Regression</div>
+        <div class="phase-desc">Catalog smoke tests · decoder fixtures · screenshot checks · browser validation</div>
       </div>
       <span class="phase-status status-pending">PENDING</span>
     </div>
 
   </div>
 
+  <a class="roadmap-link" href="ROADMAP.md">OPEN FULL ROADMAP</a>
+
   <div class="legal">
     This tool requires you to provide your own ROM.<br>
-    No game assets are distributed. Bring your own copy of the game.
+    No game assets are distributed. Expanded maker projects run on the JavaScript runtime, not as patched SMS ROMs.
   </div>
 </body>
 </html>

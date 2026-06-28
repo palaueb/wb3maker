@@ -28,6 +28,7 @@ function initPanelCollapse(){
 //  UNIFIED REFRESH
 // ═══════════════════════════════════════════════════════
 function refreshMapUI(){
+  if (typeof renderResidualTraceSummary === 'function') renderResidualTraceSummary();
   renderRegionsTable();
   renderBankJumps();
   renderPaletteRegistry();
@@ -39,6 +40,8 @@ function refreshMapUI(){
   compRenderSavedList();
   refreshViewerPalSelect();
   simRefreshStepTypeRegionFilter();
+  if (typeof zoneBrowserRenderRecipePicker === 'function') zoneBrowserRenderRecipePicker();
+  if (typeof zoneBrowserRenderEntrySeedPicker === 'function') zoneBrowserRenderEntrySeedPicker();
   triggerAutoSave();
 }
 
@@ -142,6 +145,7 @@ function clearTextSearch(){
 // ADD REGION FORM event listeners
 document.getElementById('map-filter').addEventListener('input',renderRegionsTable);
 document.getElementById('chk-unknown-only').addEventListener('change',renderRegionsTable);
+document.getElementById('chk-consumer-unresolved').addEventListener('change',renderRegionsTable);
 document.getElementById('btn-textsearch').addEventListener('click',doTextSearch);
 document.getElementById('btn-textsearch-clear').addEventListener('click',clearTextSearch);
 document.getElementById('map-textsearch').addEventListener('keydown',e=>{if(e.key==='Enter')doTextSearch();});
@@ -212,6 +216,10 @@ function updateBadges(){
   const wrap=document.getElementById('loaded-files');wrap.innerHTML='';
   if(romName){const b=document.createElement('div');b.className='loaded-badge rom';b.textContent='▤ '+romName;wrap.appendChild(b);}
   if(mapData.regions.length){const b=document.createElement('div');b.className='loaded-badge';b.textContent=`⊞ ${mapData.regions.length} regions`;wrap.appendChild(b);}
+  const gdmAssets = (gameDataModelState && gameDataModelState.summary)
+    ? gameDataModelState.summary.assetCount
+    : ((mapData.gameDataModel && Array.isArray(mapData.gameDataModel.assets)) ? mapData.gameDataModel.assets.length : 0);
+  if(gdmAssets){const b=document.createElement('div');b.className='loaded-badge';b.textContent=`◇ ${gdmAssets} GDM assets`;wrap.appendChild(b);}
   if(asmFileName){const b=document.createElement('div');b.className='loaded-badge asm-badge';b.textContent=`⊞ ${asmFileName}`;wrap.appendChild(b);}
   document.getElementById('btn-load-json').style.display=romData?'':'none';
   document.getElementById('btn-load-asm').style.display=romData?'':'none';
@@ -256,28 +264,57 @@ async function loadRom(arrayBuffer,fileName){
   }
   document.getElementById('info-checksums').innerHTML=checksumsHTML;
 
-  ['panel-info','panel-banks','panel-map','panel-palettes','panel-viewer','panel-composer','panel-simulator','panel-ram'].forEach(id=>
+  ['panel-info','panel-game-data','panel-banks','panel-map','panel-palettes','panel-viewer','panel-composer','panel-simulator','panel-ram'].forEach(id=>
     document.getElementById(id).classList.remove('hidden'));
 
   refreshMapUI();doRender();
+  if (typeof gdmRefreshUI === 'function') gdmRefreshUI();
   showToast(`ROM loaded: ${fileName} (${(bytes.length/1024).toFixed(0)} KB)`);
   updateBadges();
 }
+
+const MAP_ARRAY_FIELDS = [
+  'regions','compositions','ram','simScenes','sceneRecipes','sceneRecipeCatalogs',
+  'zoneRecipes','inlineTransitionRecipes','zoneGraphs','audioCatalogs',
+  'audioRequestTaxonomyCatalogs','entityDataCatalogs','entityAnimationCatalogs',
+  'entityBehaviorCatalogs','entityBehaviorCodeCatalogs','entityBehaviorSplitCatalogs',
+  'entityBehaviorFragmentCatalogs','entityObjectRecordCatalogs','itemDataCatalogs',
+  'roomDataCatalogs','metaspriteCatalogs','inputScriptCatalogs','effectScriptCatalogs',
+  'smallDataCatalogs','vdpStreamCatalogs','fragmentCatalogs','tileSourceCatalogs',
+  'screenProgCatalogs','screenProgEmbeddedContinuationProofCatalogs',
+  'overlapCatalogs','paletteCatalogs','graphicsCatalogs','playerCatalogs',
+  'playerRuntimeCatalogs','engineModuleCatalogs',
+  'assetReadinessCatalogs','blankMetaspriteQuarantineProofCatalogs',
+  'gearsystemMcpBridgeCatalogs',
+  'residualClosureCatalogs','residualLiveClosureStatusCatalogs','residualProofUpdatePlanCatalogs',
+  'residualSemanticDispositionPlanCatalogs','residualRuntimeClosurePipelineCatalogs',
+  'residualRuntimeCaptureChecklistCatalogs',
+  'runtimeTraceHookCatalogs',
+  'runtimeTraceHookFixtureCatalogs','runtimeTraceEventContractCatalogs',
+  'runtimeTraceHookBridgeCatalogs',
+  'runtimeTraceObservationAuditCatalogs',
+  'runtimeTraceEvaluatorCatalogs',
+  'runtimeTraceConfirmationCatalogs','analysisReports',
+];
 
 function loadMapJson(jsonText,fileName){
   let data;try{data=JSON.parse(jsonText);}catch(e){showToast('Invalid JSON',true);return;}
   if(romData&&data.romMD5&&data.romMD5!==romMD5){
     showToast(`MD5 mismatch! JSON is for ${data.romMD5.slice(0,8)}… current ROM is ${romMD5.slice(0,8)}…`,true);return;
   }
+  const currentRomMD5=mapData.romMD5||romMD5||'';
+  const currentRomName=mapData.romName||romName||'';
+  const currentRomSizeBytes=mapData.romSizeBytes||(romData?romData.length:0);
+  // Preserve every top-level map field from disk so generated catalogs survive load/save.
+  for(const key of Object.keys(mapData))delete mapData[key];
+  Object.assign(mapData,data);
   mapData.schemaVersion=Math.max(data.schemaVersion??1,3);
   mapData.romVersion=data.romVersion??'unknown';
-  if(data.romMD5)mapData.romMD5=data.romMD5;
-  if(data.romName)mapData.romName=data.romName;
-  mapData.romSizeBytes=data.romSizeBytes??mapData.romSizeBytes;
-  mapData.regions=data.regions??[];
-  mapData.compositions=data.compositions??[];
-  mapData.ram=data.ram??[];
-  mapData.simScenes=data.simScenes??[];
+  mapData.romMD5=data.romMD5??currentRomMD5;
+  mapData.romName=data.romName??currentRomName;
+  mapData.romSizeBytes=data.romSizeBytes??currentRomSizeBytes;
+  for(const key of MAP_ARRAY_FIELDS)if(!Array.isArray(mapData[key]))mapData[key]=[];
+  if(!mapData.gameDataModel || typeof mapData.gameDataModel !== 'object' || Array.isArray(mapData.gameDataModel))mapData.gameDataModel={};
   mapData.notes=data.notes??'';
   _pendingAsmSplitPlan=null;
   document.getElementById('asm-split-review').classList.remove('open');
@@ -288,9 +325,16 @@ function loadMapJson(jsonText,fileName){
   for(const e of mapData.ram){const n=parseInt((e.id||'ram0').replace(/\D/g,''),10);if(n>maxRamId)maxRamId=n;}
   _ramIdCounter=maxRamId+1;
   if(romData){
-    ['panel-banks','panel-map','panel-palettes','panel-viewer','panel-composer','panel-simulator','panel-ram'].forEach(id=>document.getElementById(id).classList.remove('hidden'));
+    ['panel-game-data','panel-banks','panel-map','panel-palettes','panel-viewer','panel-composer','panel-simulator','panel-ram'].forEach(id=>document.getElementById(id).classList.remove('hidden'));
     refreshMapUI();doRender();ramRenderTable();simRenderGallery();
+  } else {
+    const gdmPanel=document.getElementById('panel-game-data');
+    if(gdmPanel)gdmPanel.classList.remove('hidden');
+    if (typeof zoneBrowserRenderRecipePicker === 'function') zoneBrowserRenderRecipePicker();
+    if (typeof zoneBrowserRenderEntrySeedPicker === 'function') zoneBrowserRenderEntrySeedPicker();
+    if (typeof simRenderGallery === 'function') simRenderGallery();
   }
+  if (typeof gdmRefreshUI === 'function') gdmRefreshUI();
   showToast(`Map loaded: ${fileName} — ${mapData.regions.length} regions`);
   updateBadges();
 }
@@ -393,7 +437,17 @@ function showToast(msg,err=false){
   const t=document.getElementById('toast');t.textContent=msg;t.className='show'+(err?' err':'');
   clearTimeout(_toastTimer);_toastTimer=setTimeout(()=>t.className='',3000);
 }
+function handleAnalyzerHash(){
+  const hash=(window.location.hash||'').replace(/^#/,'');
+  if(hash!=='game-data-model'&&hash!=='data-model')return;
+  const panel=document.getElementById('panel-game-data');
+  if(!panel)return;
+  panel.classList.remove('hidden');
+  if(typeof gdmRefreshUI==='function')gdmRefreshUI();
+  setTimeout(()=>panel.scrollIntoView({behavior:'smooth',block:'start'}),0);
+}
 window.addEventListener('resize',()=>{if(romData)renderRomMap();});
+window.addEventListener('hashchange',handleAnalyzerHash);
 
 
 // ═══════════════════════════════════════════════════════
@@ -404,3 +458,4 @@ _compCells = Array(_compW * _compH).fill(-1);
 initSimulatorPanel();
 initPanelCollapse();
 loadProjects();
+handleAnalyzerHash();

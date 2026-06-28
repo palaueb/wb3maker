@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+echo "NOW YOU MUST PLAY THE GAME"
+cat TODO.md
+
 IP=$(ip addr show | grep -oP '192\.168\.88\.\d+' | head -1)
 
 if [ -n "$IP" ]; then

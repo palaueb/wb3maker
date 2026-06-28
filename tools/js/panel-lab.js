@@ -8,6 +8,138 @@ let _mergeList = [];
 let _labAsmByteMap = null;
 let _labCurrentPaletteColors = [];
 let _labDiscoveryItems = [];
+const LAB_GUARD_ANALYSIS_KEYS = [
+  'asmFalseSplitLabelAudit',
+  'asmPointerCandidateResolutionAudit',
+];
+
+function labCloneJson(value){
+  if(!value||typeof value!=='object')return value;
+  return JSON.parse(JSON.stringify(value));
+}
+
+function labEscapeHtml(value){
+  return String(value ?? '')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;');
+}
+
+function labFalseSplitLabels(region){
+  const audit=region?.analysis?.asmFalseSplitLabelAudit;
+  const labels=Array.isArray(audit?.labels)?audit.labels:[];
+  return labels.filter(label=>label.pointerPromotionAction==='reject_standalone_pointer_table_promotion');
+}
+
+function labHasFalseSplitGuard(region){
+  return labFalseSplitLabels(region).length>0;
+}
+
+function labHasPointerGuard(region){
+  const decision=region?.analysis?.asmPointerCandidateResolutionAudit?.genericPointerTableDecision;
+  return decision?.action==='reject_generic_pointer_table_retype';
+}
+
+function labGuardMessages(region){
+  const messages=[];
+  const labels=labFalseSplitLabels(region);
+  if(labels.length){
+    const labelText=labels
+      .map(label=>`${label.label || '(unlabeled)'} @ ${label.offset || 'unknown offset'}`)
+      .join(', ');
+    messages.push({
+      kind:'split',
+      text:`Nested ASM split label(s) are preserved inside the stream: ${labelText}. Standalone pointer-table promotion is rejected.`,
+      html:`<strong>Split guard:</strong> Nested ASM split label(s) are preserved inside the stream: ${labEscapeHtml(labelText)}. Standalone pointer-table promotion is rejected.`,
+    });
+  }
+  if(labHasPointerGuard(region)){
+    const audit=region.analysis?.asmPointerCandidateResolutionAudit||{};
+    const decision=audit.genericPointerTableDecision||{};
+    const label=audit.label||audit.parsedFromAsm?.label||'(unlabeled)';
+    const action=decision.action||'reject_generic_pointer_table_retype';
+    messages.push({
+      kind:'pointer',
+      text:`Specialized table type is preserved; generic pointer_table retype is rejected. Label ${label}, action ${action}.`,
+      html:`<strong>Table guard:</strong> Specialized table type is preserved; generic pointer_table retype is rejected. Label ${labEscapeHtml(label)}, action ${labEscapeHtml(action)}.`,
+    });
+  }
+  return messages;
+}
+
+function labRenderGuardPanel(region){
+  const panel=document.getElementById('lab-guard-panel');
+  if(!panel)return;
+  const messages=labGuardMessages(region);
+  if(!messages.length){
+    panel.style.display='none';
+    panel.className='lab-guard-panel';
+    panel.innerHTML='';
+    return;
+  }
+  const hasSplit=messages.some(message=>message.kind==='split');
+  const hasPointer=messages.some(message=>message.kind==='pointer');
+  panel.className=`lab-guard-panel${hasSplit&&hasPointer?' mixed':hasPointer?' pointer':''}`;
+  panel.style.display='';
+  panel.innerHTML=`
+    <div class="lab-guard-title">Protected analysis metadata</div>
+    <div class="lab-guard-list">
+      ${messages.map(message=>`<div class="lab-guard-item">${message.html}</div>`).join('')}
+      <div class="lab-guard-item"><strong>Edit guard:</strong> Splitting or changing type will ask for confirmation and keep these audit records top-level.</div>
+    </div>`;
+}
+
+function labGuardConfirmationText(region, action){
+  const messages=labGuardMessages(region);
+  if(!messages.length)return '';
+  const lines=[
+    `This region has protected analysis metadata for ${action}.`,
+    '',
+    ...messages.map(message=>`- ${message.text}`),
+    '',
+    'Splitting drops region.analysis on new fragments unless the map is repaired manually.',
+    'Changing type may hide specialized table or stream protection.',
+    '',
+    'Continue?'
+  ];
+  return lines.join('\n');
+}
+
+function labConfirmGuardedAction(region, action){
+  if(!labHasFalseSplitGuard(region)&&!labHasPointerGuard(region))return true;
+  if(typeof window==='undefined'||typeof window.confirm!=='function')return true;
+  return window.confirm(labGuardConfirmationText(region, action));
+}
+
+function labProtectedGuardAnalysis(region){
+  const raw=region?.analysis;
+  const out={};
+  if(!raw||typeof raw!=='object'||Array.isArray(raw))return out;
+  for(const key of LAB_GUARD_ANALYSIS_KEYS){
+    if(Object.prototype.hasOwnProperty.call(raw,key)){
+      out[key]=labCloneJson(raw[key]);
+    }
+  }
+  return out;
+}
+
+function labRemoveProtectedGuardAnalysis(analysis){
+  if(!analysis||typeof analysis!=='object'||Array.isArray(analysis))return {};
+  const clean=labCloneJson(analysis);
+  const strip=value=>{
+    if(!value||typeof value!=='object')return;
+    if(Array.isArray(value)){
+      value.forEach(strip);
+      return;
+    }
+    for(const key of LAB_GUARD_ANALYSIS_KEYS){
+      delete value[key];
+    }
+    Object.values(value).forEach(strip);
+  };
+  strip(clean);
+  return clean;
+}
 
 function updateMergeUI() {
   const n = _mergeList.length;
@@ -105,6 +237,7 @@ function openLaboratory(id){
   document.getElementById('lab-title').textContent=
     `${r.name||'unlabeled'}  ·  ${r.offset}  ·  ${bankAddrStr(offset)}  ·  ${size.toLocaleString()} bytes`;
 
+  labRenderGuardPanel(r);
   labRenderHex(bytes,offset);
   labRenderAsmContext(r,offset);
   labRenderXrefs(r);
@@ -282,6 +415,16 @@ function updateSplitPreview(){
     return;
   }
   const s1=splitOff-start, s2=end-splitOff;
+  let guardHtml='';
+  if(labHasFalseSplitGuard(r)||labHasPointerGuard(r)){
+    const exactLabels=labFalseSplitLabels(r)
+      .filter(label=>(parseHex(label.offset)??-1)===splitOff)
+      .map(label=>label.label||'(unlabeled)');
+    const exactText=exactLabels.length
+      ?` This split is exactly on protected nested label(s): ${exactLabels.join(', ')}.`
+      :'';
+    guardHtml=`<div class="lab-guard-item" style="margin-top:6px;color:var(--yellow)">Protected metadata warning:${labEscapeHtml(exactText)} Splitting this region drops region.analysis on fragments unless the map is repaired manually.</div>`;
+  }
   preview.style.display='block';
   preview.innerHTML=
     `<span style="color:var(--text)">Block 1:</span> ${hexStr(start)} `+
@@ -291,7 +434,8 @@ function updateSplitPreview(){
     `<span style="color:var(--accent2)">▶ ${hexStr(splitOff)} `+
     `<span style="font-size:10px">${bankAddrStr(splitOff)}</span></span>`+
     ` <span style="color:var(--text)">Block 2:</span> → ${hexStr(end-1)} `+
-    `<span style="color:var(--accent)">(${s2.toLocaleString()} bytes)</span>`;
+    `<span style="color:var(--accent)">(${s2.toLocaleString()} bytes)</span>`+
+    guardHtml;
 }
 
 function splitRegionAt(id,splitOffset){
@@ -302,6 +446,7 @@ function splitRegionAt(id,splitOffset){
   if(splitOffset<=start||splitOffset>=end){
     showToast(`Split offset must be inside the region (${hexStr(start)}–${hexStr(end-1)})`,true);return;
   }
+  if(!labConfirmGuardedAction(r, `split at ${hexStr(splitOffset)}`))return;
   const part1={...r,id:genId(),size:splitOffset-start,analysis:undefined};
   const part2={...r,id:genId(),offset:hexStr(splitOffset),size:end-splitOffset,analysis:undefined};
   mapData.regions=mapData.regions.filter(x=>x.id!==id);
@@ -337,6 +482,7 @@ function splitRegionByLabels(id){
     }
   }
   if(!splitOffsets.size){showToast('No label boundaries found inside this region',true);return;}
+  if(!labConfirmGuardedAction(r, 'split by ASM labels'))return;
 
   const sorted=[...splitOffsets].sort((a,b)=>a-b);
   const parts=[];
@@ -1500,7 +1646,7 @@ function labRenderTypePreview(type, bytes, baseOffset) {
     return;
   }
 
-  if (type === 'pointer_table') {
+  if (type === 'pointer_table' || type === 'entity_anim_table' || type === 'entity_behavior_table') {
     const title = document.createElement('div');
     title.className = 'lab-section-title';
     title.textContent = `POINTER TABLE — ${Math.floor(bytes.length / 2)} entries @ ${hexStr(baseOffset)}`;
@@ -2502,10 +2648,10 @@ const MUSIC_SONG_COUNT     = 62;
 
 let _musicPlayerInstance = null;
 
-// Opcode arg counts (best-effort static analysis)
+// Opcode arg counts derived from the bank-3 _LABEL_C37B_ dispatch handlers.
 const MUSIC_OPCODE_ARGS = {
   0xF0:1, 0xF1:2, 0xF2:2, 0xF3:1, 0xF4:1,
-  0xF5:1, 0xF6:1, 0xF7:0, 0xF8:1, 0xF9:0,
+  0xF5:1, 0xF6:2, 0xF7:0, 0xF8:1, 0xF9:0,
   0xFA:2, 0xFB:0, 0xFC:0, 0xFD:0, 0xFE:0, 0xFF:0
 };
 
@@ -2886,10 +3032,13 @@ function labSelectType(type){
 function labRenderClassify(region){
   const wrap=document.getElementById('lab-type-btns');
   wrap.innerHTML='';
+  const guarded=labHasFalseSplitGuard(region)||labHasPointerGuard(region);
   for(const[type,meta]of Object.entries(TYPE_META)){
     const btn=document.createElement('button');
-    btn.className='lab-type-btn'+(region.type===type?' selected':'');
+    const risk=guarded&&region.type!==type;
+    btn.className='lab-type-btn'+(region.type===type?' selected':'')+(risk?' guard-risk':'');
     btn.style.cssText=`color:${meta.color};border-color:${meta.color}`;
+    if(risk)btn.title='Protected analysis metadata: changing type requires confirmation on save.';
     btn.textContent=meta.label;btn.dataset.type=type;
     btn.addEventListener('click',()=>labSelectType(type));
     wrap.appendChild(btn);
@@ -2986,6 +3135,30 @@ function labSetAnalysisStatus(msg, isError){
   el.style.color = isError ? 'var(--red)' : 'var(--dim)';
 }
 
+function labConsumerAuditStatus(region){
+  const audit=region?.analysis?.unresolvedAssetConsumerAudit;
+  if(!audit)return '';
+  const status=audit.consumerStatus||'consumer status unknown';
+  const loaderHits=audit.loaderSourceHitCount??0;
+  const medPtrs=audit.mediumConfidencePointerRefCount??0;
+  const lowPtrs=audit.lowConfidencePointerRefCount??0;
+  return `consumer ${status}; loader hits ${loaderHits}; pointer leads ${medPtrs} medium / ${lowPtrs} low`;
+}
+
+function labPauseStatusDisambiguationStatus(region){
+  const gfx=region?.analysis?.pauseStatusCandidateCoverageDisambiguation;
+  if(gfx){
+    const bytes=gfx.candidateUniqueBytes??0;
+    const spans=gfx.candidateUniqueSpanCount??0;
+    return `pause/status candidate-only coverage; ${bytes} byte(s), ${spans} span(s)`;
+  }
+  const stream=region?.analysis?.pauseStatusStreamLoaderDisambiguationAudit;
+  if(stream){
+    return `pause/status ${stream.vdpStreamStatus||'VDP stream status unknown'}; ${stream.loader998Status||'998 loader status unknown'}`;
+  }
+  return '';
+}
+
 function labRenderAnalysisEditor(region){
   const layers=labGetAnalysisLayers(region);
   const meta=labNormalizeAnalysis(region);
@@ -3006,7 +3179,12 @@ function labRenderAnalysisEditor(region){
   const parts=[];
   if(labHasMeaningfulAnalysis(layers.manual))parts.push('manual');
   if(labHasMeaningfulAnalysis(layers.inferred))parts.push('inferred');
-  labSetAnalysisStatus(parts.length ? `Loaded ${parts.join(' + ')} analysis` : 'Empty = no structured metadata yet', false);
+  const consumerStatus=labConsumerAuditStatus(region);
+  const pauseStatus=labPauseStatusDisambiguationStatus(region);
+  const guardStatus=labGuardMessages(region).length?'protected guard metadata present':'';
+  const baseStatus=parts.length ? `Loaded ${parts.join(' + ')} analysis` : 'Empty = no structured metadata yet';
+  const statusParts=[baseStatus,consumerStatus,pauseStatus,guardStatus].filter(Boolean);
+  labSetAnalysisStatus(statusParts.join(' · '), false);
 }
 
 function labNormalizeManualAnalysisShape(analysis){
@@ -3311,12 +3489,16 @@ function labAnalyzeAllRegions(){
   for(const region of mapData.regions){
     const layers=labGetAnalysisLayers(region);
     const inferred=labInferAnalysisFromAsm(region);
-    const hasManual=labHasMeaningfulAnalysis(layers.manual);
+    const guardAnalysis=labProtectedGuardAnalysis(region);
+    const manual=labRemoveProtectedGuardAnalysis(layers.manual);
+    const hasManual=labHasMeaningfulAnalysis(manual);
     const hasInferred=labHasMeaningfulAnalysis(inferred);
-    if(hasManual||hasInferred){
+    const hasGuard=labHasMeaningfulAnalysis(guardAnalysis);
+    if(hasManual||hasInferred||hasGuard){
       region.analysis={};
-      if(hasManual)region.analysis.manual=layers.manual;
+      if(hasManual)region.analysis.manual=manual;
       if(hasInferred)region.analysis.inferred=inferred;
+      if(hasGuard)Object.assign(region.analysis, guardAnalysis);
       analyzed++;
     }else{
       delete region.analysis;
@@ -3393,13 +3575,18 @@ document.getElementById('btn-lab-save').addEventListener('click',()=>{
   const analysisValue=labBuildAnalysisFromForm();
   const manualValue=labBuildManualDelta(analysisValue, layers.inferred);
   const selType=document.querySelector('#lab-type-btns .lab-type-btn.selected')?.dataset.type;
+  if(selType&&selType!==r.type&&!labConfirmGuardedAction(r, `change type from ${r.type || 'unknown'} to ${selType}`))return;
+  const guardAnalysis=labProtectedGuardAnalysis(r);
+  const cleanManual=labRemoveProtectedGuardAnalysis(manualValue);
+  const cleanInferred=labRemoveProtectedGuardAnalysis(layers.inferred);
   if(selType)r.type=selType;
   r.name=document.getElementById('lab-name').value.trim();
   r.notes=document.getElementById('lab-notes').value.trim();
-  if(labHasMeaningfulAnalysis(layers.inferred)||labHasMeaningfulAnalysis(manualValue)){
+  if(labHasMeaningfulAnalysis(cleanInferred)||labHasMeaningfulAnalysis(cleanManual)||labHasMeaningfulAnalysis(guardAnalysis)){
     r.analysis={};
-    if(labHasMeaningfulAnalysis(manualValue))r.analysis.manual=manualValue;
-    if(labHasMeaningfulAnalysis(layers.inferred))r.analysis.inferred=layers.inferred;
+    if(labHasMeaningfulAnalysis(cleanManual))r.analysis.manual=cleanManual;
+    if(labHasMeaningfulAnalysis(cleanInferred))r.analysis.inferred=cleanInferred;
+    if(labHasMeaningfulAnalysis(guardAnalysis))Object.assign(r.analysis, guardAnalysis);
   }else{
     delete r.analysis;
   }
@@ -3417,10 +3604,13 @@ document.getElementById('btn-lab-analysis-autofill').addEventListener('click',()
   const current=labBuildAnalysisFromForm();
   const inferred=labInferAnalysisFromAsm(r);
   const layers=labGetAnalysisLayers(r);
+  const guardAnalysis=labProtectedGuardAnalysis(r);
+  const manual=labRemoveProtectedGuardAnalysis(layers.manual);
   r.analysis={};
-  if(labHasMeaningfulAnalysis(layers.manual))r.analysis.manual=layers.manual;
+  if(labHasMeaningfulAnalysis(manual))r.analysis.manual=manual;
   if(labHasMeaningfulAnalysis(inferred))r.analysis.inferred=inferred;
-  if(!labHasMeaningfulAnalysis(r.analysis.manual)&&!labHasMeaningfulAnalysis(r.analysis.inferred))delete r.analysis;
+  if(labHasMeaningfulAnalysis(guardAnalysis))Object.assign(r.analysis, guardAnalysis);
+  if(!labHasMeaningfulAnalysis(r.analysis.manual)&&!labHasMeaningfulAnalysis(r.analysis.inferred)&&!labHasMeaningfulAnalysis(guardAnalysis))delete r.analysis;
   const merged=labMergeAnalysisValues(current, inferred);
   labApplyAnalysisToForm(merged);
   labSetAnalysisStatus('Updated inferred analysis from ASM heuristics', false);
